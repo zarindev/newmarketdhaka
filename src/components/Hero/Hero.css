@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 *,
 *::before,
@@ -11,12 +11,13 @@
 .hero {
   position: relative;
   width: 100%;
-  font-family: "Open Sans", sans-serif;
+  height: 679px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .hero-image-ctn {
   position: absolute;
-  height: 679px;
+  height: 100%;
   z-index: -4;
 }
 
