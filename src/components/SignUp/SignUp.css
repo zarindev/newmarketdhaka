@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.sign-up-img{
+    width: 50%;
+}
+.sign-up-page{
+    display: flex;
+}
+
+.right-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.signup-header{
+    display: flex;
+    justify-content: start;
+    width: 35vw;
+}
+.sign-up{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;     
+}
+.signup-form{
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+}
+.field-text{
+    font-size: 20px;
+    font-weight: 600;
+}
+.signup-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+}
+.field-style{
+    
+    height: 3.5vw;
+    background-color: #fafafa;
+    border: 1px solid #cecece;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.field-style:hover{
+    background-color: #eeeeee;
+}
+.sign-up-btn{
+    background-color: #CE2D4F;
+    border: none;
+    margin-top: 1.5rem;
+    padding: 1.5rem 0;
+    border-radius: .5rem;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+.sign-up-btn:hover{
+    background-color: #df2951;
+}
+.sign-in{
+    color: #00537A;
+    cursor: pointer;
+}
+.sign-in:hover{
+    text-decoration: underline;
+}
+.signin-btn{
+    background: #ffffff;
+    border: 1px solid #E0E0E0;
+    padding: 15px 40px;
+    margin: .5rem;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+.signin-btn:hover{
+    background: #E0E0E0;
+}
+.signin{
+    display: flex;
+    flex-direction: row;
+    margin: .5rem;
+}
+.sign-up-link{
+    text-decoration: none;
+    color: #ffffff;
+}
