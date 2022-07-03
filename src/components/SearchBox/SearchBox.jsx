@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import keywordIcon from '../../images/svg/box-search.svg';
@@ -7,17 +7,26 @@ import searchIcon from '../../images/svg/search-normal.svg';
 
 const SearchBox = () => {
   const [showCategory, setShowCategory] = useState(false);
+  const [keyword, setKeyword] = useState('');
+  const [location, setLocation] = useState('');
+
+  const keywordSearch = useRef('');
+  const locationSearch = useRef('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="search">
       <div className="serach-ctn">
-        <form className="form-control">
+        <form className="form-control" onSubmit={handleSubmit}>
           <div className="search-category-ctn">
             <div
               className="category-btn"
               onClick={() => setShowCategory(!showCategory)}
             >
-              ALL
+              <p>ALL</p>
               <img src={downArrow} alt="down-arrow icon" />
             </div>
             <ul
@@ -40,12 +49,16 @@ const SearchBox = () => {
           <input
             type="text"
             placeholder="Keywords"
-            className="search-keywords"
+            className="search-keywords search-input"
+            ref={keywordSearch}
+            onChange={() => setKeyword(keywordSearch.current.value)}
           />
           <input
             type="text"
             placeholder="Location"
-            className="search-location"
+            className="search-location search-input"
+            ref={locationSearch}
+            onChange={() => setLocation(locationSearch.current.value)}
           />
           <button className="search-btn">
             <img src={searchIcon} alt="search icon" />
