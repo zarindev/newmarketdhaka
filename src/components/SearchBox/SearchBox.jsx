@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "./SearchBox.css";
-import downArrow from "../../images/svg/down-arrow 1 (Traced).svg";
-import keywordIcon from "../../images/svg/box-search.svg";
-import locationIcon from "../../images/svg/location.svg";
-import searchIcon from "../../images/svg/search-normal.svg";
+import React, { useState } from 'react';
+import './SearchBox.css';
+import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
+import keywordIcon from '../../images/svg/box-search.svg';
+import locationIcon from '../../images/svg/location.svg';
+import searchIcon from '../../images/svg/search-normal.svg';
 
 const SearchBox = () => {
   const [showCategory, setShowCategory] = useState(false);
 
   return (
     <div className="search">
-      <div className="serach-items">
+      <div className="serach-ctn">
         <form className="form-control">
           <div className="search-category-ctn">
             <div
@@ -23,8 +23,8 @@ const SearchBox = () => {
             <ul
               className={
                 showCategory
-                  ? "category-dropdown category-dropdown-show"
-                  : "category-dropdown"
+                  ? 'category-dropdown category-dropdown-show'
+                  : 'category-dropdown'
               }
             >
               <li>Sports, Fitness, Bags, Luggage</li>
@@ -36,9 +36,7 @@ const SearchBox = () => {
               <li>Gift Cards & Mobile Recharges</li>
             </ul>
           </div>
-          <div className="search-keywords-ctn">
-            
-          </div>
+          <div className="search-keywords-ctn"></div>
           <input
             type="text"
             placeholder="Keywords"
