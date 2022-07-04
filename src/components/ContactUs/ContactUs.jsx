@@ -4,6 +4,9 @@ import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
 import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
+import CategoryNav from '../Navigation/CategoryNav/CategoryNav';
+import TopNav from '../Navigation/TopNav/TopNav';
+
 
 const ContactUs = () => {
   const [name, setName] = useState('');
@@ -19,7 +22,11 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-us">
+    <div>
+      <TopNav/>
+      <CategoryNav/>
+      <div className="contact-us">
+      
       <div className="contact-intro">
         <div className="contact-content">
           <h2 className="contact-title">
@@ -90,6 +97,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
