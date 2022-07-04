@@ -12,13 +12,14 @@
   position: relative;
   width: 90vw;
   max-width: 990px;
-  margin: 120px auto 0 auto;
+  margin: 0 auto;
+  padding: 120px 0 0 0;
   font-family: 'Open Sans', sans-serif;
 }
 
 .services-title {
-  font-weight: 700;
   font-size: 38px;
+  font-weight: 700;
   color: #1d1d1d;
   text-align: center;
 }
@@ -56,11 +57,11 @@
 
 .styled-divider {
   position: absolute;
-  top: 54%;
+  top: 59%;
   left: 0;
   left: 0;
   right: 0;
-  margin-inline: auto;
+  margin: 0 auto;
   width: 95%;
   border: 1px solid #dddddd;
 }
