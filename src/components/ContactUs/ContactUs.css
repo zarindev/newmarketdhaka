@@ -11,7 +11,7 @@
 .contact-us {
   width: 90vw;
   max-width: 980px;
-  margin: 100px auto 0 auto;
+  margin: 100px auto 70px auto;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -89,6 +89,7 @@
 
 .field-control {
   width: 69vw;
+  max-width: 850px;
   background-color: #f9f9f9;
   border: 1px solid #f9f9f9;
   border-radius: 12px;
@@ -119,6 +120,7 @@
 .form-submit-btn {
   margin-top: 10px;
   width: 69vw;
+  max-width: 850px;
   height: 65px;
   background-color: #1ac3da;
   border: 1px solid #1ac3da;
@@ -140,10 +142,12 @@
 
 .contact-info-ctn {
   width: 69vw;
+  max-width: 850px;
   margin: 2rem auto 1rem auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ContactUs from '../ContactUs/ContactUs';
+import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import CategoryNav from '../Navigation/CategoryNav/CategoryNav';
 import TopNav from '../Navigation/TopNav/TopNav';
@@ -17,6 +18,7 @@ function HomePage() {
       <Services />
       <ServicesSlider />
       <ContactUs />
+      <Footer />
     </>
   );
 }
