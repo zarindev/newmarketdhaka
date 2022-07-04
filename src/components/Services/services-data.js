@@ -1,13 +1,13 @@
-import homeAndOffice from '../../images/svg/workspace 1.svg';
-import homeImprovement from '../../images/svg/improvement 1.svg';
-import homeRental from '../../images/svg/rental 1.svg';
-import educationAndTraining from '../../images/svg/education 1.svg';
-import itAndPlacement from '../../images/svg/technical-support 1.svg';
-import jobANdConsultency from '../../images/svg/interview 1.svg';
-import carRentalAndSerive from '../../images/svg/maintenance 1.svg';
-import weddingService from '../../images/svg/rings 1.svg';
-import deliveryService from '../../images/svg/grocery 1.svg';
-import electronicsService from '../../images/svg/electronic-device 1.svg';
+import homeAndOffice from '../../images/workspace 1.png';
+import homeImprovement from '../../images/improvement 1.png';
+import homeRental from '../../images/rental 1.png';
+import educationAndTraining from '../../images/education 1.png';
+import itAndPlacement from '../../images/technical-support 1.png';
+import jobANdConsultency from '../../images/interview 1.png';
+import carRentalAndSerive from '../../images/maintenance 1.png';
+import weddingService from '../../images/rings 1.png';
+import deliveryService from '../../images/grocery 1.png';
+import electronicsService from '../../images/electronic-device 1.png';
 
 export const servicesData = [
   { id: 1, title: 'Home & Office', image: homeAndOffice },

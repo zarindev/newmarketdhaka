@@ -1,9 +1,12 @@
 import React from 'react';
+import ContactUs from '../ContactUs/ContactUs';
+import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import CategoryNav from '../Navigation/CategoryNav/CategoryNav';
 import TopNav from '../Navigation/TopNav/TopNav';
 import SearchBox from '../SearchBox/SearchBox';
 import Services from '../Services/Services';
+import ServicesSlider from '../ServicesSlider/ServicesSlider';
 
 function HomePage() {
   return (
@@ -13,6 +16,9 @@ function HomePage() {
       <Hero />
       <SearchBox />
       <Services />
+      <ServicesSlider />
+      <ContactUs />
+      <Footer />
     </>
   );
 }
