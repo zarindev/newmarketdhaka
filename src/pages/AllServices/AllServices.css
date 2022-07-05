@@ -1,0 +1,26 @@
+.all-services {
+  margin: 0 auto;
+}
+
+.all-services-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.all-services-banner {
+  width: 100%;
+  padding: 125px 0;
+  background: url('../../images/Rectangle\ 662.png') no-repeat center;
+}
+
+.all-services .services {
+  padding-top: 0;
+}
+
+.all-services .services-title,
+.all-services .services-btn,
+.all-services .styled-divider {
+  display: none;
+}

@@ -83,6 +83,7 @@
   height: auto;
   background-color: #ffffff;
   border-radius: 12px;
+  transform: translateX(0);
 }
 
 .slide-image-ctn {
@@ -103,7 +104,7 @@
   border-radius: 12px 12px 0 0;
 }
 
-.image-scroller-ctn {
+.image-dots-ctn {
   position: absolute;
   top: 85%;
   left: 0;
@@ -113,13 +114,13 @@
   gap: 0.5rem;
 }
 
-.image-scroller {
+.image-dot {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   cursor: pointer;
 }
 
-.image-scroller-active {
+.image-dot-active {
   background-color: #ffffff;
 }
 

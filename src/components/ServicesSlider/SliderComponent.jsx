@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
-import ellipseWhite from '../../images/svg/Ellipse 1.svg';
-import ellipseGray from '../../images/svg/Ellipse 2.svg';
+import ellipse from '../../images/svg/Ellipse 2.svg';
 
 const SliderComponent = ({ sliderTitle }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  const buttons = [1, 2, 3, 4];
+  const slides = sliderData[sliderTitle].length;
+
+  const prevSlide = () => {
+    setSlideIndex(slideIndex === 0 ? slides - 1 : slideIndex - 1);
+  };
+
+  const nextSlide = () => {
+    setSlideIndex(slideIndex === slides - 1 ? 0 : slideIndex + 1);
+  };
 
   return (
     <div className="slider-component">
@@ -28,13 +36,15 @@ const SliderComponent = ({ sliderTitle }) => {
           src={rightArrowTwo}
           alt="left-arrow icon"
           className="slide-arrow slide-arrow-left"
+          onClick={prevSlide}
         />
         <img
           src={rightArrowTwo}
-          alt="left-arrow icon"
+          alt="right-arrow icon"
           className="slide-arrow slide-arrow-right"
+          onClick={nextSlide}
         />
-        {sliderData[sliderTitle].map((slide) => {
+        {sliderData[sliderTitle].map((slide, index) => {
           const {
             id,
             image,
@@ -49,20 +59,24 @@ const SliderComponent = ({ sliderTitle }) => {
           return (
             <div className="slide" key={id}>
               <div className="slide-image-ctn">
-                <img src={image} alt={title} className="slide-image" />
-                <div className="image-scroller-ctn">
-                  {buttons.map((button, index) => {
+                <img
+                  src={image[index || imageIndex]}
+                  alt={title}
+                  className="slide-image"
+                />
+                <div className="image-dots-ctn">
+                  {Array.from({ length: 4 }).map((item, index) => {
                     return (
                       <img
                         key={index}
-                        src={ellipseGray}
+                        src={ellipse}
                         alt="ellipse icon"
                         className={
-                          isActive
-                            ? 'image-scroller image-scroller-active'
-                            : 'image-scroller'
+                          imageIndex === index
+                            ? 'image-dot image-dot-active'
+                            : 'image-dot'
                         }
-                        onClick={() => setIsActive(!isActive)}
+                        onClick={() => setImageIndex(index)}
                       />
                     );
                   })}

@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import './Hero.css';
 import heroImage from '../../images/hero-image.png';
 import ellipse from '../../images/svg/Ellipse 2.svg';
+import { heroImageData } from './heroImageData';
 
 const Hero = () => {
-  const [isActive, setIsActive] = useState(false);
-  const buttons = [1, 2, 3, 4, 5];
+  const [imageIndex, setImageIndex] = useState(0);
 
   return (
     <div className="hero">
       <div className="hero-image-ctn">
-        <img src={heroImage} alt="hero image" className="hero-image" />
+        <img
+          src={heroImageData[imageIndex]}
+          alt="hero image"
+          className="hero-image"
+        />
       </div>
       <div className="hero-items-ctn">
         <div className="hero-items">
@@ -23,15 +27,17 @@ const Hero = () => {
             grocery, repair service, emergency need, <br /> medical services and
             many more.
           </p>
-          <div className="scroller">
-            {buttons.map((button, index) => {
+          <div className="dots-ctn">
+            {Array.from({ length: 5 }).map((item, index) => {
               return (
                 <img
                   key={index}
                   src={ellipse}
                   alt="ellipse"
-                  className={isActive ? 'element active-element' : 'element'}
-                  onClick={() => setIsActive(!isActive)}
+                  className={
+                    imageIndex === index ? 'element active-element' : 'element'
+                  }
+                  onClick={() => setImageIndex(index)}
                 />
               );
             })}

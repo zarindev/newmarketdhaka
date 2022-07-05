@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .services {
@@ -14,7 +17,6 @@
   max-width: 990px;
   margin: 0 auto;
   padding: 120px 0 0 0;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .services-title {
@@ -76,7 +78,6 @@
   background-color: #ce2d4f;
   border: #ce2d4f;
   border-radius: 40px;
-  font-family: 'Open Sans', sans-serif;
   font-size: 17px;
   color: #ffffff;
   cursor: pointer;

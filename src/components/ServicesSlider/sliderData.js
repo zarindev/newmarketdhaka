@@ -3,12 +3,13 @@ import profileIcon from '../../images/svg/profile.svg';
 import homeOne from '../../images/Rectangle 20.png';
 import homeTwo from '../../images/Rectangle 20 (1).png';
 import homeThree from '../../images/Rectangle 20 (2).png';
+import homeFour from '../../images/Rectangle 21.png';
 
 export const sliderData = {
   'Home Services': [
     {
       id: 1,
-      image: homeOne,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -18,7 +19,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: homeTwo,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -28,7 +29,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: homeThree,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -40,7 +41,7 @@ export const sliderData = {
   'Car Services': [
     {
       id: 1,
-      image: homeOne,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -50,7 +51,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: homeTwo,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -60,7 +61,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: homeThree,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -72,7 +73,7 @@ export const sliderData = {
   'IT Training': [
     {
       id: 1,
-      image: homeOne,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -82,7 +83,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: homeTwo,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -92,7 +93,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: homeThree,
+      image: [homeOne, homeTwo, homeThree, homeFour],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
