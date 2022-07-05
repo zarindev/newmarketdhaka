@@ -11,7 +11,6 @@ const SingleService = ({ serviceImage, serviceTitle }) => {
         <h3 className="all-services-list-title">{serviceTitle}</h3>
       </div>
       {allServicesData[serviceTitle].map((service) => {
-        console.log(service);
         return (
           <div className="all-services-content" key={service.id}>
             <h4 className="all-services-list-type">{service.service_type}</h4>
