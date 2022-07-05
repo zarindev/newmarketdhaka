@@ -11,11 +11,14 @@ import ServicesSlider from '../ServicesSlider/ServicesSlider';
 function HomePage() {
   return (
     <>
+    <TopNav />
+      <CategoryNav />
       <Hero />
       <SearchBox />
       <Services />
       <ServicesSlider />
       <ContactUs />
+      <Footer/>
     </>
   );
 }
