@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import {
   AboutUs,
+  CategoryNav,
   ContactUs,
   HomePage,
   SignIn,
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <>
       <TopNav />
+      <CategoryNav />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />

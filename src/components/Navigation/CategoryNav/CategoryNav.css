@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 .category-nav-ctn {
   width: 100%;
@@ -14,7 +14,7 @@
   list-style: none;
   display: flex;
   justify-content: space-evenly;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 17px;
   color: #5e5e5e;
   font-weight: 600;
@@ -23,6 +23,7 @@
 .dropdown {
   float: left;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Dropdown button */
@@ -51,6 +52,7 @@
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
   z-index: 1;
 }
 

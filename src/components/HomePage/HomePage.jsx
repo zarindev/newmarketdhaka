@@ -11,7 +11,6 @@ import ServicesSlider from '../ServicesSlider/ServicesSlider';
 function HomePage() {
   return (
     <>
-      <CategoryNav />
       <Hero />
       <SearchBox />
       <Services />

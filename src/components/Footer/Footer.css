@@ -61,7 +61,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
 }
 
 .footer-contact-address {
@@ -133,7 +132,7 @@
   margin: 0 auto;
   width: 90vw;
   max-width: 980px;
-  border: 1px solid #d9dbe9;
+  border: 0.5px solid #d9dbe9;
 }
 
 .footer-terms {

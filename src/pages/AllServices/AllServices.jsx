@@ -1,7 +1,10 @@
 import React from 'react';
 import './AllServices.css';
 import Services from '../../components/Services/Services';
-import { allServicesData } from '../allServicesData';
+import SingleService from './SingleService';
+import homeAndOffice from '../../images/workspace 1.png';
+import carRentalService from '../../images/maintenance 1.png';
+import foodAndRestaurant from '../../images/grocery 1.png';
 
 const AllServices = () => {
   return (
@@ -10,27 +13,18 @@ const AllServices = () => {
         <h1 className="all-services-title">All Services</h1>
       </div>
       <Services />
-      {allServicesData.map((serviceData) => {
-        console.log(serviceData['Home & Office']);
-      })}
-
-      <div className="all-services-list">
-        <div className="all-services-list-styled-break"></div>
-        <div className="all-services-content">
-          <h4 className="all-services-list-title"></h4>
-          <ul className="all-services-list-ctn">
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-            <li className="all-services-list"></li>
-          </ul>
-        </div>
-      </div>
+      <SingleService
+        serviceImage={homeAndOffice}
+        serviceTitle="Home & Office"
+      />
+      <SingleService
+        serviceImage={carRentalService}
+        serviceTitle="Car Rental Service"
+      />
+      <SingleService
+        serviceImage={foodAndRestaurant}
+        serviceTitle="Food & Restaurant"
+      />
     </div>
   );
 };
