@@ -1,0 +1,77 @@
+.all-services-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.all-services-banner {
+  width: 100%;
+  padding: 125px 0;
+  background: url('../../images/Rectangle\ 662.png') no-repeat center;
+}
+
+.all-services .services {
+  padding: 45px 0 85px 0;
+}
+
+.all-services .services-title,
+.all-services .services-btn,
+.all-services .styled-divider {
+  display: none;
+}
+
+.all-services-list-ctn {
+  width: 90vw;
+  max-width: 980px;
+  margin: 0 auto 125px auto;
+}
+
+.all-services-list-title-ctn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.all-services-list-styled-divider {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  border: 0.5px solid #dddddd;
+}
+
+.all-services-list-image {
+  transform: scale(0.5);
+  margin-left: -1rem;
+}
+
+.all-services-list-title {
+  font-weight: 600;
+  font-size: 22px;
+  color: #1d1d1d;
+}
+
+.all-services-content {
+  margin-top: 2.69rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.all-services-lists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.all-services-list {
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(29, 29, 29, 0.85);
+  list-style-type: disc;
+  margin-left: 1rem;
+}

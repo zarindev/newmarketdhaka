@@ -1,6 +1,7 @@
 import React from 'react';
 import { servicesData } from './services-data';
 import './Services.css';
+import { Link } from 'react-router-dom';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 
@@ -32,10 +33,12 @@ const Services = () => {
         })}
       </div>
       <div className="styled-divider"></div>
-      <button className="services-btn">
-        <p>See All Services</p>
-        <img src={arrowCircleDown} alt="arrow-circle-down icon" />
-      </button>
+      <Link to="/all_services">
+        <button className="services-btn">
+          <p>See All Services</p>
+          <img src={arrowCircleDown} alt="arrow-circle-down icon" />
+        </button>
+      </Link>
     </div>
   );
 };

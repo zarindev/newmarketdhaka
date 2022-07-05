@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
+  z-index: 7;
 }
 
 .serach-ctn {
@@ -40,6 +41,7 @@
   font-size: 17px;
   color: #5e5e5e;
   margin-right: 1.2rem;
+  z-index: 8;
 }
 
 .category-btn {
@@ -64,6 +66,7 @@
   padding: 1rem;
   cursor: pointer;
   white-space: nowrap;
+  z-index: 8;
 }
 
 .category-dropdown-show {
@@ -95,6 +98,7 @@
   text-indent: 8%;
   font-family: 'Open Sans', sans-serif;
   font-size: 17px;
+  z-index: 8;
 }
 
 .search-input:focus {
@@ -121,4 +125,5 @@
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
+  z-index: 8;
 }
