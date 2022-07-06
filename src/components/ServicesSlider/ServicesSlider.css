@@ -1,19 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .services-slider {
-  width: 100vw;
+  width: 100%;
   margin-top: 50px;
   padding: 80px 0;
   background-color: #f7f7f7;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .services-slider-title {
@@ -60,6 +49,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .slide-arrow {
@@ -70,12 +60,12 @@
 }
 
 .slide-arrow-left {
-  left: -5%;
+  left: -2vw;
   transform: rotate(180deg);
 }
 
 .slide-arrow-right {
-  right: -5%;
+  right: -2vw;
 }
 
 .slide {
@@ -83,7 +73,11 @@
   height: auto;
   background-color: #ffffff;
   border-radius: 12px;
-  transform: translateX(0);
+}
+
+.slide:hover {
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .slide-image-ctn {

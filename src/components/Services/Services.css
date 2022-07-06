@@ -30,7 +30,6 @@
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-template-rows: repeat(2, minmax(150px, min-content));
   gap: 3rem 1.4rem;
 }
 
