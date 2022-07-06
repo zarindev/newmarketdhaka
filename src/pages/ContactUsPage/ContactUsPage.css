@@ -1,0 +1,23 @@
+.contact-page-title {
+  font-size: 38px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-page-banner {
+  width: 100%;
+  padding: 125px 0;
+  background: url('../../images/Rectangle\ 663.png') no-repeat center;
+}
+
+.contact-page .contact-intro {
+  display: none;
+}
+
+.contact-page-content {
+  width: 90vw;
+  max-width: 980px;
+  margin: 0 auto 5.8rem auto;
+}
