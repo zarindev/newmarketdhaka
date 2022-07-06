@@ -1,8 +1,9 @@
 .all-services-title {
   font-size: 38px;
-  font-weight: 700;
+  font-weight: 600;
   color: #ffffff;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .all-services-banner {

@@ -22,7 +22,6 @@ const ContactUs = () => {
 
   return (
     <div>
-      
       <div className="contact-us">
         <div className="contact-intro">
           <div className="contact-content">

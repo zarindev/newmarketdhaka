@@ -1,0 +1,47 @@
+.about-title {
+  font-size: 38px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about-banner {
+  width: 100%;
+  padding: 125px 0;
+  background: url('../../images/Rectangle\ 663.png') no-repeat center;
+}
+
+.about-content {
+  width: 90vw;
+  max-width: 980px;
+  margin: 2rem auto 5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-item-title {
+  font-weight: 700;
+  font-size: 21px;
+  color: #1d1d1d;
+}
+
+.about-item-desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #575757;
+}
+
+.about-item-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
