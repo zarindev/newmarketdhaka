@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContactUs from '../../components/ContactUs/ContactUs';
 import Footer from '../../components/Footer/Footer';
 import Hero from '../../components/Hero/Hero';
@@ -9,6 +9,15 @@ import Services from '../../components/Services/Services';
 import ServicesSlider from '../../components/ServicesSlider/ServicesSlider';
 
 function HomePage() {
+  useEffect(() => {
+    const docWidth = document.documentElement.offsetWidth;
+    [].forEach.call(document.querySelectorAll('*'), function (el) {
+      if (el.offsetWidth > docWidth) {
+        console.log(el);
+      }
+    });
+  }, []);
+
   return (
     <>
       <TopNav />

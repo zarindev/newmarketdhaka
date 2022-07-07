@@ -19,7 +19,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeTwo, homeThree, homeFour, homeOne],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -29,7 +29,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeThree, homeFour, homeOne, homeTwo],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -51,7 +51,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeTwo, homeThree, homeFour, homeOne],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -61,7 +61,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeThree, homeFour, homeOne, homeTwo],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -83,7 +83,7 @@ export const sliderData = {
     },
     {
       id: 2,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeTwo, homeThree, homeFour, homeOne],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,
@@ -93,7 +93,7 @@ export const sliderData = {
     },
     {
       id: 3,
-      image: [homeOne, homeTwo, homeThree, homeFour],
+      image: [homeThree, homeFour, homeOne, homeTwo],
       title: 'Cleaning service',
       time: 'Sun-fri (08:00-22:00)',
       locationIcon: locationIcon,

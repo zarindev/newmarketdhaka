@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import heroImage from '../../images/hero-image.png';
 import ellipse from '../../images/svg/Ellipse 2.svg';
@@ -6,6 +6,17 @@ import { heroImageData } from './heroImageData';
 
 const Hero = () => {
   const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    const slider = setInterval(() => {
+      setImageIndex(imageIndex + 1);
+    }, 4000);
+    return () => clearInterval(slider);
+  }, [imageIndex]);
+
+  useEffect(() => {
+    imageIndex > heroImageData.length - 1 && setImageIndex(0);
+  }, [imageIndex, heroImageData]);
 
   return (
     <div className="hero">

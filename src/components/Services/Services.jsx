@@ -1,6 +1,6 @@
 import React from 'react';
-import { servicesData } from './services-data';
 import './Services.css';
+import { servicesData } from './servicesData';
 import { Link } from 'react-router-dom';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';

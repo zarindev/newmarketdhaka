@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
 
 import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUS/AboutUs';
@@ -9,6 +8,7 @@ import SignUp from './pages/SignUp/SignUp';
 import SignUpTwo from './pages/SignUpTwo/SignUpTwo';
 import SignIn from './pages/SignIn/SignIn';
 import AllServices from './pages/AllServices/AllServices';
+import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/sign_up" element={<SignUp />} />
         <Route path="/sign_in" element={<SignIn />} />
         <Route path="/all_services" element={<AllServices />} />
+        <Route path="/all_services/:title" element={<ServiceDetails />} />
       </Routes>
     </>
   );
