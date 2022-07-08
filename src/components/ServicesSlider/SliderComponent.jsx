@@ -4,10 +4,10 @@ import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
 
-const SliderComponent = ({ sliderTitle }) => {
+const SliderComponent = ({ sliderKey, sliderTitle }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const slides = sliderData[sliderTitle].length;
+  const slides = sliderData[sliderKey].length;
 
   const prevSlide = () => {
     setSlideIndex(slideIndex === 0 ? slides - 1 : slideIndex - 1);
@@ -43,8 +43,15 @@ const SliderComponent = ({ sliderTitle }) => {
           className="slide-arrow slide-arrow-right"
           onClick={nextSlide}
         />
-        {sliderData[sliderTitle].map((slide, index) => {
-          return <SingleSlide key={slide.id} {...slide} index={index} />;
+        {sliderData[sliderKey].map((slide, index) => {
+          return (
+            <SingleSlide
+              key={slide.id}
+              {...slide}
+              index={index}
+              sliderKey={sliderKey}
+            />
+          );
         })}
       </div>
     </div>

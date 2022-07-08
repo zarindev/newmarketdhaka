@@ -2,10 +2,8 @@ import React, { useState, useRef } from 'react';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
-import locationIcon from '../../images/svg/location-white.svg';
+import locationIcon from '../../images/svg/Location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
-import CategoryNav from '../Navigation/CategoryNav/CategoryNav';
-import TopNav from '../Navigation/TopNav/TopNav';
 
 const ContactUs = () => {
   const [name, setName] = useState('');

@@ -45,7 +45,6 @@ const SearchBox = () => {
               <li>Gift Cards & Mobile Recharges</li>
             </ul>
           </div>
-          <div className="search-keywords-ctn"></div>
           <input
             type="text"
             placeholder="Keywords"

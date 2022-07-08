@@ -65,9 +65,10 @@
   border-radius: 50%;
   opacity: 0.4;
   cursor: pointer;
+  transition: all 0.3s linear;
 }
 
-.active-element {
+.element-active {
   border-radius: 50%;
   opacity: 1;
 }
