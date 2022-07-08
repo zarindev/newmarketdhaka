@@ -53,8 +53,9 @@
   display: none;
   margin-top: 0.5rem;
   padding: 1rem;
-  cursor: pointer;
+  font-size: 14px;
   white-space: nowrap;
+  cursor: pointer;
   z-index: 8;
 }
 

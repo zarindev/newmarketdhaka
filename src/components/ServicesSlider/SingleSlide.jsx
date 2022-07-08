@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ellipse from '../../images/svg/Ellipse 2.svg';
+import { sliderData } from './sliderData';
 
 const SingleSlide = ({
   id,
@@ -12,11 +13,28 @@ const SingleSlide = ({
   profileIcon,
   name,
   index,
+  sliderKey,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
+  useEffect(() => {
+    const slider = setInterval(() => {
+      setImageIndex(imageIndex + 1);
+    }, 4000);
+    return () => clearInterval(slider);
+  }, [imageIndex]);
+
+  useEffect(() => {
+    imageIndex > image.length - 1 && setImageIndex(0);
+  }, [image, imageIndex]);
+
   return (
-    <Link to={`/all_services/${title}`}>
+    <Link
+      to={`/${sliderKey
+        .split(/(?=[A-Z])/)
+        .join('_')
+        .toLowerCase()}/${title.replace(/ /g, '_').toLowerCase()}`}
+    >
       <div className="slide">
         <div className="slide-image-ctn">
           <img src={image[imageIndex]} alt={title} className="slide-image" />
@@ -32,7 +50,6 @@ const SingleSlide = ({
                       ? 'image-dot image-dot-active'
                       : 'image-dot'
                   }
-                  onClick={() => setImageIndex(index)}
                 />
               );
             })}

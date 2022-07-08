@@ -31,8 +31,8 @@ const Services = () => {
             </div>
           );
         })}
+        <div className="styled-divider"></div>
       </div>
-      <div className="styled-divider"></div>
       <Link to="/all_services">
         <button className="services-btn">
           <p>See All Services</p>

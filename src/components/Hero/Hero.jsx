@@ -46,7 +46,7 @@ const Hero = () => {
                   src={ellipse}
                   alt="ellipse"
                   className={
-                    imageIndex === index ? 'element active-element' : 'element'
+                    imageIndex === index ? 'element element-active' : 'element'
                   }
                   onClick={() => setImageIndex(index)}
                 />

@@ -8,9 +8,9 @@ const ServicesSlider = () => {
       <h1 className="services-slider-title">
         Take a glimps of all the services
       </h1>
-      <SliderComponent sliderTitle="Home Services" />
-      <SliderComponent sliderTitle="Car Services" />
-      <SliderComponent sliderTitle="IT Training" />
+      <SliderComponent sliderKey="homeServices" sliderTitle="Home Services" />
+      <SliderComponent sliderKey="carServices" sliderTitle="Car Services" />
+      <SliderComponent sliderKey="itTraining" sliderTitle="IT Training" />
     </div>
   );
 };

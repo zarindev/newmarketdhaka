@@ -1,5 +1,280 @@
 .service-details {
   width: 90vw;
   max-width: 990px;
-  margin: 4rem auto 6rem auto;
+  margin: 2rem auto 6rem auto;
+}
+
+.details-directory {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.service-details a {
+  color: #000000;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.details-directory a:hover {
+  color: #000000;
+  background-color: #f0f0f0;
+  padding: 0.4rem;
+  border-radius: 1rem;
+}
+
+.details-directory a:active {
+  color: hsla(347, 64%, 49%, 0.8);
+}
+
+.service-details-contents {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.service-details-content {
+  border: 1px solid #d8d8d8;
+  border-radius: 20px;
+}
+
+.details-image-ctn {
+  position: relative;
+  width: 100%;
+}
+
+.details-image {
+  width: 100%;
+  height: auto;
+}
+
+.details-dots-ctn {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.details-dot {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.details-dot-active {
+  background-color: #ffffff;
+}
+
+.details-ctn {
+  padding: 1.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.details-intro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-styled-divider {
+  position: absolute;
+  width: 100%;
+  bottom: -40%;
+  border: 0.5px solid #eaeaea;
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.details-service-title {
+  font-weight: 700;
+  font-size: 22px;
+  color: #1d1d1d;
+}
+
+.service-working-hours-ctn {
+  display: flex;
+  gap: 1rem;
+}
+
+.service-working-hours {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-working-hours-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.service-working-hours-time {
+  font-weight: 400;
+  font-size: 16px;
+  color: #6c6c6c;
+}
+
+.details-button {
+  padding: 0.7rem 1.1rem;
+  background-color: #ce2d4f;
+  border: 2px solid #ce2d4f;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.details-button:hover {
+  background-color: white;
+  color: #000000;
+}
+
+.details-button:hover .details-button-icon {
+  filter: invert(1);
+}
+
+.details-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.details-list-main-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1d1d1d;
+}
+
+.details-list-sub-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d1d1d;
+}
+
+.details-list-content,
+.details-list-item {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #545454;
+}
+
+.details-list-item {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+.service-details-contact {
+  border: 1px solid #d8d8d8;
+  border-radius: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.details-contact-intro {
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.details-contact-logo-ctn {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.details-contact-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.details-contact-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: #1d1d1d;
+}
+
+.details-contact-info-ctn {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.details-contact-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details-contact-address {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #575757;
+}
+
+.details-contact-map {
+  margin-top: 0.4rem;
+  padding: 0 0.8rem 0.5rem 0.8rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.details-contact-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.service-details-more {
+  margin-top: 4rem;
+}
+
+.details-more-title {
+  font-weight: 700;
+  font-size: 22px;
+  color: #1d1d1d;
+}
+
+.service-details .slider-component {
+  margin-top: -1rem;
+}
+
+.service-details .slider-title {
+  display: none;
+}
+
+.service-details .slider-btn-ctn {
+  margin-left: auto;
+}
+
+.service-details .slide {
+  border: 1px solid #d8d8d8;
 }
