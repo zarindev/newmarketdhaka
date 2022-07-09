@@ -7,9 +7,18 @@ import './SignUp.css';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
+import { useAuth } from '../../context/AuthContext';
+
 const emailRef = useRef();
 const passwordRef = useRef();
 const passwordConfirmRef = useRef();
+const { signup } = useAuth();
+
+function handleSubmit(e) {
+  e.preventDefault()
+
+  signup(emailRef.current.value, passwordRef.current.value)
+}
 
 function SignUp() {
   return (
