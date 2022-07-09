@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -13,28 +13,19 @@ import serviceMap from '../../images/service-map.png';
 import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
+import { useGlobalContext } from '../../context';
 
 const ServiceDetails = () => {
   const { service_type, title } = useParams();
+  const { capitalCase, checkCase, snakeCase } = useGlobalContext();
 
-  const capitalize = (str) => {
-    const capitalized =
-      str.replace(/_/g, ' ').charAt(0).toUpperCase() +
-      str.replace(/_/g, ' ').slice(1);
-    return capitalized;
-  };
+  const activeService = sliderData.find(
+    (services) => snakeCase(services.serviceType) === service_type
+  )['servicesAvilable'];
 
-  const titleCase = (str) => {
-    const titleCased = str.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
-    return titleCased;
-  };
-
-  const camelize = (str) => {
-    const camelized = str.replace(/_([a-z])/g, function (g) {
-      return g[1].toUpperCase();
-    });
-    return camelized;
-  };
+  const activeSlide = activeService.find(
+    (slide) => snakeCase(slide.title) === title
+  );
 
   return (
     <>
@@ -43,27 +34,23 @@ const ServiceDetails = () => {
         <CategoryNav />
         <div className="service-details">
           <p className="details-directory">
-            <Link to="/">{capitalize(service_type)}</Link>/
-            <Link to={`/${service_type}/${title}`}>{capitalize(title)}</Link>
+            <Link to="/">{checkCase(service_type)}</Link>/
+            <Link to={`/${service_type}/${title}`}>{capitalCase(title)}</Link>
           </p>
           <div className="service-details-contents">
             <div className="service-details-content">
-              {sliderData[camelize(service_type)].map((service) => {
-                if (capitalize(title) === service.title) {
-                  return <DetailsList key={service.id} {...service} />;
-                }
-              })}
+              <DetailsList key={activeSlide.id} {...activeSlide} />
             </div>
             <div className="service-details-contact">
               <div className="details-contact-intro">
                 <div className="details-contact-logo-ctn">
                   <img
                     src={serviceLogo}
-                    alt={`${capitalize(title)} brand logo`}
+                    alt={`${capitalCase(title)} brand logo`}
                     className="details-contact-logo"
                   />
                 </div>
-                <p className="details-contact-title">{capitalize(title)}</p>
+                <p className="details-contact-title">{capitalCase(title)}</p>
                 <div className="details-contact-info-ctn">
                   <div className="details-contact-info">
                     <img
@@ -108,10 +95,7 @@ const ServiceDetails = () => {
             <p className="details-more-title">
               More services from the provider
             </p>
-            <SliderComponent
-              sliderKey={camelize(service_type)}
-              sliderTitle={capitalize(service_type)}
-            />
+            <SliderComponent sliderTitle={capitalCase(service_type)} />
           </div>
         </div>
         <Footer />

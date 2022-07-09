@@ -5,7 +5,6 @@ import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
 
 const DetailsList = ({
-  id,
   title,
   image,
   serviceClose,

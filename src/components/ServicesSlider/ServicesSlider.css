@@ -54,7 +54,7 @@
 
 .slide-arrow {
   position: absolute;
-  top: 50%;
+  top: 40%;
   z-index: 6;
   cursor: pointer;
 }
@@ -66,6 +66,31 @@
 
 .slide-arrow-right {
   right: -2vw;
+}
+
+.slide-ctn {
+  position: relative;
+}
+
+.image-dots-ctn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.image-dot {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.image-dot-active {
+  background-color: #ffffff;
 }
 
 .slide {
@@ -81,7 +106,7 @@
 }
 
 .slide-image-ctn {
-  position: relative;
+  /* position: relative; */
   width: 315px;
   height: auto;
 }
@@ -98,7 +123,7 @@
   border-radius: 12px 12px 0 0;
 }
 
-.image-dots-ctn {
+/* .image-dots-ctn {
   position: absolute;
   top: 85%;
   left: 0;
@@ -117,7 +142,7 @@
 
 .image-dot-active {
   background-color: #ffffff;
-}
+} */
 
 .slide-content {
   display: flex;
