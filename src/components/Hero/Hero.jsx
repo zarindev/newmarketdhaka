@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import heroImage from '../../images/hero-image.png';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import { heroImageData } from './heroImageData';
 

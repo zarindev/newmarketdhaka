@@ -3,11 +3,30 @@ import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
+import { useGlobalContext } from '../../context';
 
-const SliderComponent = ({ sliderKey, sliderTitle }) => {
+const SliderComponent = ({ sliderTitle }) => {
+  const { snakeCase } = useGlobalContext();
+  const [service, setService] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const slides = sliderData[sliderKey].length;
+  const slides = sliderData.map(
+    (services) => services[Object.keys(services)[2]][0]
+  ).length;
+
+  useEffect(() => {
+    const getServices = () => {
+      const data = sliderData.find(
+        (services) => snakeCase(services.serviceType) === snakeCase(sliderTitle)
+      );
+      if (data.serviceType) {
+        setService(data.servicesAvilable);
+      } else {
+        setService([]);
+      }
+    };
+    getServices();
+  }, []);
 
   const prevSlide = () => {
     setSlideIndex(slideIndex === 0 ? slides - 1 : slideIndex - 1);
@@ -43,16 +62,18 @@ const SliderComponent = ({ sliderKey, sliderTitle }) => {
           className="slide-arrow slide-arrow-right"
           onClick={nextSlide}
         />
-        {sliderData[sliderKey].map((slide, index) => {
+
+        {service.map((slide) => {
           return (
-            <SingleSlide
-              key={slide.id}
-              {...slide}
-              index={index}
-              sliderKey={sliderKey}
-            />
+            <SingleSlide key={slide.id} {...slide} sliderTitle={sliderTitle} />
           );
         })}
+
+        {/* {sliderData[sliderKey].map((slide, index) => {
+          return (
+            <SingleSlide key={slide.id} {...slide} sliderKey={sliderKey} />
+          );
+        })} */}
       </div>
     </div>
   );

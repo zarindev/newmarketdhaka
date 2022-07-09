@@ -16,12 +16,12 @@ const Services = () => {
               <div className="service-img-ctn">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={service.service}
                   className="service-img"
                 />
               </div>
               <div className="service-title-ctn">
-                <p className="service-title">{service.title}</p>
+                <p className="service-title">{service.service}</p>
                 <img
                   src={downArrow}
                   alt="down-arrow icon"
