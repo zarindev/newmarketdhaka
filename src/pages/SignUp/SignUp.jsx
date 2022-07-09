@@ -5,6 +5,11 @@ import facebook from '../../images/facebook.png';
 import './SignUp.css';
 
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+
+const emailRef = useRef();
+const passwordRef = useRef();
+const passwordConfirmRef = useRef();
 
 function SignUp() {
   return (
