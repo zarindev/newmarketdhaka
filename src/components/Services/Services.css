@@ -51,6 +51,7 @@
   justify-content: center;
   padding: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .service:hover {
@@ -74,15 +75,33 @@
 
 .services-btn {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 14px 18px;
+  padding: 12px 16px;
   margin: 80px auto 0 auto;
   background-color: #ce2d4f;
-  border: #ce2d4f;
+  border: 2px solid #ce2d4f;
   border-radius: 40px;
   font-size: 17px;
-  color: #ffffff;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.services-btn-link {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.services-btn-text {
+  color: #ffffff;
+}
+
+.services-btn:hover {
+  background-color: #ffffff;
+}
+
+.services-btn:hover .services-btn-text {
+  color: #1d1d1d;
+}
+
+.services-btn:hover .services-btn-icon {
+  filter: invert(1);
 }

@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
-import { AppProvider } from './context';
+import { FunctionProvider } from './context/FunctionProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AppProvider>
+  <FunctionProvider>
     <Router>
       <App />
     </Router>
-  </AppProvider>
+  </FunctionProvider>
 );
