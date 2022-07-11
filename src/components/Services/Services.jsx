@@ -1,44 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Services.css';
 import { servicesData } from './servicesData';
 import { Link } from 'react-router-dom';
-import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
+import SingleService from './SingleService';
 
 const Services = () => {
+  const servicesRef = useRef();
+
   return (
     <div className="services">
       <h1 className="services-title">All Services</h1>
-      <div className="services-ctn">
+      <div className="services-ctn" ref={servicesRef}>
         {servicesData.map((service) => {
           return (
-            <div className="service" key={service.id}>
-              <div className="service-img-ctn">
-                <img
-                  src={service.image}
-                  alt={service.service}
-                  className="service-img"
-                />
-              </div>
-              <div className="service-title-ctn">
-                <p className="service-title">{service.service}</p>
-                <img
-                  src={downArrow}
-                  alt="down-arrow icon"
-                  className="service-icon"
-                />
-              </div>
-            </div>
+            <SingleService
+              key={service.id}
+              {...service}
+              servicesRef={servicesRef}
+            />
           );
         })}
         <div className="styled-divider"></div>
       </div>
-      <Link to="/all_services">
-        <button className="services-btn">
-          <p>See All Services</p>
-          <img src={arrowCircleDown} alt="arrow-circle-down icon" />
-        </button>
-      </Link>
+      <button className="services-btn">
+        <Link className="services-btn-link" to="/all_services">
+          <p className="services-btn-text">See All Services</p>
+          <img
+            src={arrowCircleDown}
+            alt="arrow-circle-down icon"
+            className="services-btn-icon"
+          />
+        </Link>
+      </button>
     </div>
   );
 };

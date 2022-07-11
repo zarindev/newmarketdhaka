@@ -10,36 +10,32 @@ import { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useState } from 'react';
 
-
 function SignUp() {
   const emailRef = useRef();
-const passwordRef = useRef();
-const passwordConfirmRef = useRef();
-const { signup } = useAuth();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
 
-const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
-const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState('');
 
-async function handleSubmit(e) {
-  e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault();
 
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Password do not matched');
+    }
 
-
-  if (passwordRef.current.value !== passwordConfirmRef.current.value){
-    return setError('Password do not matched')
+    try {
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create an account');
+    }
+    setLoading(false);
   }
-
-  try {
-    setError('')
-    setLoading(true)
-    await signup(emailRef.current.value, passwordRef.current.value)
-  } catch {
-    setError('Failed to create an account')
-  }
-  setLoading(false)
-  
-}
 
   return (
     <div className="sign-up-page">

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { servicesData } from '../components/Services/servicesData';
 
-const AppContext = React.createContext();
+const FunctionContext = React.createContext();
 
-const AppProvider = ({ children }) => {
+const FunctionProvider = ({ children }) => {
   const titleCase = (str) => {
     const titleCased = str.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
     return titleCased;
@@ -42,7 +43,7 @@ const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider
+    <FunctionContext.Provider
       value={{
         titleCase,
         capitalCase,
@@ -53,15 +54,15 @@ const AppProvider = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </FunctionContext.Provider>
   );
 };
 
-export { AppContext, AppProvider };
+export { FunctionContext, FunctionProvider };
 
 // custom hooks
 export const useGlobalContext = () => {
-  return useContext(AppContext);
+  return useContext(FunctionContext);
 };
 
 export const useOnClickOutside = (ref, handler) => {

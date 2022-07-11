@@ -13,7 +13,7 @@ import serviceMap from '../../images/service-map.png';
 import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from '../../context/FunctionProvider';
 
 const ServiceDetails = () => {
   const { service_type, title } = useParams();
