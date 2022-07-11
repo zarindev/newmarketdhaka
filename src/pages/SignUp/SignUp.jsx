@@ -1,59 +1,66 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import './SignUp.css';
 
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+
+import { useAuth } from '../../context/AuthContext';
+import { useState } from 'react';
 
 function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
 
-  const handleSubmit = (e) => {
-    e.preventDeault();
-  };
+  const [error, setError] = useState('');
+
+  const [loading, setLoading] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Password do not matched');
+    }
+
+    try {
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create an account');
+    }
+    setLoading(false);
+  }
 
   return (
     <div className="sign-up-page">
-      <img src={sign} alt="cover" className="sign-up-img" />
+      <img
+        src={sign}
+        alt="cover"
+        className="
+        sign-up-img"
+      />
       <div className="right-side">
         <div className="signup-header">
           <div className="sign-up">
             <h2>Sign Up</h2>
+            {error && <h5>{error}</h5>}
           </div>
         </div>
         <div>
           <form className="signup-form" onSubmit={handleSubmit}>
             <h3 className="field-text">Email</h3>
-            <input
-              type="email"
-              className="field-style"
-              ref={emailRef}
-              onChange={() => setEmail(emailRef.current.value)}
-            />
+            <input type="email" className="field-style" />
             <h3 className="field-text">Password</h3>
-            <input
-              type="password"
-              className="field-style"
-              ref={passwordRef}
-              onChange={() => setPassword(passwordRef.current.value)}
-            />
+            <input type="password" className="field-style" />
             <h3 className="field-text">Confirm Password</h3>
-            <input
-              type="password"
-              className="field-style"
-              ref={passwordConfirmRef}
-              onChange={() =>
-                setPasswordConfirm(passwordConfirmRef.current.value)
-              }
-            />
-            <button className="sign-up-btn">
+            <input type="password" className="field-style" />
+            <button className="sign-up-btn" disabled={loading}>
               <Link to="/sign_up_step_two" className="sign-up-link">
                 Sign Up
               </Link>
