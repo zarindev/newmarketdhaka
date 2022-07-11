@@ -9,7 +9,7 @@ import SignUpTwo from './pages/SignUpTwo/SignUpTwo';
 import SignIn from './pages/SignIn/SignIn';
 import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
-import { AuthProvider } from './context/AuthContext';
+
 
 const App = () => {
   return (
@@ -21,9 +21,9 @@ const App = () => {
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up_step_two" element={<SignUpTwo />} />
         <Route path="/sign_up" element={
-          <AuthProvider>
+          
             <SignUp/>
-          </AuthProvider>
+          
         } />
         <Route path="/sign_in" element={<SignIn />} />
         <Route path="/all_services" element={<AllServices />} />
