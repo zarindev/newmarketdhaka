@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import './SignUp.css';
 
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
-
-const emailRef = useRef();
-const passwordRef = useRef();
-const passwordConfirmRef = useRef();
 
 function SignUp() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDeault();
+  };
+
   return (
     <div className="sign-up-page">
-      <img
-        src={sign}
-        alt="cover"
-        className="
-        sign-up-img"
-      />
+      <img src={sign} alt="cover" className="sign-up-img" />
       <div className="right-side">
         <div className="signup-header">
           <div className="sign-up">
@@ -27,13 +29,30 @@ function SignUp() {
           </div>
         </div>
         <div>
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={handleSubmit}>
             <h3 className="field-text">Email</h3>
-            <input type="email" className="field-style" />
+            <input
+              type="email"
+              className="field-style"
+              ref={emailRef}
+              onChange={() => setEmail(emailRef.current.value)}
+            />
             <h3 className="field-text">Password</h3>
-            <input type="password" className="field-style" />
+            <input
+              type="password"
+              className="field-style"
+              ref={passwordRef}
+              onChange={() => setPassword(passwordRef.current.value)}
+            />
             <h3 className="field-text">Confirm Password</h3>
-            <input type="password" className="field-style" />
+            <input
+              type="password"
+              className="field-style"
+              ref={passwordConfirmRef}
+              onChange={() =>
+                setPasswordConfirm(passwordConfirmRef.current.value)
+              }
+            />
             <button className="sign-up-btn">
               <Link to="/sign_up_step_two" className="sign-up-link">
                 Sign Up
