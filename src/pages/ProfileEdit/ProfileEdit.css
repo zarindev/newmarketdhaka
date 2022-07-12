@@ -1,5 +1,4 @@
 .edit-ctn {
-  height: 100vh;
   background-color: #f7f7f7;
 }
 
@@ -10,4 +9,65 @@
   display: flex;
   gap: 5rem;
   padding: 5rem 0 10rem 0;
+}
+
+.edit-items {
+  width: 420px;
+  min-width: 300px;
+}
+
+.edit-items-title-ctn {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-items .profile-styled-divider {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.edit-items-title-ctn .profile-title {
+  width: auto;
+}
+
+.edit-items-title-ctn .profile-edit-ctn {
+  width: auto;
+  cursor: pointer;
+}
+
+.edit-form {
+  margin-top: 2.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edit-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-form-input {
+  padding: 0.6rem 0;
+  background-color: #fafafa;
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1d1d1d;
+  text-indent: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.edit-form-input:focus {
+  background: #ebebeb;
+  border: 1px solid #6d6d6d;
+  outline: 1px solid #6d6d6d;
+}
+
+.edit-form-input::placeholder {
+  font-size: 15px;
 }

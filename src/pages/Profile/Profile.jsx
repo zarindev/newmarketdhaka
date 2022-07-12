@@ -38,7 +38,7 @@ const Profile = () => {
             <div className="profile-info-ctn">
               <div className="profile-content-left">
                 <div className="profile-content">
-                  <label className="profile-label-ctn">
+                  <label className="profile-label">
                     <img
                       src={profileIcon}
                       alt="profile"
@@ -49,7 +49,7 @@ const Profile = () => {
                   <p className="profile-info">Monica Amberstone</p>
                 </div>
                 <div className="profile-content">
-                  <label className="profile-label-ctn">
+                  <label className="profile-label">
                     <img
                       src={phoneIcon}
                       alt="phone"
@@ -60,7 +60,7 @@ const Profile = () => {
                   <p className="profile-info">+8801753-807123</p>
                 </div>
                 <div className="profile-content">
-                  <label className="profile-label-ctn">
+                  <label className="profile-label">
                     <img
                       src={locationIcon}
                       alt="location"
@@ -75,7 +75,7 @@ const Profile = () => {
               </div>
               <div className="profile-content-right">
                 <div className="profile-content">
-                  <label className="profile-label-ctn">
+                  <label className="profile-label">
                     <img
                       src={emailIcon}
                       alt="email"
@@ -86,7 +86,7 @@ const Profile = () => {
                   <p className="profile-info">monica.amb95@gmail.com</p>
                 </div>
                 <div className="profile-content">
-                  <label className="profile-label-ctn">
+                  <label className="profile-label">
                     <p className="profile-label-text">Log in via</p>
                   </label>
                   <button className="profile-login-btn">
