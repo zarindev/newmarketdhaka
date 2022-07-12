@@ -48,12 +48,18 @@
   height: 49px;
   background: #ce2d4f;
   border-radius: 8px;
-  border: 0.5px solid #ce2d4f;
+  border: 2px solid #ce2d4f;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-btn:hover {
+  background-color: #ffffff;
+  color: #1d1d1d;
 }
 
 .contact-image-ctn {
@@ -134,10 +140,6 @@
 
 .form-submit-btn:hover {
   background-color: hsla(187, 79%, 48%, 0.8);
-}
-
-.form-submit-btn:active {
-  outline: 2.5px solid #ce2d4f;
 }
 
 .contact-info-ctn {
