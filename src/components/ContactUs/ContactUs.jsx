@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom'; // placeholder
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
@@ -31,7 +32,9 @@ const ContactUs = () => {
               do amet sint. Velit officia consequat <br /> duis enim velit
               mollit. Exercitation veniam <br /> consequat sunt nostrud amet.
             </p>
-            <button className="contact-btn">Get started</button>
+            <Link to="/profile">
+              <button className="contact-btn">Get started</button>
+            </Link>
           </div>
           <div className="contact-image-ctn">
             <img
