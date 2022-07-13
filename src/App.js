@@ -11,6 +11,9 @@ import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import Register from './pages/Register/Register';
+import RegisterCom from './pages/Register/RegisterCom';
+import RegisterIndie from './pages/Register/RegisterIndie';
 
 const App = () => {
   return (
@@ -21,8 +24,11 @@ const App = () => {
         <Route path="/about_us" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up_step_two" element={<SignUpTwo />} />
-        <Route path="/sign_up" element={<SignUp/>} />
+        <Route path="/sign_up" element={<SignUp />} />
         <Route path="/sign_in" element={<SignIn />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/register/company" element={<RegisterCom />} />
+        <Route path="/register/individual" element={<RegisterIndie />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
         <Route path="/all_services" element={<AllServices />} />

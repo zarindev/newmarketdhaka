@@ -35,7 +35,9 @@ const ProfileNav = () => {
               </Link>
             </li>
             <li>
-              <button className="nav-btn">Register Your Service</button>
+              <Link to="/register">
+                <button className="nav-btn">Register Your Service</button>
+              </Link>
             </li>
           </ul>
         </div>

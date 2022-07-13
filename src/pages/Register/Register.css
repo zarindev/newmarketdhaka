@@ -1,0 +1,166 @@
+/* register */
+.register {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-left {
+  width: 80%;
+  min-width: 400px;
+  padding: 4rem 0 0 5rem;
+  background: url('../../images/register.png') center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register-logo {
+  width: 35%;
+  height: auto;
+}
+
+.register-title-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register-title {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 4rem);
+  color: #ffffff;
+}
+
+.register-desc {
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #ffffff;
+}
+
+.register-right {
+  margin-top: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-type-title {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #1d1d1d;
+}
+
+.register-type {
+  margin-top: 0.8rem;
+  padding: 1.4rem;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.register-type:hover {
+  background-color: hsla(0, 0%, 83%, 0.6);
+}
+
+.register-type-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.register-type-text {
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+}
+
+/* register company */
+.register-com .register-right {
+  display: none;
+}
+
+.register-form-right {
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-form-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.register-form-title {
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #1d1d1d;
+}
+
+.register-form {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.register-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register-form-input-label {
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+}
+
+.register-form-input {
+  padding: 0.7rem 0;
+  background-color: #fafafa;
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+  text-indent: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.register-form-input:focus {
+  background: #ebebeb;
+  border: 1px solid #6d6d6d;
+  outline: 1px solid #6d6d6d;
+}
+
+.register-form-input::placeholder {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+.register-form-button {
+  padding: 0.7rem 0;
+  background-color: #ce2d4f;
+  border: 2px solid #ce2d4f;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.register-form-button:hover {
+  background-color: transparent;
+  color: #1d1d1d;
+}
