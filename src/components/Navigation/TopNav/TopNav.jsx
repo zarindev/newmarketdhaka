@@ -1,7 +1,7 @@
-import React from "react";
-import network from "../../../images/network.png";
-import { Link } from "react-router-dom";
-import "./TopNav.css";
+import React from 'react';
+import network from '../../../images/network.png';
+import { Link } from 'react-router-dom';
+import './TopNav.css';
 
 function TopNav() {
   return (
@@ -34,7 +34,9 @@ function TopNav() {
         </ul>
       </div>
       <div>
-        <button className="nav-btn">Register Your Service</button>
+        <Link to="/register">
+          <button className="nav-btn">Register Your Service</button>
+        </Link>
       </div>
     </div>
   );
