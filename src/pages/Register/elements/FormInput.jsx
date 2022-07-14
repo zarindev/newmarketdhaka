@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const FormInput = ({ name, placeholder, inputRef, inputLabel }) => {
+const FormInput = ({
+  type,
+  name,
+  placeholder,
+  inputLabel,
+  handleChange,
+  handleBlur,
+  specifErrors,
+}) => {
   return (
     <div className="register-form-item">
       <label className="register-form-input-label">{inputLabel}</label>
       <input
-        type="text"
+        type={type}
         className="register-form-input"
         name={name}
-        required
         placeholder={placeholder}
-        ref={inputRef}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
+      {specifErrors && <p className="error-message">{specifErrors}</p>}
     </div>
   );
 };

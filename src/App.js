@@ -14,6 +14,7 @@ import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import Register from './pages/Register/Register';
 import RegisterCom from './pages/Register/RegisterCom';
 import RegisterIndie from './pages/Register/RegisterIndie';
+import RegisterComTwo from './pages/Register/elements/RegisterComTwo';
 
 const App = () => {
   return (

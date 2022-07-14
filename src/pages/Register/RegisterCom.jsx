@@ -1,19 +1,31 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import FormInput from './elements/FormInput';
 import FormButton from './elements/FormButton';
+import { formValidate } from './elements/formValidate';
 
 const RegisterCom = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    console.log(Object.fromEntries(data.entries()));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errorValues = formValidate(values);
+    setErrors(errorValues);
+  };
+
+  const handleBlur = (e) => {};
 
   return (
     <div className="register register-com">
@@ -23,22 +35,31 @@ const RegisterCom = () => {
           <p className="register-form-title">Register Your Company</p>
           <form className="register-form" onSubmit={handleSubmit}>
             <FormInput
+              type="text"
               name="email"
-              inputLabel="Company Email"
               placeholder="Email"
-              inputRef={emailRef}
+              inputLabel="Company Email"
+              specifErrors={errors.email}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
             />
             <FormInput
+              type="password"
               name="password"
-              inputLabel="Company Email"
               placeholder="Password"
-              inputRef={passwordRef}
+              inputLabel="Password"
+              specifErrors={errors.password}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
             />
             <FormInput
-              name="confirm_password"
-              inputLabel="Company Email"
+              type="password"
+              name="confirmPassword"
               placeholder="Confirm Password"
-              inputRef={confirmPasswordRef}
+              inputLabel="Confirm Password"
+              specifErrors={errors.confirmPassword}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
             />
             <FormButton buttonText="Continue" />
           </form>
