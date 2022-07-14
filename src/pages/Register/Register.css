@@ -148,7 +148,12 @@
   font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
+.register-form .error-message {
+  color: #ce2d4f;
+}
+
 .register-form-button {
+  width: 100%;
   padding: 0.7rem 0;
   background-color: #ce2d4f;
   border: 2px solid #ce2d4f;

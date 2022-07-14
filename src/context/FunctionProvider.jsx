@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { servicesData } from '../components/Services/servicesData';
+import { formValidate } from '../pages/Register/elements/formValidate';
 
-const FunctionContext = React.createContext();
+const FunctionContext = createContext();
 
 const FunctionProvider = ({ children }) => {
   const titleCase = (str) => {
@@ -58,13 +59,13 @@ const FunctionProvider = ({ children }) => {
   );
 };
 
-export { FunctionContext, FunctionProvider };
-
-// custom hooks
 export const useGlobalContext = () => {
   return useContext(FunctionContext);
 };
 
+export { FunctionContext, FunctionProvider };
+
+// custom hooks
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
     const listener = (e) => {
@@ -80,4 +81,19 @@ export const useOnClickOutside = (ref, handler) => {
       document.removeEventListener('touchstart', listener);
     };
   }, [ref, handler]);
+};
+
+export const useForm = () => {
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  return { values, handleChange };
 };
