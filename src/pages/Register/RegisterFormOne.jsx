@@ -37,7 +37,7 @@ const RegisterFormOne = () => {
                 className="register-form-input"
                 placeholder="Email"
                 {...register('email', {
-                  required: 'Email is required',
+                  required: 'Company Email is required',
                   pattern: {
                     value:
                       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -85,7 +85,7 @@ const RegisterFormOne = () => {
                 className="register-form-input"
                 placeholder="***********"
                 {...register('confirmPassword', {
-                  required: 'Password is required',
+                  required: 'Confirm Password is required',
                   validate: (value) =>
                     value === watch('password') || 'Password did not match',
                 })}

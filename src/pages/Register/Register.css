@@ -1,6 +1,6 @@
 /* register */
 .register {
-  max-height: auto;
+  height: auto;
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
