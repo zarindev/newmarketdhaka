@@ -12,9 +12,8 @@ import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import Register from './pages/Register/Register';
-import RegisterCom from './pages/Register/RegisterCom';
-import RegisterIndie from './pages/Register/RegisterIndie';
-import RegisterComTwo from './pages/Register/elements/RegisterComTwo';
+import RegisterFormOne from './pages/Register/RegisterFormOne';
+import RegisterFormTwo from './pages/Register/RegisterFormTwo';
 
 const App = () => {
   return (
@@ -28,8 +27,16 @@ const App = () => {
         <Route path="/sign_up" element={<SignUp />} />
         <Route path="/sign_in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register/company" element={<RegisterCom />} />
-        <Route path="/register/individual" element={<RegisterIndie />} />
+        <Route path="/register/company/step1" element={<RegisterFormOne />} />
+        <Route path="/register/company/step2" element={<RegisterFormTwo />} />
+        <Route
+          path="/register/individual/step1"
+          element={<RegisterFormOne />}
+        />
+        <Route
+          path="/register/individual/step2"
+          element={<RegisterFormTwo />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
         <Route path="/all_services" element={<AllServices />} />
