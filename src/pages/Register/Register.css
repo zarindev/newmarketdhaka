@@ -1,6 +1,7 @@
 /* register */
 .register {
-  height: 100vh;
+  max-height: auto;
+  min-height: 100vh;
   display: flex;
   justify-content: space-between;
 }
@@ -82,7 +83,7 @@
   color: #1d1d1d;
 }
 
-/* register company */
+/* register company/indie */
 .register-com .register-right {
   display: none;
 }
@@ -112,6 +113,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin-bottom: 5rem;
 }
 
 .register-form-item {
