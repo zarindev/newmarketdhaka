@@ -14,6 +14,14 @@ import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import Register from './pages/Register/Register';
 import RegisterFormOne from './pages/Register/RegisterFormOne';
 import RegisterFormTwo from './pages/Register/RegisterFormTwo';
+import RegisterFormThree from './pages/Register/RegisterFormThree';
+import RegisterFormFour from './pages/Register/RegisterFormFour';
+import RegisterFormSucess from './pages/Register/RegisterFormSucess';
+import RegisterFormOneIndie from './pages/Register/RegisterFormOneIndie';
+import RegisterFormTwoIndie from './pages/Register/RegisterFormTwoIndie';
+import RegisterFormThreeIndie from './pages/Register/RegisterFormThreeIndie';
+import RegisterFormFourIndie from './pages/Register/RegisterFormFourIndie';
+import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
 
 const App = () => {
   return (
@@ -29,13 +37,31 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/register/company/step1" element={<RegisterFormOne />} />
         <Route path="/register/company/step2" element={<RegisterFormTwo />} />
+        <Route path="/register/company/step3" element={<RegisterFormThree />} />
+        <Route path="/register/company/step4" element={<RegisterFormFour />} />
+        <Route
+          path="/register/company/success"
+          element={<RegisterFormSucess />}
+        />
         <Route
           path="/register/individual/step1"
-          element={<RegisterFormOne />}
+          element={<RegisterFormOneIndie />}
         />
         <Route
           path="/register/individual/step2"
-          element={<RegisterFormTwo />}
+          element={<RegisterFormTwoIndie />}
+        />
+        <Route
+          path="/register/individual/step3"
+          element={<RegisterFormThreeIndie />}
+        />
+        <Route
+          path="/register/individual/step4"
+          element={<RegisterFormFourIndie />}
+        />
+        <Route
+          path="/register/individual/success"
+          element={<RegisterFormSucessIndie />}
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />

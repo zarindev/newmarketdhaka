@@ -6,7 +6,7 @@ import updateAction from './elements/updateAction';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 
-const RegisterFormOne = () => {
+const RegisterFormOneIndie = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -17,7 +17,7 @@ const RegisterFormOne = () => {
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step2');
+    navigate('/register/individual/step2');
   };
 
   return (
@@ -107,4 +107,4 @@ const RegisterFormOne = () => {
   );
 };
 
-export default RegisterFormOne;
+export default RegisterFormOneIndie;
