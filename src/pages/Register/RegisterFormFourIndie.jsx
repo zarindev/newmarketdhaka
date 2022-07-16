@@ -7,10 +7,10 @@ import { useDropzone } from 'react-dropzone';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import RegisterDropzone from './elements/RegisterDropzone';
-import uploadLogo from '../../images/upload-logo.png';
+import uploadDocument from '../../images/upload-document.png';
 
-const RegisterFormThree = (props) => {
-  const { value, onChange, name = 'companyLogo', error } = props;
+const RegisterFormFourIndie = (props) => {
+  const { value, onChange, name = 'document', error } = props;
   const navigate = useNavigate();
 
   const { register, setValue, setError, clearErrors, watch, handleSubmit } =
@@ -20,7 +20,7 @@ const RegisterFormThree = (props) => {
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step4');
+    navigate('/register/individual/success');
   };
 
   const [files, setFiles] = useState([]);
@@ -58,22 +58,28 @@ const RegisterFormThree = (props) => {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.png'],
+      'text/plain': ['.txt'],
+      'text/html': ['.html', '.htm'],
+      'text/csv': ['.csv'],
+      'application/msword': ['.doc'],
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        ['.docx'],
+      'application/pdf': ['.pdf'],
     },
     maxFiles: 1,
     multiple: false,
   });
 
   useEffect(() => {
-    register('companyLogo');
+    register('document');
   }, []);
 
   return (
     <div className="register register-com">
       <RegisterLeft />
       <div className="register-form-right">
-        <div className="register-form-ctn">
-          <p className="register-form-title">Upload Your Company Logo</p>
+        <div className="register-form-ctn ">
+          <p className="register-form-title">Upload Document or license</p>
           <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <RegisterDropzone
               files={files}
@@ -81,12 +87,12 @@ const RegisterFormThree = (props) => {
               getInputProps={getInputProps}
               value={value}
               onChange={onchange}
-              uploadPlaceholder={uploadLogo}
-              showPreview="preview"
+              uploadPlaceholder={uploadDocument}
+              showPreview="name"
             />
             {files[0] && (
-              <button className="register-form-button register-form-upload-button">
-                Confirm logo
+              <button className="register-form-button register-form-upload-button-next">
+                Next
               </button>
             )}
           </form>
@@ -96,4 +102,4 @@ const RegisterFormThree = (props) => {
   );
 };
 
-export default RegisterFormThree;
+export default RegisterFormFourIndie;

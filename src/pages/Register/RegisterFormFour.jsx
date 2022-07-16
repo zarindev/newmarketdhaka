@@ -33,9 +33,7 @@ const RegisterFormFour = (props) => {
           type: 'manual',
           message: rejectedFiles && rejectedFiles[0].errors[0].message,
         });
-        console.log(error);
       } else {
-        // setValue(name, acceptedFiles[0]);
         setFiles(
           acceptedFiles.map((file) =>
             Object.assign(file, {
@@ -60,7 +58,13 @@ const RegisterFormFour = (props) => {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.png'],
+      'text/plain': ['.txt'],
+      'text/html': ['.html', '.htm'],
+      'text/csv': ['.csv'],
+      'application/msword': ['.doc'],
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        ['.docx'],
+      'application/pdf': ['.pdf'],
     },
     maxFiles: 1,
     multiple: false,
@@ -74,12 +78,9 @@ const RegisterFormFour = (props) => {
     <div className="register register-com">
       <RegisterLeft />
       <div className="register-form-right">
-        <div className="register-form-ctn">
+        <div className="register-form-ctn ">
           <p className="register-form-title">Upload Document or license</p>
-          <form
-            className="register-form register-form-upload"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <RegisterDropzone
               files={files}
               getRootProps={getRootProps}
@@ -87,9 +88,10 @@ const RegisterFormFour = (props) => {
               value={value}
               onChange={onchange}
               uploadPlaceholder={uploadDocument}
+              showPreview="name"
             />
             {files[0] && (
-              <button className="register-form-button register-form-upload-button">
+              <button className="register-form-button register-form-upload-button-next">
                 Next
               </button>
             )}

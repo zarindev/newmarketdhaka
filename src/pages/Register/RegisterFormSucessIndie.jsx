@@ -7,7 +7,7 @@ import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
 
-const RegisterFormSuccess = () => {
+const RegisterFormSucessIndie = () => {
   const navigate = useNavigate();
 
   const {
@@ -45,4 +45,4 @@ const RegisterFormSuccess = () => {
   );
 };
 
-export default RegisterFormSuccess;
+export default RegisterFormSucessIndie;

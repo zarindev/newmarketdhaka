@@ -110,11 +110,19 @@
 
 .register-form-sucess-ctn {
   align-items: center;
+  gap: 3rem;
 }
 
 .register-form-success-title {
   width: 70%;
   text-align: center;
+}
+
+.register-success-image {
+  margin-top: 1rem;
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .register-form {
@@ -123,10 +131,6 @@
   flex-direction: column;
   gap: 1.2rem;
   margin-bottom: 5rem;
-}
-
-.register-form-upload {
-  width: auto;
 }
 
 .register-form-item {
@@ -164,6 +168,7 @@
 }
 
 .register-form-upload-label {
+  position: relative;
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -188,6 +193,12 @@
   font-weight: 500;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #1d1d1d;
+}
+
+.upload-edit-icon {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
 }
 
 .upload-label-text-custom {
@@ -222,9 +233,23 @@
 }
 
 .register-form-upload-button {
-  width: 35%;
+  width: 31%;
   padding: 0.5rem 0;
   margin-left: 7rem;
+  border-radius: 2rem;
+}
+
+.register-form-upload-button-next {
+  width: 20%;
+  padding: 0.5rem 0;
+  margin-left: 9rem;
+  border-radius: 2rem;
+}
+
+.register-form-success-button {
+  width: 20%;
+  padding: 0.5rem 0;
+  margin: 0 auto;
   border-radius: 2rem;
 }
 

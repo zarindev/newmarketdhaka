@@ -9,7 +9,7 @@ import RegisterLeft from './elements/RegisterLeft';
 import RegisterDropzone from './elements/RegisterDropzone';
 import uploadLogo from '../../images/upload-logo.png';
 
-const RegisterFormThree = (props) => {
+const RegisterFormThreeIndie = (props) => {
   const { value, onChange, name = 'companyLogo', error } = props;
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const RegisterFormThree = (props) => {
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step4');
+    navigate('/register/individual/step4');
   };
 
   const [files, setFiles] = useState([]);
@@ -96,4 +96,4 @@ const RegisterFormThree = (props) => {
   );
 };
 
-export default RegisterFormThree;
+export default RegisterFormThreeIndie;

@@ -1,4 +1,7 @@
 import React from 'react';
+import RegisterPreviewImage from './RegisterPreviewImage';
+import RegisterPreviewName from './RegisterPreviewName';
+import uploadEditIcon from '../../../images/svg/upload-edit.svg';
 
 const RegisterDropzone = ({
   files,
@@ -7,6 +10,7 @@ const RegisterDropzone = ({
   value,
   onChange,
   uploadPlaceholder,
+  showPreview,
 }) => {
   return (
     <label
@@ -14,24 +18,35 @@ const RegisterDropzone = ({
       className="register-form-upload-label"
       {...getRootProps({ onClick: (e) => e.preventDefault() })}
     >
-      {files.length === 0 ? (
-        <img
-          src={uploadPlaceholder}
-          alt="upload"
-          className="register-form-upload-image"
-        />
-      ) : (
-        <img
-          src={files[0].preview}
-          alt="preview"
-          className="register-form-upload-image"
+      {showPreview === 'preview' && (
+        <RegisterPreviewImage
+          files={files}
+          uploadPlaceholder={uploadPlaceholder}
         />
       )}
 
-      <p className="rgister-form-upload-label-text">
-        Drag and drop, or
-        <span className="upload-label-text-custom"> browse</span> your files
-      </p>
+      {showPreview === 'name' && (
+        <RegisterPreviewName
+          files={files}
+          uploadPlaceholder={uploadPlaceholder}
+        />
+      )}
+
+      {files.length === 0 && (
+        <p className="rgister-form-upload-label-text">
+          Drag and drop, or
+          <span className="upload-label-text-custom"> browse</span> your files
+        </p>
+      )}
+
+      {files.length > 0 && (
+        <img
+          src={uploadEditIcon}
+          alt="edit icon"
+          className="upload-edit-icon"
+        />
+      )}
+
       <input
         type="file"
         name="companyLogo"
