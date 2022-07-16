@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
@@ -8,15 +8,16 @@ import RegisterLeft from './elements/RegisterLeft';
 
 const RegisterFormTwo = () => {
   const navigate = useNavigate();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: 'all' });
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step2');
+    navigate('/register/company/step3');
   };
 
   return (
@@ -34,6 +35,8 @@ const RegisterFormTwo = () => {
                 Company Name
               </label>
               <input
+                type="text"
+                name="companyName"
                 className="register-form-input"
                 placeholder="ex: Google"
                 {...register('companyName', {
@@ -50,11 +53,14 @@ const RegisterFormTwo = () => {
                 Company Address
               </label>
               <input
+                type="text"
+                name="address"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('address', {
                   required: 'Company Address is required',
                 })}
+                defaultValue={state.address}
               />
               {errors.address && (
                 <p className="error-message">{errors.address?.message}</p>
@@ -65,11 +71,14 @@ const RegisterFormTwo = () => {
                 Company BIN Number
               </label>
               <input
+                type="text"
+                name="binNumber"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('binNumber', {
                   required: 'Company BIN Number is required',
                 })}
+                defaultValue={state.binNumber}
               />
               {errors.binNumber && (
                 <p className="error-message">{errors.binNumber?.message}</p>
@@ -80,11 +89,14 @@ const RegisterFormTwo = () => {
                 Company Tax Number
               </label>
               <input
+                type="text"
+                name="taxNumber"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('taxNumber', {
                   required: 'Company Tax Number is required',
                 })}
+                defaultValue={state.taxNumber}
               />
               {errors.taxNumber && (
                 <p className="error-message">{errors.taxNumber?.message}</p>
@@ -98,6 +110,8 @@ const RegisterFormTwo = () => {
                 Phone Number
               </label>
               <input
+                type="text"
+                name="phoneNumber"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('phoneNumber', {
@@ -108,6 +122,7 @@ const RegisterFormTwo = () => {
                     message: 'Please enter a valid phone number',
                   },
                 })}
+                defaultValue={state.phoneNumber}
               />
               {errors.phoneNumber && (
                 <p className="error-message">{errors.phoneNumber?.message}</p>

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
-import FormInput from './elements/FormInput';
-import FormButton from './elements/FormButton';
 
 const RegisterFormOne = () => {
   const navigate = useNavigate();
@@ -35,6 +33,8 @@ const RegisterFormOne = () => {
               </label>
               <input
                 className="register-form-input"
+                type="text"
+                name="email"
                 placeholder="Email"
                 {...register('email', {
                   required: 'Company Email is required',
@@ -56,6 +56,7 @@ const RegisterFormOne = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('password', {
@@ -82,6 +83,7 @@ const RegisterFormOne = () => {
               </label>
               <input
                 type="password"
+                name="confirmPassword"
                 className="register-form-input"
                 placeholder="***********"
                 {...register('confirmPassword', {
