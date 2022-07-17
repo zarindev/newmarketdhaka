@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 1000px) {
   .profile-nav .navlinks {
     position: fixed;
     top: 0;

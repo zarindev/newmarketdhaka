@@ -1,23 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
-.category-nav-ctn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  margin: 0 auto;
+.category-nav-background {
   background-color: #f0f0f0;
 }
 
-.category-nav {
+.category-nav-ctn {
   width: 90vw;
   max-width: 980px;
+  margin: 0 auto;
+}
+
+.category-nav {
   display: flex;
   justify-content: space-between;
   color: #5e5e5e;
   font-weight: 600;
 }
+
+.drop {
+  min-width: 0.1rem;
+}
+
 /* The dropdown container */
 .dropdown {
   float: left;
