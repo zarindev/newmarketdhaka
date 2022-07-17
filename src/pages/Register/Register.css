@@ -108,6 +108,23 @@
   color: #1d1d1d;
 }
 
+.register-form-sucess-ctn {
+  align-items: center;
+  gap: 3rem;
+}
+
+.register-form-success-title {
+  width: 70%;
+  text-align: center;
+}
+
+.register-success-image {
+  margin-top: 1rem;
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+}
+
 .register-form {
   width: 450px;
   display: flex;
@@ -150,8 +167,55 @@
   font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
+.register-form-upload-label {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  gap: 1.8rem;
+  width: 80%;
+  padding: 2rem 5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed #bfbfbf;
+  border-radius: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.register-form-upload-image {
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.rgister-form-upload-label-text {
+  font-weight: 500;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+}
+
+.upload-edit-icon {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+}
+
+.upload-label-text-custom {
+  color: #ce2d4f;
+}
+
+.register-form-upload-input {
+  display: none;
+}
+
 .register-form .error-message {
   color: #ce2d4f;
+}
+
+.register-form .error-message-upload {
+  color: #ce2d4f;
+  margin-left: 5.4rem;
 }
 
 .register-form-button {
@@ -163,8 +227,30 @@
   font-weight: 700;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #ffffff;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.register-form-upload-button {
+  width: 31%;
+  padding: 0.5rem 0;
+  margin-left: 7rem;
+  border-radius: 2rem;
+}
+
+.register-form-upload-button-next {
+  width: 20%;
+  padding: 0.5rem 0;
+  margin-left: 9rem;
+  border-radius: 2rem;
+}
+
+.register-form-success-button {
+  width: 20%;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  border-radius: 2rem;
 }
 
 .register-form-button:hover {

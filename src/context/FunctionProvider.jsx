@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { servicesData } from '../components/Services/servicesData';
-import { formValidate } from '../pages/Register/elements/formValidate';
 
 const FunctionContext = createContext();
 
@@ -66,6 +65,7 @@ export const useGlobalContext = () => {
 export { FunctionContext, FunctionProvider };
 
 // custom hooks
+// onclickoutside
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
     const listener = (e) => {
@@ -83,17 +83,24 @@ export const useOnClickOutside = (ref, handler) => {
   }, [ref, handler]);
 };
 
-export const useForm = () => {
-  const [values, setValues] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+// draganddrop file
+export const useDragAndDrop = () => {
+  const [dragOver, setDragOver] = useState(false);
+  const [fileDropError, setFileDropError] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+  const onDragOver = (e) => {
+    e.preventDefault();
+    setDragOver(true);
   };
 
-  return { values, handleChange };
+  const onDragLeave = () => setDragOver(false);
+
+  return {
+    dragOver,
+    setDragOver,
+    onDragOver,
+    onDragLeave,
+    fileDropError,
+    setFileDropError,
+  };
 };
