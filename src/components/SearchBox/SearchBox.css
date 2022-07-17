@@ -11,7 +11,6 @@
   width: 90vw;
   max-width: 980px;
   margin: 0 auto;
-  height: 100px;
   background: #ffffff;
   box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -21,12 +20,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.95rem 1.2rem;
+  padding: 0.8rem 1rem;
 }
 
 .search-category-ctn {
   position: relative;
-  width: 10%;
+  width: 12%;
   font-size: 17px;
   color: #5e5e5e;
   margin-right: 1.2rem;
@@ -34,7 +33,7 @@
 }
 
 .category-btn {
-  height: 65px;
+  padding: 1rem 0;
   background-color: #ececec;
   border: 1px solid #d0d0d0;
   border-radius: 10px;
@@ -80,7 +79,7 @@
 .search-keywords {
   position: relative;
   width: 38%;
-  height: 65px;
+  padding: 1.1rem 0;
   background: #f2f2f2;
   border: 0.5px solid #bfbfbf;
   border-radius: 10px;
@@ -89,7 +88,7 @@
 
 .search-location {
   width: 32%;
-  height: 65px;
+  padding: 1.1rem 0;
   background: #f2f2f2;
   border: 0.5px solid #bfbfbf;
   border-radius: 10px;
@@ -115,8 +114,8 @@
 }
 
 .search-btn {
-  width: 20%;
-  height: 70px;
+  width: 18%;
+  padding: 1.1rem 0;
   background-color: #ce2d4f;
   border: 2px solid #ce2d4f;
   border-radius: 10px;
