@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
-.category-nav-ctn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  margin: 0 auto;
+.category-nav-background {
   background-color: #f0f0f0;
 }
 
+.category-nav-ctn {
+  width: 90vw;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
 .category-nav {
-  list-style: none;
   display: flex;
-  justify-content: space-evenly;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 17px;
+  justify-content: space-between;
   color: #5e5e5e;
   font-weight: 600;
 }
+
+.drop {
+  min-width: 0.1rem;
+}
+
 /* The dropdown container */
 .dropdown {
   float: left;
@@ -28,8 +28,8 @@
 
 /* Dropdown button */
 .dropdown .dropbtn {
-  font-size: 17px;
   font-weight: 600;
+  font-size: 17px;
   border: none;
   outline: none;
   color: #5e5e5e;
@@ -58,6 +58,7 @@
 
 /* Links inside the dropdown */
 .dropdown-content a {
+  font-size: 17px;
   float: none;
   color: black;
   padding: 12px 16px;
@@ -78,4 +79,10 @@
 
 .dropdown-icon {
   padding: 0 5px;
+}
+
+@media screen and (max-width: 1045px) {
+  .category-nav-ctn {
+    display: none;
+  }
 }

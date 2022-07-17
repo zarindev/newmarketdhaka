@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import network from '../../../images/network.png';
 import { Link } from 'react-router-dom';
 import './TopNav.css';
+import hamburgerButton from '../../../images/svg/bytesize_menu.svg';
+import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
 
 function TopNav() {
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+
   return (
     <div className="navbar">
       <div>
-        <img src={network} alt="" />
+        <img src={network} alt="network logo" className="brand-logo" />
       </div>
       <div>
-        <ul className="navlinks">
+        <ul
+          className={
+            showHamburgerMenu ? 'navlinks navlinks-hamburger' : 'navlinks'
+          }
+        >
           <li>
             <Link to="/home" className="nav-link">
               Home
@@ -37,6 +45,24 @@ function TopNav() {
         <Link to="/register">
           <button className="nav-btn">Register Your Service</button>
         </Link>
+      </div>
+      <div
+        className="hamburger-ctn"
+        onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
+      >
+        {showHamburgerMenu ? (
+          <img
+            src={closeButton}
+            alt="hamburger-close"
+            className="hamburger-close-btn"
+          />
+        ) : (
+          <img
+            src={hamburgerButton}
+            alt="hamburger-open"
+            className="hamburger-open-btn"
+          />
+        )}
       </div>
     </div>
   );
