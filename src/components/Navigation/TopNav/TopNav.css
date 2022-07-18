@@ -86,11 +86,13 @@ ul.navlinks {
     flex-direction: column;
     gap: 3rem;
     position: absolute;
-    top: 11.7%;
+    top: 5.35rem;
     left: -100%;
     width: 100%;
-    padding: 4rem 0;
+    height: 100vh;
+    padding: 4rem 0 8rem 0;
     background-color: #2e87b0;
+    z-index: 9;
     transition: all 0.5s ease;
   }
 
@@ -98,7 +100,6 @@ ul.navlinks {
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 1;
   }
 
   .navlinks li a {

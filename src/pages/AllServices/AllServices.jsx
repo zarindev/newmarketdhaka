@@ -18,18 +18,20 @@ const AllServices = () => {
             <h1 className="all-services-title">All Services</h1>
           </div>
           <Services />
-          <SingleService
-            serviceImage={homeAndOffice}
-            serviceTitle="Home & Office"
-          />
-          <SingleService
-            serviceImage={carRentalService}
-            serviceTitle="Car Rental Service"
-          />
-          <SingleService
-            serviceImage={foodAndRestaurant}
-            serviceTitle="Food & Restaurant"
-          />
+          <div className="all-services-contents">
+            <SingleService
+              serviceImage={homeAndOffice}
+              serviceTitle="Home & Office"
+            />
+            <SingleService
+              serviceImage={carRentalService}
+              serviceTitle="Car Rental Service"
+            />
+            <SingleService
+              serviceImage={foodAndRestaurant}
+              serviceTitle="Food & Restaurant"
+            />
+          </div>
         </div>
       </ScrollToTop>
     </>
