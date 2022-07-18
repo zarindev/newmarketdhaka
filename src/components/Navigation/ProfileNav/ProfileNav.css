@@ -52,6 +52,7 @@
     transform: translateX(-100%);
     transition: all 0.6s ease-in-out;
   }
+
   .profile-nav .profile-nav-user-ctn {
     display: none;
   }

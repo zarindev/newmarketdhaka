@@ -72,3 +72,24 @@
   border-radius: 50%;
   opacity: 1;
 }
+
+@media screen and (max-width: 1000px) {
+  .hero {
+    padding-bottom: 160px;
+  }
+  .hero-items {
+    gap: 1rem;
+  }
+  .small-title {
+    font-size: 22px;
+  }
+
+  .main-title {
+    font-size: 35px;
+    line-height: 50px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}

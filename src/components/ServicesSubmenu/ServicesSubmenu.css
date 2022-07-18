@@ -26,6 +26,8 @@
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -37,7 +39,6 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   width: 100%;
-  height: 24px;
   font-weight: 600;
   font-size: 17px;
   color: #000000;
@@ -46,18 +47,23 @@
   user-select: none;
 }
 
+.submenu-tab:hover {
+  color: hsl(347, 64%, 49%);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .tab-underline {
   position: absolute;
-  bottom: -25px;
+  bottom: -24px;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 4px;
   background-color: #ce2d4f;
 }
 
 .submenu-styled-divider {
   position: absolute;
-  top: 200%;
+  bottom: -24px;
   left: 0%;
   width: 100%;
   border: 0.5px solid #e5e5e5;
@@ -79,4 +85,31 @@
   font-size: 15px;
   color: #424242;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .submenu {
+    gap: 0.5rem;
+  }
+
+  .submenu-tab {
+    font-size: 15px;
+  }
+
+  .submenu-link {
+    font-size: 14px;
+  }
+
+  .tab-underline {
+    bottom: -10px;
+    height: 3px;
+  }
+
+  .submenu-styled-divider {
+    display: none;
+  }
+
+  .submenu-links-ctn {
+    margin-top: 1rem;
+  }
 }

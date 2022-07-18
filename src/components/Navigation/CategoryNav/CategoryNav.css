@@ -81,7 +81,7 @@
   padding: 0 5px;
 }
 
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 1000px) {
   .category-nav-ctn {
     display: none;
   }

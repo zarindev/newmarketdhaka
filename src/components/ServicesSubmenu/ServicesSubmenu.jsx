@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { servicesData } from '../Services/servicesData';
 import MenuTabs from './MenuTabs';
 import './ServicesSubmenu.css';
 import Submenu from './Submenu';
@@ -14,9 +13,9 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
 
   useEffect(() => {
     if (servicesTop === serviceTop) {
-      submenuRef.current.style.top = `120px`;
+      submenuRef.current.style.top = `138px`;
     } else if (serviceTop < 400) {
-      submenuRef.current.style.top = `370px`;
+      submenuRef.current.style.top = `403px`;
     }
   }, [location, submenu]);
 

@@ -1,46 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import network from '../../../images/network.png';
 import { Link } from 'react-router-dom';
 import './TopNav.css';
 import hamburgerButton from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
+import { useOnClickOutside } from '../../../context/FunctionProvider';
+import { navData } from '../navData';
 
 function TopNav() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+
+  const hamburgerButtonRef = useRef();
+  const hideHamburgerMenu = (e) => {
+    if (!e.target.classList.contains('nav-link')) {
+      setShowHamburgerMenu(false);
+    }
+  };
+  useOnClickOutside(hamburgerButtonRef, hideHamburgerMenu);
 
   return (
     <div className="navbar">
       <div>
         <img src={network} alt="network logo" className="brand-logo" />
       </div>
-      <div>
-        <ul
-          className={
-            showHamburgerMenu ? 'navlinks navlinks-hamburger' : 'navlinks'
-          }
-        >
-          <li>
-            <Link to="/home" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about_us" className="nav-link">
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact_us" className="nav-link">
-              Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link to="/sign_up" className="nav-link">
-              Sign in
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <ul
+        className={
+          showHamburgerMenu ? 'navlinks navlinks-hamburger' : 'navlinks'
+        }
+      >
+        {navData.map((item, index) => {
+          return (
+            <li className="nav-link-ctn" key={index}>
+              <Link to={item.link} className="nav-link">
+                {item.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
       <div>
         <Link to="/register">
           <button className="nav-btn">Register Your Service</button>
@@ -49,6 +46,7 @@ function TopNav() {
       <div
         className="hamburger-ctn"
         onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
+        ref={hamburgerButtonRef}
       >
         {showHamburgerMenu ? (
           <img
