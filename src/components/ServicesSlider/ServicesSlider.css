@@ -123,27 +123,6 @@
   border-radius: 12px 12px 0 0;
 }
 
-/* .image-dots-ctn {
-  position: absolute;
-  top: 85%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.image-dot {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s linear;
-}
-
-.image-dot-active {
-  background-color: #ffffff;
-} */
-
 .slide-content {
   display: flex;
   flex-direction: column;
@@ -176,4 +155,7 @@
   width: 10px;
   height: 10px;
   transform: scale(1.4);
+}
+
+@media screen and (max-width: 1000px) {
 }

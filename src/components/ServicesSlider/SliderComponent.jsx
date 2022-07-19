@@ -68,12 +68,6 @@ const SliderComponent = ({ sliderTitle }) => {
             <SingleSlide key={slide.id} {...slide} sliderTitle={sliderTitle} />
           );
         })}
-
-        {/* {sliderData[sliderKey].map((slide, index) => {
-          return (
-            <SingleSlide key={slide.id} {...slide} sliderKey={sliderKey} />
-          );
-        })} */}
       </div>
     </div>
   );

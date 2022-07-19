@@ -13,9 +13,9 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
 
   useEffect(() => {
     if (servicesTop === serviceTop) {
-      submenuRef.current.style.top = `138px`;
+      submenuRef.current.style.top = `135px`;
     } else if (serviceTop < 400) {
-      submenuRef.current.style.top = `403px`;
+      submenuRef.current.style.top = `383px`;
     }
   }, [location, submenu]);
 
@@ -26,12 +26,12 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
     setSelectedTab(submenuTabs[0]);
   }, [submenu]);
 
-  useEffect(() => {
-    const firstTab = submenu.filter(
-      (item) => item.menuLabel === submenuTabs[0]
-    );
-    setActiveSubmenu(firstTab);
-  }, [submenu]);
+  // useEffect(() => {
+  //   const firstTab = submenu.filter(
+  //     (item) => item.menuLabel === submenuTabs[0]
+  //   );
+  //   setActiveSubmenu(firstTab);
+  // }, [submenu]);
 
   const filterSubmenu = (submenuTab) => {
     const activeTab = submenu.filter((item) => item.menuLabel === submenuTab);
