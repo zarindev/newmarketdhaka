@@ -29,12 +29,14 @@
 
 .service-details-contents {
   margin-top: 1.5rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 1.2rem;
 }
 
 .service-details-content {
+  width: 100%;
   border: 1px solid #d8d8d8;
   border-radius: 20px;
 }
@@ -42,11 +44,15 @@
 .details-image-ctn {
   position: relative;
   width: 100%;
+  height: 340px;
 }
 
 .details-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .details-dots-ctn {
@@ -133,6 +139,7 @@
   font-weight: 600;
   font-size: 16px;
   color: #ffffff;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;

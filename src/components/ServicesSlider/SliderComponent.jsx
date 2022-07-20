@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import 'swiper/css';
 import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
@@ -28,13 +31,8 @@ const SliderComponent = ({ sliderTitle }) => {
     getServices();
   }, []);
 
-  const prevSlide = () => {
-    setSlideIndex(slideIndex === 0 ? slides - 1 : slideIndex - 1);
-  };
-
-  const nextSlide = () => {
-    setSlideIndex(slideIndex === slides - 1 ? 0 : slideIndex + 1);
-  };
+  const rightArrowRef = useRef();
+  const leftArrowRef = useRef();
 
   return (
     <div className="slider-component">
@@ -54,20 +52,52 @@ const SliderComponent = ({ sliderTitle }) => {
           src={rightArrowTwo}
           alt="left-arrow icon"
           className="slide-arrow slide-arrow-left"
-          onClick={prevSlide}
+          ref={leftArrowRef}
         />
         <img
           src={rightArrowTwo}
           alt="right-arrow icon"
           className="slide-arrow slide-arrow-right"
-          onClick={nextSlide}
+          ref={rightArrowRef}
         />
-
-        {service.map((slide) => {
-          return (
-            <SingleSlide key={slide.id} {...slide} sliderTitle={sliderTitle} />
-          );
-        })}
+        <Swiper
+          spaceBetween={16}
+          loop={true}
+          loopFillGroupWithBlank={true}
+          navigation={{
+            prevEl: leftArrowRef.current,
+            nextEl: rightArrowRef.current,
+          }}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = leftArrowRef.current;
+            swiper.params.navigation.nextEl = rightArrowRef.current;
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
+          {service.map((slide) => {
+            return (
+              <SwiperSlide>
+                <SingleSlide
+                  key={slide.id}
+                  {...slide}
+                  sliderTitle={sliderTitle}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </div>
   );
