@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-// swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
-
 import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
@@ -64,9 +61,7 @@ const SliderComponent = ({ sliderTitle }) => {
           ref={rightArrowRef}
         />
         <Swiper
-          modules={[Navigation]}
-          slidesPerView={3}
-          slidesPerGroup={3}
+          spaceBetween={16}
           loop={true}
           loopFillGroupWithBlank={true}
           navigation={{
@@ -77,19 +72,31 @@ const SliderComponent = ({ sliderTitle }) => {
             swiper.params.navigation.prevEl = leftArrowRef.current;
             swiper.params.navigation.nextEl = rightArrowRef.current;
           }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          modules={[Navigation]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            {service.map((slide) => {
-              return (
+          {service.map((slide) => {
+            return (
+              <SwiperSlide>
                 <SingleSlide
                   key={slide.id}
                   {...slide}
                   sliderTitle={sliderTitle}
                 />
-              );
-            })}
-          </SwiperSlide>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </div>

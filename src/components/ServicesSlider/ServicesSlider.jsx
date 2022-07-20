@@ -1,7 +1,6 @@
 import React from 'react';
 import './ServicesSlider.css';
 import SliderComponent from './SliderComponent';
-import SliderPlay from './SliderPlay';
 
 const ServicesSlider = () => {
   return (
@@ -12,7 +11,6 @@ const ServicesSlider = () => {
       <SliderComponent sliderTitle="Home services" />
       <SliderComponent sliderTitle="Car services" />
       <SliderComponent sliderTitle="IT training" />
-      <SliderPlay />
     </div>
   );
 };
