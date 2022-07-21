@@ -7,8 +7,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  padding: 0;
   margin: 1rem;
+  padding: 0;
+  border: none;
   font-size: 18px;
 }
 

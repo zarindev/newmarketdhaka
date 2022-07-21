@@ -19,13 +19,15 @@ function AboutUs() {
               <div className="about-item" key={item.id}>
                 <h4 className="about-item-title">{item.title}</h4>
                 <p className="about-item-desc">{item.desc}</p>
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="about-item-image"
-                  />
-                )}
+                <div className="about-item-image-ctn">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="about-item-image"
+                    />
+                  )}
+                </div>
               </div>
             );
           })}

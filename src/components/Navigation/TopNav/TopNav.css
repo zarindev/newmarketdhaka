@@ -36,13 +36,18 @@ ul.navlinks {
 .nav-btn {
   background: linear-gradient(90deg, #2e87b0, #00537a);
   padding: 1rem;
-  border: none;
+  border: 2px solid #2e87b0;
   border-radius: 0.5rem;
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: #ffffff;
+  color: #1a1a1a;
 }
 
 .navbar {

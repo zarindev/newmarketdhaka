@@ -57,7 +57,7 @@ const DetailsList = ({
             <div className="service-working-hours-ctn">
               <div className="service-working-hours">
                 <img
-                  src={clockIcon}
+                  src={calendarIcon}
                   alt="clock icon"
                   className="service-working-hours-icon"
                 />
@@ -67,7 +67,7 @@ const DetailsList = ({
               </div>
               <div className="service-working-hours">
                 <img
-                  src={calendarIcon}
+                  src={clockIcon}
                   alt="calendar icon"
                   className="service-working-hours-icon"
                 />

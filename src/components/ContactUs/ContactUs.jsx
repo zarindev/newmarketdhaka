@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom'; // placeholder
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // placeholder => Get started
+import { useForm } from 'react-hook-form';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
@@ -7,16 +8,18 @@ import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
 
 const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [reason, setReason] = useState('');
+  const [contactData, setContactData] = useState([]);
 
-  const nameRef = useRef('');
-  const emailRef = useRef('');
-  const reasonRef = useRef('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ mode: 'all' });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    setContactData(data);
+    reset();
   };
 
   return (
@@ -45,29 +48,51 @@ const ContactUs = () => {
       </div>
       <div className="contact-form-ctn">
         <h2 className="contact-form-title">Contact Us</h2>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="form-input field-control"
-            placeholder="Full Name"
-            ref={nameRef}
-            onChange={() => setName(nameRef.current.value)}
-          />
-          <input
-            type="text"
-            className="form-input field-control"
-            placeholder="E-mail"
-            ref={emailRef}
-            onChange={() => setEmail(emailRef.current.value)}
-          />
-          <textarea
-            cols="30"
-            rows="10"
-            className="form-textarea field-control"
-            placeholder="Reason"
-            ref={reasonRef}
-            onChange={() => setReason(reasonRef.current.value)}
-          />
+        <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="fullName">
+            <input
+              type="text"
+              className="form-input field-control"
+              placeholder="Full Name"
+              {...register('fullName', { required: 'Full name is required' })}
+            />
+            {errors.fullName && (
+              <p className="contact-error-message">
+                {errors.fullName?.message}
+              </p>
+            )}
+          </label>
+          <label htmlFor="email">
+            <input
+              type="text"
+              className="form-input field-control"
+              placeholder="E-mail"
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Please enter a valid email',
+                },
+              })}
+            />
+            {errors.email && (
+              <p className="contact-error-message">{errors.email?.message}</p>
+            )}
+          </label>
+          <label htmlFor="reason">
+            <textarea
+              cols="30"
+              rows="10"
+              name="reason"
+              className="form-textarea field-control"
+              placeholder="Reason"
+              {...register('reason', { required: 'Reason is required' })}
+            />
+            {errors.reason && (
+              <p className="contact-error-message">{errors.reason?.message}</p>
+            )}
+          </label>
           <button type="submit" className="form-submit-btn">
             Submit
           </button>

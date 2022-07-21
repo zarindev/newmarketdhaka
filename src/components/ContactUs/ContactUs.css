@@ -112,7 +112,13 @@
 }
 
 .field-control:focus {
-  outline: 2.5px solid #ce2d4f;
+  outline: 2.5px solid #ff4500;
+}
+
+.contact-error-message {
+  font-size: 15px;
+  color: #ffff00;
+  margin-top: 0.4rem;
 }
 
 .form-submit-btn {
@@ -226,21 +232,16 @@
     font-size: 14px;
   }
 
-  .form-input {
-    height: 60px;
-  }
-
-  .form-textarea {
-    height: 120px;
-    padding-top: 1rem;
-  }
-
   .field-control::placeholder {
     font-size: 14px;
   }
 
   .field-control:focus {
     outline: 2.5px solid #ce2d4f;
+  }
+
+  .contact-error-message {
+    font-size: 14px;
   }
 
   .form-submit-btn {
