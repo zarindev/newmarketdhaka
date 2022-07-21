@@ -80,26 +80,26 @@ const Footer = () => {
         <div className="footer-links-ctn">
           <h4 className="footer-links-title">Links</h4>
           <ul className="footer-links">
-            <li>Features</li>
-            <li>Pricing</li>
-            <li>Case studies</li>
-            <li>Reviews</li>
-            <li>Updates</li>
+            <li className="footer-link">Features</li>
+            <li className="footer-link">Pricing</li>
+            <li className="footer-link">Case studies</li>
+            <li className="footer-link">Reviews</li>
+            <li className="footer-link">Updates</li>
           </ul>
         </div>
         <div className="footer-services-ctn">
           <h4 className="footer-services-title">Services</h4>
           <ul className="footer-services">
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-            <li>Service 4</li>
-            <li>Service 5</li>
-            <li>Service 6</li>
-            <li>Service 7</li>
-            <li>Service 8</li>
-            <li>Service 9</li>
-            <li>Service 10</li>
+            <li className="footer-link">Service 1</li>
+            <li className="footer-link">Service 2</li>
+            <li className="footer-link">Service 3</li>
+            <li className="footer-link">Service 4</li>
+            <li className="footer-link">Service 5</li>
+            <li className="footer-link">Service 6</li>
+            <li className="footer-link">Service 7</li>
+            <li className="footer-link">Service 8</li>
+            <li className="footer-link">Service 9</li>
+            <li className="footer-link">Service 10</li>
           </ul>
         </div>
       </div>
@@ -109,8 +109,10 @@ const Footer = () => {
           Copyright &copy; {new Date().getFullYear()} BRIX Templates
         </p>
         <p className="footer-terms">
-          <span className="footer-first-term">All Rights Reserved</span>|
-          <span className="footer-styled-term">Terms and Conditions</span>|
+          <span className="footer-first-term">All Rights Reserved</span>
+          <span className="footer-vertical-divider">|</span>
+          <span className="footer-styled-term">Terms and Conditions</span>
+          <span className="footer-vertical-divider">|</span>
           <span className="footer-styled-term">Privacy Policy</span>
         </p>
       </div>

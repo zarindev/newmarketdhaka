@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Hero.css';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import { heroImageData } from './heroImageData';

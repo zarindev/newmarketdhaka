@@ -54,7 +54,7 @@
 
 .tab-underline {
   position: absolute;
-  bottom: -24px;
+  bottom: -24.7px;
   left: 0;
   right: 0;
   height: 4px;
@@ -87,9 +87,18 @@
   cursor: pointer;
 }
 
+.submenu-link:hover {
+  filter: invert(0.35);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 @media screen and (max-width: 1000px) {
   .submenu {
     gap: 0.5rem;
+  }
+
+  .submenu-tabs {
+    gap: 1.2rem;
   }
 
   .submenu-tab {
@@ -101,8 +110,8 @@
   }
 
   .tab-underline {
-    bottom: -10px;
-    height: 3px;
+    bottom: -11px;
+    height: 2px;
   }
 
   .submenu-styled-divider {

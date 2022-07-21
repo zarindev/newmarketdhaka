@@ -88,12 +88,8 @@ const SliderComponent = ({ sliderTitle }) => {
         >
           {service.map((slide) => {
             return (
-              <SwiperSlide>
-                <SingleSlide
-                  key={slide.id}
-                  {...slide}
-                  sliderTitle={sliderTitle}
-                />
+              <SwiperSlide key={slide.id}>
+                <SingleSlide {...slide} sliderTitle={sliderTitle} />
               </SwiperSlide>
             );
           })}

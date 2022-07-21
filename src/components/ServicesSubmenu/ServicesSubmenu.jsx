@@ -26,12 +26,12 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
     setSelectedTab(submenuTabs[0]);
   }, [submenu]);
 
-  // useEffect(() => {
-  //   const firstTab = submenu.filter(
-  //     (item) => item.menuLabel === submenuTabs[0]
-  //   );
-  //   setActiveSubmenu(firstTab);
-  // }, [submenu]);
+  useEffect(() => {
+    const firstTab = submenu.filter(
+      (item) => item.menuLabel === submenuTabs[0]
+    );
+    setActiveSubmenu(firstTab);
+  }, [submenu]);
 
   const filterSubmenu = (submenuTab) => {
     const activeTab = submenu.filter((item) => item.menuLabel === submenuTab);
