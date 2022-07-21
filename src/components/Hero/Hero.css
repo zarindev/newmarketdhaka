@@ -92,10 +92,12 @@
   .hero {
     padding-bottom: 180px;
   }
+
   .hero-items {
     padding-top: 90px;
     gap: 1rem;
   }
+
   .small-title {
     font-size: 22px;
   }

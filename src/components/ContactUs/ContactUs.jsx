@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom'; // placeholder
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // placeholder => Get started
+import { useForm } from 'react-hook-form';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
@@ -7,91 +8,113 @@ import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
 
 const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [reason, setReason] = useState('');
+  const [contactData, setContactData] = useState([]);
 
-  const nameRef = useRef('');
-  const emailRef = useRef('');
-  const reasonRef = useRef('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ mode: 'all' });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    setContactData(data);
+    reset();
   };
 
   return (
-    <div>
-      <div className="contact-us">
-        <div className="contact-intro">
-          <div className="contact-content">
-            <h2 className="contact-title">
-              Become <br /> Service Provider
-            </h2>
-            <p className="contact-desc">
-              Amet minim mollit non deserunt ullamco est sit <br /> aliqua dolor
-              do amet sint. Velit officia consequat <br /> duis enim velit
-              mollit. Exercitation veniam <br /> consequat sunt nostrud amet.
-            </p>
-            <Link to="/profile">
-              <button className="contact-btn">Get started</button>
-            </Link>
-          </div>
-          <div className="contact-image-ctn">
-            <img
-              src={contactImage}
-              alt="contact image"
-              className="contact-image-ctn"
-            />
-          </div>
+    <div className="contact-us">
+      <div className="contact-intro">
+        <div className="contact-content">
+          <h2 className="contact-title">
+            Become <br /> Service Provider
+          </h2>
+          <p className="contact-desc">
+            Amet minim mollit non deserunt ullamco est sit <br /> aliqua dolor
+            do amet sint. Velit officia consequat <br /> duis enim velit mollit.
+            Exercitation veniam <br /> consequat sunt nostrud amet.
+          </p>
+          <Link to="/profile">
+            <button className="contact-btn">Get started</button>
+          </Link>
         </div>
-        <div className="contact-form-ctn">
-          <h2 className="contact-form-title">Contact Us</h2>
-          <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="contact-image-ctn">
+          <img
+            src={contactImage}
+            alt="contact image"
+            className="contact-image"
+          />
+        </div>
+      </div>
+      <div className="contact-form-ctn">
+        <h2 className="contact-form-title">Contact Us</h2>
+        <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="fullName">
             <input
               type="text"
               className="form-input field-control"
               placeholder="Full Name"
-              ref={nameRef}
-              onChange={() => setName(nameRef.current.value)}
+              {...register('fullName', { required: 'Full name is required' })}
             />
+            {errors.fullName && (
+              <p className="contact-error-message">
+                {errors.fullName?.message}
+              </p>
+            )}
+          </label>
+          <label htmlFor="email">
             <input
               type="text"
               className="form-input field-control"
               placeholder="E-mail"
-              ref={emailRef}
-              onChange={() => setEmail(emailRef.current.value)}
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Please enter a valid email',
+                },
+              })}
             />
+            {errors.email && (
+              <p className="contact-error-message">{errors.email?.message}</p>
+            )}
+          </label>
+          <label htmlFor="reason">
             <textarea
               cols="30"
               rows="10"
+              name="reason"
               className="form-textarea field-control"
               placeholder="Reason"
-              ref={reasonRef}
-              onChange={() => setReason(reasonRef.current.value)}
+              {...register('reason', { required: 'Reason is required' })}
             />
-            <button type="submit" className="form-submit-btn">
-              Submit
-            </button>
-          </form>
-          <div className="contact-info-ctn">
-            <div className="contact-info">
-              <img src={phoneIcon} alt="phone icon" className="contact-icon" />
-              <p className="contact-address">contact@company.com</p>
-            </div>
-            <div className="contact-info">
-              <img
-                src={locationIcon}
-                alt="location icon"
-                className="contact-icon"
-              />
-              <p className="contact-address">
-                794 Mcallister St San Francisco, 94102
-              </p>
-            </div>
-            <div className="contact-info">
-              <img src={emailIcon} alt="email icon" className="contact-icon" />
-              <p className="contact-address">contact@company.com</p>
-            </div>
+            {errors.reason && (
+              <p className="contact-error-message">{errors.reason?.message}</p>
+            )}
+          </label>
+          <button type="submit" className="form-submit-btn">
+            Submit
+          </button>
+        </form>
+        <div className="contact-info-ctn">
+          <div className="contact-info">
+            <img src={phoneIcon} alt="phone icon" className="contact-icon" />
+            <p className="contact-address">contact@company.com</p>
+          </div>
+          <div className="contact-info">
+            <img
+              src={locationIcon}
+              alt="location icon"
+              className="contact-icon"
+            />
+            <p className="contact-address">
+              794 Mcallister St San Francisco, 94102
+            </p>
+          </div>
+          <div className="contact-info">
+            <img src={emailIcon} alt="email icon" className="contact-icon" />
+            <p className="contact-address">contact@company.com</p>
           </div>
         </div>
       </div>

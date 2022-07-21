@@ -21,3 +21,25 @@
   max-width: 980px;
   margin: 0 auto 5.8rem auto;
 }
+
+@media screen and (max-width: 1000px) {
+  .contact-page .contact-us {
+    margin: auto;
+  }
+
+  .contact-page .contact-form-ctn {
+    margin: auto;
+  }
+
+  .contact-page-title {
+    font-size: 35px;
+  }
+
+  .contact-page-banner {
+    padding: 100px 0;
+  }
+
+  .contact-page-content {
+    margin: 60px auto 70px auto;
+  }
+}

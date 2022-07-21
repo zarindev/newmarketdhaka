@@ -19,7 +19,7 @@
 .details-directory a:hover {
   color: #000000;
   background-color: #f0f0f0;
-  padding: 0.4rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 1rem;
 }
 
@@ -44,7 +44,7 @@
 .details-image-ctn {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: auto;
 }
 
 .details-image {
@@ -88,6 +88,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .details-styled-divider {
@@ -139,7 +140,6 @@
   font-weight: 600;
   font-size: 16px;
   color: #ffffff;
-  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,12 +213,13 @@
 .details-contact-logo-ctn {
   width: 100px;
   height: 100px;
-  border-radius: 10px;
 }
 
 .details-contact-logo {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .details-contact-title {
@@ -284,4 +285,138 @@
 
 .service-details .slide {
   border: 1px solid #d8d8d8;
+}
+
+@media screen and (max-width: 1000px) {
+  .service-details {
+    margin: 1.5rem auto 4rem auto;
+  }
+
+  .details-directory {
+    font-size: 15px;
+  }
+
+  .details-ctn {
+    padding: 1rem 1.3rem;
+    gap: 2rem;
+  }
+
+  .details-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .details-service-title {
+    font-size: 20px;
+  }
+
+  .service-working-hours {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .service-working-hours-icon {
+    transform: scale(0.9);
+  }
+
+  .service-working-hours-time {
+    font-size: 15px;
+  }
+
+  .details-button {
+    font-size: 15px;
+  }
+
+  .details-button-icon {
+    transform: scale(0.9);
+  }
+
+  .details-list-main-title {
+    font-size: 14px;
+  }
+
+  .details-list-sub-title {
+    font-size: 15px;
+  }
+
+  .details-list-content,
+  .details-list-item {
+    font-size: 15px;
+  }
+
+  .service-details-contact {
+    height: 100%;
+    gap: 1.4rem;
+  }
+
+  .details-contact-intro {
+    padding: 1.3rem 0 0 1.3rem;
+    gap: 1rem;
+  }
+
+  .details-contact-title {
+    font-size: 16px;
+  }
+
+  .details-contact-info-ctn {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .details-contact-icon {
+    transform: scale(0.9);
+  }
+
+  .details-contact-address {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .details-contact-map {
+    margin: 0;
+    padding: 0 1.3rem 1rem 1.3rem;
+  }
+
+  .service-details-more {
+    position: relative;
+    margin-top: 2.8rem;
+  }
+
+  .details-more-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .details-directory a:hover {
+    padding: 0.3rem 0.4rem;
+  }
+
+  .service-details-contents {
+    margin-top: 1.4rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .details-styled-divider {
+    display: none;
+  }
+
+  .service-working-hours-ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .service-details .slider-btn-ctn {
+    margin: 0.6rem 0 0 0;
+  }
+
+  .service-details .slider-component {
+    margin-top: 0.1rem;
+  }
 }

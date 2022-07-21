@@ -1,3 +1,4 @@
+// import thirdImage from '../../images/hero-image.png';
 import thirdImage from '../../images/Rectangle 3097.png';
 import fourthImage from '../../images/Rectangle 3098.png';
 
