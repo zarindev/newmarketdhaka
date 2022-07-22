@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import RoundedButton from '../SmallComponents/RoundedButton/RoundedButton';
 import './ServicesSlider.css';
 import SliderComponent from './SliderComponent';
 
@@ -11,6 +13,9 @@ const ServicesSlider = () => {
       <SliderComponent sliderTitle="Home services" />
       <SliderComponent sliderTitle="Car services" />
       <SliderComponent sliderTitle="IT training" />
+      <Link to="/more_services">
+        <RoundedButton buttonText="Explore More Services" />
+      </Link>
     </div>
   );
 };

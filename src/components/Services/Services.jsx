@@ -23,16 +23,16 @@ const Services = () => {
         })}
         <div className="styled-divider"></div>
       </div>
-      <button className="services-btn">
-        <Link className="services-btn-link" to="/all_services">
+      <Link className="services-btn-link" to="/all_services">
+        <button className="services-btn">
           <p className="services-btn-text">See All Services</p>
           <img
             src={arrowCircleDown}
             alt="arrow-circle-down icon"
             className="services-btn-icon"
           />
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 };

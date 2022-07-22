@@ -68,6 +68,7 @@
 
 .services-btn {
   display: flex;
+  gap: 0.4rem;
   padding: 12px 16px;
   margin: 80px auto 0 auto;
   background-color: #ce2d4f;
@@ -76,11 +77,6 @@
   font-size: 17px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.services-btn-link {
-  display: flex;
-  gap: 0.4rem;
 }
 
 .services-btn-text {
