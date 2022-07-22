@@ -1,0 +1,40 @@
+.more-services-ctn {
+  width: 90vw;
+  max-width: 980px;
+  margin: 0 auto 70px auto;
+}
+
+.more-services {
+  margin-top: 3.5rem;
+  display: grid;
+  place-items: center;
+  gap: 4rem;
+}
+
+.more-services-ctn .slider-component {
+  margin: 0 auto;
+}
+
+.more-services-ctn .slide {
+  border: 1.4px solid #e5e5e5;
+}
+
+.more-services-ctn .rounded-btn {
+  margin-top: 4rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .more-services-ctn {
+    margin: 0 auto 65px auto;
+  }
+
+  .more-services {
+    margin-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .more-services-ctn .rounded-btn {
+    margin-top: 3rem;
+  }
+}

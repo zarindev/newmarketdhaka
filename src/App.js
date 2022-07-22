@@ -21,6 +21,7 @@ import RegisterFormTwoIndie from './pages/Register/RegisterFormTwoIndie';
 import RegisterFormThreeIndie from './pages/Register/RegisterFormThreeIndie';
 import RegisterFormFourIndie from './pages/Register/RegisterFormFourIndie';
 import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
+import MoreServices from './pages/MoreServices/MoreServices';
 
 const App = () => {
   return (
@@ -66,6 +67,8 @@ const App = () => {
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
         <Route path="/all_services" element={<AllServices />} />
         <Route path="/:service_type/:title" element={<ServiceDetails />} />
+        <Route path="/more_services" element={<MoreServices />} />
+        <Route path="/more_services/all_services" element={<AllServices />} />
       </Routes>
     </>
   );

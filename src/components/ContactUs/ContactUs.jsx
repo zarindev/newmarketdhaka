@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // placeholder => Get started
 import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../Utilities/styles/toastify.css';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
@@ -15,11 +18,18 @@ const ContactUs = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ mode: 'all' });
+  } = useForm({ mode: 'onBlur' });
 
   const onSubmit = (data) => {
     setContactData(data);
+    notify();
     reset();
+  };
+
+  const notify = () => {
+    toast.success('Successfully submitted', {
+      progress: undefined,
+    });
   };
 
   return (
@@ -49,6 +59,18 @@ const ContactUs = () => {
       <div className="contact-form-ctn">
         <h2 className="contact-form-title">Contact Us</h2>
         <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <label htmlFor="fullName">
             <input
               type="text"

@@ -7,6 +7,7 @@ import ScrollToTop from '../../components/Utilities/ScrollToTop';
 import homeAndOffice from '../../images/workspace 1.png';
 import carRentalService from '../../images/maintenance 1.png';
 import foodAndRestaurant from '../../images/grocery 1.png';
+import Footer from '../../components/Footer/Footer';
 
 const AllServices = () => {
   return (
@@ -33,6 +34,7 @@ const AllServices = () => {
             />
           </div>
         </div>
+        <Footer />
       </ScrollToTop>
     </>
   );

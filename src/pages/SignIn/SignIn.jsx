@@ -34,13 +34,15 @@ function SignUp() {
           </form>
         </div>
         <div className="signup-footer">
-          <p>
-            Don't have an account?{' '}
-            <span className="sign-in">
-              <Link to="/sign_up">Sign Up</Link>
-            </span>
-          </p>
-          <p>or, Sign up with</p>
+          <div className="signup-footer-text-ctn">
+            <p>
+              Don't have an account?{' '}
+              <span className="sign-in">
+                <Link to="/sign_up">Sign Up</Link>
+              </span>
+            </p>
+            <p className="signup-footer-text-bold">or, Sign up with</p>
+          </div>
           <div className="signin">
             <button className="signin-btn">
               <img src={google} alt="" />

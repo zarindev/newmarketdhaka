@@ -1,0 +1,23 @@
+.Toastify__toast {
+  border-radius: 0.4rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Toastify__toast {
+    border-radius: 0.4rem;
+  }
+
+  .Toastify__toast-container--top-right {
+    top: 1em;
+  }
+
+  svg {
+    transform: scale(0.9);
+  }
+}

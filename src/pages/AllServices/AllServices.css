@@ -1,5 +1,5 @@
 .all-services {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .all-services-banner {
@@ -93,6 +93,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .all-services {
+    margin-bottom: 2rem;
+  }
+
   .all-services-contents {
     gap: 0.1rem;
   }
