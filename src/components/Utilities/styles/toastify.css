@@ -1,0 +1,29 @@
+.Toastify__toast {
+  border-radius: 0.4rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 65vw;
+    padding: 0;
+    left: 0;
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .Toastify__toast {
+    min-height: 3.5rem;
+  }
+
+  .Toastify__toast-container--top-right {
+    top: 1em;
+    left: auto;
+  }
+  .Toastify__toast-container {
+    padding: 0;
+  }
+  svg {
+    transform: scale(0.9);
+  }
+}
