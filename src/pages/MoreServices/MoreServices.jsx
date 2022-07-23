@@ -24,7 +24,7 @@ const MoreServices = () => {
             <SliderComponent sliderTitle="IT training" />
           </div>
           <Link to="/more_services/all_services">
-            <RoundedButton buttonText="Explore More Services" />
+            <RoundedButton buttonText="See All Services" />
           </Link>
         </div>
         <Footer />

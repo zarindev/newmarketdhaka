@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
@@ -11,11 +12,6 @@ import { useGlobalContext } from '../../context/FunctionProvider';
 const SliderComponent = ({ sliderTitle }) => {
   const { snakeCase } = useGlobalContext();
   const [service, setService] = useState([]);
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  const slides = sliderData.map(
-    (services) => services[Object.keys(services)[2]][0]
-  ).length;
 
   useEffect(() => {
     const getServices = () => {
@@ -38,14 +34,16 @@ const SliderComponent = ({ sliderTitle }) => {
     <div className="slider-component">
       <div className="slider-heading">
         <h3 className="slider-title">{sliderTitle}</h3>
-        <div className="slider-btn-ctn">
-          <p className="slider-btn-text">See All</p>
-          <img
-            src={rightArrow}
-            alt="read-more icon"
-            className="slider-btn-icon"
-          />
-        </div>
+        <Link to={`/${snakeCase(sliderTitle)}`}>
+          <div className="slider-btn-ctn">
+            <p className="slider-btn-text">See All</p>
+            <img
+              src={rightArrow}
+              alt="read-more icon"
+              className="slider-btn-icon"
+            />
+          </div>
+        </Link>
       </div>
       <div className="slider-content">
         <img
