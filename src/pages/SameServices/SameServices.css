@@ -1,0 +1,22 @@
+.same-services-ctn {
+  width: 90vw;
+  max-width: 980px;
+  margin: 50px auto 50px auto;
+}
+
+.single-slide-ctn {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  gap: 4rem 1rem;
+  gap: 4rem 1rem;
+}
+
+.same-services-ctn .slider-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.same-services-avilable {
+  margin-left: auto;
+}
