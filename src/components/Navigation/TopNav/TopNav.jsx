@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './TopNav.css';
 import hamburgerButton from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
-import { useOnClickOutside } from '../../../context/FunctionProvider';
 import { navData } from '../navData';
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
 function TopNav() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);

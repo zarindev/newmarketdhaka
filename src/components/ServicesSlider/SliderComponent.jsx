@@ -7,7 +7,7 @@ import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
-import { useGlobalContext } from '../../context/FunctionProvider';
+import { useGlobalContext } from '../../context/FuncProvider';
 
 const SliderComponent = ({ sliderTitle }) => {
   const { snakeCase } = useGlobalContext();

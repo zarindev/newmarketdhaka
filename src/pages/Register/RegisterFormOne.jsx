@@ -8,6 +8,7 @@ import RegisterLeft from './elements/RegisterLeft';
 
 const RegisterFormOne = () => {
   const navigate = useNavigate();
+
   const {
     register,
     formState: { errors },
@@ -15,6 +16,7 @@ const RegisterFormOne = () => {
     handleSubmit,
   } = useForm({ mode: 'all' });
   const { actions, state } = useStateMachine({ updateAction });
+
   const onSubmit = (data) => {
     actions.updateAction(data);
     navigate('/register/company/step2');

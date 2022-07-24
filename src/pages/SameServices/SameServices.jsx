@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { sliderData } from '../../components/ServicesSlider/sliderData';
 import './SameServices.css';
-import { useGlobalContext } from '../../context/FunctionProvider';
 import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import Footer from '../../components/Footer/Footer';
 import ScrollToTop from '../../components/Utilities/ScrollToTop';
 import PaginationCom from '../../components/PaginationCom/PaginationCom';
+import { useGlobalContext } from '../../context/FuncProvider';
 
 const SameServices = () => {
   const { service_type } = useParams();
