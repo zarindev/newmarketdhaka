@@ -15,6 +15,7 @@ const RegisterFormTwoIndie = () => {
     handleSubmit,
   } = useForm({ mode: 'all' });
   const { actions, state } = useStateMachine({ updateAction });
+
   const onSubmit = (data) => {
     actions.updateAction(data);
     navigate('/register/individual/step3');

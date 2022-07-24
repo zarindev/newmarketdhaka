@@ -4,18 +4,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
-import { FunctionProvider } from './context/FunctionProvider';
 import { StateMachineProvider, createStore } from 'little-state-machine';
+import { FuncProvider } from './context/FuncProvider';
 
 createStore({});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <FunctionProvider>
+  <FuncProvider>
     <StateMachineProvider>
       <Router>
         <App />
       </Router>
     </StateMachineProvider>
-  </FunctionProvider>
+  </FuncProvider>
 );

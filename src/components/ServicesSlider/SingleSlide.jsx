@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/FunctionProvider';
+import { useGlobalContext } from '../../context/FuncProvider';
+
 import ellipse from '../../images/svg/Ellipse 2.svg';
 
 const SingleSlide = ({

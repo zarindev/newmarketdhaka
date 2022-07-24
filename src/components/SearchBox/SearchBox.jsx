@@ -4,8 +4,8 @@ import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import keywordIcon from '../../images/svg/box-search.svg';
 import locationIcon from '../../images/svg/location.svg';
 import searchIcon from '../../images/svg/search-normal.svg';
-import { useOnClickOutside } from '../../context/FunctionProvider';
 import { motion } from 'framer-motion';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 const SearchBox = () => {
   const [showDropdown, setShowDropdown] = useState(false);

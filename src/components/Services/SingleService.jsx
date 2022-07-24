@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import ServicesSubmenu from '../ServicesSubmenu/ServicesSubmenu';
-import { useOnClickOutside } from '../../context/FunctionProvider';
 import { servicesData } from './servicesData';
 
 const SingleService = ({ service, image, servicesRef }) => {

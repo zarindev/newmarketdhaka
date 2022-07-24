@@ -13,11 +13,11 @@ const RegisterFormThree = (props) => {
   const { value, onChange, name = 'companyLogo', error } = props;
   const navigate = useNavigate();
 
-  const { register, setValue, setError, clearErrors, watch, handleSubmit } =
-    useForm({
-      mode: 'all',
-    });
-  const { actions, state } = useStateMachine({ updateAction });
+  const { register, setValue, setError, clearErrors, handleSubmit } = useForm({
+    mode: 'all',
+  });
+  const { actions } = useStateMachine({ updateAction });
+
   const onSubmit = (data) => {
     actions.updateAction(data);
     navigate('/register/company/step4');
