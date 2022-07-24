@@ -28,7 +28,7 @@ const Services = () => {
           <p className="services-btn-text">See All Services</p>
           <img
             src={arrowCircleDown}
-            alt="arrow-circle-down icon"
+            alt="arrow-circle-down"
             className="services-btn-icon"
           />
         </button>
