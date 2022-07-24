@@ -59,7 +59,7 @@ const SliderComponent = ({ sliderTitle }) => {
           ref={rightArrowRef}
         />
         <Swiper
-          spaceBetween={16}
+          spaceBetween={11}
           loop={true}
           loopFillGroupWithBlank={true}
           navigation={{
