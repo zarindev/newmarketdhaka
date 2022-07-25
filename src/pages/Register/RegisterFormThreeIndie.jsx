@@ -85,7 +85,7 @@ const RegisterFormThreeIndie = (props) => {
               showPreview="preview"
             />
             {files[0] && (
-              <button className="register-form-button register-form-upload-button">
+              <button className="register-form-button register-form-fit-button">
                 Confirm logo
               </button>
             )}

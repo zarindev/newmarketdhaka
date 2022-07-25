@@ -19,7 +19,12 @@
 
 .register-logo {
   width: 35%;
+  min-width: 140px;
   height: auto;
+}
+
+.register-logo-mobile {
+  display: none;
 }
 
 .register-title-ctn {
@@ -63,13 +68,13 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  background-color: #f8f8f8;
+  background-color: hsl(0, 0%, 97%);
   border-radius: 10px;
   cursor: pointer;
 }
 
 .register-type:hover {
-  background-color: hsla(0, 0%, 83%, 0.6);
+  background-color: hsl(0, 0%, 85%);
 }
 
 .register-type-icon {
@@ -79,7 +84,7 @@
 
 .register-type-text {
   font-weight: 600;
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
   color: #1d1d1d;
 }
 
@@ -110,7 +115,7 @@
 
 .register-form-sucess-ctn {
   align-items: center;
-  gap: 3rem;
+  justify-content: center;
 }
 
 .register-form-success-title {
@@ -118,10 +123,16 @@
   text-align: center;
 }
 
+.register-success-image-ctn {
+  max-width: 450px;
+  max-height: 250px;
+  min-width: 200px;
+  min-height: 10px;
+}
+
 .register-success-image {
-  margin-top: 1rem;
-  width: 500px;
-  height: 300px;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -131,6 +142,12 @@
   flex-direction: column;
   gap: 1.2rem;
   margin-bottom: 5rem;
+}
+
+.register-success-form {
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
 }
 
 .register-form-item {
@@ -174,7 +191,8 @@
   justify-items: center;
   gap: 1.8rem;
   width: 80%;
-  padding: 2rem 5rem;
+  min-width: 300px;
+  padding: 2rem 0;
   background: rgba(255, 255, 255, 0.05);
   border: 2px dashed #bfbfbf;
   border-radius: 24px;
@@ -210,16 +228,11 @@
 }
 
 .register-form .error-message {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #ce2d4f;
-}
-
-.register-form .error-message-upload {
-  color: #ce2d4f;
-  margin-left: 5.4rem;
 }
 
 .register-form-button {
-  width: 100%;
   padding: 0.7rem 0;
   background-color: #ce2d4f;
   border: 2px solid #ce2d4f;
@@ -232,28 +245,143 @@
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.register-form-upload-button {
-  width: 31%;
-  padding: 0.5rem 0;
-  margin-left: 7rem;
-  border-radius: 2rem;
-}
-
-.register-form-upload-button-next {
-  width: 20%;
-  padding: 0.5rem 0;
+.register-form-fit-button {
+  width: fit-content;
+  padding: 0.5rem 0.8rem;
   margin-left: 9rem;
   border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .register-form-success-button {
-  width: 20%;
-  padding: 0.5rem 0;
   margin: 0 auto;
-  border-radius: 2rem;
 }
 
 .register-form-button:hover {
   background-color: #ffffff;
   color: #1d1d1d;
+}
+
+@media screen and (max-width: 1000px) {
+  .register-form {
+    width: 40vw;
+  }
+
+  .register-success-form {
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    width: 90vw;
+    height: auto;
+    min-height: auto;
+    margin: 2.5rem auto 0 auto;
+    flex-direction: column;
+  }
+
+  .register-left {
+    width: auto;
+    min-width: auto;
+    padding: 0;
+    background-image: none;
+  }
+
+  .register-logo {
+    display: none;
+  }
+
+  .register-logo-mobile {
+    display: block;
+    margin-left: -1rem;
+  }
+
+  .register-title {
+    color: #1d1d1d;
+  }
+
+  .register-desc {
+    color: #6c6c6c;
+  }
+
+  .register-right {
+    margin-top: 3.5rem;
+    width: auto;
+    display: block;
+  }
+
+  .register-type-title {
+    margin-bottom: 1rem;
+  }
+
+  .register-type {
+    margin-top: 0.9rem;
+    padding: 3rem;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .register-type:hover {
+    background-color: hsl(0, 0%, 95%);
+  }
+
+  .register-type-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .register-form-right {
+    width: 90vw;
+    margin: 2.5rem auto 0 auto;
+    display: block;
+  }
+
+  .register-form-ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .register-form-upload-title {
+    margin-bottom: 2.5rem;
+  }
+
+  .register-form-upload-label {
+    width: 100%;
+    min-width: 200px;
+    padding: 3rem 0;
+  }
+
+  .register-form {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .register-form-sucess-ctn {
+    align-items: start;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .register-form-success-title {
+    width: 65%;
+    text-align: left;
+  }
+
+  .register-success-form {
+    gap: 2rem;
+  }
+
+  .register-form-fit-button {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .register-success-form {
+    gap: 1rem;
+  }
 }

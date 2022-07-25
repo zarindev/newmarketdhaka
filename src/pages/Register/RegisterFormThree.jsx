@@ -73,7 +73,9 @@ const RegisterFormThree = (props) => {
       <RegisterLeft />
       <div className="register-form-right">
         <div className="register-form-ctn">
-          <p className="register-form-title">Upload Your Company Logo</p>
+          <p className="register-form-title register-form-upload-title">
+            Upload Your Company Logo
+          </p>
           <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <RegisterDropzone
               files={files}
@@ -85,7 +87,7 @@ const RegisterFormThree = (props) => {
               showPreview="preview"
             />
             {files[0] && (
-              <button className="register-form-button register-form-upload-button">
+              <button className="register-form-button register-form-fit-button">
                 Confirm logo
               </button>
             )}
