@@ -91,7 +91,7 @@ const RegisterFormFourIndie = (props) => {
               showPreview="name"
             />
             {files[0] && (
-              <button className="register-form-button register-form-upload-button-next">
+              <button className="register-form-button register-form-fit-button">
                 Next
               </button>
             )}

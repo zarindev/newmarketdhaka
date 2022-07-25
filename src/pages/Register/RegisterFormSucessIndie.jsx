@@ -25,13 +25,18 @@ const RegisterFormSucessIndie = () => {
           <p className="register-form-title register-form-success-title">
             You have uploaded all of your documents successfully
           </p>
-          <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-            <img
-              src={successImage}
-              alt="success"
-              className="register-success-image"
-            />
-            <button className="register-form-button register-form-success-button">
+          <form
+            className="register-form register-success-form"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="register-success-image-ctn">
+              <img
+                src={successImage}
+                alt="success"
+                className="register-success-image"
+              />
+            </div>
+            <button className="register-form-button register-form-fit-button register-form-success-button">
               Sign in
             </button>
           </form>
