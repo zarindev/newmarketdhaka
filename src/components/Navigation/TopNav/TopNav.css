@@ -1,12 +1,23 @@
 .navbar {
   width: 90vw;
   max-width: 980px;
+  max-height: 100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: center;
   padding: 0.8rem 0;
+}
+
+.nav-brand-logo-ctn {
+  width: 140px;
+}
+
+.nav-brand-logo {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .navlinks {
@@ -33,9 +44,13 @@ ul.navlinks {
   white-space: nowrap;
 }
 
+.nav-link-ctn:last-child {
+  display: none;
+}
+
 .nav-btn {
   background: linear-gradient(90deg, #2e87b0, #00537a);
-  padding: 1rem;
+  padding: 0.8rem 1rem;
   border: 2px solid #2e87b0;
   border-radius: 0.5rem;
   color: #ffffff;
@@ -80,7 +95,17 @@ ul.navlinks {
 
 @media screen and (max-width: 1000px) {
   .navbar {
+    max-height: 90px;
     padding: 0.5rem 0;
+  }
+
+  .stop-scroll {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .nav-brand-logo-ctn {
+    width: 125px;
   }
 
   .hamburger-ctn {
@@ -90,15 +115,19 @@ ul.navlinks {
   .navlinks {
     flex-direction: column;
     gap: 3rem;
-    position: absolute;
-    top: 5.35rem;
+    position: fixed;
+    top: 5.6rem;
     left: -100%;
     width: 100%;
     height: 100vh;
-    padding: 4rem 0 8rem 0;
+    padding-bottom: 7rem;
     background-color: #2e87b0;
     z-index: 9;
     transition: all 0.5s ease;
+  }
+
+  .nav-link-ctn:last-child {
+    display: block;
   }
 
   .navlinks-hamburger {

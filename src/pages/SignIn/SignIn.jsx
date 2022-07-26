@@ -2,24 +2,25 @@ import React from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
+import brandLogo from '../../images/network.png';
+import './SignUp.css';
 
 import { Link } from 'react-router-dom';
 
 function SignUp() {
   return (
     <div className="sign-up-page">
-      <img
-        src={sign}
-        alt="cover"
-        className="
+      <div className="left-side">
+        <img
+          src={sign}
+          alt="cover"
+          className="
         sign-up-img"
-      />
+        />
+        <img src={brandLogo} alt="brand logo" className="sign-up-logo" />
+      </div>
       <div className="right-side">
-        <div className="signup-header">
-          <div className="sign-up">
-            <h2>Sign In</h2>
-          </div>
-        </div>
+        <h2 className="sign-up-title">Sign In</h2>
         <div>
           <form className="signup-form">
             <h3 className="field-text">Email</h3>

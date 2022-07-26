@@ -1,42 +1,38 @@
-import React from 'react';
+import { useState, useRef } from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import './SignUp.css';
+import brandLogo from '../../images/network.png';
 
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
-
-
-import { useState } from 'react';
 
 function SignUp() {
-  
-  
   return (
     <div className="sign-up-page">
-      <img
-        src={sign}
-        alt="cover"
-        className="
+      <div className="left-side">
+        <img
+          src={sign}
+          alt="cover"
+          className="
         sign-up-img"
-      />
+        />
+        <img
+          src={brandLogo}
+          alt="new-market-dhaka logo"
+          className="sign-up-logo"
+        />
+      </div>
       <div className="right-side">
-        <div className="signup-header">
-          <div className="sign-up">
-            <h2>Sign Up</h2>
-            
-          </div>
-        </div>
+        <h2 className="sign-up-title">Sign Up</h2>
         <div>
-          <form className="signup-form" >
+          <form className="signup-form">
             <h3 className="field-text">Email</h3>
             <input type="email" className="field-style" />
             <h3 className="field-text">Password</h3>
             <input type="password" className="field-style" />
             <h3 className="field-text">Confirm Password</h3>
             <input type="password" className="field-style" />
-            <button className="sign-up-btn" >
+            <button className="sign-up-btn">
               <Link to="/sign_up_step_two" className="sign-up-link">
                 Sign Up
               </Link>
@@ -44,15 +40,17 @@ function SignUp() {
           </form>
         </div>
         <div className="signup-footer">
-          <p>
-            Already have an account?{' '}
-            <span className="sign-in">
-              <Link to="/sign_in" className="sign-in-btn">
-                Sign in
-              </Link>
-            </span>
-          </p>
-          <p>or, Sign up with</p>
+          <div className="signup-footer-text-ctn">
+            <p>
+              Already have an account?{' '}
+              <span className="sign-in">
+                <Link to="/sign_in" className="sign-in-btn">
+                  Sign in
+                </Link>
+              </span>
+            </p>
+            <p>or, Sign up with</p>
+          </div>
           <div className="signin">
             <button className="signin-btn">
               <img src={google} alt="" />
