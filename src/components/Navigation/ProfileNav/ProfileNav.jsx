@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TopNav from '../TopNav/TopNav';
 import './ProfileNav.css';
 import network from '../../../images/network.png';
 import profile from '../../../images/profile.png';
@@ -9,8 +8,12 @@ const ProfileNav = () => {
   return (
     <div className="profile-nav">
       <div className="navbar">
-        <div>
-          <img src={network} alt="" />
+        <div className="nav-brand-logo-ctn">
+          <img
+            src={network}
+            alt="new-market-dhaka logo"
+            className="nav-brand-logo"
+          />
         </div>
         <div>
           <ul className="navlinks">

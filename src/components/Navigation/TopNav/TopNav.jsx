@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import network from '../../../images/network.png';
 import { Link } from 'react-router-dom';
 import './TopNav.css';
@@ -18,10 +18,22 @@ function TopNav() {
   };
   useOnClickOutside(hamburgerButtonRef, hideHamburgerMenu);
 
+  useEffect(() => {
+    if (showHamburgerMenu) {
+      document.querySelector('body').classList.add('stop-scroll');
+    } else {
+      document.querySelector('body').classList.remove('stop-scroll');
+    }
+  }, [showHamburgerMenu]);
+
   return (
     <div className="navbar">
-      <div>
-        <img src={network} alt="network logo" className="brand-logo" />
+      <div className="nav-brand-logo-ctn">
+        <img
+          src={network}
+          alt="new-market-dhaka logo"
+          className="nav-brand-logo"
+        />
       </div>
       <ul
         className={
