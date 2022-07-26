@@ -2,6 +2,7 @@ import React from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
+import './SignUp.css';
 
 import { Link } from 'react-router-dom';
 
@@ -15,11 +16,7 @@ function SignUp() {
         sign-up-img"
       />
       <div className="right-side">
-        <div className="signup-header">
-          <div className="sign-up">
-            <h2>Sign In</h2>
-          </div>
-        </div>
+        <h2 className="sign-up-title">Sign In</h2>
         <div>
           <form className="signup-form">
             <h3 className="field-text">Email</h3>

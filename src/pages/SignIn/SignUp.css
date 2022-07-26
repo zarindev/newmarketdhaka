@@ -1,39 +1,32 @@
+.sign-up-page {
+  display: flex;
+}
 .sign-up-img {
   height: 100vh;
   object-fit: cover;
 }
-.sign-up-page {
-  display: flex;
-}
 
 .right-side {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
 }
 
-.signup-header {
-  display: flex;
-  justify-content: start;
+.sign-up-title {
   width: 35vw;
-  margin-bottom: 1.5rem;
-}
-.sign-up h2 {
+  min-width: 350px;
   font-weight: 700;
-  font-size: 35px;
-  line-height: 48px;
+  font-size: clamp(1.5rem, 2.5vw, 4rem);
 }
 .signup-form {
   width: 35vw;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
 }
 .field-text {
-  font-size: 19px;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   font-weight: 600;
   margin-bottom: -0.5rem;
 }
@@ -48,7 +41,8 @@
   display: grid;
   place-items: center;
   gap: 1rem;
-  font-size: 16px;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  text-align: center;
 }
 
 .field-style {
@@ -97,31 +91,75 @@
 .signup-footer-text-bold {
   font-weight: 600;
 }
-.signin-btn {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  padding: 15px 40px;
-  margin: 0.5rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-}
-.signin-btn:hover {
-  background: #e0e0e0;
-}
+
 .signin {
   margin-top: 1rem;
   display: flex;
-  flex-direction: row;
-  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .signin-btn {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  padding: 0.9rem 1.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 169px;
+  cursor: pointer;
+}
+.signin-btn:hover {
+  background: #e0e0e0;
 }
 .signin-btn img {
   width: 100px;
   height: 25px;
   object-fit: auto;
+}
+
+@media screen and (max-width: 769px) {
+  .sign-up-page {
+    display: block;
+    margin-top: 6rem;
+  }
+  .sign-up-img {
+    display: none;
+  }
+
+  .right-side {
+    width: 90vw;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .sign-up-title {
+    width: 90vw;
+    min-width: auto;
+  }
+
+  .signup-form {
+    width: 90vw;
+    min-width: auto;
+    gap: 1rem;
+  }
+
+  .signup-footer-text-ctn {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .signin-btn {
+    padding: 0.8rem 1rem;
+  }
+
+  .signin-btn img {
+    transform: scale(0.95);
+  }
+
+  .signup-footer-text-ctn {
+    gap: 0.45rem;
+  }
 }
