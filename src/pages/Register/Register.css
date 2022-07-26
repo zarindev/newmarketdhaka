@@ -18,13 +18,8 @@
 }
 
 .register-logo {
-  width: 35%;
-  min-width: 140px;
+  width: 190px;
   height: auto;
-}
-
-.register-logo-mobile {
-  display: none;
 }
 
 .register-title-ctn {
@@ -233,6 +228,7 @@
 }
 
 .register-form-button {
+  margin-top: 0.3rem;
   padding: 0.7rem 0;
   background-color: #ce2d4f;
   border: 2px solid #ce2d4f;
@@ -265,6 +261,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .register-logo {
+    width: 160px;
+  }
+
   .register-form {
     width: 40vw;
   }
@@ -277,7 +277,6 @@
 @media screen and (max-width: 769px) {
   .register {
     width: 90vw;
-    height: auto;
     min-height: auto;
     margin: 2.5rem auto 0 auto;
     flex-direction: column;
@@ -291,12 +290,7 @@
   }
 
   .register-logo {
-    display: none;
-  }
-
-  .register-logo-mobile {
-    display: block;
-    margin-left: -1rem;
+    width: 130px;
   }
 
   .register-title {
@@ -346,7 +340,7 @@
   }
 
   .register-form-upload-title {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .register-form-upload-label {
@@ -376,7 +370,7 @@
   }
 
   .register-form-fit-button {
-    margin: 0 auto;
+    margin: 0.3rem auto 0 auto;
   }
 }
 

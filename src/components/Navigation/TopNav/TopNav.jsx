@@ -9,22 +9,25 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
 function TopNav() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const hamburgerButtonRef = useRef();
   const hideHamburgerMenu = (e) => {
     if (!e.target.classList.contains('nav-link')) {
       setShowHamburgerMenu(false);
+    } else if (e.target.classList.contains('nav-link')) {
+      setIsClicked(true);
     }
   };
   useOnClickOutside(hamburgerButtonRef, hideHamburgerMenu);
 
   useEffect(() => {
-    if (showHamburgerMenu) {
+    if (showHamburgerMenu && !isClicked) {
       document.querySelector('body').classList.add('stop-scroll');
     } else {
       document.querySelector('body').classList.remove('stop-scroll');
     }
-  }, [showHamburgerMenu]);
+  }, [showHamburgerMenu, isClicked]);
 
   return (
     <div className="navbar">
