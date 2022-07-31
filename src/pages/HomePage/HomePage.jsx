@@ -7,8 +7,11 @@ import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Services from '../../components/Services/Services';
 import ServicesSlider from '../../components/ServicesSlider/ServicesSlider';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 function HomePage() {
+  useDocTitle();
+
   useEffect(() => {
     const docWidth = document.documentElement.offsetWidth;
     [].forEach.call(document.querySelectorAll('*'), function (el) {

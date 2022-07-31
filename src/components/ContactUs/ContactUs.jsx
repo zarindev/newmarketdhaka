@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // placeholder => Get started
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../Utilities/styles/toastify.css';
+import '../../styles/plugin.css';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';

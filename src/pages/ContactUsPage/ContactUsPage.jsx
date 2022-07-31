@@ -3,8 +3,11 @@ import './ContactUsPage.css';
 import ContactUs from '../../components/ContactUs/ContactUs';
 import Footer from '../../components/Footer/Footer';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 function ContactUsPage() {
+  useDocTitle();
+
   return (
     <>
       <TopNav />

@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDocTitle } from '../../hooks/useDocTitle';
 import sign from '../../images/sign.png';
 import './SignUpTwo.css';
 
-function SignUpTwo() {
+const SignUpTwo = () => {
+  useDocTitle();
+
   return (
     <div className="sign-up-page">
       <img
@@ -34,6 +37,6 @@ function SignUpTwo() {
       </div>
     </div>
   );
-}
+};
 
 export default SignUpTwo;

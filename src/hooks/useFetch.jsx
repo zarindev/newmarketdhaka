@@ -10,7 +10,7 @@ export const useFetch = (url) => {
   }, [url]);
 
   useEffect(() => {
-    getProducts();
+    getItems();
   }, [url, getItems]);
 
   return { items };

@@ -6,7 +6,11 @@ import brandLogo from '../../images/network.png';
 
 import { Link } from 'react-router-dom';
 
-function SignUp() {
+import React from 'react';
+import { useDocTitle } from '../../hooks/useDocTitle';
+
+const SignUp = () => {
+  useDocTitle();
   return (
     <div className="sign-up-page">
       <div className="left-side">
@@ -63,6 +67,6 @@ function SignUp() {
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;

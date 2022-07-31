@@ -4,8 +4,11 @@ import Footer from '../../components/Footer/Footer';
 
 import './AboutUs.css';
 import { aboutData } from './aboutData';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 function AboutUs() {
+  useDocTitle();
+
   return (
     <>
       <TopNav />

@@ -3,13 +3,16 @@ import './AllServices.css';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import Services from '../../components/Services/Services';
 import SingleService from './SingleService';
-import ScrollToTop from '../../components/Utilities/ScrollToTop';
 import homeAndOffice from '../../images/workspace 1.png';
 import carRentalService from '../../images/maintenance 1.png';
 import foodAndRestaurant from '../../images/grocery 1.png';
 import Footer from '../../components/Footer/Footer';
+import ScrollToTop from '../../utils/ScrollToTop';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const AllServices = () => {
+  useDocTitle();
+
   return (
     <>
       <ScrollToTop>
