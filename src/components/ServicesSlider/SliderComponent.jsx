@@ -7,10 +7,9 @@ import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
-import { useGlobalContext } from '../../context/FuncProvider';
+import { snakeCase } from '../../functions/formatString';
 
 const SliderComponent = ({ sliderTitle }) => {
-  const { snakeCase } = useGlobalContext();
   const [service, setService] = useState([]);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const SliderComponent = ({ sliderTitle }) => {
       }
     };
     getServices();
-  }, []);
+  }, [sliderTitle]);
 
   const rightArrowRef = useRef();
   const leftArrowRef = useRef();

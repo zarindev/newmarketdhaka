@@ -7,8 +7,11 @@ import emailIcon from '../../images/svg/Email-red.svg';
 import phoneIcon from '../../images/svg/Phone-red.svg';
 import locationIcon from '../../images/svg/Location-red.svg';
 import './ProfileEdit.css';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const ProfileEdit = () => {
+  useDocTitle();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');

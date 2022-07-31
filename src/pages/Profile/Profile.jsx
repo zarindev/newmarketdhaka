@@ -10,8 +10,11 @@ import loginLogo from '../../images/Logo-google-icon-PNG 1.png';
 import locationIcon from '../../images/svg/Location-red.svg';
 
 import './Profile.css';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const Profile = () => {
+  useDocTitle();
+
   return (
     <>
       <ProfileNav />

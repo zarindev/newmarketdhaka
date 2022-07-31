@@ -4,8 +4,11 @@ import './Register.css';
 import companyIcon from '../../images/company.png';
 import indieIcon from '../../images/indie.png';
 import RegisterLeft from './elements/RegisterLeft';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const Register = () => {
+  useDocTitle();
+
   return (
     <div className="register">
       <RegisterLeft />
