@@ -1,0 +1,21 @@
+.error {
+  position: relative;
+  width: 90vw;
+  max-width: 980px;
+  margin: 6rem auto 5rem auto;
+}
+
+.error-img {
+  display: block;
+  width: 710px;
+  max-width: 100%;
+  min-width: 150px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.error .rounded-btn {
+  position: absolute;
+  top: -9rem;
+  left: 0;
+}

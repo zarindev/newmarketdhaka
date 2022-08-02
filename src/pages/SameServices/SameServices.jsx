@@ -22,16 +22,13 @@ const SameServices = () => {
   const servicesPerPage = 9;
 
   useEffect(() => {
-    const getCurrentServices = () => {
-      const data = sliderData.find(
-        (services) => services.serviceType === checkCase(service_type)
-      );
-      const specificKey = Object.keys(data)[2];
-      const specificServices = data[specificKey];
-      specificServices && setCurrentServices(specificServices);
-    };
-    getCurrentServices();
-  });
+    const data = sliderData?.find(
+      (services) => services.serviceType === checkCase(service_type)
+    );
+
+    const specificServices = data.servicesAvilable;
+    specificServices && setCurrentServices(specificServices);
+  }, [service_type]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie

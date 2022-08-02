@@ -1,30 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
-import keywordIcon from '../../images/svg/box-search.svg';
-import locationIcon from '../../images/svg/location.svg';
 import searchIcon from '../../images/svg/search-normal.svg';
 import { motion } from 'framer-motion';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { dropdownData } from './dropdownData';
 
 const SearchBox = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
 
-  const keywordSearch = useRef('');
-  const locationSearch = useRef('');
+  const keywordSearch = useRef(null);
+  const locationSearch = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const buttonCtnRef = useRef();
+  const buttonCtnRef = useRef(null);
   useOnClickOutside(buttonCtnRef, () => setShowDropdown(false));
 
   const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: '-100%' },
+    open: { x: 0 },
+    closed: { x: '-200%' },
   };
 
   return (
@@ -33,28 +32,32 @@ const SearchBox = () => {
         <form className="form-control" onSubmit={handleSubmit}>
           <div className="search-category-ctn" ref={buttonCtnRef}>
             <div
-              className="category-btn"
+              className={`${
+                showDropdown
+                  ? 'category-btn category-btn-active'
+                  : 'category-btn'
+              }`}
               onClick={() => setShowDropdown(!showDropdown)}
             >
-              <p>ALL</p>
+              <p className="category-btn-text">ALL</p>
               <img src={downArrow} alt="down-arrow icon" />
             </div>
             <motion.ul
-              className={
+              className={`${
                 showDropdown
                   ? 'category-dropdown category-dropdown-show'
                   : 'category-dropdown'
-              }
+              }`}
               animate={showDropdown ? 'open' : 'closed'}
               variants={variants}
             >
-              <li className="dropdown-item">Sports, Fitness, Bags, Luggage</li>
-              <li className="dropdown-item">Books</li>
-              <li className="dropdown-item">Mobiles, Computers</li>
-              <li className="dropdown-item">Toys, Baby Products</li>
-              <li className="dropdown-item">Men's Fashion</li>
-              <li className="dropdown-item">Tv, Appliances, Electronics</li>
-              <li className="dropdown-item">Gift Cards & Mobile Recharges</li>
+              {dropdownData.map((item) => {
+                return (
+                  <li className="dropdown-item" key={item.id}>
+                    {item.title}
+                  </li>
+                );
+              })}
             </motion.ul>
           </div>
           <input
@@ -64,6 +67,7 @@ const SearchBox = () => {
             ref={keywordSearch}
             onChange={() => setKeyword(keywordSearch.current.value)}
           />
+
           <input
             type="text"
             placeholder="Location"
@@ -71,6 +75,7 @@ const SearchBox = () => {
             ref={locationSearch}
             onChange={() => setLocation(locationSearch.current.value)}
           />
+
           <button className="search-btn">
             <img
               src={searchIcon}

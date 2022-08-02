@@ -12,6 +12,10 @@
   background: url('../../images/Rectangle\ 663.png') no-repeat center;
 }
 
+.contact-page {
+  margin-top: 90px;
+}
+
 .contact-page .contact-intro {
   display: none;
 }
