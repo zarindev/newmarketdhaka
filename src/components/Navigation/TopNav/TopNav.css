@@ -8,16 +8,6 @@
   z-index: 16;
 }
 
-.navbar-ctn-colored {
-  background: rgba(155, 155, 155, 0.8);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-
-.navbar-ctn-colored .navlinks li a {
-  color: #ffffff;
-}
-
 .navbar {
   width: 90vw;
   height: 90px;
@@ -35,15 +25,6 @@
   width: 140px;
   height: auto;
   object-fit: cover;
-}
-
-.navbar-ctn-colored .nav-brand-logo,
-.nav-brand-logo-scrolled {
-  display: none;
-}
-
-.navbar-ctn-colored .nav-brand-logo-scrolled {
-  display: inline-block;
 }
 
 .navbar {
@@ -102,14 +83,6 @@
   transition: 0.3s;
 }
 
-.navbar-ctn-colored .nav-link::after {
-  background-color: #ffffff;
-}
-
-.navbar-ctn-colored .nav-link.active::after {
-  background-color: #ffffff;
-}
-
 .nav-btn {
   background: linear-gradient(90deg, #2e87b0, #00537a);
   padding: 0.8rem 1rem;
@@ -131,11 +104,6 @@
   transform: scale(0.95);
 }
 
-.navbar-ctn-colored .nav-btn:hover {
-  background: transparent;
-  color: hsl(0, 0%, 100%);
-}
-
 .mobile-btn-ctn {
   width: 25px;
   height: 25px;
@@ -145,6 +113,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .nav-brand-logo {
+    width: 125px;
+  }
+
   .mobile-btn-ctn {
     display: block;
   }

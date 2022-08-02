@@ -11,17 +11,6 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
 const TopNav = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', function () {
-      if (this.window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    });
-  }, []);
 
   const mobileBtnRef = useRef(null);
   const hideMobileMenu = (e) => {
@@ -38,24 +27,15 @@ const TopNav = () => {
   };
 
   return (
-    <div
-      className={`${
-        isScrolled ? 'navbar-ctn navbar-ctn-colored' : 'navbar-ctn'
-      }`}
-    >
+    <div className="navbar-ctn">
       <div className="navbar">
-        <NavLink to="/" className="nav-brand-link">
+        <Link to="/" className="nav-brand-link">
           <img
             src={brandLogo}
             alt="new-market-dhaka logo"
             className="nav-brand-logo"
           />
-          <img
-            src={brandLogoScrolled}
-            alt="new-market-dhaka logo"
-            className="nav-brand-logo nav-brand-logo-scrolled"
-          />
-        </NavLink>
+        </Link>
         <ul
           className={`${
             showMobileMenu ? 'navlinks navlinks-mobile' : 'navlinks'
