@@ -2,7 +2,8 @@ import { useState, useRef } from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/network.png';
+import brandLogo from '../../images/brand-logo.png';
+import brandLogoDesk from '../../images/brand-logo-transparent.png';
 
 import { Link } from 'react-router-dom';
 
@@ -21,9 +22,14 @@ const SignUp = () => {
         sign-up-img"
         />
         <img
-          src={brandLogo}
+          src={brandLogoDesk}
           alt="new-market-dhaka logo"
           className="sign-up-logo"
+        />
+        <img
+          src={brandLogo}
+          alt="new-market-dhaka logo"
+          className="sign-up-logo sign-up-logo-mobile"
         />
       </div>
       <div className="right-side">

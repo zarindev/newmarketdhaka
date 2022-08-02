@@ -2,7 +2,8 @@ import React from 'react';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/network.png';
+import brandLogo from '../../images/brand-logo.png';
+import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignUp.css';
 
 import { Link } from 'react-router-dom';
@@ -20,7 +21,12 @@ const SignUp = () => {
           className="
         sign-up-img"
         />
-        <img src={brandLogo} alt="brand logo" className="sign-up-logo" />
+        <img src={brandLogoDesk} alt="brand logo" className="sign-up-logo" />
+        <img
+          src={brandLogo}
+          alt="brand logo"
+          className="sign-up-logo sign-up-logo-mobile"
+        />
       </div>
       <div className="right-side">
         <h2 className="sign-up-title">Sign In</h2>

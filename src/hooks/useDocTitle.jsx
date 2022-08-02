@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { snakeToTitle, titleCase } from '../functions/formatString';
+import { titleCase, snakeToTitle } from '../functions/formatString';
 
-export const useDocTitle = () => {
+export const useDocTitle = (newTitle) => {
   const location = useLocation();
   const staticTitle = 'New Market Dhaka';
 
@@ -17,7 +17,7 @@ export const useDocTitle = () => {
       const newActiveTitle = titleCase(
         formatedActiveTitle.substring(formatedActiveTitle.indexOf('/') + 1)
       );
-      document.title = `${newActiveTitle} | ${staticTitle}`;
+      document.title = `${newTitle || newActiveTitle} | ${staticTitle}`;
     }
-  }, [location]);
+  }, [location, newTitle]);
 };

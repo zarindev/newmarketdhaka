@@ -23,6 +23,10 @@
   height: auto;
 }
 
+.sign-up-logo-mobile {
+  display: none;
+}
+
 .right-side {
   display: flex;
   gap: 1rem;
@@ -163,8 +167,13 @@
   }
 
   .sign-up-logo {
+    display: none;
     position: relative;
     width: 130px;
+  }
+
+  .sign-up-logo-mobile {
+    display: block;
   }
 
   .right-side {

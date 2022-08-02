@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import network from '../../../images/network.png';
+import brandLogo from '../../../images/brand-logo.png';
 import { Link } from 'react-router-dom';
 import './TopNav.css';
 import hamburgerButton from '../../../images/svg/bytesize_menu.svg';
@@ -33,7 +33,7 @@ function TopNav() {
     <div className="navbar">
       <div className="nav-brand-logo-ctn">
         <img
-          src={network}
+          src={brandLogo}
           alt="new-market-dhaka logo"
           className="nav-brand-logo"
         />
