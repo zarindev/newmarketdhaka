@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RoundedButton from '../SmallComponents/RoundedButton/RoundedButton';
+import RoundedButton from '../RoundedButton/RoundedButton';
 import './ServicesSlider.css';
 import SliderComponent from './SliderComponent';
 

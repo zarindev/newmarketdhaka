@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
-function ContactUsPage() {
+const ContactUsPage = () => {
   useDocTitle();
 
   return (
@@ -22,6 +22,6 @@ function ContactUsPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default ContactUsPage;

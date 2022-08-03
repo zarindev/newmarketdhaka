@@ -23,6 +23,7 @@ import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
 import MoreServices from './pages/MoreServices/MoreServices';
 import SameServices from './pages/SameServices/SameServices';
 import Error from './pages/404/Error';
+import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
 
 const App = () => {
   return (
@@ -70,6 +71,7 @@ const App = () => {
       <Route path=":service_type" element={<SameServices />} />
       <Route path="/more_services" element={<MoreServices />} />
       <Route path="/more_services/all_services" element={<AllServices />} />
+      <Route path="/service_dashboard" element={<ServiceDashboard />} />
       <Route path="*" element={<Error />}></Route>
     </Routes>
   );
