@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import brandLogo from '../../../images/brand-logo.png';
-import brandLogoScrolled from '../../../images/brand-logo-transparent.png';
 import './TopNav.css';
 import burgerBtn from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';

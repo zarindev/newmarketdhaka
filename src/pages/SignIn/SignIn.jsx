@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignUp.css';
-
-import { Link } from 'react-router-dom';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
 const SignUp = () => {

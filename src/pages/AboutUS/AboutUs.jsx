@@ -1,7 +1,6 @@
 import React from 'react';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
-
 import './AboutUs.css';
 import { aboutData } from './aboutData';
 import { useDocTitle } from '../../hooks/useDocTitle';

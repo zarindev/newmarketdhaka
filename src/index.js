@@ -6,6 +6,7 @@ import App from './App';
 
 import { StateMachineProvider, createStore } from 'little-state-machine';
 import { AppProvider } from './context/AppProvider';
+import ScrollToTop from './utils/ScrollToTop';
 
 createStore({});
 
@@ -14,7 +15,9 @@ root.render(
   <AppProvider>
     <StateMachineProvider>
       <Router>
-        <App />
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
       </Router>
     </StateMachineProvider>
   </AppProvider>

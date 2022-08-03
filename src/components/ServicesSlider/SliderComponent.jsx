@@ -26,8 +26,8 @@ const SliderComponent = ({ sliderTitle }) => {
     getServices();
   }, [sliderTitle]);
 
-  const rightArrowRef = useRef();
-  const leftArrowRef = useRef();
+  const rightArrowRef = useRef(null);
+  const leftArrowRef = useRef(null);
 
   return (
     <div className="slider-component">
@@ -66,8 +66,8 @@ const SliderComponent = ({ sliderTitle }) => {
             nextEl: rightArrowRef.current,
           }}
           onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = leftArrowRef.current;
-            swiper.params.navigation.nextEl = rightArrowRef.current;
+            swiper.params.navigation.prevEl = leftArrowRef?.current;
+            swiper.params.navigation.nextEl = rightArrowRef?.current;
           }}
           breakpoints={{
             640: {

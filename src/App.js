@@ -66,11 +66,11 @@ const App = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/edit_profile" element={<ProfileEdit />} />
       <Route path="/all_services" element={<AllServices />} />
-      <Route path="/:service_type/:title" element={<ServiceDetails />} />
-      <Route path="/:service_type" element={<SameServices />} />
+      <Route path=":service_type/:title" element={<ServiceDetails />} />
+      <Route path=":service_type" element={<SameServices />} />
       <Route path="/more_services" element={<MoreServices />} />
       <Route path="/more_services/all_services" element={<AllServices />} />
-      <Route path="/error" element={<Error />} />
+      <Route path="*" element={<Error />}></Route>
     </Routes>
   );
 };
