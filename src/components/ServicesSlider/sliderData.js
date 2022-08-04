@@ -16,8 +16,8 @@ import itFour from '../../images/service-zero.png';
 export const sliderData = [
   {
     id: 1,
-    serviceType: 'Home services',
-    servicesAvilable: [
+    serType: 'Home services',
+    serAvailable: [
       {
         id: 1,
         image: [itOne, itTwo, itThree, itFour],
@@ -796,8 +796,8 @@ export const sliderData = [
   },
   {
     id: 2,
-    serviceType: 'Car services',
-    servicesAvilable: [
+    serType: 'Car services',
+    serAvailable: [
       {
         id: 1,
         image: [carOne, carTwo, carThree, carFour],
@@ -931,8 +931,8 @@ export const sliderData = [
   },
   {
     id: 3,
-    serviceType: 'IT training',
-    servicesAvilable: [
+    serType: 'IT training',
+    serAvailable: [
       {
         id: 1,
         image: [itOne, itTwo, itThree, itFour],

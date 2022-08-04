@@ -11,7 +11,7 @@ const SingleSlide = ({
   location,
   profileIcon,
   name,
-  sliderTitle,
+  serType,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -34,7 +34,7 @@ const SingleSlide = ({
           );
         })}
       </div>
-      <Link to={`/${snakeCase(sliderTitle)}/${snakeCase(title)}`}>
+      <Link to={`/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-image-ctn">
             <img src={image[imageIndex]} alt={title} className="slide-image" />

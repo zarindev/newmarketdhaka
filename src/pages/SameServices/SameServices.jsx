@@ -22,12 +22,12 @@ const SameServices = () => {
   const servicesPerPage = 9;
 
   useEffect(() => {
-    const data = sliderData?.find(
-      (services) => services.serviceType === checkCase(service_type)
+    const specificService = sliderData.find(
+      (service) => service.serType === checkCase(service_type)
     );
 
-    const specificServices = data.servicesAvilable;
-    specificServices && setCurrentServices(specificServices);
+    const { serAvailable } = specificService;
+    serAvailable && setCurrentServices(serAvailable);
   }, [service_type]);
 
   useEffect(() => {

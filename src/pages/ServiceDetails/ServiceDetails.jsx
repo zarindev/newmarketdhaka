@@ -24,11 +24,13 @@ const ServiceDetails = () => {
 
   const { service_type, title } = useParams();
 
-  const activeService = sliderData.find(
-    (services) => snakeCase(services.serviceType) === service_type
-  )['servicesAvilable'];
+  const specificService = sliderData.find(
+    (service) => snakeCase(service.serType) === service_type
+  );
 
-  const activeSlide = activeService.find(
+  const { serAvailable } = specificService;
+
+  const activeService = serAvailable.find(
     (slide) => snakeCase(slide.title) === title
   );
 
@@ -43,7 +45,7 @@ const ServiceDetails = () => {
         </p>
         <div className="service-details-contents">
           <div className="service-details-content">
-            <DetailsList key={activeSlide.id} {...activeSlide} />
+            <DetailsList key={activeService.id} {...activeService} />
           </div>
           <div className="service-details-contact">
             <div className="details-contact-intro">
@@ -95,7 +97,7 @@ const ServiceDetails = () => {
         </div>
         <div className="service-details-more">
           <p className="details-more-title">More services from the provider</p>
-          <SliderComponent sliderTitle={capitalCase(service_type)} />
+          <SliderComponent serType={capitalCase(service_type)} />
         </div>
       </div>
       <Footer />
