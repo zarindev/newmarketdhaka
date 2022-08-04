@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { allServicesData } from './allServicesData';
 
 const SingleService = ({ serviceImage, serviceTitle }) => {

@@ -22,6 +22,10 @@
   height: auto;
 }
 
+.register-logo-mobile {
+  display: none;
+}
+
 .register-title-ctn {
   display: flex;
   flex-direction: column;
@@ -290,7 +294,12 @@
   }
 
   .register-logo {
+    display: none;
     width: 130px;
+  }
+
+  .register-logo-mobile {
+    display: block;
   }
 
   .register-title {

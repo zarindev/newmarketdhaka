@@ -11,7 +11,8 @@
   max-width: 980px;
   margin: 0 auto;
   background: #ffffff;
-  box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   border-radius: 20px;
 }
 
@@ -34,7 +35,7 @@
 .category-btn {
   padding: 1rem 0;
   background-color: #ececec;
-  border: 1px solid #d0d0d0;
+  border: 0.5px solid #bfbfbf;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
@@ -43,10 +44,20 @@
   gap: 0.5rem;
 }
 
+.category-btn-text {
+  font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
+}
+
+.category-btn:hover,
+.category-btn-active {
+  outline: 0.1rem solid #ce2d4f;
+}
+
 .category-dropdown {
   position: absolute;
   background-color: #ffffff;
-  box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -54,18 +65,16 @@
   margin-top: 0.5rem;
   padding: 1rem;
   z-index: 8;
-  max-height: 0;
-  visibility: hidden;
+  opacity: 0;
 }
 
 .category-dropdown-show {
-  max-height: 225px;
-  visibility: visible;
+  opacity: 1;
 }
 
 .dropdown-item {
   font-weight: 400;
-  font-size: 14px;
+  font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
   color: #2d2d2d;
   white-space: nowrap;
   cursor: pointer;
@@ -78,25 +87,35 @@
 .search-keywords {
   position: relative;
   width: 38%;
-  padding: 1.1rem 0;
-  background: #f2f2f2;
+  background-color: #f2f2f2;
   border: 0.5px solid #bfbfbf;
   border-radius: 10px;
   margin-right: 1.2rem;
+  background-image: url('../../images/svg/box-search.svg');
+  background-position: left;
 }
 
 .search-location {
   width: 32%;
-  padding: 1.1rem 0;
   background: #f2f2f2;
   border: 0.5px solid #bfbfbf;
   border-radius: 10px;
   margin-right: 1.2rem;
+  background-image: url('../../images/svg/location.svg');
+  background-position: left;
+}
+
+.search-keywords,
+.search-location {
+  padding: 1.1rem 1.2rem;
+  background-origin: content-box;
+  background-size: 21px 21px;
+  background-repeat: no-repeat;
 }
 
 .search-input {
-  text-indent: 1.5rem;
-  font-size: 17px;
+  text-indent: 2.3rem;
+  font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
   z-index: 8;
 }
 
@@ -106,7 +125,6 @@
 
 .search-input::placeholder {
   font-weight: 400;
-  font-size: 17px;
   color: #4f4f4f;
 }
 
@@ -138,7 +156,8 @@
 
 @media screen and (max-width: 1000px) {
   .serach-ctn {
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   }
 
   .form-control {
@@ -151,14 +170,16 @@
     display: none;
   }
 
-  .search-input {
-    width: 100%;
-    margin: 0 auto;
-    font-size: 15px;
+  .search-keywords,
+  .search-location {
+    padding: 1.1rem;
+    background-size: 19px 19px;
   }
 
-  .search-input::placeholder {
-    font-size: 15px;
+  .search-input {
+    text-indent: 2rem;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .search-btn {

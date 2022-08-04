@@ -1,7 +1,7 @@
 .service-details {
   width: 90vw;
   max-width: 990px;
-  margin: 2rem auto 6rem auto;
+  margin: 10.6rem auto 6rem auto;
 }
 
 .details-directory {
@@ -316,7 +316,7 @@
 
 @media screen and (max-width: 1000px) {
   .service-details {
-    margin: 1.5rem auto 4rem auto;
+    margin: 7.5rem auto 4rem auto;
   }
 
   .details-directory {

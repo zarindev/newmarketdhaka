@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // placeholder => Get started
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../Utilities/styles/toastify.css';
+import '../../styles/plugin.css';
 import './ContactUs.css';
 import contactImage from '../../images/Ellipse 142.png';
 import phoneIcon from '../../images/svg/Phone.svg';
@@ -27,7 +27,7 @@ const ContactUs = () => {
   };
 
   const notify = () => {
-    toast.success('Successfully submitted', {
+    toast.success('Successfully Submitted', {
       progress: undefined,
     });
   };
@@ -44,16 +44,10 @@ const ContactUs = () => {
             do amet sint. Velit officia consequat <br /> duis enim velit mollit.
             Exercitation veniam <br /> consequat sunt nostrud amet.
           </p>
-          <Link to="/profile">
-            <button className="contact-btn">Get started</button>
-          </Link>
+          <button className="contact-btn">Get started</button>
         </div>
         <div className="contact-image-ctn">
-          <img
-            src={contactImage}
-            alt="contact image"
-            className="contact-image"
-          />
+          <img src={contactImage} alt="contact" className="contact-image" />
         </div>
       </div>
       <div className="contact-form-ctn">

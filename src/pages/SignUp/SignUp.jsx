@@ -1,12 +1,15 @@
-import { useState, useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/network.png';
+import brandLogo from '../../images/brand-logo.png';
+import brandLogoDesk from '../../images/brand-logo-transparent.png';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
-import { Link } from 'react-router-dom';
+const SignUp = () => {
+  useDocTitle();
 
-function SignUp() {
   return (
     <div className="sign-up-page">
       <div className="left-side">
@@ -17,9 +20,14 @@ function SignUp() {
         sign-up-img"
         />
         <img
-          src={brandLogo}
+          src={brandLogoDesk}
           alt="new-market-dhaka logo"
           className="sign-up-logo"
+        />
+        <img
+          src={brandLogo}
+          alt="new-market-dhaka logo"
+          className="sign-up-logo sign-up-logo-mobile"
         />
       </div>
       <div className="right-side">
@@ -63,6 +71,6 @@ function SignUp() {
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;

@@ -15,14 +15,14 @@ const Hero = () => {
 
   useEffect(() => {
     imageIndex > heroImageData.length - 1 && setImageIndex(0);
-  }, [imageIndex, heroImageData]);
+  }, [imageIndex]);
 
   return (
     <div className="hero">
       <div className="hero-image-ctn">
         <img
           src={heroImageData[imageIndex]}
-          alt="hero image"
+          alt="hero"
           className="hero-image"
         />
       </div>

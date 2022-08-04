@@ -1,84 +1,85 @@
-import { useState, useRef, useEffect } from 'react';
-import network from '../../../images/network.png';
-import { Link } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import brandLogo from '../../../images/brand-logo.png';
 import './TopNav.css';
-import hamburgerButton from '../../../images/svg/bytesize_menu.svg';
+import burgerBtn from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
 import { navData } from '../navData';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
-function TopNav() {
-  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+const TopNav = () => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const hamburgerButtonRef = useRef();
-  const hideHamburgerMenu = (e) => {
+  const mobileBtnRef = useRef(null);
+  const hideMobileMenu = (e) => {
     if (!e.target.classList.contains('nav-link')) {
-      setShowHamburgerMenu(false);
+      setShowMobileMenu(false);
     } else if (e.target.classList.contains('nav-link')) {
-      setIsClicked(true);
     }
   };
-  useOnClickOutside(hamburgerButtonRef, hideHamburgerMenu);
+  useOnClickOutside(mobileBtnRef, hideMobileMenu);
 
-  useEffect(() => {
-    if (showHamburgerMenu && !isClicked) {
-      document.querySelector('body').classList.add('stop-scroll');
-    } else {
-      document.querySelector('body').classList.remove('stop-scroll');
-    }
-  }, [showHamburgerMenu, isClicked]);
+  const mobileBtnVar = {
+    open: { rotate: 90 },
+    closed: { rotate: 0 },
+  };
 
   return (
-    <div className="navbar">
-      <div className="nav-brand-logo-ctn">
-        <img
-          src={network}
-          alt="new-market-dhaka logo"
-          className="nav-brand-logo"
-        />
-      </div>
-      <ul
-        className={
-          showHamburgerMenu ? 'navlinks navlinks-hamburger' : 'navlinks'
-        }
-      >
-        {navData.map((item, index) => {
-          return (
-            <li className="nav-link-ctn" key={index}>
-              <Link to={item.link} className="nav-link">
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      <div>
-        <Link to="/register">
-          <button className="nav-btn">Register Your Service</button>
+    <div className="navbar-ctn">
+      <div className="navbar">
+        <Link to="/" className="nav-brand-link">
+          <img
+            src={brandLogo}
+            alt="new-market-dhaka logo"
+            className="nav-brand-logo"
+          />
         </Link>
-      </div>
-      <div
-        className="hamburger-ctn"
-        onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
-        ref={hamburgerButtonRef}
-      >
-        {showHamburgerMenu ? (
-          <img
-            src={closeButton}
-            alt="hamburger-close"
-            className="hamburger-close-btn"
-          />
-        ) : (
-          <img
-            src={hamburgerButton}
-            alt="hamburger-open"
-            className="hamburger-open-btn"
-          />
-        )}
+        <ul
+          className={`${
+            showMobileMenu ? 'navlinks navlinks-mobile' : 'navlinks'
+          }`}
+        >
+          {navData.map((item, index) => {
+            return (
+              <li
+                className="nav-link-ctn"
+                key={index}
+                onClick={() => setShowMobileMenu(false)}
+              >
+                <NavLink to={item.link} className="nav-link">
+                  {item.title}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        <div>
+          <Link to="/register">
+            <button className="nav-btn">Register Your Service</button>
+          </Link>
+        </div>
+        <motion.div
+          className="mobile-btn-ctn"
+          ref={mobileBtnRef}
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          animate={showMobileMenu ? 'open' : 'close'}
+          variants={mobileBtnVar}
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.3 },
+          }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {showMobileMenu ? (
+            <img src={closeButton} alt="mobile-close" className="mobile-btn" />
+          ) : (
+            <img src={burgerBtn} alt="mobile-open" className="mobile-btn" />
+          )}
+        </motion.div>
       </div>
     </div>
   );
-}
+};
 
 export default TopNav;

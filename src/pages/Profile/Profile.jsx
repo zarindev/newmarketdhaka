@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProfileNav from '../../components/Navigation/ProfileNav/ProfileNav';
+import TopNav from '../../components/Navigation/TopNav/TopNav';
 import profile from '../../images/profile.png';
 import profileEditIcon from '../../images/svg/user-edit.svg';
 import profileIcon from '../../images/svg/Profile-red.svg';
@@ -8,13 +8,15 @@ import emailIcon from '../../images/svg/Email-red.svg';
 import phoneIcon from '../../images/svg/Phone-red.svg';
 import loginLogo from '../../images/Logo-google-icon-PNG 1.png';
 import locationIcon from '../../images/svg/Location-red.svg';
-
 import './Profile.css';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const Profile = () => {
+  useDocTitle();
+
   return (
     <>
-      <ProfileNav />
+      <TopNav />
       <div className="profile-ctn">
         <div className="profile">
           <div className="profile-image-ctn">

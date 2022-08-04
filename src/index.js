@@ -1,21 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
+import './styles/index.css';
 import App from './App';
-
 import { StateMachineProvider, createStore } from 'little-state-machine';
-import { FuncProvider } from './context/FuncProvider';
+import { AppProvider } from './context/AppProvider';
+import ScrollToTop from './utils/ScrollToTop';
 
 createStore({});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <FuncProvider>
+  <AppProvider>
     <StateMachineProvider>
       <Router>
-        <App />
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
       </Router>
     </StateMachineProvider>
-  </FuncProvider>
+  </AppProvider>
 );

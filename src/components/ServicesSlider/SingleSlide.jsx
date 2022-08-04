@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/FuncProvider';
-
+import { snakeCase } from '../../functions/formatString';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 
 const SingleSlide = ({
@@ -14,7 +13,6 @@ const SingleSlide = ({
   name,
   sliderTitle,
 }) => {
-  const { snakeCase } = useGlobalContext();
   const [imageIndex, setImageIndex] = useState(0);
 
   return (

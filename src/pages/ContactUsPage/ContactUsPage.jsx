@@ -3,8 +3,11 @@ import './ContactUsPage.css';
 import ContactUs from '../../components/ContactUs/ContactUs';
 import Footer from '../../components/Footer/Footer';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
-function ContactUsPage() {
+const ContactUsPage = () => {
+  useDocTitle();
+
   return (
     <>
       <TopNav />
@@ -19,6 +22,6 @@ function ContactUsPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default ContactUsPage;

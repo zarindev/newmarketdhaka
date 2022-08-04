@@ -1,7 +1,7 @@
 .more-services-ctn {
   width: 90vw;
   max-width: 980px;
-  margin: 0 auto 70px auto;
+  margin: 10.6rem auto 4.5rem auto;
 }
 
 .more-services {
@@ -21,7 +21,7 @@
 
 @media screen and (max-width: 1000px) {
   .more-services-ctn {
-    margin: 0 auto 65px auto;
+    margin: 7.5rem auto 4rem auto;
   }
 
   .more-services {
