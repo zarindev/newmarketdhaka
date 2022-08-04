@@ -54,7 +54,7 @@ const SameServices = () => {
               <SingleSlide
                 key={service.id}
                 {...service}
-                sliderTitle={checkCase(service_type)}
+                serType={checkCase(service_type)}
               />
             );
           })}

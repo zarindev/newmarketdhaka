@@ -18,6 +18,7 @@ import {
   snakeCase,
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 const ServiceDetails = () => {
   useDocTitle();
@@ -35,7 +36,7 @@ const ServiceDetails = () => {
   );
 
   return (
-    <>
+    <ScrollToTop>
       <TopNav />
       <CategoryNav />
       <div className="service-details">
@@ -45,7 +46,7 @@ const ServiceDetails = () => {
         </p>
         <div className="service-details-contents">
           <div className="service-details-content">
-            <DetailsList key={activeService.id} {...activeService} />
+            <DetailsList {...activeService} />
           </div>
           <div className="service-details-contact">
             <div className="details-contact-intro">
@@ -97,11 +98,11 @@ const ServiceDetails = () => {
         </div>
         <div className="service-details-more">
           <p className="details-more-title">More services from the provider</p>
-          <SliderComponent serType={capitalCase(service_type)} />
+          <SliderComponent serType={service_type} />
         </div>
       </div>
       <Footer />
-    </>
+    </ScrollToTop>
   );
 };
 

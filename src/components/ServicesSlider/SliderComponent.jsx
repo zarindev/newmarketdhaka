@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -14,7 +14,7 @@ const SliderComponent = ({ id, serType }) => {
   const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
 
   const specificService = sliderData.find(
-    (service) => service.serType === serType
+    (service) => snakeCase(service.serType) === snakeCase(serType)
   );
   const { serAvailable } = specificService;
 

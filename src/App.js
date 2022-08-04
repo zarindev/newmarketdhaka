@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useRoutes, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUS/AboutUs';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
@@ -30,7 +30,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/home" element={<HomePage />} />
+      <Route path=":service_type" element={<SameServices />} />
+      <Route path=":service_type/:title" element={<ServiceDetails />} />
       <Route path="/about_us" element={<AboutUs />} />
       <Route path="/contact_us" element={<ContactUsPage />} />
       <Route path="/sign_up_step_two" element={<SignUpTwo />} />
@@ -68,8 +69,6 @@ const App = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/edit_profile" element={<ProfileEdit />} />
       <Route path="/all_services" element={<AllServices />} />
-      <Route path="/:service_type/:title" element={<ServiceDetails />} />
-      <Route path="/:service_type" element={<SameServices />} />
       <Route path="/more_services" element={<MoreServices />} />
       <Route path="/more_services/all_services" element={<AllServices />} />
       <Route path="/service_dashboard" element={<ServiceDashboard />} />
