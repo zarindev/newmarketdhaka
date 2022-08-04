@@ -24,13 +24,6 @@ const checkCase = (service_type) => {
   }
 };
 
-const snakeToTitle = (str) => {
-  const snakeToTitled = str.replace(/^_*(.)|_+(.)/g, (s, c, d) =>
-    c ? c.toUpperCase() : ' ' + d.toUpperCase()
-  );
-  return snakeToTitled;
-};
-
 const camelCase = (str) => {
   const camelCased = str.replace(/_([a-z])/g, function (g) {
     return g[1].toUpperCase();
@@ -43,12 +36,19 @@ const snakeCase = (str) => {
   return snakeCased;
 };
 
+const snakeToTitle = (str) => {
+  const snakeToTitled = str.replace(/^_*(.)|_+(.)/g, (s, c, d) =>
+    c ? c.toUpperCase() : ' ' + d.toUpperCase()
+  );
+  return snakeToTitled;
+};
+
 export {
   titleCase,
   capitalCase,
   itCapitalCase,
   checkCase,
-  camelCase,
   snakeCase,
+  camelCase,
   snakeToTitle,
 };

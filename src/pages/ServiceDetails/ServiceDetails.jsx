@@ -18,22 +18,25 @@ import {
   snakeCase,
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 const ServiceDetails = () => {
   useDocTitle();
 
   const { service_type, title } = useParams();
 
-  const activeService = sliderData.find(
-    (services) => snakeCase(services.serviceType) === service_type
-  )['servicesAvilable'];
+  const specificService = sliderData.find(
+    (service) => snakeCase(service.serType) === service_type
+  );
 
-  const activeSlide = activeService.find(
+  const { serAvailable } = specificService;
+
+  const activeService = serAvailable.find(
     (slide) => snakeCase(slide.title) === title
   );
 
   return (
-    <>
+    <ScrollToTop>
       <TopNav />
       <CategoryNav />
       <div className="service-details">
@@ -43,7 +46,7 @@ const ServiceDetails = () => {
         </p>
         <div className="service-details-contents">
           <div className="service-details-content">
-            <DetailsList key={activeSlide.id} {...activeSlide} />
+            <DetailsList {...activeService} />
           </div>
           <div className="service-details-contact">
             <div className="details-contact-intro">
@@ -95,11 +98,11 @@ const ServiceDetails = () => {
         </div>
         <div className="service-details-more">
           <p className="details-more-title">More services from the provider</p>
-          <SliderComponent sliderTitle={capitalCase(service_type)} />
+          <SliderComponent serType={service_type} />
         </div>
       </div>
       <Footer />
-    </>
+    </ScrollToTop>
   );
 };
 

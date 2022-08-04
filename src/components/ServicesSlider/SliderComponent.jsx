@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -10,24 +10,13 @@ import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
 import { useFetch } from '../../hooks/useFetch';
 
-const SliderComponent = ({ sliderTitle }) => {
-  const [service, setService] = useState([]);
-
+const SliderComponent = ({ id, serType }) => {
   const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
 
-  useEffect(() => {
-    const getServices = () => {
-      const data = sliderData.find(
-        (services) => snakeCase(services.serviceType) === snakeCase(sliderTitle)
-      );
-      if (data.serviceType) {
-        setService(data.servicesAvilable);
-      } else {
-        setService([]);
-      }
-    };
-    getServices();
-  }, [sliderTitle]);
+  const specificService = sliderData.find(
+    (service) => snakeCase(service.serType) === snakeCase(serType)
+  );
+  const { serAvailable } = specificService;
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -35,8 +24,8 @@ const SliderComponent = ({ sliderTitle }) => {
   return (
     <div className="slider-component">
       <div className="slider-heading">
-        <h3 className="slider-title">{sliderTitle}</h3>
-        <Link to={`/${snakeCase(sliderTitle)}`}>
+        <h3 className="slider-title">{serType}</h3>
+        <Link to={`/${snakeCase(serType)}`}>
           <div className="slider-btn-ctn">
             <p className="slider-btn-text">See All</p>
             <img
@@ -86,10 +75,10 @@ const SliderComponent = ({ sliderTitle }) => {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {service.map((slide) => {
+          {serAvailable.map((slide) => {
             return (
               <SwiperSlide key={slide.id}>
-                <SingleSlide {...slide} sliderTitle={sliderTitle} />
+                <SingleSlide {...slide} serType={serType} />
               </SwiperSlide>
             );
           })}

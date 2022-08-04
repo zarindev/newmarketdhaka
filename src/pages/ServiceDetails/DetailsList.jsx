@@ -3,6 +3,7 @@ import ellipse from '../../images/svg/Ellipse 2.svg';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 const DetailsList = ({
   title,
@@ -28,7 +29,7 @@ const DetailsList = ({
   }, [image, imageIndex]);
 
   return (
-    <>
+    <ScrollToTop>
       <div className="details-image-ctn">
         <img src={image[imageIndex]} alt={title} className="details-image" />
         <div className="details-dots-ctn">
@@ -94,7 +95,7 @@ const DetailsList = ({
           <div className="details-list">
             <p className="details-list-sub-title">Services we offer:</p>
             <ul className="details-list-items">
-              {offeredServices.map((item, index) => {
+              {offeredServices?.map((item, index) => {
                 return (
                   <li className="details-list-item" key={index}>
                     {item}
@@ -106,7 +107,7 @@ const DetailsList = ({
           <div className="details-list">
             <p className="details-list-sub-title">Extra services we offer:</p>
             <ul className="details-list-items">
-              {extraServices.map((item, index) => {
+              {extraServices?.map((item, index) => {
                 return (
                   <li className="details-list-item" key={index}>
                     {item}
@@ -119,7 +120,7 @@ const DetailsList = ({
           <div className="details-list">
             <p className="details-list-sub-title">Why choose us:</p>
             <ul className="details-list-items">
-              {whyUs.map((item, index) => {
+              {whyUs?.map((item, index) => {
                 return (
                   <li className="details-list-item" key={index}>
                     {item}
@@ -130,7 +131,7 @@ const DetailsList = ({
           </div>
         </div>
       </div>
-    </>
+    </ScrollToTop>
   );
 };
 

@@ -1,0 +1,41 @@
+.upload-ser-ctn {
+  position: relative;
+  height: 100vh;
+  background-color: #f7f7f7;
+  display: flex;
+}
+
+.upload-ser {
+  position: absolute;
+  top: 0;
+  left: 18rem;
+  right: 0;
+  width: 65vw;
+  max-width: 980px;
+  margin: 3.5rem auto 4rem auto;
+  display: flex;
+}
+
+.upload-ser-left,
+.upload-ser-right {
+  width: 50%;
+}
+
+.upload-tag-ctn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.upload-tag-label {
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #1d1d1d;
+  border-radius: 22px;
+  font-size: clamp(0.84375rem, 0.8375rem + 0.03125vw, 0.875rem);
+  color: #1d1d1d;
+  display: grid;
+  place-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}

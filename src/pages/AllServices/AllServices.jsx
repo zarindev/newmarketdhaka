@@ -1,13 +1,11 @@
-import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './AllServices.css';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import Services from '../../components/Services/Services';
-import SingleService from './SingleService';
-import homeAndOffice from '../../images/workspace 1.png';
-import carRentalService from '../../images/maintenance 1.png';
-import foodAndRestaurant from '../../images/grocery 1.png';
+import AllServicesList from './AllServicesList';
 import Footer from '../../components/Footer/Footer';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { allServicesData } from './allServicesData';
 
 const AllServices = () => {
   useDocTitle();
@@ -21,18 +19,9 @@ const AllServices = () => {
         </div>
         <Services />
         <div className="all-services-contents">
-          <SingleService
-            serviceImage={homeAndOffice}
-            serviceTitle="Home & Office"
-          />
-          <SingleService
-            serviceImage={carRentalService}
-            serviceTitle="Car Rental Service"
-          />
-          <SingleService
-            serviceImage={foodAndRestaurant}
-            serviceTitle="Food & Restaurant"
-          />
+          {allServicesData.map((service) => {
+            return <AllServicesList key={uuidv4()} {...service} />;
+          })}
         </div>
       </div>
       <Footer />
