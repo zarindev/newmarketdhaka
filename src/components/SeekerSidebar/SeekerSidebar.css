@@ -1,0 +1,41 @@
+.seeker-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18rem;
+  height: 100vh;
+  padding: 0 1.8rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+.seeker-item {
+  display: flex;
+  gap: 1.2rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.seeker-bottom-item {
+  margin-top: 20rem;
+}
+
+.seeker-item-icon {
+  max-width: 100%;
+  width: 24px;
+  height: 24px;
+}
+
+.seeker-item-text {
+  font-size: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+@media screen and (max-width: 1000px) {
+  .seeker-sidebar {
+    display: none;
+  }
+}

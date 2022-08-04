@@ -8,9 +8,12 @@ import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
+import { useFetch } from '../../hooks/useFetch';
 
 const SliderComponent = ({ sliderTitle }) => {
   const [service, setService] = useState([]);
+
+  const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
 
   useEffect(() => {
     const getServices = () => {

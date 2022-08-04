@@ -120,13 +120,12 @@
     padding-bottom: 7rem;
     background-color: #2e87b0;
     z-index: 9;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease-in-out;
   }
 
   .navlinks-mobile {
     left: 50%;
     transform: translateX(-50%);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .nav-link-ctn:last-child {
