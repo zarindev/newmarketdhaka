@@ -8,9 +8,12 @@ import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
+import { useFetch } from '../../hooks/useFetch';
 
 const SliderComponent = ({ sliderTitle }) => {
   const [service, setService] = useState([]);
+
+  const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
 
   useEffect(() => {
     const getServices = () => {
@@ -26,8 +29,8 @@ const SliderComponent = ({ sliderTitle }) => {
     getServices();
   }, [sliderTitle]);
 
-  const rightArrowRef = useRef();
-  const leftArrowRef = useRef();
+  const rightArrowRef = useRef(null);
+  const leftArrowRef = useRef(null);
 
   return (
     <div className="slider-component">
@@ -58,7 +61,7 @@ const SliderComponent = ({ sliderTitle }) => {
           ref={rightArrowRef}
         />
         <Swiper
-          spaceBetween={11}
+          spaceBetween={12}
           loop={true}
           loopFillGroupWithBlank={true}
           navigation={{
@@ -66,8 +69,8 @@ const SliderComponent = ({ sliderTitle }) => {
             nextEl: rightArrowRef.current,
           }}
           onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = leftArrowRef.current;
-            swiper.params.navigation.nextEl = rightArrowRef.current;
+            swiper.params.navigation.prevEl = leftArrowRef?.current;
+            swiper.params.navigation.nextEl = rightArrowRef?.current;
           }}
           breakpoints={{
             640: {

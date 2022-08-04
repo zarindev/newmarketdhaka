@@ -1,4 +1,3 @@
-import React from 'react';
 import './RoundedButton.css';
 
 const RoundedButton = ({ buttonText, buttonIcon, buttonAltText }) => {

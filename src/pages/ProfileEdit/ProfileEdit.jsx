@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import ProfileNav from '../../components/Navigation/ProfileNav/ProfileNav';
+import TopNav from '../../components/Navigation/TopNav/TopNav';
 import profile from '../../images/profile.png';
 import saveIcon from '../../images/svg/save.svg';
 import profileIcon from '../../images/svg/Profile-red.svg';
@@ -28,7 +28,7 @@ const ProfileEdit = () => {
 
   return (
     <>
-      <ProfileNav />
+      <TopNav />
       <div className="edit-ctn">
         <div className="edit">
           <div className="profile-image-ctn">

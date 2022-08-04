@@ -1,0 +1,138 @@
+.service-dash-ctn {
+  position: relative;
+  height: 100vh;
+  background-color: #f7f7f7;
+  display: flex;
+}
+
+.service-dash {
+  position: absolute;
+  top: 0;
+  left: 18rem;
+  right: 0;
+  width: 65vw;
+  max-width: 980px;
+  margin: 3.5rem auto 4rem auto;
+}
+
+.service-dash-banner {
+  position: relative;
+  width: 100%;
+  padding: 1.7rem;
+  background-color: #ce2d4f;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.service-dash-banner-guy {
+  position: absolute;
+  top: -2.2rem;
+  right: 4rem;
+  width: 225px;
+}
+
+.service-dash-banner-title {
+  font-size: clamp(1.375rem, 1.325rem + 0.25vw, 1.625rem);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.service-dash-banner-desc {
+  font-size: clamp(0.875rem, 0.8375rem + 0.1875vw, 1.0625rem);
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.service-dash-banner-button {
+  margin-top: 1rem;
+  width: fit-content;
+  padding: 0.7rem 1rem;
+  background: #efefef;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 0.5px solid #efefef;
+  font-size: clamp(0.875rem, 0.8375rem + 0.1875vw, 1.0625rem);
+  color: #ce2d4f;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-dash-banner-button:hover {
+  transform: scale(1.05);
+}
+
+.service-dash-banner-button:active {
+  transform: scale(0.95);
+}
+
+.service-dash-content {
+  margin-top: 1.7rem;
+}
+
+.service-dash-content-heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  color: #1d1d1d;
+  white-space: nowrap;
+}
+
+.service-dash-content-title {
+  font-size: clamp(1.375rem, 1.35rem + 0.125vw, 1.5rem);
+  font-weight: 700;
+}
+
+.service-dash-content-amount {
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
+}
+
+.service-dash-content-styled-divider {
+  width: 786px;
+  border: 0.5px solid #d9d9d9;
+}
+
+.service-dash-content-services {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .service-dash {
+    position: relative;
+    left: 0;
+    width: 90vw;
+  }
+
+  .service-dash-banner-guy {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .service-dash {
+    position: relative;
+    left: 0;
+  }
+
+  .service-dash-banner-guy {
+    display: none;
+  }
+
+  .service-dash-content-heading {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .service-dash-content-heading {
+    gap: 0;
+  }
+
+  .service-dash-content-styled-divider {
+    display: none;
+  }
+}
