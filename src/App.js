@@ -22,7 +22,7 @@ import RegisterFormFourIndie from './pages/Register/RegisterFormFourIndie';
 import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
 import MoreServices from './pages/MoreServices/MoreServices';
 import SameServices from './pages/SameServices/SameServices';
-import Error from './pages/404/Error';
+import NotFound from './pages/404/NotFound';
 import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
 import UploadService from './pages/UploadService/UploadService';
 
@@ -30,8 +30,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path=":service_type" element={<SameServices />} />
-      <Route path=":service_type/:title" element={<ServiceDetails />} />
+      <Route path="/home/:service_type" element={<SameServices />} />
+      <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
       <Route path="/about_us" element={<AboutUs />} />
       <Route path="/contact_us" element={<ContactUsPage />} />
       <Route path="/sign_up_step_two" element={<SignUpTwo />} />
@@ -76,7 +76,7 @@ const App = () => {
         path="/service_dashboard/upload_service"
         element={<UploadService />}
       />
-      <Route path="*" element={<Error />}></Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

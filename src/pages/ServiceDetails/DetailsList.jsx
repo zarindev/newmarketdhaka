@@ -25,13 +25,17 @@ const DetailsList = ({
   }, [imageIndex]);
 
   useEffect(() => {
-    imageIndex > image.length - 1 && setImageIndex(0);
+    if (image) {
+      imageIndex > image.length - 1 && setImageIndex(0);
+    }
   }, [image, imageIndex]);
 
   return (
     <ScrollToTop>
       <div className="details-image-ctn">
-        <img src={image[imageIndex]} alt={title} className="details-image" />
+        {image && (
+          <img src={image[imageIndex]} alt={title} className="details-image" />
+        )}
         <div className="details-dots-ctn">
           {Array.from({ length: 4 }).map((item, index) => {
             return (

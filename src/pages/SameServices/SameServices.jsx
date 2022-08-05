@@ -15,26 +15,21 @@ const SameServices = () => {
   useDocTitle();
 
   const { service_type } = useParams();
-  const [currentServices, setCurrentServices] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
 
-  useEffect(() => {
-    const specificService = sliderData.find(
-      (service) => service.serType === checkCase(service_type)
-    );
-
-    const { serAvailable } = specificService;
-    serAvailable && setCurrentServices(serAvailable);
-  }, [service_type]);
+  const specificService = sliderData?.find(
+    (service) => service.serType === checkCase(service_type)
+  );
+  const { serAvailable } = specificService;
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
-    setActiveServices(currentServices.slice(serviceOffset, endOffset));
-    setPageCount(Math.ceil(currentServices.length / servicesPerPage));
-  }, [currentServices, serviceOffset, servicesPerPage]);
+    setActiveServices(serAvailable.slice(serviceOffset, endOffset));
+    setPageCount(Math.ceil(serAvailable.length / servicesPerPage));
+  }, [serAvailable, serviceOffset, servicesPerPage]);
 
   return (
     <ScrollToTop>
@@ -44,7 +39,7 @@ const SameServices = () => {
         <div className="slider-heading">
           <h3 className="slider-title">{checkCase(service_type)}</h3>
           <p className="same-services-avilable">
-            {`${currentServices.length} Services Avilable`}
+            {`${serAvailable.length} Services Avilable`}
           </p>
           <div className="same-styled-divider"></div>
         </div>

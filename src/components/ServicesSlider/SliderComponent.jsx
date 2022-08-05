@@ -25,7 +25,7 @@ const SliderComponent = ({ id, serType }) => {
     <div className="slider-component">
       <div className="slider-heading">
         <h3 className="slider-title">{serType}</h3>
-        <Link to={`/${snakeCase(serType)}`}>
+        <Link to={`/home/${snakeCase(serType)}`}>
           <div className="slider-btn-ctn">
             <p className="slider-btn-text">See All</p>
             <img

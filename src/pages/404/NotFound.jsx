@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import RoundedButton from '../../components/RoundedButton/RoundedButton';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
-const Error = () => {
+const NotFound = () => {
   useDocTitle(404);
 
   return (
@@ -23,4 +23,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default NotFound;
