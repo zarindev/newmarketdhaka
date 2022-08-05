@@ -13,8 +13,9 @@ import { useFetch } from '../../hooks/useFetch';
 const SliderComponent = ({ sliderTitle }) => {
   const [service, setService] = useState([]);
 
-  const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-
+  
+  const apiServices = useFetch('https://localhost:44380/api/Servivce/GetServiceList')
+  console.log(apiServices);
   useEffect(() => {
     const getServices = () => {
       const data = sliderData.find(
