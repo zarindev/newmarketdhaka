@@ -8,6 +8,7 @@ import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import './MoreServices.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import RoundedButton from '../../components/RoundedButton/RoundedButton';
+import { sliderData } from '../../components/ServicesSlider/sliderData';
 
 const MoreServices = () => {
   useDocTitle();
@@ -18,12 +19,9 @@ const MoreServices = () => {
       <CategoryNav />
       <div className="more-services-ctn">
         <div className="more-services">
-          <SliderComponent sliderTitle="Home services" />
-          <SliderComponent sliderTitle="Car services" />
-          <SliderComponent sliderTitle="IT training" />
-          <SliderComponent sliderTitle="Home services" />
-          <SliderComponent sliderTitle="Car services" />
-          <SliderComponent sliderTitle="IT training" />
+          {sliderData.map((service) => {
+            return <SliderComponent key={service.id} {...service} />;
+          })}
         </div>
         <Link to="/more_services/all_services">
           <RoundedButton

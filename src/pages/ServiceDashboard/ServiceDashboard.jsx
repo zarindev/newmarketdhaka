@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
@@ -20,9 +21,11 @@ const ServiceDashboard = () => {
           <p className="service-dash-banner-desc">
             Hello this is a line of text will go here
           </p>
-          <button className="service-dash-banner-button">
-            Create New Service
-          </button>
+          <Link to="/service_dashboard/upload_service">
+            <button className="service-dash-banner-button">
+              Create New Service
+            </button>
+          </Link>
         </div>
         <div className="service-dash-content">
           <div className="service-dash-content-heading">

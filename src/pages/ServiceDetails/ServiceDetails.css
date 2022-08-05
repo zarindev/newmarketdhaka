@@ -302,12 +302,21 @@
   margin-top: -1rem;
 }
 
+.service-details .slider-content {
+  margin-top: 2.5rem;
+}
+
 .service-details .slider-title {
   display: none;
 }
 
+.service-details-more .slider-heading {
+  position: relative;
+}
+
 .service-details .slider-btn-ctn {
-  margin-left: auto;
+  position: absolute;
+  right: 0;
 }
 
 .service-details .slide {

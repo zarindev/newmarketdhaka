@@ -4,8 +4,11 @@ import error from '../../images/svg/404.svg';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
 import RoundedButton from '../../components/RoundedButton/RoundedButton';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const Error = () => {
+  useDocTitle(404);
+
   return (
     <>
       <TopNav />
