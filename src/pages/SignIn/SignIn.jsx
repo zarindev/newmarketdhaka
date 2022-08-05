@@ -1,15 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
-import './SignUp.css';
+import './SignIn.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
+import { async } from '@firebase/util';
 
 const SignUp = () => {
   useDocTitle();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ mode: 'all' });
+
+  const { signin, user } = useAuth();
+  const [error, setError] = useState('');
+
+  const notify = () => {
+    if (user) {
+      toast.success('Successfully Signed in', {
+        progress: undefined,
+      });
+    } else {
+      toast.error('Email or Password did not match');
+    }
+  };
+
+  const onSubmit = async ({ email, password }) => {
+    try {
+      await signin(email, password);
+      notify();
+      navigate('/');
+    } catch (error) {
+      setError(error.message);
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="sign-up-page">
@@ -30,16 +65,55 @@ const SignUp = () => {
       <div className="right-side">
         <h2 className="sign-up-title">Sign In</h2>
         <div>
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
             <h3 className="field-text">Email</h3>
-            <input type="email" className="field-style" />
+            <input
+              type="text"
+              {...register('email', {
+                required: 'Email Address is required',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Please enter a valid email',
+                },
+              })}
+              placeholder="Email"
+              className="field-style"
+            />
+            {errors.email && (
+              <p className="error-message">{errors.email?.message}</p>
+            )}
             <h3 className="field-text">Password</h3>
-            <input type="password" className="field-style" />
-            <button className="sign-up-btn">
-              <Link to="/" className="sign-up-link">
-                Sign In
-              </Link>
-            </button>
+            <input
+              type="password"
+              {...register('password', {
+                required: 'Password is required',
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                  message:
+                    'Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters and 1 special character',
+                },
+              })}
+              placeholder="Password"
+              className="field-style"
+            />
+            {errors.password && (
+              <p className="error-message">{errors.password?.message}</p>
+            )}
+            <button className="sign-up-btn">Sign In</button>
           </form>
         </div>
         <div className="signup-footer">

@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import brandLogo from '../../../images/brand-logo.png';
 import './TopNav.css';
 import burgerBtn from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
-import { navData } from '../navData';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { useAuth } from '../../../context/AuthProvider';
 
 const TopNav = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -25,6 +25,18 @@ const TopNav = () => {
     closed: { rotate: 0 },
   };
 
+  const { user, signout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignout = async () => {
+    try {
+      await signout();
+      user && navigate('/');
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="navbar-ctn">
       <div className="navbar">
@@ -40,19 +52,28 @@ const TopNav = () => {
             showMobileMenu ? 'navlinks navlinks-mobile' : 'navlinks'
           }`}
         >
-          {navData.map((item, index) => {
-            return (
-              <li
-                className="nav-link-ctn"
-                key={index}
-                onClick={() => setShowMobileMenu(false)}
-              >
-                <NavLink to={item.link} className="nav-link">
-                  {item.title}
-                </NavLink>
-              </li>
-            );
-          })}
+          <NavLink to="/" className=" nav-link">
+            Home
+          </NavLink>
+          <NavLink to="/about_us" className=" nav-link">
+            About Us
+          </NavLink>
+          <NavLink to="/contact_us" className=" nav-link">
+            Contact Us
+          </NavLink>
+          {user?.email ? (
+            <li className="nav-link" onClick={handleSignout}>
+              Sign out
+            </li>
+          ) : (
+            <NavLink to="/sign_in" className=" nav-link">
+              Sign in
+            </NavLink>
+          )}
+
+          <NavLink to="/register" className=" nav-link">
+            Register
+          </NavLink>
         </ul>
         <div>
           <Link to="/register">

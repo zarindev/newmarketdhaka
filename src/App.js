@@ -3,7 +3,6 @@ import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUS/AboutUs';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import SignUp from './pages/SignUp/SignUp';
-import SignUpTwo from './pages/SignUpTwo/SignUpTwo';
 import SignIn from './pages/SignIn/SignIn';
 import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
@@ -25,6 +24,7 @@ import SameServices from './pages/SameServices/SameServices';
 import NotFound from './pages/404/NotFound';
 import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
 import UploadService from './pages/UploadService/UploadService';
+import SignUpTwo from './pages/SignUp/SignUpTwo';
 
 const App = () => {
   return (
@@ -34,7 +34,7 @@ const App = () => {
       <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
       <Route path="/about_us" element={<AboutUs />} />
       <Route path="/contact_us" element={<ContactUsPage />} />
-      <Route path="/sign_up_step_two" element={<SignUpTwo />} />
+      <Route path="/sign_up/step2" element={<SignUpTwo />} />
       <Route path="/sign_up" element={<SignUp />} />
       <Route path="/sign_in" element={<SignIn />} />
       <Route path="/register" element={<Register />} />

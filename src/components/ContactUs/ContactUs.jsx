@@ -20,16 +20,16 @@ const ContactUs = () => {
     reset,
   } = useForm({ mode: 'onBlur' });
 
-  const onSubmit = (data) => {
-    setContactData(data);
-    notify();
-    reset();
-  };
-
   const notify = () => {
     toast.success('Successfully Submitted', {
       progress: undefined,
     });
+  };
+
+  const onSubmit = (data) => {
+    setContactData(data);
+    notify();
+    reset();
   };
 
   return (

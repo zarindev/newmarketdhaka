@@ -10,7 +10,8 @@ import searchIcon from '../../images/svg/search_gray.svg';
 import clockIcon from '../../images/svg/clock-red.svg';
 import calendarIcon from '../../images/svg/calendar.svg';
 import viewDetailsIcon from '../../images/svg/view-details.svg';
-import UploadTags from './UploadTags';
+import { UpSerDays, UpSerTags } from './UpElements';
+import UploadRight from './UploadRight';
 
 const UploadService = () => {
   const { register, handleSubmit } = useForm();
@@ -61,7 +62,7 @@ const UploadService = () => {
               className="upload-ser-input"
               placeholder="Search category"
             />
-            <UploadTags />
+            <UpSerTags />
           </div>
           <div className="upload-ser-input-ctn">
             <label htmlFor="service_name" className="upload-ser-label-ctn">
@@ -77,7 +78,7 @@ const UploadService = () => {
               className="upload-ser-input"
               placeholder="Search sub category"
             />
-            <UploadTags />
+            <UpSerTags />
           </div>
           <div className="upload-ser-input-ctn">
             <label htmlFor="service_name" className="upload-ser-label-ctn">
@@ -103,9 +104,26 @@ const UploadService = () => {
                 className="upload-ser-label-icon"
               />
             </label>
+            <UpSerDays />
+          </div>
+          <div className="upload-ser-input-ctn">
+            <label htmlFor="service_name" className="upload-ser-label-ctn">
+              <p className="upload-ser-label-title">Add Details</p>
+              <img
+                src={viewDetailsIcon}
+                alt="label icon"
+                className="upload-ser-label-icon"
+              />
+            </label>
+            <textarea
+              cols="30"
+              rows="10"
+              className="upload-ser-input upload-ser-textarea"
+              placeholder="Describe your Sercice"
+            ></textarea>
           </div>
         </div>
-        <div className="upload-ser-right">placeholder-right-side</div>
+        <UploadRight />
       </form>
     </div>
   );

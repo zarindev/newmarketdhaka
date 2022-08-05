@@ -113,7 +113,7 @@ const RegisterFormTwo = () => {
               <input
                 type="text"
                 name="phoneNumber"
-                className="register-form-input"
+                className="field-style"
                 placeholder="***********"
                 {...register('phoneNumber', {
                   required: 'Phone Number is required',

@@ -1,4 +1,4 @@
-export const tagsData = [
+export const tags = [
   'Cleaning',
   'Home Service',
   'Car Cleaning',
@@ -7,3 +7,5 @@ export const tagsData = [
   'Learning',
   '+ Add Category',
 ];
+
+export const days = ['Sat', 'Sun', 'Mun', 'Tue', 'Wed', 'Thu', 'Fri'];

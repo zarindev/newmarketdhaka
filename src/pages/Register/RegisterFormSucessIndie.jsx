@@ -10,10 +10,22 @@ import successImage from '../../images/success.png';
 const RegisterFormSucessIndie = () => {
   const navigate = useNavigate();
 
-  const { handleSubmit } = useForm({ mode: 'all' });
-  const { state } = useStateMachine({ updateAction }); // state => final data
+  const { handleSubmit, reset } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      companyName: '',
+      address: '',
+      binNumber: '',
+      taxNumber: '',
+      phoneNumber: '',
+    },
+  });
+  const { state } = useStateMachine({ updateAction });
 
   const onSubmit = () => {
+    reset();
     navigate('/sign_in');
   };
 
