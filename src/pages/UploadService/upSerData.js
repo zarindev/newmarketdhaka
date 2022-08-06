@@ -9,3 +9,5 @@ export const tags = [
 ];
 
 export const days = ['Sat', 'Sun', 'Mun', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+export const dropImage = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];

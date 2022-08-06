@@ -1,6 +1,6 @@
-import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
@@ -12,9 +12,18 @@ import calendarIcon from '../../images/svg/calendar.svg';
 import viewDetailsIcon from '../../images/svg/view-details.svg';
 import { UpSerDays, UpSerTags } from './UpElements';
 import UploadRight from './UploadRight';
+import { dropImage } from './upSerData';
 
 const UploadService = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    setValue,
+    setError,
+    clearErrors,
+    handleSubmit,
+  } = useForm();
+
   const onSubmit = async (data) => {
     console.log(data);
   };
@@ -22,109 +31,142 @@ const UploadService = () => {
   return (
     <div className="upload-ser-ctn">
       <SeekerSidebar />
-      <form className="upload-ser" onSubmit={handleSubmit(onSubmit)}>
-        <div className="upload-ser-left">
-          <div className="upload-ser-heading">
-            <h4 className="upload-ser-title">
-              Get Started Setting Up Services{' '}
-            </h4>
-            <p className="upload-ser-title">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor
-              aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{' '}
-            </p>
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Service Name</p>
-              <img
-                src={supportIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <input
-              type="text"
-              className="upload-ser-input"
-              placeholder="Service Name"
-            />
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Category</p>
-              <img
-                src={categoryIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <input
-              type="text"
-              className="upload-ser-input"
-              placeholder="Search category"
-            />
-            <UpSerTags />
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Sub Category</p>
-              <img
-                src={subCategoryIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <input
-              type="text"
-              className="upload-ser-input"
-              placeholder="Search sub category"
-            />
-            <UpSerTags />
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Opening Time</p>
-              <img
-                src={clockIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <input
-              type="text"
-              className="upload-ser-input"
-              placeholder="Select opening time"
-            />
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Select Closing Days</p>
-              <img
-                src={calendarIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <UpSerDays />
-          </div>
-          <div className="upload-ser-input-ctn">
-            <label htmlFor="service_name" className="upload-ser-label-ctn">
-              <p className="upload-ser-label-title">Add Details</p>
-              <img
-                src={viewDetailsIcon}
-                alt="label icon"
-                className="upload-ser-label-icon"
-              />
-            </label>
-            <textarea
-              cols="30"
-              rows="10"
-              className="upload-ser-input upload-ser-textarea"
-              placeholder="Describe your Sercice"
-            ></textarea>
-          </div>
+      <div className="upload-ser">
+        <div className="upload-ser-heading">
+          <h4 className="upload-ser-title">Get Started Setting Up Services</h4>
+          <p className="upload-ser-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor
+            aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{' '}
+          </p>
         </div>
-        <UploadRight />
-      </form>
+        <form className="upload-ser-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="upload-ser-left">
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={supportIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Service Name</p>
+              </label>
+              <input
+                type="text"
+                className="register-form-input"
+                placeholder="Service Name"
+                {...register('serviceName', {
+                  required: true,
+                })}
+              />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={categoryIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Category</p>
+              </label>
+              <input
+                type="text"
+                className="register-form-input"
+                placeholder="Search category"
+                {...register('category', { required: true })}
+              />
+              <UpSerTags />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={subCategoryIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Sub Category</p>
+              </label>
+              <input
+                type="text"
+                className="register-form-input"
+                placeholder="Search sub category"
+                {...register('subCategory', {
+                  required: true,
+                })}
+              />
+              <UpSerTags />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={clockIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Opening Time</p>
+              </label>
+              <input
+                type="date"
+                className="register-form-input upload-ser-form-input-date"
+                placeholder="Select opening time"
+                {...register('openingTime', {
+                  required: true,
+                })}
+              />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={calendarIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Select Closing Days</p>
+              </label>
+              <UpSerDays />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="service_name" className="upload-ser-label-ctn">
+                <img
+                  src={viewDetailsIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Add Details</p>
+              </label>
+              <textarea
+                cols="30"
+                rows="10"
+                className="register-form-input upload-ser-textarea"
+                placeholder="Describe your service"
+                {...register('addDetials', {
+                  required: true,
+                })}
+              ></textarea>
+            </div>
+            <div className="upload-ser-btn-ctn">
+              <button className="upload-ser-upload-btn">Upload</button>
+              <button className="upload-ser-upload-btn">Save as draft</button>
+            </div>
+          </div>
+          <div className="upload-ser-right">
+            {dropImage.map((item) => {
+              const { id } = item;
+              return (
+                <UploadRight
+                  key={id}
+                  setValue={setValue}
+                  setError={setError}
+                  clearErrors={clearErrors}
+                  {...register(`serviceImg${id}`, {
+                    required: true,
+                  })}
+                  ref={null}
+                />
+              );
+            })}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

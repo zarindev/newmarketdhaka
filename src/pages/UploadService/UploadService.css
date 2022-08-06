@@ -1,6 +1,7 @@
 .upload-ser-ctn {
   position: relative;
-  height: 100vh;
+  height: auto;
+  min-height: 200vh;
   background-color: #f7f7f7;
   display: flex;
 }
@@ -13,12 +14,64 @@
   width: 65vw;
   max-width: 980px;
   margin: 3.5rem auto 4rem auto;
+}
+
+.upload-ser-heading {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.upload-ser-title {
+  font-weight: 700;
+  font-size: clamp(1.4375rem, 1.4rem + 0.1875vw, 1.625rem);
+  color: #1d1d1d;
+}
+
+.upload-ser-desc {
+  font-weight: 400;
+  font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
+  line-height: 1.1875rem;
+  color: #6d6d6d;
+}
+
+.upload-ser-form {
   display: flex;
+  gap: 8rem;
 }
 
 .upload-ser-left,
 .upload-ser-right {
   width: 50%;
+}
+
+.upload-ser-input-ctn {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.8em;
+}
+
+.upload-ser-label-ctn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.upload-ser-label-title {
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.upload-ser-label-icon {
+  transform: scale(1);
+}
+
+.upload-ser-textarea {
+  width: 100%;
+}
+
+.upload-ser-form-input-date {
+  padding-right: 1rem;
 }
 
 .upload-tag-ctn {

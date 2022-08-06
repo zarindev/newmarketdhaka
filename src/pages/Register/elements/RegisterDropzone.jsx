@@ -11,6 +11,7 @@ const RegisterDropzone = ({
   onChange,
   uploadPlaceholder,
   showPreview,
+  changePlaceholderText,
 }) => {
   return (
     <label
@@ -32,12 +33,15 @@ const RegisterDropzone = ({
         />
       )}
 
-      {files.length === 0 && (
-        <p className="rgister-form-upload-label-text">
-          Drag and drop, or
-          <span className="upload-label-text-custom"> browse</span> your files
-        </p>
-      )}
+      {files.length === 0 &&
+        (changePlaceholderText ? (
+          <p className="rgister-form-upload-label-text">Upload Image</p>
+        ) : (
+          <p className="rgister-form-upload-label-text">
+            Drag and drop, or
+            <span className="upload-label-text-custom"> browse</span> your files
+          </p>
+        ))}
 
       {files.length > 0 && (
         <img
