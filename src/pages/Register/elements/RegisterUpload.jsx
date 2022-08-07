@@ -1,12 +1,20 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import uploadPlaceholder from '../../images/upload-image-placeholder.png';
-import RegisterDropzone from '../Register/elements/RegisterDropzone';
+import RegisterDropzone from './RegisterDropzone';
 
-const UploadRight = (props) => {
-  const { value, name, setValue, setError, clearErrors } = props;
-
+const RegisterUpload = ({
+  isTypeImg,
+  uploadPlaceholderImg,
+  changePlaceholderText,
+  getFiles,
+  value,
+  name,
+  setValue,
+  setError,
+  clearErrors,
+}) => {
   const [files, setFiles] = useState([]);
+
   const onDrop = useCallback(
     (acceptedFiles, rejectedFiles) => {
       if (rejectedFiles && rejectedFiles.length > 0) {
@@ -38,14 +46,34 @@ const UploadRight = (props) => {
     },
     [[name, setValue, setError, clearErrors]]
   );
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: {
+
+  const acceptType = [
+    {
       'image/*': ['.jpeg', '.png'],
     },
+    {
+      'text/plain': ['.txt'],
+      'text/html': ['.html', '.htm'],
+      'text/csv': ['.csv'],
+      'application/msword': ['.doc'],
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        ['.docx'],
+      'application/pdf': ['.pdf'],
+    },
+  ];
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: isTypeImg ? acceptType[0] : acceptType[1],
     maxFiles: 1,
     multiple: false,
   });
+
+  useEffect(() => {
+    if (getFiles) {
+      getFiles(files);
+    }
+  }, [files]);
 
   return (
     <RegisterDropzone
@@ -54,11 +82,11 @@ const UploadRight = (props) => {
       getInputProps={getInputProps}
       value={value}
       onChange={onchange}
-      uploadPlaceholder={uploadPlaceholder}
-      showPreview="preview"
-      changePlaceholderText={true}
+      isTypeImg={isTypeImg}
+      uploadPlaceholderImg={uploadPlaceholderImg}
+      changePlaceholderText={changePlaceholderText}
     />
   );
 };
 
-export default UploadRight;
+export default RegisterUpload;

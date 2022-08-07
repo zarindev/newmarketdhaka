@@ -1,45 +1,41 @@
-import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { v4 as uuidv4 } from 'uuid';
+import { useStateMachine } from 'little-state-machine';
+import updateAction from '../Register/elements/updateAction';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
 import categoryIcon from '../../images/svg/category.svg';
-import subCategoryIcon from '../../images/svg/sub-category.svg';
-import searchIcon from '../../images/svg/search_gray.svg';
 import clockIcon from '../../images/svg/clock-red.svg';
 import calendarIcon from '../../images/svg/calendar.svg';
 import viewDetailsIcon from '../../images/svg/view-details.svg';
-import UploadRight from './UploadRight';
-import UploadTags from './UploadTags';
-import UploadDays from './UploadDays';
-import {
-  categoryTags,
-  subCategoryTags,
-  closingDays,
-  dragAndDrops,
-} from './uploadData';
+import imageIcon from '../../images/svg/image-el.svg';
+import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
+import UploadSelect from './UploadSelect';
+import { categoryTags, closingDays, dragAndDrops } from './uploadData';
+import { useDocTitle } from '../../hooks/useDocTitle';
+import RegisterUpload from '../Register/elements/RegisterUpload';
 
 const UploadService = () => {
+  useDocTitle();
+
+  const navigate = useNavigate();
+
   const {
     register,
     formState: { errors },
+    control,
     setValue,
     setError,
     clearErrors,
     handleSubmit,
   } = useForm();
+  const { actions, state } = useStateMachine({ updateAction });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    actions.updateAction(data);
+    navigate('/profile');
   };
-
-  const inputCategoryRef = useRef({
-    ...register('category', { required: true }),
-  });
-  const inputSubCategoryRef = useRef({
-    ...register('subCategory', { required: true }),
-  });
 
   return (
     <div className="upload-ser-ctn">
@@ -52,134 +48,196 @@ const UploadService = () => {
             aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{' '}
           </p>
         </div>
-        <form className="upload-ser-form" onSubmit={handleSubmit(onSubmit)}>
-          <div className="upload-ser-left">
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={supportIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Service Name</p>
-              </label>
-              <input
-                type="text"
-                className="register-form-input"
-                placeholder="Service Name"
-                {...register('serviceName', {
-                  required: true,
-                })}
-              />
-            </div>
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={categoryIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Category</p>
-              </label>
-              <input
-                type="text"
-                className="register-form-input"
-                placeholder="Search category"
-                ref={inputCategoryRef}
-              />
-              <UploadTags tags={categoryTags} inputRef={inputCategoryRef} />
-            </div>
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={subCategoryIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Sub Category</p>
-              </label>
-              <input
-                type="text"
-                className="register-form-input"
-                placeholder="Search sub category"
-                ref={inputSubCategoryRef}
-              />
-              <UploadTags
-                tags={subCategoryTags}
-                inputRef={inputSubCategoryRef}
-              />
-            </div>
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={clockIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Opening Time</p>
-              </label>
-              <input
-                type="time"
-                className="register-form-input upload-ser-form-input-date"
-                placeholder="Select opening time"
-                {...register('openingTime', {
-                  required: true,
-                })}
-              />
-            </div>
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={calendarIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Select Closing Days</p>
-              </label>
-              <UploadDays days={closingDays} />
-            </div>
-            <div className="upload-ser-input-ctn">
-              <label htmlFor="service_name" className="upload-ser-label-ctn">
-                <img
-                  src={viewDetailsIcon}
-                  alt="label icon"
-                  className="upload-ser-label-icon"
-                />
-                <p className="upload-ser-label-title">Add Details</p>
-              </label>
-              <textarea
-                cols="30"
-                rows="10"
-                className="register-form-input upload-ser-textarea"
-                placeholder="Describe your service"
-                {...register('addDetails', {
-                  required: true,
-                })}
-              ></textarea>
-            </div>
-            <div className="upload-ser-btn-ctn">
-              <button className="upload-ser-upload-btn">Upload</button>
-              <button className="upload-ser-upload-btn upload-ser-upload-btn-draft">
-                Save as draft
-              </button>
-            </div>
-          </div>
-          <div className="upload-ser-right">
-            {/* {dragAndDrops.map((item) => {
-              const { id } = item;
-              return (
-                <UploadRight
-                  key={id}
-                  setValue={setValue}
-                  setError={setError}
-                  clearErrors={clearErrors}
-                  {...register(`serviceImg${id}`, {
+        <form className="upload-ser-form-ctn" onSubmit={handleSubmit(onSubmit)}>
+          <div className="upload-ser-form">
+            <div className="upload-ser-left">
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serviceName" className="upload-ser-label-ctn">
+                  <img
+                    src={supportIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Service Name</p>
+                </label>
+                <input
+                  type="text"
+                  className="register-form-input"
+                  placeholder="Service Name"
+                  {...register('title', {
                     required: true,
                   })}
-                  ref={null}
                 />
-              );
-            })} */}
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serType" className="upload-ser-label-ctn">
+                  <img
+                    src={categoryIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Category</p>
+                </label>
+                <UploadSelect
+                  name="serType"
+                  control={control}
+                  items={categoryTags}
+                  isMulti={false}
+                />
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serOpen" className="upload-ser-label-ctn">
+                  <img
+                    src={clockIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Opening Time</p>
+                </label>
+                <input
+                  type="time"
+                  className="register-form-input"
+                  placeholder="Select opening time"
+                  {...register('serOpen', {
+                    required: true,
+                  })}
+                />
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="close" className="upload-ser-label-ctn">
+                  <img
+                    src={calendarIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Select Closing Days</p>
+                </label>
+                <UploadSelect
+                  name="serClose"
+                  control={control}
+                  items={closingDays}
+                  isMulti={true}
+                />
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serDetails" className="upload-ser-label-ctn">
+                  <img
+                    src={viewDetailsIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Add Details</p>
+                </label>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  className="register-form-input upload-ser-textarea"
+                  placeholder="Describe your service"
+                  {...register('serDetails', {
+                    required: true,
+                  })}
+                ></textarea>
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label
+                  htmlFor="offeredServices"
+                  className="upload-ser-label-ctn"
+                >
+                  <img
+                    src={viewDetailsIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Add offered services</p>
+                </label>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  className="register-form-input upload-ser-textarea"
+                  placeholder="Services offered"
+                  {...register('offeredServices', {
+                    required: true,
+                  })}
+                ></textarea>
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="extraServices" className="upload-ser-label-ctn">
+                  <img
+                    src={viewDetailsIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Add extra services</p>
+                </label>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  className="register-form-input upload-ser-textarea"
+                  placeholder="Extra services"
+                  {...register('extraServices', {
+                    required: true,
+                  })}
+                ></textarea>
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="whyUs" className="upload-ser-label-ctn">
+                  <img
+                    src={viewDetailsIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Why choose us</p>
+                </label>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  className="register-form-input upload-ser-textarea"
+                  placeholder="Why choose us"
+                  {...register('whyUs', {
+                    required: true,
+                  })}
+                ></textarea>
+              </div>
+            </div>
+            <div className="upload-ser-right">
+              <div className="upload-ser-input-ctn upload-ser-input-ctn-img">
+                <label htmlFor="whyUs" className="upload-ser-label-ctn">
+                  <img
+                    src={imageIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Why choose us</p>
+                </label>
+                <div className="upload-ser-img-ctn">
+                  {dragAndDrops.map((item) => {
+                    const { id } = item;
+                    return (
+                      <RegisterUpload
+                        key={id}
+                        isTypeImg={true}
+                        uploadPlaceholderImg={uploadPlaceholderUp}
+                        changePlaceholderText={true}
+                        getFiles={null}
+                        setValue={setValue}
+                        setError={setError}
+                        clearErrors={clearErrors}
+                        {...register(`serImg${id}`, {
+                          required: true,
+                        })}
+                        ref={null}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="upload-ser-btn-ctn">
+            <button className="upload-ser-upload-btn">Upload</button>
+            <button className="upload-ser-upload-btn upload-ser-upload-btn-draft">
+              Save as draft
+            </button>
           </div>
         </form>
       </div>

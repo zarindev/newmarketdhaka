@@ -1,93 +1,57 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
-import { useDropzone } from 'react-dropzone';
 import './Register.css';
+import uploadPlaceholderReg from '../../images/upload-placeholder-reg.png';
 import RegisterLeft from './elements/RegisterLeft';
-import RegisterDropzone from './elements/RegisterDropzone';
-import uploadLogo from '../../images/upload-logo.png';
+import RegisterUpload from './elements/RegisterUpload';
+import { useGlobalContext } from '../../context/AppProvider';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
-const RegisterFormThree = (props) => {
-  const { value, onChange, name = 'companyLogo', error } = props;
+const RegisterFormThree = () => {
+  useDocTitle();
+
   const navigate = useNavigate();
 
   const { register, setValue, setError, clearErrors, handleSubmit } = useForm({
     mode: 'all',
   });
-  const { actions } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ updateAction });
 
   const onSubmit = (data) => {
     actions.updateAction(data);
     navigate('/register/company/step4');
   };
 
-  const [files, setFiles] = useState([]);
-  const onDrop = useCallback(
-    (acceptedFiles, rejectedFiles) => {
-      if (rejectedFiles && rejectedFiles.length > 0) {
-        setValue(name, []);
-        setFiles([]);
-        setError(name, {
-          type: 'manual',
-          message: rejectedFiles && rejectedFiles[0].errors[0].message,
-        });
-      } else {
-        setFiles(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      }
-      clearErrors(name);
-      acceptedFiles.forEach((file) => {
-        const reader = new FileReader();
-        reader.onabort = () => console.log('file reading was aborted');
-        reader.onerror = () => console.log('file reading has failed');
-        reader.onloadend = () => {
-          setValue(name, file, { shouldValidate: true });
-        };
-        reader.readAsDataURL(file);
-      });
-    },
-    [[name, setValue, setError, clearErrors]]
-  );
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: {
-      'image/*': ['.jpeg', '.png'],
-    },
-    maxFiles: 1,
-    multiple: false,
-  });
-
-  useEffect(() => {
-    register('companyLogo');
-  }, []);
+  const { componentFiles, setComponentFiles } = useGlobalContext();
+  const getFiles = (componentFiles) => {
+    setComponentFiles(componentFiles);
+  };
 
   return (
     <div className="register register-com">
       <RegisterLeft />
       <div className="register-form-right">
-        <div className="register-form-ctn">
+        <div className="register-form-ctn register-form-ctn-upload">
           <p className="register-form-title register-form-upload-title">
             Upload Your Company Logo
           </p>
           <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-            <RegisterDropzone
-              files={files}
-              getRootProps={getRootProps}
-              getInputProps={getInputProps}
-              value={value}
-              onChange={onchange}
-              uploadPlaceholder={uploadLogo}
-              showPreview="preview"
+            <RegisterUpload
+              isTypeImg={true}
+              uploadPlaceholderImg={uploadPlaceholderReg}
               changePlaceholderText={false}
+              getFiles={getFiles}
+              setValue={setValue}
+              setError={setError}
+              clearErrors={clearErrors}
+              {...register('logo', {
+                required: true,
+              })}
+              ref={null}
             />
-            {files[0] && (
+            {componentFiles[0] && (
               <button className="register-form-button register-form-fit-button">
                 Confirm logo
               </button>

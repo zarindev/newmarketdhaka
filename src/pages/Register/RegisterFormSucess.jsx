@@ -1,13 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
+import { ToastContainer, toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const RegisterFormSuccess = () => {
+  useDocTitle();
+
   const navigate = useNavigate();
 
   const { handleSubmit, reset } = useForm({
@@ -22,11 +26,30 @@ const RegisterFormSuccess = () => {
       phoneNumber: '',
     },
   });
-  const { state } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ updateAction });
+
+  const notify = () => {
+    toast.success(
+      'Successfully registered. Navigating to the Dashbaord after 4 seconds',
+      {
+        progress: undefined,
+      }
+    );
+  };
+
+  useEffect(() => {
+    notify();
+
+    const navigateToDash = setTimeout(() => {
+      navigate('/service_dashboard');
+    }, 4000);
+
+    return () => clearTimeout(navigateToDash);
+  }, []);
 
   const onSubmit = () => {
     reset();
-    navigate('/sign_in');
+    navigate('/service_dashboard');
   };
 
   return (
@@ -38,9 +61,21 @@ const RegisterFormSuccess = () => {
             You have uploaded all of your documents successfully
           </p>
           <form
-            className="register-form register-success-form"
+            className="register-form register-form-success"
             onSubmit={handleSubmit(onSubmit)}
           >
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
             <div className="register-success-image-ctn">
               <img
                 src={successImage}
@@ -49,7 +84,7 @@ const RegisterFormSuccess = () => {
               />
             </div>
             <button className="register-form-button register-form-fit-button register-form-success-button">
-              Sign in
+              Go to Dashboard
             </button>
           </form>
         </div>

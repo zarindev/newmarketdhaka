@@ -6,7 +6,7 @@ import ellipse from '../../images/svg/Ellipse 2.svg';
 const SingleSlide = ({
   image,
   title,
-  time,
+  workWeek,
   locationIcon,
   location,
   profileIcon,
@@ -41,7 +41,7 @@ const SingleSlide = ({
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
-            <p className="slide-para">{time}</p>
+            <p className="slide-para">{workWeek}</p>
             <div className="slide-location-ctn">
               <img
                 src={locationIcon}

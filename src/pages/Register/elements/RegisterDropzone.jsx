@@ -9,8 +9,8 @@ const RegisterDropzone = ({
   getInputProps,
   value,
   onChange,
-  uploadPlaceholder,
-  showPreview,
+  isTypeImg,
+  uploadPlaceholderImg,
   changePlaceholderText,
 }) => {
   return (
@@ -19,25 +19,25 @@ const RegisterDropzone = ({
       className="register-form-upload-label"
       {...getRootProps({ onClick: (e) => e.preventDefault() })}
     >
-      {showPreview === 'preview' && (
+      {isTypeImg && (
         <RegisterPreviewImage
           files={files}
-          uploadPlaceholder={uploadPlaceholder}
+          uploadPlaceholderImg={uploadPlaceholderImg}
         />
       )}
 
-      {showPreview === 'name' && (
+      {!isTypeImg && (
         <RegisterPreviewName
           files={files}
-          uploadPlaceholder={uploadPlaceholder}
+          uploadPlaceholderImg={uploadPlaceholderImg}
         />
       )}
 
       {files.length === 0 &&
         (changePlaceholderText ? (
-          <p className="rgister-form-upload-label-text">Upload Image</p>
+          <p className="register-form-upload-label-text">Upload Image</p>
         ) : (
-          <p className="rgister-form-upload-label-text">
+          <p className="register-form-upload-label-text">
             Drag and drop, or
             <span className="upload-label-text-custom"> browse</span> your files
           </p>
@@ -53,7 +53,6 @@ const RegisterDropzone = ({
 
       <input
         type="file"
-        name="companyLogo"
         className="register-form-upload-input"
         {...getInputProps({ value, onChange })}
         defaultValue=""

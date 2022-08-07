@@ -1,7 +1,7 @@
 .upload-ser-ctn {
   position: relative;
   height: auto;
-  min-height: 200vh;
+  padding: 62rem 0;
   background-color: #f7f7f7;
   display: flex;
 }
@@ -34,18 +34,28 @@
   color: #6d6d6d;
 }
 
-.upload-ser-form {
-  display: flex;
-  gap: 8rem;
+.upload-ser-form-ctn {
+  margin-top: 2.1rem;
+  display: block;
 }
 
-.upload-ser-left,
+.upload-ser-form {
+  display: flex;
+  gap: 4rem;
+}
+
+.upload-ser-left {
+  width: 50%;
+  display: grid;
+  gap: 1.9rem;
+}
+
 .upload-ser-right {
   width: 50%;
+  max-width: 370px;
 }
 
 .upload-ser-input-ctn {
-  margin-top: 2rem;
   display: grid;
   gap: 0.8em;
 }
@@ -70,15 +80,60 @@
   width: 100%;
 }
 
-.upload-ser-form-input-date {
-  padding: 0.7rem 1rem;
-  text-indent: 0;
+.upload-ser-left .css-1s2u09g-control,
+.upload-ser-left .css-1pahdxg-control {
+  padding: 0.26rem 0.5rem;
+  background-color: #fafafa;
+  border: 1px solid #cecece;
+  box-shadow: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+  text-indent: auto;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.upload-ser-left .css-1pahdxg-control {
+  padding: 0.26rem 0.5rem;
+  background-color: #ebebeb;
+  border: 1px solid #6d6d6d;
+  box-shadow: 0 0 0 1px #6d6d6d;
+}
+
+.upload-ser-left .css-1pahdxg-control:hover {
+  border: 1px solid #6d6d6d;
+}
+
+.upload-ser-left .upload-ser-tag-placeholder {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 600;
+  color: #6d6d6d;
+}
+
+.upload-ser-left .css-1rhbuit-multiValue {
+  background-color: #e14869;
+  border-radius: 1rem;
+}
+
+.upload-ser-left .css-1rhbuit-multiValue .css-12jo7m5 {
+  padding: 0.3rem 0 0.3rem 0.5rem;
+  color: #ffffff;
+}
+
+.upload-ser-left .css-1rhbuit-multiValue .css-xb97g8 {
+  margin-left: 0.5rem;
+  padding: 0 0.2rem 0 0;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: #ffffff;
 }
 
 .upload-tag-ctn {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  white-space: nowrap;
 }
 
 .upload-tag-label {
@@ -104,10 +159,35 @@
   padding: 0.2rem 0.8rem;
 }
 
+.upload-ser-input-ctn-img .upload-ser-img-ctn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.upload-ser-input-ctn-img .register-form-upload-label {
+  width: 180px;
+  min-width: auto;
+  padding: 0.5rem 0;
+  gap: 0;
+}
+
+.upload-ser-input-ctn-img .register-form-upload-label-text {
+  font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.upload-ser-input-ctn-img .register-form-upload-image {
+  transform: scale(0.5);
+}
+
 .upload-ser-btn-ctn {
-  margin-top: 1.2rem;
+  margin-top: 2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.7rem;
+  white-space: nowrap;
 }
 
 .upload-ser-upload-btn {
@@ -134,4 +214,66 @@
 
 .upload-ser-upload-btn:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 1000px) {
+  .upload-ser-ctn {
+    padding: 0;
+  }
+
+  .upload-ser {
+    position: relative;
+    left: 0;
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .upload-ser-form-ctn {
+    margin-top: 1.9rem;
+  }
+
+  .upload-ser-form {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .upload-ser-left,
+  .upload-ser-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .upload-ser-left {
+    gap: 1.5rem;
+  }
+
+  .upload-ser-input-ctn {
+    display: grid;
+    gap: 0.8em;
+  }
+
+  .upload-ser-label-ctn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .upload-ser-input-ctn-img .upload-ser-img-ctn {
+    gap: 0.5rem;
+  }
+
+  .upload-ser-input-ctn-img .register-form-upload-label {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .upload-ser-input-ctn-img .upload-ser-img-ctn {
+    gap: 1rem;
+  }
+
+  .upload-ser-btn-ctn {
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
 }

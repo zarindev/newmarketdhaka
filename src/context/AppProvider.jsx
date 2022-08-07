@@ -1,12 +1,17 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [placeholder, setPlaceholder] = useState([]);
+  const [componentFiles, setComponentFiles] = useState([]);
 
   return (
-    <AppContext.Provider value={{ placeholder, setPlaceholder }}>
+    <AppContext.Provider
+      value={{
+        componentFiles,
+        setComponentFiles,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

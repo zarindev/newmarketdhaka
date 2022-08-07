@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // placeholder => Get started
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,8 +10,6 @@ import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
 
 const ContactUs = () => {
-  const [contactData, setContactData] = useState([]);
-
   const {
     register,
     handleSubmit,
@@ -27,7 +24,6 @@ const ContactUs = () => {
   };
 
   const onSubmit = (data) => {
-    setContactData(data);
     notify();
     reset();
   };
