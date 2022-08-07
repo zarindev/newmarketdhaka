@@ -89,6 +89,7 @@ const RegisterFormFour = (props) => {
               onChange={onchange}
               uploadPlaceholder={uploadDocument}
               showPreview="name"
+              changePlaceholderText={false}
             />
             {files[0] && (
               <button className="register-form-button register-form-fit-button">

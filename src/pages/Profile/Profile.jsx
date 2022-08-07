@@ -10,9 +10,13 @@ import loginLogo from '../../images/Logo-google-icon-PNG 1.png';
 import locationIcon from '../../images/svg/Location-red.svg';
 import './Profile.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
 
 const Profile = () => {
   useDocTitle();
+
+  const { user } = useAuth();
+  const email = user?.email;
 
   return (
     <>
@@ -85,7 +89,7 @@ const Profile = () => {
                     />
                     <p className="profile-label-text">Email</p>
                   </label>
-                  <p className="profile-info">monica.amb95@gmail.com</p>
+                  <p className="profile-info">{email && email}</p>
                 </div>
                 <div className="profile-content">
                   <label className="profile-label">

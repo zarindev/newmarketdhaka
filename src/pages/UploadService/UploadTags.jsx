@@ -1,13 +1,31 @@
-import React from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { tagsData } from './tagsData';
 
-const UploadTags = () => {
+const UploadTags = ({ tags, inputRef }) => {
+  const [activeTagIndex, setActiveTagIndex] = useState(null);
+
   return (
     <div className="upload-tag-ctn">
-      {tagsData.map((tag) => {
+      {tags.map((item, index) => {
+        const { tag, id } = item;
+
+        const handleToggle = (index) => {
+          setActiveTagIndex(index);
+          if (inputRef) {
+            inputRef.current.value = tag;
+          }
+        };
+
         return (
-          <div key={uuidv4()} className="upload-tag-label">
+          <div
+            key={id}
+            className={`${
+              activeTagIndex === index
+                ? 'upload-tag-label upload-tag-label-active'
+                : 'upload-tag-label'
+            }`}
+            onClick={() => handleToggle(index)}
+          >
             {tag}
           </div>
         );

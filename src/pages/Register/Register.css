@@ -179,10 +179,6 @@
   outline: 1px solid #6d6d6d;
 }
 
-.register-form-input::placeholder {
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
-}
-
 .register-form-upload-label {
   position: relative;
   display: grid;

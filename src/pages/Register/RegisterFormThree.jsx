@@ -85,6 +85,7 @@ const RegisterFormThree = (props) => {
               onChange={onchange}
               uploadPlaceholder={uploadLogo}
               showPreview="preview"
+              changePlaceholderText={false}
             />
             {files[0] && (
               <button className="register-form-button register-form-fit-button">

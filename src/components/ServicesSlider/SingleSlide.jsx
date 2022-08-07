@@ -34,7 +34,7 @@ const SingleSlide = ({
           );
         })}
       </div>
-      <Link to={`/${snakeCase(serType)}/${snakeCase(title)}`}>
+      <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-image-ctn">
             <img src={image[imageIndex]} alt={title} className="slide-image" />

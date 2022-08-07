@@ -1,5 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useStateMachine } from 'little-state-machine';
+import updateAction from './elements/updateAction';
+import './SignUp.css';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
@@ -9,16 +13,25 @@ import { useDocTitle } from '../../hooks/useDocTitle';
 
 const SignUp = () => {
   useDocTitle();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    formState: { errors },
+    watch,
+    handleSubmit,
+  } = useForm({ mode: 'all' });
+  const { actions, state } = useStateMachine({ updateAction });
+
+  const onSubmit = (data) => {
+    actions.updateAction(data);
+    navigate('/sign_up/step2');
+  };
 
   return (
     <div className="sign-up-page">
       <div className="left-side">
-        <img
-          src={sign}
-          alt="cover"
-          className="
-        sign-up-img"
-        />
+        <img src={sign} alt="cover" className="sign-up-img" />
         <img
           src={brandLogoDesk}
           alt="new-market-dhaka logo"
@@ -33,18 +46,60 @@ const SignUp = () => {
       <div className="right-side">
         <h2 className="sign-up-title">Sign Up</h2>
         <div>
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
             <h3 className="field-text">Email</h3>
-            <input type="email" className="field-style" />
+            <input
+              type="text"
+              {...register('email', {
+                required: 'Email Address is required',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Please enter a valid email',
+                },
+              })}
+              className="field-style"
+              placeholder="Email"
+              defaultValue={state.email}
+            />
+            {errors.email && (
+              <p className="error-message">{errors.email?.message}</p>
+            )}
             <h3 className="field-text">Password</h3>
-            <input type="password" className="field-style" />
+            <input
+              type="password"
+              {...register('password', {
+                required: 'Password is required',
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                  message:
+                    'Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters and 1 special character',
+                },
+              })}
+              className="field-style"
+              placeholder="Password"
+              defaultValue={state.password}
+            />
+            {errors.password && (
+              <p className="error-message">{errors.password?.message}</p>
+            )}
             <h3 className="field-text">Confirm Password</h3>
-            <input type="password" className="field-style" />
-            <button className="sign-up-btn">
-              <Link to="/sign_up_step_two" className="sign-up-link">
-                Sign Up
-              </Link>
-            </button>
+            <input
+              type="password"
+              {...register('confirmPassword', {
+                required: 'Confirm Password is required',
+                validate: (value) =>
+                  value === watch('password') || 'Password did not match',
+              })}
+              className="field-style"
+              placeholder="Confirm Password"
+              defaultValue={state.confirmPassword}
+            />
+            {errors.confirmPassword && (
+              <p className="error-message">{errors.confirmPassword?.message}</p>
+            )}
+            <button className="sign-up-btn">Next</button>
           </form>
         </div>
         <div className="signup-footer">

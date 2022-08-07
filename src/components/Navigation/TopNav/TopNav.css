@@ -49,9 +49,10 @@
   font-weight: 600;
   color: #1a1a1a;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.nav-link-ctn:last-child {
+.nav-link:last-child {
   display: none;
 }
 
@@ -128,17 +129,14 @@
     transform: translateX(-50%);
   }
 
-  .nav-link-ctn:last-child {
-    display: block;
-  }
-
   .nav-link {
     padding: 0.5rem 1rem;
+    color: #ffffff;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  .nav-link {
-    color: #ffffff;
+  .nav-link:last-child {
+    display: block;
   }
 
   .nav-link:hover {

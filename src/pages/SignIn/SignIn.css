@@ -32,7 +32,12 @@
   gap: 1rem;
 }
 
+.right-side-step2 {
+  margin-top: -20rem;
+}
+
 .sign-up-title {
+  margin-bottom: 1rem;
   width: 35vw;
   min-width: 350px;
   font-weight: 700;
@@ -89,20 +94,16 @@
   border-radius: 10px;
   font-weight: 700;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #ffffff;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .sign-up-btn:hover {
   background-color: #ffffff;
-}
-.sign-up-btn:hover .sign-up-link {
   color: #1d1d1d;
 }
-.sign-up-link {
-  text-decoration: none;
-  color: #ffffff;
-}
+
 .sign-in {
   color: #00537a;
   cursor: pointer;
@@ -139,6 +140,12 @@
   width: 100px;
   height: 25px;
   object-fit: auto;
+}
+
+.sign-up-page .error-message {
+  margin-top: -0.5rem;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #ce2d4f;
 }
 
 @media screen and (max-width: 1000px) {
@@ -179,6 +186,10 @@
   .right-side {
     width: auto;
     max-width: auto;
+  }
+
+  .right-side-step2 {
+    margin-top: auto;
   }
 
   .sign-up-title {
