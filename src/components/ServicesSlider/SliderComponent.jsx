@@ -12,7 +12,7 @@ import { useFetch } from '../../hooks/useFetch';
 
 const SliderComponent = ({ id, serType }) => {
   const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-
+  const apiServices = useFetch('http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList')
   const specificService = sliderData.find(
     (service) => snakeCase(service.serType) === snakeCase(serType)
   );
@@ -20,6 +20,7 @@ const SliderComponent = ({ id, serType }) => {
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
+  console.log(apiServices)
 
   return (
     <div className="slider-component">
