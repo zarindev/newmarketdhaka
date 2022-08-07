@@ -1,11 +1,11 @@
 import React from 'react';
 
-const RegisterPreviewName = ({ files, uploadPlaceholder }) => {
+const RegisterPreviewName = ({ files, uploadPlaceholderImg }) => {
   return (
     <>
       {files.length === 0 ? (
         <img
-          src={uploadPlaceholder}
+          src={uploadPlaceholderImg}
           alt="upload"
           className="register-form-upload-image"
         />

@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const ServiceDashboard = () => {
+  useDocTitle();
+
   return (
     <div className="service-dash-ctn">
       <SeekerSidebar />

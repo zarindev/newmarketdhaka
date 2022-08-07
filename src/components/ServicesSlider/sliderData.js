@@ -1,3 +1,4 @@
+import logo from '../../images/service-logo.png';
 import locationIcon from '../../images/svg/location.svg';
 import profileIcon from '../../images/svg/profile.svg';
 import homeOne from '../../images/service-one.png';
@@ -20,17 +21,17 @@ export const sliderData = [
     serAvailable: [
       {
         id: 1,
-        image: [itOne, itTwo, itThree, itFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itOne, itTwo, itThree, itFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
-
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -60,20 +61,23 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 2,
-        image: [itTwo, itThree, itFour, itOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itTwo, itThree, itFour, itOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
-
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -103,20 +107,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 3,
-        image: [itThree, itFour, itOne, itTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itThree, itFour, itOne, itTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -146,20 +154,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 4,
-        image: [carOne, carTwo, carThree, carFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carOne, carTwo, carThree, carFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -189,20 +201,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 5,
-        image: [carTwo, carThree, carFour, carOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carTwo, carThree, carFour, carOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -232,20 +248,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 6,
-        image: [carThree, carFour, carOne, carTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carThree, carFour, carOne, carTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -275,20 +295,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 7,
-        image: [homeOne, homeTwo, homeThree, homeFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [homeOne, homeTwo, homeThree, homeFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -318,20 +342,23 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 8,
         image: [homeTwo, homeThree, homeFour, homeOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -361,20 +388,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 9,
-        image: [homeThree, homeFour, homeOne, homeTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [homeThree, homeFour, homeOne, homeTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -404,20 +435,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 10,
-        image: [homeThree, homeFour, homeOne, homeTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [homeThree, homeFour, homeOne, homeTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -447,20 +482,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 11,
-        image: [homeTwo, homeThree, homeFour, homeOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [homeTwo, homeThree, homeFour, homeOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -490,20 +529,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 12,
-        image: [homeOne, homeTwo, homeThree, homeFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [homeOne, homeTwo, homeThree, homeFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -533,20 +576,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 13,
-        image: [itOne, itTwo, itThree, itFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itOne, itTwo, itThree, itFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -576,20 +623,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 14,
-        image: [itTwo, itThree, itFour, itOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itTwo, itThree, itFour, itOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -619,20 +670,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 15,
-        image: [itThree, itFour, itOne, itTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itThree, itFour, itOne, itTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -662,20 +717,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 16,
-        image: [carOne, carTwo, carThree, carFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carOne, carTwo, carThree, carFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -705,20 +764,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 17,
-        image: [carTwo, carThree, carFour, carOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carTwo, carThree, carFour, carOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -748,20 +811,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 18,
-        image: [carThree, carFour, carOne, carTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carThree, carFour, carOne, carTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -791,6 +858,9 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
     ],
   },
@@ -800,17 +870,18 @@ export const sliderData = [
     serAvailable: [
       {
         id: 1,
-        image: [carOne, carTwo, carThree, carFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carOne, carTwo, carThree, carFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -840,20 +911,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 2,
-        image: [carTwo, carThree, carFour, carOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carTwo, carThree, carFour, carOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -883,20 +958,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 3,
-        image: [carThree, carFour, carOne, carTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [carThree, carFour, carOne, carTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -926,6 +1005,9 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
     ],
   },
@@ -935,17 +1017,18 @@ export const sliderData = [
     serAvailable: [
       {
         id: 1,
-        image: [itOne, itTwo, itThree, itFour],
         title: 'Cleaning service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itOne, itTwo, itThree, itFour],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -975,20 +1058,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 2,
-        image: [itTwo, itThree, itFour, itOne],
         title: 'Carpenting service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itTwo, itThree, itFour, itOne],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -1018,20 +1105,24 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
       {
         id: 3,
-        image: [itThree, itFour, itOne, itTwo],
         title: 'Constuction service',
-        time: 'Sun-fri (08:00-22:00)',
+        logo: logo,
+        image: [itThree, itFour, itOne, itTwo],
+        workWeek: 'Sun-fri (08:00-22:00)',
         locationIcon: locationIcon,
         location: 'Calafornia, USA',
         profileIcon: profileIcon,
         name: 'Lara Jones',
 
-        serviceClose: 'Sunday',
-        serviceOpen: '9.00 pm',
-        serviceDetails:
+        serClose: ['Sunday'],
+        serOpen: '9.00 pm',
+        serDetails:
           'Hello, I am a full-stack web developer with 2+ years of experience with modern technologies like React JS, Next JS, Tailwind CSS, and all the other related technologies',
         offeredServices: [
           'React js, single page application',
@@ -1061,6 +1152,9 @@ export const sliderData = [
           '100% client satisfaction',
           'Money-back guarantee',
         ],
+        email: 'contact@company.com',
+        phoneNumber: '(414) 687 - 5892',
+        detailedLocation: '794 Mcallister St San Francisco, 94102',
       },
     ],
   },

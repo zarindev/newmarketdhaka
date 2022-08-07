@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const RegisterFormTwo = () => {
+  useDocTitle();
+
   const navigate = useNavigate();
 
   const {
