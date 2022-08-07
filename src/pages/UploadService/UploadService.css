@@ -71,7 +71,8 @@
 }
 
 .upload-ser-form-input-date {
-  padding-right: 1rem;
+  padding: 0.7rem 1rem;
+  text-indent: 0;
 }
 
 .upload-tag-ctn {
@@ -83,7 +84,7 @@
 .upload-tag-label {
   width: fit-content;
   padding: 0.2rem 0.5rem;
-  border: 1px solid #1d1d1d;
+  border: 1.5px solid #1d1d1d;
   border-radius: 22px;
   font-size: clamp(0.84375rem, 0.8375rem + 0.03125vw, 0.875rem);
   color: #1d1d1d;
@@ -91,8 +92,46 @@
   place-items: center;
   white-space: nowrap;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.upload-tag-label-active {
+  background-color: #ce2d4f;
+  color: #f7f7f7;
 }
 
 .upload-day-label {
   padding: 0.2rem 0.8rem;
+}
+
+.upload-ser-btn-ctn {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.upload-ser-upload-btn {
+  padding: 0.7rem 2rem;
+  background-color: #ce2d4f;
+  border: 0.5px solid #ce2d4f;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.7875rem + 0.125vw, 0.9375rem);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.upload-ser-upload-btn-draft {
+  background-color: #575757;
+  border: 0.5px solid #575757;
+  border-radius: 8px;
+}
+
+.upload-ser-upload-btn:hover {
+  transform: scale(1.05);
+}
+
+.upload-ser-upload-btn:active {
+  transform: scale(0.95);
 }
