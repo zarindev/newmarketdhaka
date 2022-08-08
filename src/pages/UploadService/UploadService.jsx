@@ -34,7 +34,7 @@ const UploadService = () => {
 
   const onSubmit = async (data) => {
     actions.updateAction(data);
-    navigate('/profile');
+    navigate('/service_dashboard');
   };
 
   return (

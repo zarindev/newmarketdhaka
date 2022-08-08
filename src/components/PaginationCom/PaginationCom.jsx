@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import './PaginationCom.css';
 

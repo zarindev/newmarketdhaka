@@ -60,13 +60,13 @@ const RegisterFormTwoIndie = () => {
                 name="address"
                 className="register-form-input"
                 placeholder="***********"
-                {...register('address', {
+                {...register('location', {
                   required: 'Company Address is required',
                 })}
-                defaultValue={state.address}
+                defaultValue={state.location}
               />
-              {errors.address && (
-                <p className="error-message">{errors.address?.message}</p>
+              {errors.location && (
+                <p className="error-message">{errors.location?.message}</p>
               )}
             </div>
             <div className="register-form-item">

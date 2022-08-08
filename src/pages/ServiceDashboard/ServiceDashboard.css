@@ -1,6 +1,8 @@
 .service-dash-ctn {
   position: relative;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
+  padding: 53rem 0;
   background-color: #f7f7f7;
   display: flex;
 }
@@ -67,11 +69,12 @@
   transform: scale(0.95);
 }
 
-.service-dash-content {
+/* created services */
+.created-ser-ctn {
   margin-top: 1.7rem;
 }
 
-.service-dash-content-heading {
+.created-ser-heading {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -81,58 +84,89 @@
   white-space: nowrap;
 }
 
-.service-dash-content-title {
+.created-ser-title {
   font-size: clamp(1.375rem, 1.35rem + 0.125vw, 1.5rem);
   font-weight: 700;
 }
 
-.service-dash-content-amount {
+.created-ser-amount {
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 600;
 }
 
-.service-dash-content-styled-divider {
+.created-ser-styled-divider {
   width: 786px;
   border: 0.5px solid #d9d9d9;
 }
 
-.service-dash-content-services {
-  margin-top: 2rem;
+.created-ser-ctn .same-services-ctn {
+  width: auto;
+  max-width: auto;
+  margin: auto;
+}
+
+.created-ser-ctn .pagination-text {
+  padding: 0.4rem 1rem;
+  background-color: hsl(195, 53%, 79%);
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: hsl(0, 0%, 15%);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.created-ser-ctn .pagination-text:hover {
+  background-color: hsl(203, 92%, 75%);
+  color: hsl(0, 0%, 11%);
+}
+
+.created-ser-ctn .pagination-number {
+  color: hsl(0, 0%, 15%);
+}
+
+.created-ser-ctn .pagination-number:hover {
+  color: hsl(0, 0%, 11%);
+}
+
+.created-ser-ctn .pagination-active {
+  color: hsl(0, 0%, 100%);
+}
+
+@media screen and (max-width: 1300px) {
+  .service-dash-ctn {
+    padding: 79rem 0;
+  }
 }
 
 @media screen and (max-width: 1000px) {
+  .service-dash-ctn {
+    padding: 0;
+  }
+
   .service-dash {
     position: relative;
     left: 0;
     width: 90vw;
-  }
-
-  .service-dash-banner-guy {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .service-dash {
-    position: relative;
-    left: 0;
+    margin: 2.7rem auto 3.2rem auto;
   }
 
   .service-dash-banner-guy {
     display: none;
   }
 
-  .service-dash-content-heading {
-    gap: 0.5rem;
+  .created-ser-heading {
+    gap: 1.2rem;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .service-dash-content-heading {
+  .created-ser-heading {
     gap: 0;
   }
 
-  .service-dash-content-styled-divider {
+  .created-ser-styled-divider {
     display: none;
   }
 }

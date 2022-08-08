@@ -112,7 +112,7 @@
 
   .navlinks {
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
     position: fixed;
     top: 90px;
     left: -100%;

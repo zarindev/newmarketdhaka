@@ -29,12 +29,9 @@ const RegisterFormSuccess = () => {
   const { actions, state } = useStateMachine({ updateAction });
 
   const notify = () => {
-    toast.success(
-      'Successfully registered. Navigating to the Dashbaord after 4 seconds',
-      {
-        progress: undefined,
-      }
-    );
+    toast.success('Redirecting to the Dashbaord in 4 seconds', {
+      progress: undefined,
+    });
   };
 
   useEffect(() => {

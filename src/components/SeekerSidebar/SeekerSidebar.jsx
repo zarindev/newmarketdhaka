@@ -9,14 +9,18 @@ import seekerSwitchIcon from '../../images/seeker-switch.png';
 const SeekerSidebar = () => {
   return (
     <div className="seeker-sidebar">
-      <img src={brandLogo} alt="brand logo" className="nav-brand-logo" />
+      <Link to="/">
+        <img src={brandLogo} alt="brand logo" className="nav-brand-logo" />
+      </Link>
       <div className="seeker-item">
         <img
           src={seekerServicesIcon}
           alt="services"
           className="seeker-item-icon"
         />
-        <p className="seeker-item-text">My Services</p>
+        <Link to="/service_dashboard">
+          <p className="seeker-item-text">My Services</p>
+        </Link>
       </div>
       <Link to="/profile">
         <div className="seeker-item">
