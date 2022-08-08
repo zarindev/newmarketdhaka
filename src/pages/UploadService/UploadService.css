@@ -129,36 +129,6 @@
   border-top-right-radius: 1rem;
   color: #ffffff;
 }
-/* 
-.upload-tag-ctn {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  white-space: nowrap;
-}
-
-.upload-tag-label {
-  width: fit-content;
-  padding: 0.2rem 0.5rem;
-  border: 1.5px solid #1d1d1d;
-  border-radius: 22px;
-  font-size: clamp(0.84375rem, 0.8375rem + 0.03125vw, 0.875rem);
-  color: #1d1d1d;
-  display: grid;
-  place-items: center;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.upload-tag-label-active {
-  background-color: #ce2d4f;
-  color: #f7f7f7;
-}
-
-.upload-day-label {
-  padding: 0.2rem 0.8rem;
-} */
 
 .upload-ser-input-ctn-img .upload-ser-img-ctn {
   display: grid;
