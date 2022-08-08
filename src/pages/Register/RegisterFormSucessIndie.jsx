@@ -7,7 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
-import { useGlobalContext } from '../../context/AppProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
 const RegisterFormSucessIndie = () => {
@@ -29,15 +28,10 @@ const RegisterFormSucessIndie = () => {
   });
   const { actions, state } = useStateMachine({ updateAction });
 
-  const { prevRegData, setPrevRegData } = useGlobalContext();
-
   const notify = () => {
-    toast.success(
-      'Successfully registered. Navigating to the Dashbaord in 4 seconds',
-      {
-        progress: undefined,
-      }
-    );
+    toast.success('Redirecting to the Dashbaord in 4 seconds', {
+      progress: undefined,
+    });
     toast.error('Registration failed', { progress: undefined });
   };
 
@@ -51,7 +45,6 @@ const RegisterFormSucessIndie = () => {
   }, []);
 
   const onSubmit = () => {
-    setPrevRegData(state);
     reset();
     navigate('/service_dashboard');
   };

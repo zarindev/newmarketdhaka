@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
+import CreatedServices from './CreatedServices';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
 const ServiceDashboard = () => {
@@ -30,14 +31,7 @@ const ServiceDashboard = () => {
             </button>
           </Link>
         </div>
-        <div className="service-dash-content">
-          <div className="service-dash-content-heading">
-            <p className="service-dash-content-title">All Services</p>
-            <div className="service-dash-content-styled-divider"></div>
-            <p className="service-dash-content-amount">6 in total</p>
-          </div>
-          <div className="service-dash-content-services">placeholder</div>
-        </div>
+        <CreatedServices />
       </div>
     </div>
   );
