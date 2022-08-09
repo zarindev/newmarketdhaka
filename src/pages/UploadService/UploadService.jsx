@@ -32,9 +32,27 @@ const UploadService = () => {
   } = useForm();
   const { actions, state } = useStateMachine({ updateAction });
 
+  const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
   const onSubmit = async (data) => {
     actions.updateAction(data);
-    navigate('/profile');
+
+    const stateAndActions = {
+      ...state,
+      ...actions,
+    };
+
+    const res = await fetch(serviceApi, {
+      method: 'POST',
+      body: JSON.stringify(stateAndActions),
+      headers: {
+        'Content-type': 'application/json; carset=UTF-8',
+      },
+    });
+
+    const formData = await res.json();
+    console.log(formData);
+
+    // navigate('/service_dashboard');
   };
 
   return (

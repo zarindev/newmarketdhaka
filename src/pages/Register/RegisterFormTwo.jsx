@@ -59,14 +59,14 @@ const RegisterFormTwo = () => {
                 type="text"
                 name="address"
                 className="register-form-input"
-                placeholder="***********"
-                {...register('address', {
+                placeholder="Address"
+                {...register('location', {
                   required: 'Company Address is required',
                 })}
-                defaultValue={state.address}
+                defaultValue={state.location}
               />
-              {errors.address && (
-                <p className="error-message">{errors.address?.message}</p>
+              {errors.location && (
+                <p className="error-message">{errors.location?.message}</p>
               )}
             </div>
             <div className="register-form-item">
@@ -77,7 +77,7 @@ const RegisterFormTwo = () => {
                 type="text"
                 name="binNumber"
                 className="register-form-input"
-                placeholder="***********"
+                placeholder="BIN Number"
                 {...register('binNumber', {
                   required: 'Company BIN Number is required',
                 })}
@@ -89,13 +89,31 @@ const RegisterFormTwo = () => {
             </div>
             <div className="register-form-item">
               <label htmlFor="taxNumber" className="register-form-input-label">
+                Company Licence Key
+              </label>
+              <input
+                type="text"
+                name="taxNumber"
+                className="register-form-input"
+                placeholder="License Key"
+                {...register('licenseKey', {
+                  required: 'Company License Key is required',
+                })}
+                defaultValue={state.licenseKey}
+              />
+              {errors.licenseKey && (
+                <p className="error-message">{errors.licenseKey?.message}</p>
+              )}
+            </div>
+            <div className="register-form-item">
+              <label htmlFor="taxNumber" className="register-form-input-label">
                 Company Tax Number
               </label>
               <input
                 type="text"
                 name="taxNumber"
                 className="register-form-input"
-                placeholder="***********"
+                placeholder="Tax Number"
                 {...register('taxNumber', {
                   required: 'Company Tax Number is required',
                 })}
@@ -116,9 +134,9 @@ const RegisterFormTwo = () => {
                 type="text"
                 name="phoneNumber"
                 className="field-style"
-                placeholder="***********"
+                placeholder="Phone Number"
                 {...register('phoneNumber', {
-                  required: 'Phone Number is required',
+                  required: 'Company Phone Number is required',
                   pattern: {
                     value:
                       /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,

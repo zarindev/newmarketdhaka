@@ -3,6 +3,10 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  FacebookAuthProvider,
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
@@ -13,12 +17,22 @@ const AppContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const createUser = (email, password, phoneNumber) => {
+  const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signin = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const signinGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+
+  const signinFb = () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider);
   };
 
   const signout = () => {
@@ -35,7 +49,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ createUser, user, signin, signout }}>
+    <AppContext.Provider
+      value={{ createUser, user, signin, signinGoogle, signinFb, signout }}
+    >
       {children}
     </AppContext.Provider>
   );

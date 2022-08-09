@@ -1,7 +1,8 @@
 .upload-ser-ctn {
   position: relative;
   height: auto;
-  padding: 62rem 0;
+  min-height: 100vh;
+  padding: 59.5rem 0;
   background-color: #f7f7f7;
   display: flex;
 }
@@ -11,9 +12,9 @@
   top: 0;
   left: 18rem;
   right: 0;
+  margin: 3rem auto 3rem auto;
   width: 65vw;
   max-width: 980px;
-  margin: 3.5rem auto 4rem auto;
 }
 
 .upload-ser-heading {
@@ -129,36 +130,6 @@
   color: #ffffff;
 }
 
-.upload-tag-ctn {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  white-space: nowrap;
-}
-
-.upload-tag-label {
-  width: fit-content;
-  padding: 0.2rem 0.5rem;
-  border: 1.5px solid #1d1d1d;
-  border-radius: 22px;
-  font-size: clamp(0.84375rem, 0.8375rem + 0.03125vw, 0.875rem);
-  color: #1d1d1d;
-  display: grid;
-  place-items: center;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.upload-tag-label-active {
-  background-color: #ce2d4f;
-  color: #f7f7f7;
-}
-
-.upload-day-label {
-  padding: 0.2rem 0.8rem;
-}
-
 .upload-ser-input-ctn-img .upload-ser-img-ctn {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -229,6 +200,10 @@
 }
 
 @media screen and (max-width: 769px) {
+  .upload-ser {
+    margin: 2.3rem auto 3rem auto;
+  }
+
   .upload-ser-form-ctn {
     margin-top: 1.9rem;
   }
