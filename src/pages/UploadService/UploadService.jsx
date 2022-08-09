@@ -207,7 +207,7 @@ const UploadService = () => {
                     alt="label icon"
                     className="upload-ser-label-icon"
                   />
-                  <p className="upload-ser-label-title">Why choose us</p>
+                  <p className="upload-ser-label-title">Upload Service Image</p>
                 </label>
                 <div className="upload-ser-img-ctn">
                   {dragAndDrops.map((item) => {
