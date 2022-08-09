@@ -12,9 +12,10 @@ import viewDetailsIcon from '../../images/svg/view-details.svg';
 import imageIcon from '../../images/svg/image-el.svg';
 import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
 import UploadSelect from './UploadSelect';
-import { categoryTags, closingDays, dragAndDrops } from './uploadData';
-import { useDocTitle } from '../../hooks/useDocTitle';
 import RegisterUpload from '../Register/elements/RegisterUpload';
+import { categoryTags, closingDays, dragAndDrops } from './uploadData';
+import { useFetch } from '../../hooks/useFetch';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const UploadService = () => {
   useDocTitle();
