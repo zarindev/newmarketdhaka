@@ -1,7 +1,6 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from '../Register/elements/updateAction';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
@@ -31,20 +30,18 @@ const UploadService = () => {
     clearErrors,
     handleSubmit,
   } = useForm();
-  const { actions, state } = useStateMachine({ updateAction });
 
+  const servicePost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
   const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
+
+  const [fromatedData, setFromatedData] = useState({});
+
   const onSubmit = async (data) => {
-    actions.updateAction(data);
+    console.log(data);
 
-    const stateAndActions = {
-      ...state,
-      ...actions,
-    };
-
-    const res = await fetch(serviceApi, {
+    const res = await fetch(servicePost, {
       method: 'POST',
-      body: JSON.stringify(stateAndActions),
+      body: JSON.stringify(data),
       headers: {
         'Content-type': 'application/json; carset=UTF-8',
       },
@@ -118,6 +115,24 @@ const UploadService = () => {
                   className="register-form-input"
                   placeholder="Select opening time"
                   {...register('serOpen', {
+                    required: true,
+                  })}
+                />
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serOpen" className="upload-ser-label-ctn">
+                  <img
+                    src={clockIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Seller-info ID</p>
+                </label>
+                <input
+                  type="number"
+                  className="register-form-input"
+                  placeholder="Select opening time"
+                  {...register('sellerInfoId', {
                     required: true,
                   })}
                 />

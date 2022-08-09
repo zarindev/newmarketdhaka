@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -18,6 +18,9 @@ import ScrollToTop from '../../utils/ScrollToTop';
 
 const ServiceDetails = () => {
   useDocTitle();
+
+  const [emailBreak, setEmailBreak] = useState('');
+  const sendEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?toMail=${emailBreak}`;
 
   const { service_type, title } = useParams();
 

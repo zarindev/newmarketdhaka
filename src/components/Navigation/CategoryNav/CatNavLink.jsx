@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import dropdown from '../../../images/dropdown.png';
-import { catNavData } from '../catNavData';
+import { catNavData } from './catNavData';
 
 const CatNavLink = () => {
   return (

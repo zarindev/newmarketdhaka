@@ -10,15 +10,14 @@ import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
 import { useFetch } from '../../hooks/useFetch';
 
-const SliderComponent = ({ id, serType }) => {
-  const url = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const apiServices = useFetch(
-    'http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList'
-  );
-  const specificService = sliderData.find(
-    (service) => snakeCase(service.serType) === snakeCase(serType)
-  );
-  const { serAvailable } = specificService;
+const SliderComponent = ({ serType }) => {
+  const serviceGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const fetchedSer = useFetch(serviceGet);
+
+  // const specificService = sliderData.find(
+  //   (service) => snakeCase(service.serType) === snakeCase(serType)
+  // );
+  // const { serAvailable } = specificService;
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -77,13 +76,13 @@ const SliderComponent = ({ id, serType }) => {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {serAvailable.map((slide) => {
+          {/* {serAvailable.map((slide) => {
             return (
               <SwiperSlide key={slide.id}>
                 <SingleSlide {...slide} serType={serType} />
               </SwiperSlide>
             );
-          })}
+          })} */}
         </Swiper>
       </div>
     </div>
