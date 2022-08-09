@@ -9,6 +9,8 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { useAuth } from '../../../context/AuthProvider';
 
 const TopNav = () => {
+  const navigate = useNavigate();
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const mobileBtnRef = useRef(null);
@@ -25,15 +27,19 @@ const TopNav = () => {
     closed: { rotate: 0 },
   };
 
+  // signout
   const { user, signout } = useAuth();
-  const navigate = useNavigate();
+  const [catchError, setCatchError] = useState('');
 
   const handleSignout = async () => {
     try {
       await signout();
       user && navigate('/');
     } catch (error) {
-      console.log(error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
     }
   };
 
@@ -52,26 +58,26 @@ const TopNav = () => {
             showMobileMenu ? 'navlinks navlinks-mobile' : 'navlinks'
           }`}
         >
-          <NavLink to="/" className=" nav-link">
+          <NavLink to="/" className="nav-link">
             Home
           </NavLink>
-          <NavLink to="/about_us" className=" nav-link">
+          <NavLink to="/about_us" className="nav-link">
             About Us
           </NavLink>
-          <NavLink to="/contact_us" className=" nav-link">
+          <NavLink to="/contact_us" className="nav-link">
             Contact Us
           </NavLink>
-          {user?.email ? (
+          {user?.email || user?.displayName ? (
             <li className="nav-link" onClick={handleSignout}>
               Sign out
             </li>
           ) : (
-            <NavLink to="/sign_in" className=" nav-link">
+            <NavLink to="/sign_in" className="nav-link">
               Sign in
             </NavLink>
           )}
 
-          <NavLink to="/register" className=" nav-link">
+          <NavLink to="/register" className="nav-link">
             Register
           </NavLink>
         </ul>
