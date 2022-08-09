@@ -62,7 +62,7 @@ const RegisterFormOneIndie = () => {
                 type="password"
                 name="password"
                 className="register-form-input"
-                placeholder="***********"
+                placeholder="********"
                 {...register('password', {
                   required: 'Password is required',
                   pattern: {
@@ -89,7 +89,7 @@ const RegisterFormOneIndie = () => {
                 type="password"
                 name="confirmPassword"
                 className="register-form-input"
-                placeholder="***********"
+                placeholder="********"
                 {...register('confirmPassword', {
                   required: 'Confirm Password is required',
                   validate: (value) =>

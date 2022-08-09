@@ -10,10 +10,11 @@ import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignIn.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
-import { async } from '@firebase/util';
+import { useEffect } from 'react';
 
-const SignUp = () => {
+const SignIn = () => {
   useDocTitle();
+
   const navigate = useNavigate();
 
   const {
@@ -22,8 +23,9 @@ const SignUp = () => {
     handleSubmit,
   } = useForm({ mode: 'all' });
 
+  /** signin */
   const { signin, user } = useAuth();
-  const [error, setError] = useState('');
+  const [catchError, setCatchError] = useState('');
 
   const notify = () => {
     if (user) {
@@ -31,18 +33,55 @@ const SignUp = () => {
         progress: undefined,
       });
     } else {
-      toast.error('Email or Password did not match');
+      toast.error(catchError, { progress: undefined });
     }
   };
 
+  // via google
+  const { signinGoogle } = useAuth();
+
+  const handleSiginGoogle = async () => {
+    try {
+      await signinGoogle();
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
+    }
+  };
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  // via facebook
+  const { signinFb } = useAuth();
+
+  const handleSigninFb = async () => {
+    try {
+      await signinFb();
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
+    }
+  };
+
+  // via email, password
   const onSubmit = async ({ email, password }) => {
     try {
       await signin(email, password);
       notify();
       navigate('/');
     } catch (error) {
-      setError(error.message);
-      console.log(error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
     }
   };
 
@@ -127,11 +166,11 @@ const SignUp = () => {
             <p className="signup-footer-text-bold">or, Sign up with</p>
           </div>
           <div className="signin">
-            <button className="signin-btn">
-              <img src={google} alt="" />
+            <button className="signin-btn" onClick={handleSiginGoogle}>
+              <img src={google} alt="google" />
             </button>
-            <button className="signin-btn">
-              <img src={facebook} alt="" />
+            <button className="signin-btn" onClick={handleSigninFb}>
+              <img src={facebook} alt="facebook" />
             </button>
           </div>
         </div>
@@ -140,4 +179,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

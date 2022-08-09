@@ -25,9 +25,11 @@
 }
 
 .profile-image {
+  width: 170px;
   max-width: 100%;
-  min-width: 125px;
+  min-width: 150px;
   height: auto;
+  border-radius: 50%;
 }
 
 .profile-title-ctn {
@@ -155,6 +157,10 @@
 
   .profile-image-ctn {
     margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 150px;
   }
 
   .profile-title-ctn {
