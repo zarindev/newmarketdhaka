@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
-import { sliderData } from './sliderData';
 import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
 import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
@@ -11,13 +10,9 @@ import { snakeCase } from '../../functions/formatString';
 import { useFetch } from '../../hooks/useFetch';
 
 const SliderComponent = ({ serType }) => {
-  const serviceGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const fetchedSer = useFetch(serviceGet);
-
-  // const specificService = sliderData.find(
-  //   (service) => snakeCase(service.serType) === snakeCase(serType)
-  // );
-  // const { serAvailable } = specificService;
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const fetchedSer = useFetch(serGet);
+  const { items } = fetchedSer;
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -76,6 +71,16 @@ const SliderComponent = ({ serType }) => {
           modules={[Navigation]}
           className="mySwiper"
         >
+          {items &&
+            items.map((service) => {
+              if (service.serType === serType) {
+                return (
+                  <SwiperSlide key={service.id}>
+                    <SingleSlide {...service} serType={serType} />
+                  </SwiperSlide>
+                );
+              }
+            })}
           {/* {serAvailable.map((slide) => {
             return (
               <SwiperSlide key={slide.id}>

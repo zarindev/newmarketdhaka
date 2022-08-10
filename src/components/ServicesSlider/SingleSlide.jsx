@@ -37,7 +37,13 @@ const SingleSlide = ({
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-image-ctn">
-            <img src={image[imageIndex]} alt={title} className="slide-image" />
+            {image && (
+              <img
+                src={image[imageIndex]}
+                alt={title}
+                className="slide-image"
+              />
+            )}
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
