@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
@@ -9,6 +9,7 @@ import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
+import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
 const SignUp = () => {
@@ -26,6 +27,40 @@ const SignUp = () => {
   const onSubmit = (data) => {
     actions.updateAction(data);
     navigate('/sign_up/step2');
+  };
+
+  /** signin */
+  const { user, signinGoogle, signinFb } = useAuth();
+  const [catchError, setCatchError] = useState('');
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  // via google
+  const handleSiginGoogle = async () => {
+    try {
+      await signinGoogle();
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
+    }
+  };
+
+  // via facebook
+  const handleSigninFb = async () => {
+    try {
+      await signinFb();
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setCatchError(errorMessage);
+      console.log(catchError);
+    }
   };
 
   return (
@@ -115,11 +150,11 @@ const SignUp = () => {
             <p>or, Sign up with</p>
           </div>
           <div className="signin">
-            <button className="signin-btn">
-              <img src={google} alt="" />
+            <button className="signin-btn" onClick={handleSiginGoogle}>
+              <img src={google} alt="google" />
             </button>
-            <button className="signin-btn">
-              <img src={facebook} alt="" />
+            <button className="signin-btn" onClick={handleSigninFb}>
+              <img src={facebook} alt="facebook" />
             </button>
           </div>
         </div>

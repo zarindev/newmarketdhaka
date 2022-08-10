@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { ToastContainer, toast } from 'react-toastify';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignIn.css';
-import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
-import { useEffect } from 'react';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const SignIn = () => {
   useDocTitle();
@@ -24,22 +22,16 @@ const SignIn = () => {
   } = useForm({ mode: 'all' });
 
   /** signin */
-  const { signin, user } = useAuth();
+  const { user, signin, signinGoogle, signinFb } = useAuth();
   const [catchError, setCatchError] = useState('');
 
-  const notify = () => {
-    if (user) {
-      toast.success('Successfully Signed in', {
-        progress: undefined,
-      });
-    } else {
-      toast.error(catchError, { progress: undefined });
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/');
     }
-  };
+  }, [user, navigate]);
 
   // via google
-  const { signinGoogle } = useAuth();
-
   const handleSiginGoogle = async () => {
     try {
       await signinGoogle();
@@ -51,15 +43,7 @@ const SignIn = () => {
     }
   };
 
-  useEffect(() => {
-    if (user !== null) {
-      navigate('/');
-    }
-  }, [user, navigate]);
-
   // via facebook
-  const { signinFb } = useAuth();
-
   const handleSigninFb = async () => {
     try {
       await signinFb();
@@ -75,7 +59,6 @@ const SignIn = () => {
   const onSubmit = async ({ email, password }) => {
     try {
       await signin(email, password);
-      notify();
       navigate('/');
     } catch (error) {
       const errorCode = error.code;
@@ -105,18 +88,6 @@ const SignIn = () => {
         <h2 className="sign-up-title">Sign In</h2>
         <div>
           <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
             <h3 className="field-text">Email</h3>
             <input
               type="text"
@@ -158,7 +129,7 @@ const SignIn = () => {
         <div className="signup-footer">
           <div className="signup-footer-text-ctn">
             <p>
-              Don't have an account?{' '}
+              Don't have an account? {''}
               <span className="sign-in">
                 <Link to="/sign_up">Sign Up</Link>
               </span>

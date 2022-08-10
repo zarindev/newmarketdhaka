@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useDocTitle } from '../../hooks/useDocTitle';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
@@ -9,6 +8,7 @@ import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import { useFetch } from '../../hooks/useFetch';
 import { useAuth } from '../../context/AuthProvider';
+import { useDocTitle } from '../../hooks/useDocTitle';
 
 const SignUpTwo = () => {
   useDocTitle();
@@ -32,6 +32,7 @@ const SignUpTwo = () => {
   });
   const { actions, state } = useStateMachine({ updateAction });
 
+  // signup via email and password
   const { createUser } = useAuth();
 
   const onSubmit = async (data) => {

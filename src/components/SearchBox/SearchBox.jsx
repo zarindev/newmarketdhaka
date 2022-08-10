@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
 import { motion } from 'framer-motion';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import { dropdownData } from './dropdownData';
+import { titleCase } from '../../functions/formatString';
+import useAllKey from '../../hooks/useAllKey';
 
 const SearchBox = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -13,6 +15,9 @@ const SearchBox = () => {
 
   const keywordSearch = useRef(null);
   const locationSearch = useRef(null);
+
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const mergedSerType = useAllKey(serGet);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,10 +56,10 @@ const SearchBox = () => {
               animate={showDropdown ? 'open' : 'closed'}
               variants={variants}
             >
-              {dropdownData.map((item) => {
+              {mergedSerType.map((item) => {
                 return (
-                  <li className="dropdown-item" key={item.id}>
-                    {item.title}
+                  <li className="dropdown-item" key={uuidv4()}>
+                    {titleCase(item)}
                   </li>
                 );
               })}
@@ -67,7 +72,6 @@ const SearchBox = () => {
             ref={keywordSearch}
             onChange={() => setKeyword(keywordSearch.current.value)}
           />
-
           <input
             type="text"
             placeholder="Location"
@@ -75,7 +79,6 @@ const SearchBox = () => {
             ref={locationSearch}
             onChange={() => setLocation(locationSearch.current.value)}
           />
-
           <button className="search-btn">
             <img
               src={searchIcon}

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
 import './Register.css';
-import uploadPlaceholderReg from '../../images/upload-placeholder-reg.png';
+import uploadPlaceholderRegImg from '../../images/upload-placeholder-reg-img.png';
 import RegisterLeft from './elements/RegisterLeft';
 import RegisterUpload from './elements/RegisterUpload';
 import { useGlobalContext } from '../../context/AppProvider';
@@ -40,7 +40,7 @@ const RegisterFormThree = () => {
           <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <RegisterUpload
               isTypeImg={true}
-              uploadPlaceholderImg={uploadPlaceholderReg}
+              uploadPlaceholderImg={uploadPlaceholderRegImg}
               changePlaceholderText={false}
               getFiles={getFiles}
               setValue={setValue}

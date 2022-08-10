@@ -63,7 +63,7 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
   z-index: 8;
   opacity: 0;
 }
@@ -74,7 +74,7 @@
 
 .dropdown-item {
   font-weight: 400;
-  font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
+  font-size: clamp(0.875rem, 0.8625rem + 0.0625vw, 0.9375rem);
   color: #2d2d2d;
   white-space: nowrap;
   cursor: pointer;
