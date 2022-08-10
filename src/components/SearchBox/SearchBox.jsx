@@ -6,7 +6,7 @@ import searchIcon from '../../images/svg/search-normal.svg';
 import { motion } from 'framer-motion';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { titleCase } from '../../functions/formatString';
-import useAllKey from '../../hooks/useAllKey';
+import { useAllKey } from '../../hooks/useAllKey';
 
 const SearchBox = () => {
   const [showDropdown, setShowDropdown] = useState(false);
