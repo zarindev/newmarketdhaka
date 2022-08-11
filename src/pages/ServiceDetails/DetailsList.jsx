@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
 import serviceMap from '../../images/service-map.png';
+import logo from '../../images/service-logo.png';
 import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
 import { capitalCase } from '../../functions/formatString';
 
-const DetailsList = ({
-  title,
-  logo,
-  image,
-  serClose,
-  serOpen,
-  serDetails,
-  offeredServices,
-  extraServices,
-  whyUs,
-  email,
-  phoneNumber,
-  location,
-}) => {
+const DetailsList = ({ activeSer }) => {
+  const {
+    title,
+    image,
+    serClose,
+    serOpen,
+    serDetails,
+    offeredServices,
+    extraServices,
+    whyUs,
+  } = activeSer;
+
   const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
@@ -37,6 +37,28 @@ const DetailsList = ({
       imageIndex > image.length - 1 && setImageIndex(0);
     }
   }, [image, imageIndex]);
+
+  /** moch data start */
+  const email = 'test@gmail.com';
+  const phoneNumber = '012345678901';
+  const location = 'testdist, testcity';
+  /** moch data end */
+
+  // send email to the service creator
+  const [emailBreak, setEmailBreak] = useState('sadmann898@gmail.com');
+  const creatorEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?toMail=${emailBreak}`;
+
+  const sendEmail = async () => {
+    try {
+      await fetch(creatorEmail, {
+        method: 'GET',
+      });
+      toast.success('Successfully sent', { progress: undefined });
+    } catch (error) {
+      console.log(error);
+      toast.error('Failed to send email', { progress: undefined });
+    }
+  };
 
   return (
     <div className="service-details-contents">
@@ -95,7 +117,19 @@ const DetailsList = ({
                 </div>
               </div>
             </div>
-            <button className="details-button">
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
+            <button className="details-button" onClick={sendEmail}>
               <img
                 src={paperPlaneIcon}
                 alt="paper-plane icon"
@@ -109,43 +143,32 @@ const DetailsList = ({
               <p className="details-list-main-title">Details</p>
               <p className="details-list-content">{serDetails}</p>
             </div>
-            <div className="details-list">
-              <p className="details-list-sub-title">Services we offer:</p>
-              <ul className="details-list-items">
-                {offeredServices?.map((item, index) => {
-                  return (
-                    <li className="details-list-item" key={index}>
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="details-list">
-              <p className="details-list-sub-title">Extra services we offer:</p>
-              <ul className="details-list-items">
-                {extraServices?.map((item, index) => {
-                  return (
-                    <li className="details-list-item" key={index}>
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <div className="details-list">
-              <p className="details-list-sub-title">Why choose us:</p>
-              <ul className="details-list-items">
-                {whyUs?.map((item, index) => {
-                  return (
-                    <li className="details-list-item" key={index}>
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            {offeredServices && (
+              <div className="details-list">
+                <p className="details-list-sub-title">Services we offer:</p>
+                <ul className="details-list-items">
+                  <li className="details-list-item">{offeredServices}</li>
+                </ul>
+              </div>
+            )}
+            {extraServices && (
+              <div className="details-list">
+                <p className="details-list-sub-title">
+                  Extra services we offer:
+                </p>
+                <ul className="details-list-items">
+                  <li className="details-list-item">{offeredServices}</li>
+                </ul>
+              </div>
+            )}
+            {whyUs && (
+              <div className="details-list">
+                <p className="details-list-sub-title">Why choose us:</p>
+                <ul className="details-list-items">
+                  <li className="details-list-item">{whyUs}</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

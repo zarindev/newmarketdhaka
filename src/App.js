@@ -25,6 +25,7 @@ import NotFound from './pages/404/NotFound';
 import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
 import UploadService from './pages/UploadService/UploadService';
 import SignUpTwo from './pages/SignUp/SignUpTwo';
+import SerachResult from './pages/SearchResult/SerachResult';
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
       />
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/edit_profile" element={<ProfileEdit />} />
+      <Route path="/results" element={<SerachResult />} />
       <Route path="/all_services" element={<AllServices />} />
       <Route path="/more_services" element={<MoreServices />} />
       <Route path="/more_services/all_services" element={<AllServices />} />

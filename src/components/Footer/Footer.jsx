@@ -1,4 +1,6 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import { snakeCase, titleCase } from '../../functions/formatString';
 import './Footer.css';
 import logo from '../../images/svg/Network-Color 1.svg';
 import facebookLogo from '../../images/svg/Facebook.svg';
@@ -9,8 +11,12 @@ import youtubeLogo from '../../images/svg/YouTube.svg';
 import emailIcon from '../../images/svg/Email-black.svg';
 import phoneIcon from '../../images/svg/Phone-black.svg';
 import locationIcon from '../../images/svg/Location-black.svg';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const Footer = () => {
+  const { showDropdown, setShowDropdown, mergedSerTypeAll } =
+    useGlobalContext();
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -90,16 +96,17 @@ const Footer = () => {
         <div className="footer-services-ctn">
           <h4 className="footer-services-title">Services</h4>
           <ul className="footer-services">
-            <li className="footer-link">Service 1</li>
-            <li className="footer-link">Service 2</li>
-            <li className="footer-link">Service 3</li>
-            <li className="footer-link">Service 4</li>
-            <li className="footer-link">Service 5</li>
-            <li className="footer-link">Service 6</li>
-            <li className="footer-link">Service 7</li>
-            <li className="footer-link">Service 8</li>
-            <li className="footer-link">Service 9</li>
-            <li className="footer-link">Service 10</li>
+            {mergedSerTypeAll.map((item) => {
+              return (
+                <Link
+                  to={`/home/${snakeCase(item)}`}
+                  key={uuidv4()}
+                  onClick={() => setShowDropdown(!showDropdown)}
+                >
+                  <li className="footer-link">{titleCase(item)}</li>
+                </Link>
+              );
+            })}
           </ul>
         </div>
       </div>

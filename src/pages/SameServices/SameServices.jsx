@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { sliderData } from '../../components/ServicesSlider/sliderData';
 import './SameServices.css';
 import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -8,28 +7,46 @@ import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import Footer from '../../components/Footer/Footer';
 import PaginationCom from '../../components/PaginationCom/PaginationCom';
 import ScrollToTop from '../../utils/ScrollToTop';
-import { checkCase } from '../../functions/formatString';
+import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useFetch } from '../../hooks/useFetch';
+import Loading from '../../components/Loading/Loading';
 
 const SameServices = () => {
   useDocTitle();
 
   const { service_type } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [mergedSerState, setMergedSerState] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
 
-  const specificService = sliderData?.find(
-    (service) => service.serType === checkCase(service_type)
-  );
-  const { serAvailable } = specificService;
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const fetchedSer = useFetch(serGet);
+  const { items } = fetchedSer;
+
+  useEffect(() => {
+    if (titleCase(service_type) === 'All') {
+      return setMergedSerState(items); // return => for exiting out of the loop
+    }
+
+    const mergedSer = items.filter(
+      (service) => snakeCase(service.serType) === snakeCase(service_type)
+    );
+    setMergedSerState(mergedSer);
+  }, [items, service_type]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
-    setActiveServices(serAvailable.slice(serviceOffset, endOffset));
-    setPageCount(Math.ceil(serAvailable.length / servicesPerPage));
-  }, [serAvailable, serviceOffset, servicesPerPage]);
+    setActiveServices(mergedSerState.slice(serviceOffset, endOffset));
+    setPageCount(Math.ceil(mergedSerState.length / servicesPerPage));
+  }, [mergedSerState, serviceOffset, servicesPerPage]);
+
+  useEffect(() => {
+    if (mergedSerState.length > 0) setIsLoading(false);
+  }, [mergedSerState]);
 
   return (
     <ScrollToTop>
@@ -39,20 +56,22 @@ const SameServices = () => {
         <div className="slider-heading">
           <h3 className="slider-title">{checkCase(service_type)}</h3>
           <p className="same-services-avilable">
-            {`${serAvailable.length} Services Avilable`}
+            {`${mergedSerState.length} Services Avilable`}
           </p>
           <div className="same-styled-divider"></div>
         </div>
         <div className="single-slide-ctn">
-          {activeServices.map((service) => {
-            return (
-              <SingleSlide
-                key={service.id}
-                {...service}
-                serType={checkCase(service_type)}
-              />
-            );
-          })}
+          {isLoading && <Loading color="#ce2d4f" size={125} />}
+          {activeServices &&
+            activeServices.map((service) => {
+              return (
+                <SingleSlide
+                  key={service.id}
+                  {...service}
+                  serType={service_type}
+                />
+              );
+            })}
         </div>
         <PaginationCom
           activeServices={activeServices}
