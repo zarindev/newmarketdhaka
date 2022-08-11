@@ -1,23 +1,21 @@
-import { useState, useRef, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
-import { motion } from 'framer-motion';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import { titleCase } from '../../functions/formatString';
-import { useAllKey } from '../../hooks/useAllKey';
+import SearchDropdown from './SearchDropdown';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const SearchBox = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const { showDropdown, setShowDropdown, mergedSerTypeAll } =
+    useGlobalContext();
+
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
 
   const keywordSearch = useRef(null);
   const locationSearch = useRef(null);
-
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const mergedSerType = useAllKey(serGet);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,11 +23,6 @@ const SearchBox = () => {
 
   const buttonCtnRef = useRef(null);
   useOnClickOutside(buttonCtnRef, () => setShowDropdown(false));
-
-  const variants = {
-    open: { x: 0 },
-    closed: { x: '-200%' },
-  };
 
   return (
     <div className="search">
@@ -47,23 +40,11 @@ const SearchBox = () => {
               <p className="category-btn-text">ALL</p>
               <img src={downArrow} alt="down-arrow icon" />
             </div>
-            <motion.ul
-              className={`${
-                showDropdown
-                  ? 'category-dropdown category-dropdown-show'
-                  : 'category-dropdown'
-              }`}
-              animate={showDropdown ? 'open' : 'closed'}
-              variants={variants}
-            >
-              {mergedSerType.map((item) => {
-                return (
-                  <li className="dropdown-item" key={uuidv4()}>
-                    {titleCase(item)}
-                  </li>
-                );
-              })}
-            </motion.ul>
+            <SearchDropdown
+              showDropdown={showDropdown}
+              setShowDropdown={setShowDropdown}
+              mergedSerTypeAll={mergedSerTypeAll}
+            />
           </div>
           <input
             type="text"
@@ -79,14 +60,16 @@ const SearchBox = () => {
             ref={locationSearch}
             onChange={() => setLocation(locationSearch.current.value)}
           />
-          <button className="search-btn">
-            <img
-              src={searchIcon}
-              alt="search icon"
-              className="search-btn-icon"
-            />
-            Search
-          </button>
+          <Link to="/results" className="search-btn-link">
+            <button className="search-btn">
+              <img
+                src={searchIcon}
+                alt="search icon"
+                className="search-btn-icon"
+              />
+              Search
+            </button>
+          </Link>
         </form>
       </div>
     </div>

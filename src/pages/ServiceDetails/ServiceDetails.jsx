@@ -1,13 +1,10 @@
-import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
 import SliderComponent from '../../components/ServicesSlider/SliderComponent';
-import { sliderData } from '../../components/ServicesSlider/sliderData';
 import DetailsList from './DetailsList';
 import './ServiceDetails.css';
-
 import {
   capitalCase,
   checkCase,
@@ -15,23 +12,20 @@ import {
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import ScrollToTop from '../../utils/ScrollToTop';
+import { useFetch } from '../../hooks/useFetch';
+import Loading from '../../components/Loading/Loading';
 
 const ServiceDetails = () => {
   useDocTitle();
 
-  const [emailBreak, setEmailBreak] = useState('');
-  const sendEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?toMail=${emailBreak}`;
-
   const { service_type, title } = useParams();
 
-  const specificService = sliderData.find(
-    (service) => snakeCase(service.serType) === service_type
-  );
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const fetchedSer = useFetch(serGet);
+  const { items } = fetchedSer;
 
-  const { serAvailable } = specificService;
-
-  const activeService = serAvailable.find(
-    (slide) => snakeCase(slide.title) === title
+  const activeSer = items.find(
+    (service) => snakeCase(service.serType) === snakeCase(service_type)
   );
 
   return (
@@ -41,15 +35,23 @@ const ServiceDetails = () => {
       <div className="service-details">
         <p className="details-directory">
           <Link to="/">{checkCase(service_type)}</Link>/
-          <Link to={`/${service_type}/${title}`}>{capitalCase(title)}</Link>
+          <Link to={`/home/${service_type}/${title}`}>
+            {capitalCase(title)}
+          </Link>
         </p>
-
-        <DetailsList {...activeService} />
-
-        <div className="service-details-more">
-          <p className="details-more-title">More services from the provider</p>
-          <SliderComponent serType={service_type} />
-        </div>
+        {activeSer ? (
+          <DetailsList activeSer={activeSer} />
+        ) : (
+          <Loading color="#ce2d4f" size={125} />
+        )}
+        {activeSer && (
+          <div className="service-details-more">
+            <p className="details-more-title">
+              More services from the provider
+            </p>
+            <SliderComponent serType={checkCase(service_type)} />
+          </div>
+        )}
       </div>
       <Footer />
     </ScrollToTop>

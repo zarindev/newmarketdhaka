@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { snakeCase } from '../../functions/formatString';
 import ellipse from '../../images/svg/Ellipse 2.svg';
+import locationIcon from '../../images/svg/location.svg';
+import profileIcon from '../../images/svg/profile.svg';
 
-const SingleSlide = ({
-  image,
-  title,
-  workWeek,
-  locationIcon,
-  location,
-  profileIcon,
-  name,
-  serType,
-}) => {
+const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   return (
@@ -48,22 +41,26 @@ const SingleSlide = ({
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
             <p className="slide-para">{workWeek}</p>
-            <div className="slide-location-ctn">
-              <img
-                src={locationIcon}
-                alt="location icon"
-                className="location-icon"
-              />
-              <p className="slide-para">{location}</p>
-            </div>
-            <div className="slide-name-ctn">
-              <img
-                src={profileIcon}
-                alt="profile icon"
-                className="profile-icon"
-              />
-              <p className="slide-para">{name}</p>
-            </div>
+            {location && (
+              <div className="slide-location-ctn">
+                <img
+                  src={locationIcon}
+                  alt="location icon"
+                  className="location-icon"
+                />
+                <p className="slide-para">{location}</p>
+              </div>
+            )}
+            {name && (
+              <div className="slide-name-ctn">
+                <img
+                  src={profileIcon}
+                  alt="profile icon"
+                  className="profile-icon"
+                />
+                <p className="slide-para">{name}</p>
+              </div>
+            )}
           </div>
         </div>
       </Link>

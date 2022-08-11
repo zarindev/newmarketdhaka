@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { titleCase, snakeToTitle } from '../functions/formatString';
+import { snakeToTitle } from '../functions/formatString';
 
 export const useDocTitle = (newTitle) => {
   const location = useLocation();
@@ -9,12 +9,14 @@ export const useDocTitle = (newTitle) => {
   useEffect(() => {
     const activePath = location.pathname;
 
-    if (activePath === '/' || activePath === '/home') {
+    if (activePath === '/') {
       document.title = staticTitle.replace('/', '');
     } else {
-      const formatedActiveTitle = snakeToTitle(activePath.replace('/', ''));
+      const formatedActiveTitle = snakeToTitle(
+        activePath.replace('/', '')
+      ).replace('/', '');
 
-      const newActiveTitle = titleCase(
+      const newActiveTitle = snakeToTitle(
         formatedActiveTitle.substring(formatedActiveTitle.indexOf('/') + 1)
       );
       document.title = `${newTitle || newActiveTitle} | ${staticTitle}`;
