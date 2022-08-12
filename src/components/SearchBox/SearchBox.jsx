@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer, toast } from 'react-toastify';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
@@ -7,7 +9,6 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import SearchDropdown from './SearchDropdown';
 import { useGlobalContext } from '../../context/AppProvider';
 import { snakeCase, titleCase } from '../../functions/formatString';
-import SerachResult from '../../pages/SearchResult/SerachResult';
 
 const SearchBox = () => {
   const { showDropdown, setShowDropdown, items, mergedSerTypeAll } =
@@ -33,6 +34,8 @@ const SearchBox = () => {
           .includes(keywordRef.current?.value.toLowerCase())
       );
       setKeywordSer(keywordFilter);
+    } else {
+      toast.error(`No services found`, { progress: undefined });
     }
 
     if (locationRef.current?.value.length > 0) {
@@ -42,15 +45,16 @@ const SearchBox = () => {
           .includes(locationRef.current?.value.toLowerCase())
       );
       setLocationSer(locationFilter);
+    } else {
+      toast.error(`No services found`, { progress: undefined });
     }
   };
-
-  console.log(keywordSer.length);
 
   useEffect(() => {
     if (keywordSer.length > 0 || locationSer.length > 0) {
       setIsSearched(true);
     }
+
     isSearched &&
       navigate('/results', {
         state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
@@ -64,6 +68,18 @@ const SearchBox = () => {
     <div className="search">
       <div className="serach-ctn">
         <form className="form-control" onSubmit={handleSearch}>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           <div className="search-category-ctn" ref={buttonCtnRef}>
             <div
               className={`${

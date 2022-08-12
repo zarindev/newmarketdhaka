@@ -100,7 +100,7 @@ const UploadService = () => {
                   type="text"
                   className="register-form-input"
                   placeholder="Seller-info ID"
-                  defaultValue={5}
+                  defaultValue={1}
                   readOnly
                   {...register('sellerInfoId', {
                     required: true,
