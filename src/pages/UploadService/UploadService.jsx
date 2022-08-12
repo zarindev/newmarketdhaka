@@ -5,8 +5,10 @@ import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
 import categoryIcon from '../../images/svg/category.svg';
+import subCategoryIcon from '../../images/svg/sub-category.svg';
 import clockIcon from '../../images/svg/clock-red.svg';
 import calendarIcon from '../../images/svg/calendar.svg';
+import locationIcon from '../../images/svg/Location-red.svg';
 import viewDetailsIcon from '../../images/svg/view-details.svg';
 import imageIcon from '../../images/svg/image-el.svg';
 import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
@@ -15,11 +17,15 @@ import RegisterUpload from '../Register/elements/RegisterUpload';
 import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useFetch } from '../../hooks/useFetch';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
 
 const UploadService = () => {
   useDocTitle();
 
   const navigate = useNavigate();
+
+  const { user } = useAuth();
+  const sellerInfoId = user?.uid;
 
   const {
     register,
@@ -34,9 +40,23 @@ const UploadService = () => {
   const servicePost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
   const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
 
-  const [fromatedData, setFromatedData] = useState({});
-
   const onSubmit = async (data) => {
+    const serImg1 = data.serImg1.preview;
+    const serImg2 = data.serImg2.preview;
+    const serImg3 = data.serImg3.preview;
+    const serImg4 = data.serImg4.preview;
+
+    const image = [serImg1, serImg2, serImg3, serImg4];
+    const serType = data.serType.label;
+    const serClose = data.serClose.label;
+
+    delete data.serImg1;
+    delete data.serImg2;
+    delete data.serImg3;
+    delete data.serImg4;
+    data.image = serImg1;
+    data.serType = serType;
+    data.serClose = serClose;
     console.log(data);
 
     const res = await fetch(servicePost, {
@@ -67,6 +87,26 @@ const UploadService = () => {
         <form className="upload-ser-form-ctn" onSubmit={handleSubmit(onSubmit)}>
           <div className="upload-ser-form">
             <div className="upload-ser-left">
+              <div className="upload-ser-input-ctn upload-ser-input-ctn-hidden">
+                <label htmlFor="serOpen" className="upload-ser-label-ctn">
+                  <img
+                    src={subCategoryIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Seller-info ID</p>
+                </label>
+                <input
+                  type="text"
+                  className="register-form-input"
+                  placeholder="Seller-info ID"
+                  defaultValue={5}
+                  readOnly
+                  {...register('sellerInfoId', {
+                    required: true,
+                  })}
+                />
+              </div>
               <div className="upload-ser-input-ctn">
                 <label htmlFor="serviceName" className="upload-ser-label-ctn">
                   <img
@@ -120,24 +160,6 @@ const UploadService = () => {
                 />
               </div>
               <div className="upload-ser-input-ctn">
-                <label htmlFor="serOpen" className="upload-ser-label-ctn">
-                  <img
-                    src={clockIcon}
-                    alt="label icon"
-                    className="upload-ser-label-icon"
-                  />
-                  <p className="upload-ser-label-title">Seller-info ID</p>
-                </label>
-                <input
-                  type="number"
-                  className="register-form-input"
-                  placeholder="Select opening time"
-                  {...register('sellerInfoId', {
-                    required: true,
-                  })}
-                />
-              </div>
-              <div className="upload-ser-input-ctn">
                 <label htmlFor="close" className="upload-ser-label-ctn">
                   <img
                     src={calendarIcon}
@@ -150,7 +172,25 @@ const UploadService = () => {
                   name="serClose"
                   control={control}
                   items={closingDays}
-                  isMulti={true}
+                  isMulti={false}
+                />
+              </div>
+              <div className="upload-ser-input-ctn">
+                <label htmlFor="serOpen" className="upload-ser-label-ctn">
+                  <img
+                    src={locationIcon}
+                    alt="label icon"
+                    className="upload-ser-label-icon"
+                  />
+                  <p className="upload-ser-label-title">Location</p>
+                </label>
+                <input
+                  type="text"
+                  className="register-form-input"
+                  placeholder="Add Location"
+                  {...register('location', {
+                    required: true,
+                  })}
                 />
               </div>
               <div className="upload-ser-input-ctn">

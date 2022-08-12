@@ -4,9 +4,15 @@ import { snakeCase } from '../../functions/formatString';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import locationIcon from '../../images/svg/location.svg';
 import profileIcon from '../../images/svg/profile.svg';
+import defaultOne from '../../images/service-one.png';
+import defaultTwo from '../../images/service-two.png';
+import defaultThree from '../../images/service-three.png';
+import defaultFour from '../../images/service-zero.png';
 
 const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
   const [imageIndex, setImageIndex] = useState(0);
+
+  const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
   return (
     <div className="slide-ctn">
@@ -33,6 +39,13 @@ const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
             {image && (
               <img
                 src={image[imageIndex]}
+                alt={title}
+                className="slide-image"
+              />
+            )}
+            {image || (
+              <img
+                src={defaultImg[imageIndex]}
                 alt={title}
                 className="slide-image"
               />

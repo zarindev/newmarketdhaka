@@ -10,6 +10,10 @@ import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
 import { capitalCase } from '../../functions/formatString';
+import defaultOne from '../../images/service-one.png';
+import defaultTwo from '../../images/service-two.png';
+import defaultThree from '../../images/service-three.png';
+import defaultFour from '../../images/service-zero.png';
 
 const DetailsList = ({ activeSer }) => {
   const {
@@ -44,6 +48,8 @@ const DetailsList = ({ activeSer }) => {
   const location = 'testdist, testcity';
   /** moch data end */
 
+  const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
+
   // send email to the service creator
   const [emailBreak, setEmailBreak] = useState('sadmann898@gmail.com');
   const creatorEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?toMail=${emailBreak}`;
@@ -65,10 +71,13 @@ const DetailsList = ({ activeSer }) => {
       <div className="service-details-content">
         <div className="details-image-ctn">
           {image && (
+            <img src={image[imageIndex]} alt={title} className="slide-image" />
+          )}
+          {image || (
             <img
-              src={image[imageIndex]}
+              src={defaultImg[imageIndex]}
               alt={title}
-              className="details-image"
+              className="slide-image"
             />
           )}
           <div className="details-dots-ctn">

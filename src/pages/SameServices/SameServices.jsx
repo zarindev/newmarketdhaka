@@ -9,23 +9,20 @@ import PaginationCom from '../../components/PaginationCom/PaginationCom';
 import ScrollToTop from '../../utils/ScrollToTop';
 import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFetch } from '../../hooks/useFetch';
 import Loading from '../../components/Loading/Loading';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const SameServices = () => {
   useDocTitle();
 
+  const { items, isLoading, setIsLoading } = useGlobalContext();
+
   const { service_type } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
   const [mergedSerState, setMergedSerState] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
-
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const fetchedSer = useFetch(serGet);
-  const { items } = fetchedSer;
 
   useEffect(() => {
     if (titleCase(service_type) === 'All') {
@@ -46,7 +43,7 @@ const SameServices = () => {
 
   useEffect(() => {
     if (mergedSerState.length > 0) setIsLoading(false);
-  }, [mergedSerState]);
+  }, [mergedSerState, setIsLoading]);
 
   return (
     <ScrollToTop>

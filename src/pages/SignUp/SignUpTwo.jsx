@@ -38,9 +38,9 @@ const SignUpTwo = () => {
   const onSubmit = async (data) => {
     actions.updateAction(data);
     try {
-      await createUser(state.email, state.password);
+      await createUser(state.email, state.password, state.phoneNumber);
       reset();
-      navigate('/');
+      // navigate('/');
     } catch (error) {
       console.log(error);
     }

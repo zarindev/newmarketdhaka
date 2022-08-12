@@ -2,7 +2,7 @@
   position: relative;
   height: auto;
   min-height: 100vh;
-  padding: 59.5rem 0;
+  padding: 64rem 0;
   background-color: #f7f7f7;
   display: flex;
 }
@@ -185,6 +185,12 @@
 
 .upload-ser-upload-btn:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 1300px) {
+  .upload-ser-ctn {
+    padding: 67rem 0;
+  }
 }
 
 @media screen and (max-width: 1000px) {
