@@ -1,25 +1,61 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchBox.css';
 import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import SearchDropdown from './SearchDropdown';
 import { useGlobalContext } from '../../context/AppProvider';
+import { snakeCase, titleCase } from '../../functions/formatString';
+import SerachResult from '../../pages/SearchResult/SerachResult';
 
 const SearchBox = () => {
-  const { showDropdown, setShowDropdown, mergedSerTypeAll } =
+  const { showDropdown, setShowDropdown, items, mergedSerTypeAll } =
     useGlobalContext();
 
-  const [keyword, setKeyword] = useState('');
-  const [location, setLocation] = useState('');
+  const navigate = useNavigate();
 
-  const keywordSearch = useRef(null);
-  const locationSearch = useRef(null);
+  // search via string matching
+  const [keywordSer, setKeywordSer] = useState([]);
+  const [locationSer, setLocationSer] = useState([]);
+  const [isSearched, setIsSearched] = useState(false);
 
-  const handleSubmit = (e) => {
+  const keywordRef = useRef(null);
+  const locationRef = useRef(null);
+
+  const handleSearch = (e) => {
     e.preventDefault();
+
+    if (keywordRef.current?.value.length > 0) {
+      const keywordFilter = items.filter((service) =>
+        service.title
+          .toLowerCase()
+          .includes(keywordRef.current?.value.toLowerCase())
+      );
+      setKeywordSer(keywordFilter);
+    }
+
+    if (locationRef.current?.value.length > 0) {
+      const locationFilter = items.filter((service) =>
+        service.location
+          .toLowerCase()
+          .includes(locationRef.current?.value.toLowerCase())
+      );
+      setLocationSer(locationFilter);
+    }
   };
+
+  console.log(keywordSer.length);
+
+  useEffect(() => {
+    if (keywordSer.length > 0 || locationSer.length > 0) {
+      setIsSearched(true);
+    }
+    isSearched &&
+      navigate('/results', {
+        state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
+      });
+  }, [navigate, keywordSer, locationSer, isSearched]);
 
   const buttonCtnRef = useRef(null);
   useOnClickOutside(buttonCtnRef, () => setShowDropdown(false));
@@ -27,7 +63,7 @@ const SearchBox = () => {
   return (
     <div className="search">
       <div className="serach-ctn">
-        <form className="form-control" onSubmit={handleSubmit}>
+        <form className="form-control" onSubmit={handleSearch}>
           <div className="search-category-ctn" ref={buttonCtnRef}>
             <div
               className={`${
@@ -50,26 +86,24 @@ const SearchBox = () => {
             type="text"
             placeholder="Keywords"
             className="search-keywords search-input"
-            ref={keywordSearch}
-            onChange={() => setKeyword(keywordSearch.current.value)}
+            ref={keywordRef}
+            onChange={() => keywordRef.current?.value}
           />
           <input
             type="text"
             placeholder="Location"
             className="search-location search-input"
-            ref={locationSearch}
-            onChange={() => setLocation(locationSearch.current.value)}
+            ref={locationRef}
+            onChange={() => locationRef.current?.value}
           />
-          <Link to="/results" className="search-btn-link">
-            <button className="search-btn">
-              <img
-                src={searchIcon}
-                alt="search icon"
-                className="search-btn-icon"
-              />
-              Search
-            </button>
-          </Link>
+          <button className="search-btn">
+            <img
+              src={searchIcon}
+              alt="search icon"
+              className="search-btn-icon"
+            />
+            Search
+          </button>
         </form>
       </div>
     </div>

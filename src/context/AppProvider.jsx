@@ -6,6 +6,7 @@ import { useMergeKey } from '../hooks/useMergeKey';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
   const [componentFiles, setComponentFiles] = useState([]);
 
@@ -20,6 +21,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        isLoading,
+        setIsLoading,
         showDropdown,
         setShowDropdown,
         items,

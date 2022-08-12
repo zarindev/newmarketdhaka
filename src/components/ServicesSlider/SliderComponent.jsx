@@ -15,11 +15,10 @@ const SliderComponent = ({ serType }) => {
 
   const [mergedSerState, setMergedSerState] = useState([]);
   useEffect(() => {
-    const mergedSer = items.filter(
-      (service) => snakeCase(service.serType) === snakeCase(serType)
-    );
+    const mergedSer = items.filter((service) => service.serType === serType);
     setMergedSerState(mergedSer);
   }, [items, serType]);
+  // console.log(mergedSerState);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -58,8 +57,8 @@ const SliderComponent = ({ serType }) => {
             />
             <Swiper
               spaceBetween={12}
-              loop={true}
-              loopFillGroupWithBlank={true}
+              // loop={true}
+              // loopFillGroupWithBlank={true}
               navigation={{
                 prevEl: leftArrowRef.current,
                 nextEl: rightArrowRef.current,

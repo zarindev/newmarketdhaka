@@ -1,5 +1,5 @@
 import { Controller } from 'react-hook-form';
-import CreatableSelect from 'react-select/creatable';
+import Select from 'react-select';
 
 const UploadSelect = ({ name, control, items, isMulti }) => {
   return (
@@ -8,7 +8,7 @@ const UploadSelect = ({ name, control, items, isMulti }) => {
       control={control}
       rules={{ required: true }}
       render={({ field }) => (
-        <CreatableSelect
+        <Select
           {...field}
           closeMenuOnSelect={true}
           isClearable={true}

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { motion } from 'framer-motion';
 import { snakeCase, titleCase } from '../../functions/formatString';
 
 const SearchDropdown = ({
@@ -8,20 +7,13 @@ const SearchDropdown = ({
   setShowDropdown,
   mergedSerTypeAll,
 }) => {
-  const variants = {
-    open: { x: 0 },
-    closed: { x: '-100%' },
-  };
-
   return (
-    <motion.ul
-      className={`${
+    <ul
+      className={
         showDropdown
           ? 'category-dropdown category-dropdown-show'
           : 'category-dropdown'
-      }`}
-      animate={showDropdown ? 'open' : 'closed'}
-      variants={variants}
+      }
     >
       {mergedSerTypeAll.map((item) => {
         return (
@@ -34,7 +26,7 @@ const SearchDropdown = ({
           </Link>
         );
       })}
-    </motion.ul>
+    </ul>
   );
 };
 

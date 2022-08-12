@@ -28,7 +28,7 @@ const TopNav = () => {
   };
 
   // signout
-  const { user, signout } = useAuth();
+  const { user, customUser, signout } = useAuth();
   const [catchError, setCatchError] = useState('');
 
   const handleSignout = async () => {
@@ -42,6 +42,8 @@ const TopNav = () => {
       console.log(catchError);
     }
   };
+
+  customUser && console.log(customUser);
 
   return (
     <div className="navbar-ctn">
@@ -76,7 +78,6 @@ const TopNav = () => {
               Sign in
             </NavLink>
           )}
-
           <NavLink to="/register" className="nav-link">
             Register
           </NavLink>
