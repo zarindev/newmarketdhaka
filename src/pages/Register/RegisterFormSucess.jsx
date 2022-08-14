@@ -29,26 +29,26 @@ const RegisterFormSuccess = () => {
   const { actions, state } = useStateMachine({ updateAction });
   console.log(state);
 
-  // const notify = () => {
-  //   toast.success('Redirecting to the Dashbaord in 4 seconds', {
-  //     progress: undefined,
-  //     toastId: 'companySuccess',
-  //   });
-  // };
+  const notify = () => {
+    toast.success('Redirecting to the Dashbaord in 4 seconds', {
+      progress: undefined,
+      toastId: 'companySuccess',
+    });
+  };
 
-  // useEffect(() => {
-  //   notify();
+  useEffect(() => {
+    notify();
 
-  //   const navigateToDash = setTimeout(() => {
-  //     navigate('/service_dashboard');
-  //   }, 4000);
+    const navigateToDash = setTimeout(() => {
+      navigate('/service_dashboard');
+    }, 4000);
 
-  //   return () => clearTimeout(navigateToDash);
-  // }, [navigate]);
+    return () => clearTimeout(navigateToDash);
+  }, [navigate]);
 
   const onSubmit = async () => {
     reset();
-    // navigate('/service_dashboard');
+    navigate('/service_dashboard');
   };
 
   return (

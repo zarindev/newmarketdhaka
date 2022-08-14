@@ -24,34 +24,18 @@ const RegisterFormFour = () => {
   const { user } = useAuth();
   const uid = user?.uid;
 
-  const regComFetch = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
-
-  const json = {
-    id: 0,
-    binNumber: 'string',
-    companyName: 'string',
-    confirmPassword: 'string',
-    document: 'string',
-    email: 'string',
-    licenseKey: 'string',
-    location: 'string',
-    userUId: 'string',
-    userid: 0,
-    logo: 'string',
-    phoneNumber: 'string',
-    taxNumber: 'string',
-  };
-
+  const comFetch = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
   const onSubmit = async (data) => {
     actions.updateAction(data);
 
     const stateAction = { ...state, actions };
     delete stateAction.state;
     delete stateAction.actions;
-    delete stateAction.id;
+    stateAction.id = 0;
     delete stateAction.password;
-    delete stateAction.logo;
-    delete stateAction.document;
+    delete stateAction.data;
+    stateAction.logo = '';
+    stateAction.document = '';
     stateAction.userid = 1;
     stateAction.userUId = uid;
 
@@ -61,9 +45,9 @@ const RegisterFormFour = () => {
     // stateAction.document = documentBuffer;
     console.log(stateAction);
 
-    const res = await fetch(regComFetch, {
+    const res = await fetch(comFetch, {
       method: 'POST',
-      body: JSON.stringify(state),
+      body: JSON.stringify(stateAction),
       headers: {
         'Content-type': 'application/json; carset=UTF-8',
       },
@@ -72,7 +56,7 @@ const RegisterFormFour = () => {
     const formData = await res.json();
     console.log(formData);
 
-    // navigate('/register/company/success');
+    navigate('/register/company/success');
   };
 
   const { componentFiles, setComponentFiles } = useGlobalContext();

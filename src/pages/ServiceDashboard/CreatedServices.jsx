@@ -5,7 +5,8 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const CreatedServices = () => {
-  const { items, mergedSellerId, isLoading, setIsLoading } = useGlobalContext();
+  const { items, mergedSellerId, mergedComId, isLoading, setIsLoading } =
+    useGlobalContext();
 
   const [mergedSerState, setMergedSerState] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
@@ -13,10 +14,12 @@ const CreatedServices = () => {
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
 
+  const activeComId = mergedComId[0];
+
   useEffect(() => {
-    const mergedSer = items.filter((service) => service.sellerInfoId === 1);
+    const mergedSer = items.filter((service) => service.companyInfoId === 11);
     setMergedSerState(mergedSer);
-  }, [items]);
+  }, [items, activeComId]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie

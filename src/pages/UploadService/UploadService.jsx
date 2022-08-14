@@ -25,7 +25,7 @@ const UploadService = () => {
   const navigate = useNavigate();
 
   const { user } = useAuth();
-  const sellerInfoId = user?.uid;
+  const uid = user?.uid;
 
   const {
     register,
@@ -38,7 +38,6 @@ const UploadService = () => {
   } = useForm();
 
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
-  const imgPost = `https://mdadmin-001-site2.ftempurl.com/api/Images/Capture3.PNG`;
 
   const onSubmit = async (data) => {
     console.log(data);
