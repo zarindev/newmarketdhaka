@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';

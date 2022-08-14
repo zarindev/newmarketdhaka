@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
@@ -27,26 +27,26 @@ const RegisterFormSuccess = () => {
     },
   });
   const { actions, state } = useStateMachine({ updateAction });
+  console.log(state);
 
-  const notify = () => {
-    toast.success('Redirecting to the Dashbaord in 4 seconds', {
-      progress: undefined,
-      toastId: 'companySuccess',
-    });
-  };
+  // const notify = () => {
+  //   toast.success('Redirecting to the Dashbaord in 4 seconds', {
+  //     progress: undefined,
+  //     toastId: 'companySuccess',
+  //   });
+  // };
 
-  useEffect(() => {
-    notify();
+  // useEffect(() => {
+  //   notify();
 
-    const navigateToDash = setTimeout(() => {
-      // navigate('/service_dashboard');
-    }, 4000);
+  //   const navigateToDash = setTimeout(() => {
+  //     navigate('/service_dashboard');
+  //   }, 4000);
 
-    return () => clearTimeout(navigateToDash);
-  }, [navigate]);
+  //   return () => clearTimeout(navigateToDash);
+  // }, [navigate]);
 
-  const onSubmit = () => {
-    console.log(state);
+  const onSubmit = async () => {
     reset();
     // navigate('/service_dashboard');
   };
