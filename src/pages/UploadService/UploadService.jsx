@@ -37,11 +37,14 @@ const UploadService = () => {
     handleSubmit,
   } = useForm();
 
-  const servicePost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
-  const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
+  const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
+  const imgPost = `https://mdadmin-001-site2.ftempurl.com/api/Images/Capture3.PNG`;
 
   const onSubmit = async (data) => {
-    const serImg1 = data.serImg1.preview;
+    console.log(data);
+
+    const serImg1 = data.serImg1.buffer;
+    // const serImg1 = data.serImg1.preview;
     const serImg2 = data.serImg2.preview;
     const serImg3 = data.serImg3.preview;
     const serImg4 = data.serImg4.preview;
@@ -55,11 +58,11 @@ const UploadService = () => {
     delete data.serImg3;
     delete data.serImg4;
     data.image = serImg1;
+    console.log(data.image);
     data.serType = serType;
     data.serClose = serClose;
-    console.log(data);
 
-    const res = await fetch(servicePost, {
+    const res = await fetch(serPost, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

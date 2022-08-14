@@ -31,6 +31,7 @@ const RegisterFormSuccess = () => {
   const notify = () => {
     toast.success('Redirecting to the Dashbaord in 4 seconds', {
       progress: undefined,
+      toastId: 'companySuccess',
     });
   };
 
@@ -38,15 +39,16 @@ const RegisterFormSuccess = () => {
     notify();
 
     const navigateToDash = setTimeout(() => {
-      navigate('/service_dashboard');
+      // navigate('/service_dashboard');
     }, 4000);
 
     return () => clearTimeout(navigateToDash);
-  }, []);
+  }, [navigate]);
 
   const onSubmit = () => {
+    console.log(state);
     reset();
-    navigate('/service_dashboard');
+    // navigate('/service_dashboard');
   };
 
   return (
@@ -61,18 +63,6 @@ const RegisterFormSuccess = () => {
             className="register-form register-form-success"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
             <div className="register-success-image-ctn">
               <img
                 src={successImage}

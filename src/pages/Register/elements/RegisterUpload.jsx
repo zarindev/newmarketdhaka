@@ -16,35 +16,31 @@ const RegisterUpload = ({
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback(
-    (acceptedFiles, rejectedFiles) => {
-      if (rejectedFiles && rejectedFiles.length > 0) {
-        setValue(name, []);
-        setFiles([]);
-        setError(name, {
-          type: 'manual',
-          message: rejectedFiles && rejectedFiles[0].errors[0].message,
-        });
-      } else {
-        setFiles(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      }
-      clearErrors(name);
+    (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+
       acceptedFiles.forEach((file) => {
         const reader = new FileReader();
         reader.onabort = () => console.log('file reading was aborted');
         reader.onerror = () => console.log('file reading has failed');
-        reader.onloadend = () => {
-          setValue(name, file, { shouldValidate: true });
+        reader.onload = () => {
+          // Do whatever you want with the file contents
+          const binaryStr = reader.result;
+          file['buffer'] = binaryStr;
         };
-        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setValue(name, file, { require: true });
+        };
+        reader.readAsArrayBuffer(file);
       });
     },
-    [[name, setValue, setError, clearErrors]]
+    [name, setValue]
   );
 
   const acceptType = [
@@ -73,7 +69,7 @@ const RegisterUpload = ({
     if (getFiles) {
       getFiles(files);
     }
-  }, [files]);
+  }, [files, getFiles]);
 
   return (
     <RegisterDropzone

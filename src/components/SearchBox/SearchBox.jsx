@@ -27,26 +27,35 @@ const SearchBox = () => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if (keywordRef.current?.value.length > 0) {
+    const keywordVal = keywordRef.current?.value;
+    const locationVal = locationRef.current?.value;
+    const keywordLength = keywordRef.current?.value.length;
+    const locationLength = locationRef.current?.value.length;
+
+    if (keywordLength > 0) {
       const keywordFilter = items.filter((service) =>
-        service.title
-          .toLowerCase()
-          .includes(keywordRef.current?.value.toLowerCase())
+        service.title.toLowerCase().includes(keywordVal.toLowerCase())
       );
       setKeywordSer(keywordFilter);
-    } else {
-      toast.error(`No services found`, { progress: undefined });
     }
 
-    if (locationRef.current?.value.length > 0) {
+    if (locationLength > 0) {
       const locationFilter = items.filter((service) =>
-        service.location
-          .toLowerCase()
-          .includes(locationRef.current?.value.toLowerCase())
+        service.location.toLowerCase().includes(locationVal.toLowerCase())
       );
       setLocationSer(locationFilter);
-    } else {
-      toast.error(`No services found`, { progress: undefined });
+    }
+
+    if (keywordVal === '' && locationVal === '') {
+      toast.info(`Pleasae input 'Keywords' or 'Location'`, {
+        progress: undefined,
+        toastId: 'searchOne',
+      });
+    } else if (keywordSer || locationSer) {
+      toast.error(`No services found`, {
+        progress: undefined,
+        toastId: 'serachTwo',
+      });
     }
   };
 
@@ -68,18 +77,6 @@ const SearchBox = () => {
     <div className="search">
       <div className="serach-ctn">
         <form className="form-control" onSubmit={handleSearch}>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
           <div className="search-category-ctn" ref={buttonCtnRef}>
             <div
               className={`${
