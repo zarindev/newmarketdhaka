@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; // placeholder => Get started
 import { useForm } from 'react-hook-form';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/plugin.css';
 import './ContactUs.css';
@@ -18,8 +18,9 @@ const ContactUs = () => {
   } = useForm({ mode: 'onBlur' });
 
   const notify = () => {
-    toast.success('Successfully Submitted', {
+    toast.success(`Successfully submitted`, {
       progress: undefined,
+      toastId: 'contact',
     });
   };
 
@@ -49,18 +50,6 @@ const ContactUs = () => {
       <div className="contact-form-ctn">
         <h2 className="contact-form-title">Contact Us</h2>
         <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
           <label htmlFor="fullName">
             <input
               type="text"

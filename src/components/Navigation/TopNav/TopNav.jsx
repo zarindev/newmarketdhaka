@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import brandLogo from '../../../images/brand-logo.png';
 import './TopNav.css';
 import burgerBtn from '../../../images/svg/bytesize_menu.svg';
@@ -28,7 +29,7 @@ const TopNav = () => {
   };
 
   // signout
-  const { user, customUser, signout } = useAuth();
+  const { user, signout } = useAuth();
   const [catchError, setCatchError] = useState('');
 
   const handleSignout = async () => {
@@ -43,7 +44,21 @@ const TopNav = () => {
     }
   };
 
-  customUser && console.log(customUser);
+  // toast
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const notify = () => {
+    toast.info(`You need to be singed in for registering services`, {
+      progress: undefined,
+      toastId: 'registration',
+    });
+  };
+
+  useState(() => {
+    if (user?.email || user?.displayName) {
+      setIsSignedIn(true);
+    } else setIsSignedIn(false);
+  }, [user]);
 
   return (
     <div className="navbar-ctn">
@@ -82,11 +97,15 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        <div>
+        {isSignedIn ? (
           <Link to="/register">
             <button className="nav-btn">Register Your Service</button>
           </Link>
-        </div>
+        ) : (
+          <button className="nav-btn" onClick={notify}>
+            Register Your Service
+          </button>
+        )}
         <motion.div
           className="mobile-btn-ctn"
           ref={mobileBtnRef}

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import profileLogo from '../../images/service-logo.png';
 import profileEditIcon from '../../images/svg/user-edit.svg';
@@ -10,9 +11,27 @@ import binIcon from '../../images/svg/bin-number.svg';
 import './Profile.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const Profile = () => {
   useDocTitle();
+
+  const { user } = useAuth();
+  const uid = user?.uid;
+
+  const [activeCompany, setActiveCompany] = useState({});
+  const { companies } = useGlobalContext();
+
+  useEffect(() => {
+    const specificCompany = companies.find(
+      (company) => company.userUId === uid
+    );
+    specificCompany && setActiveCompany(specificCompany);
+  }, [companies, uid]);
+
+  const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
+    activeCompany;
 
   return (
     <div className="profile-ctn">
@@ -47,7 +66,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">Name</p>
                 </label>
-                <p className="profile-info">Monica Amberstone</p>
+                <p className="profile-info">{companyName}</p>
               </div>
               <div className="profile-content">
                 <label className="profile-label">
@@ -58,7 +77,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">Phone Number</p>
                 </label>
-                <p className="profile-info">+8801753-807123</p>
+                <p className="profile-info">{phoneNumber}</p>
               </div>
             </div>
             <div className="profile-content-right">
@@ -71,7 +90,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">Email</p>
                 </label>
-                <p className="profile-info">monica.amb95@gmail.com</p>
+                <p className="profile-info">{email}</p>
               </div>
               <div className="profile-content">
                 <label className="profile-label">
@@ -82,9 +101,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">Location Info</p>
                 </label>
-                <p className="profile-info">
-                  2333 Overlook Ct Frazier Park, California(CA), 93222
-                </p>
+                <p className="profile-info">{location}</p>
               </div>
             </div>
           </div>
@@ -103,7 +120,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">License Key</p>
                 </label>
-                <p className="profile-info">2345 5689 3795</p>
+                <p className="profile-info">{licenseKey}</p>
               </div>
             </div>
             <div className="profile-content-right">
@@ -116,7 +133,7 @@ const Profile = () => {
                   />
                   <p className="profile-label-text">BIN Number</p>
                 </label>
-                <p className="profile-info">2345 5689 3795</p>
+                <p className="profile-info">{binNumber}</p>
               </div>
             </div>
           </div>

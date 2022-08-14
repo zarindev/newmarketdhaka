@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
@@ -31,8 +31,8 @@ const RegisterFormSucessIndie = () => {
   const notify = () => {
     toast.success('Redirecting to the Dashbaord in 4 seconds', {
       progress: undefined,
+      toastId: 'indieSuccess',
     });
-    toast.error('Registration failed', { progress: undefined });
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const RegisterFormSucessIndie = () => {
     }, 4000);
 
     return () => clearTimeout(navigateToDash);
-  }, []);
+  }, [navigate]);
 
   const onSubmit = () => {
     reset();
@@ -61,18 +61,6 @@ const RegisterFormSucessIndie = () => {
             className="register-form register-form-success"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
             <div className="register-success-image-ctn">
               <img
                 src={successImage}
