@@ -10,10 +10,9 @@ import './SerachResult.css';
 const SerachResult = () => {
   useDocTitle();
 
-  const location = useLocation();
-  const { state } = location;
-  const keywordResult = state.keywordSer;
-  const locationResult = state.locationSer;
+  const locState = useLocation()?.state;
+  const keywordResult = locState.keywordSer;
+  const locationResult = locState.locationSer;
 
   return (
     <ScrollToTop>

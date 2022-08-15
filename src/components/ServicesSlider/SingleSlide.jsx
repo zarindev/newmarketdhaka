@@ -9,7 +9,15 @@ import defaultTwo from '../../images/service-two.png';
 import defaultThree from '../../images/service-three.png';
 import defaultFour from '../../images/service-zero.png';
 
-const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
+const SingleSlide = ({
+  data,
+  title,
+  location,
+  name,
+  serType,
+  serviceOpen,
+  serviceClose,
+}) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
@@ -36,14 +44,13 @@ const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-image-ctn">
-            {image && (
+            {data ? (
               <img
-                src={image[imageIndex]}
+                src={`data:image/jpeg;base64,${data}`}
                 alt={title}
                 className="slide-image"
               />
-            )}
-            {image || (
+            ) : (
               <img
                 src={defaultImg[imageIndex]}
                 alt={title}
@@ -53,7 +60,9 @@ const SingleSlide = ({ image, title, workWeek, location, name, serType }) => {
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
-            <p className="slide-para">{workWeek}</p>
+            {serviceOpen && serviceClose && (
+              <p className="slide-para">{`${serviceOpen} - ${serviceClose}`}</p>
+            )}
             {location && (
               <div className="slide-location-ctn">
                 <img

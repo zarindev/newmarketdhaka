@@ -32,7 +32,10 @@ const RegisterUpload = ({
         reader.onload = () => {
           // Do whatever you want with the file contents
           const binaryStr = reader.result;
-          file['buffer'] = binaryStr;
+          const base64 = btoa(
+            String.fromCharCode(...new Uint8Array(binaryStr))
+          );
+          file['base64'] = base64;
         };
         reader.onloadend = () => {
           setValue(name, file, { require: true });

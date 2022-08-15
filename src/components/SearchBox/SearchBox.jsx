@@ -25,10 +25,7 @@ const SearchBox = () => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    const keywordLength = keywordRef.current?.value.length;
-    const locationLength = locationRef.current?.value.length;
-
-    if (keywordLength > 0) {
+    if (keywordRef.current?.value.length > 0) {
       const keywordFilter = services.filter((service) =>
         service.title
           .toLowerCase()
@@ -37,7 +34,7 @@ const SearchBox = () => {
       setKeywordSer(keywordFilter);
     }
 
-    if (locationLength > 0) {
+    if (locationRef.current?.value.length > 0) {
       const locationFilter = services.filter((service) =>
         service.location
           .toLowerCase()
@@ -46,17 +43,13 @@ const SearchBox = () => {
       setLocationSer(locationFilter);
     }
 
-    if (keywordLength === 0 && locationLength === 0) {
+    if (
+      keywordRef.current?.value.length === 0 &&
+      locationRef.current?.value.length === 0
+    ) {
       toast.info(`Pleasae input 'Keywords' or 'Location'`, {
         progress: undefined,
         toastId: 'searchOne',
-      });
-    }
-
-    if (keywordSer.length === 0 || locationSer.length === 0) {
-      toast.error(`No services found`, {
-        progress: undefined,
-        toastId: 'serachTwo',
       });
     }
   };
@@ -66,10 +59,21 @@ const SearchBox = () => {
       setIsSearched(true);
     }
 
-    isSearched &&
-      navigate('/results', {
-        state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
+    if (
+      (keywordRef.current?.value.length > 0 && !isSearched) ||
+      (locationRef.current?.value.length > 0 && !isSearched)
+    ) {
+      toast.error(`No services found`, {
+        progress: undefined,
+        toastId: 'searchTwo',
       });
+    }
+
+    if (keywordSer)
+      isSearched &&
+        navigate('/results', {
+          state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
+        });
   }, [navigate, keywordSer, locationSer, isSearched]);
 
   const buttonCtnRef = useRef(null);

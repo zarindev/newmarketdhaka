@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
+import { toast } from 'react-toastify';
 import sign from '../../images/sign.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
@@ -14,7 +15,7 @@ const SignUpTwo = () => {
   useDocTitle();
   const navigate = useNavigate();
 
-  const regApi = `http://mdadmin-001-site2.ftempurl.com/api/Values/GetUser?usrMail=fahad@gmail.com&usrpass=fahad`;
+  const userPost = `http://mdadmin-001-site2.ftempurl.com/api/Values/GetUser?usrMail=fahad@gmail.com&usrpass=fahad`;
 
   const {
     register,
@@ -38,9 +39,10 @@ const SignUpTwo = () => {
   const onSubmit = async (data) => {
     actions.updateAction(data);
     try {
-      await createUser(state.email, state.password, state.phoneNumber);
+      await createUser(state.email, state.password);
       reset();
-      // navigate('/');
+      navigate('/');
+      toast.success(`Successfully singed up`);
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +76,6 @@ const SignUpTwo = () => {
               {...register('phoneNumber', {
                 required: 'Phone Number is required',
               })}
-              defaultValue={state.phoneNumber}
             />
             {errors.phoneNumber && (
               <p className="error-message">{errors.phoneNumber?.message}</p>

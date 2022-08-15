@@ -20,18 +20,16 @@ const Profile = () => {
   const { user } = useAuth();
   const uid = user?.uid;
 
-  const [activeCompany, setActiveCompany] = useState({});
   const { companies } = useGlobalContext();
+  const [activeCom, setActiveCom] = useState({});
 
   useEffect(() => {
-    const specificCompany = companies.find(
-      (company) => company.userUId === uid
-    );
-    specificCompany && setActiveCompany(specificCompany);
+    const specificCom = companies.find((company) => company.userUId === uid);
+    specificCom && setActiveCom(specificCom);
   }, [companies, uid]);
 
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
-    activeCompany;
+    activeCom;
 
   return (
     <div className="profile-ctn">

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import sign from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
@@ -28,6 +29,10 @@ const SignIn = () => {
   useEffect(() => {
     if (user !== null) {
       navigate('/');
+      toast.success(`Successfully signed in`, {
+        progress: undefined,
+        toastId: 'signin-success',
+      });
     }
   }, [user, navigate]);
 
@@ -59,6 +64,10 @@ const SignIn = () => {
   const onSubmit = async ({ email, password }) => {
     try {
       await signin(email, password);
+      toast.success(`Successfully signed in`, {
+        progress: undefined,
+        toastId: 'signin-success',
+      });
       navigate('/');
     } catch (error) {
       const errorCode = error.code;

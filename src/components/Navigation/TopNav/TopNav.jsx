@@ -45,20 +45,12 @@ const TopNav = () => {
   };
 
   // toast
-  const [isSignedIn, setIsSignedIn] = useState(false);
-
   const notify = () => {
     toast.info(`You need to be singed in for registering services`, {
       progress: undefined,
       toastId: 'registration',
     });
   };
-
-  useState(() => {
-    if (user?.email || user?.displayName) {
-      setIsSignedIn(true);
-    } else setIsSignedIn(false);
-  }, [user]);
 
   return (
     <div className="navbar-ctn">
@@ -84,7 +76,7 @@ const TopNav = () => {
           <NavLink to="/contact_us" className="nav-link">
             Contact Us
           </NavLink>
-          {user?.email || user?.displayName ? (
+          {user ? (
             <li className="nav-link" onClick={handleSignout}>
               Sign out
             </li>
@@ -97,7 +89,7 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        {isSignedIn ? (
+        {user ? (
           <Link to="/register">
             <button className="nav-btn">Register Your Service</button>
           </Link>
