@@ -37,6 +37,7 @@ const UploadService = () => {
     handleSubmit,
   } = useForm();
 
+  // post service
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
 
   const onSubmit = async (data) => {

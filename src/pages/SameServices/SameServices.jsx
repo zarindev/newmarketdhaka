@@ -15,10 +15,10 @@ import { useGlobalContext } from '../../context/AppProvider';
 const SameServices = () => {
   useDocTitle();
 
-  const { items, isLoading, setIsLoading } = useGlobalContext();
+  const { services, isLoading, setIsLoading } = useGlobalContext();
 
   const { service_type } = useParams();
-  const [mergedSerState, setMergedSerState] = useState([]);
+  const [activeSer, setActiveSer] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
@@ -26,24 +26,24 @@ const SameServices = () => {
 
   useEffect(() => {
     if (titleCase(service_type) === 'All') {
-      return setMergedSerState(items); // return => for exiting out of the loop
+      return setActiveSer(services); // return => for exiting out of the loop
     }
 
-    const mergedSer = items.filter(
+    const mergedSer = services.filter(
       (service) => snakeCase(service.serType) === snakeCase(service_type)
     );
-    setMergedSerState(mergedSer);
-  }, [items, service_type]);
+    setActiveSer(mergedSer);
+  }, [services, service_type]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
-    setActiveServices(mergedSerState.slice(serviceOffset, endOffset));
-    setPageCount(Math.ceil(mergedSerState.length / servicesPerPage));
-  }, [mergedSerState, serviceOffset, servicesPerPage]);
+    setActiveServices(activeSer.slice(serviceOffset, endOffset));
+    setPageCount(Math.ceil(activeSer.length / servicesPerPage));
+  }, [activeSer, serviceOffset, servicesPerPage]);
 
   useEffect(() => {
-    if (mergedSerState.length > 0) setIsLoading(false);
-  }, [mergedSerState, setIsLoading]);
+    if (activeSer.length > 0) setIsLoading(false);
+  }, [activeSer, setIsLoading]);
 
   return (
     <ScrollToTop>
@@ -53,7 +53,7 @@ const SameServices = () => {
         <div className="slider-heading">
           <h3 className="slider-title">{checkCase(service_type)}</h3>
           <p className="same-services-avilable">
-            {`${mergedSerState.length} Services Avilable`}
+            {`${activeSer.length} Services Avilable`}
           </p>
           <div className="same-styled-divider"></div>
         </div>

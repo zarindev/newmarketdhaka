@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Hero.css';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import { heroImageData } from './heroImageData';

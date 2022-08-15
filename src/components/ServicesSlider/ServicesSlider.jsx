@@ -13,8 +13,8 @@ const ServicesSlider = () => {
       <h1 className="services-slider-title">
         Take a glimps of all the services
       </h1>
-      {mergedSerType.map((service) => {
-        return <SliderComponent key={uuidv4()} serType={service} />;
+      {mergedSerType.map((type) => {
+        return <SliderComponent key={uuidv4()} serType={type} />;
       })}
       <Link to="/more_services">
         <RoundedButton buttonText="Explore More Services" />
