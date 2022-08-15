@@ -57,7 +57,7 @@ const UploadService = () => {
     delete data.serImg2;
     delete data.serImg3;
     delete data.serImg4;
-    data.image = serImg1;
+
     console.log(data.image);
     data.serType = serType;
     data.serClose = serClose;
