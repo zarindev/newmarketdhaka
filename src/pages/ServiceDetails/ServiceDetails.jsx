@@ -11,8 +11,8 @@ import {
   snakeCase,
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import ScrollToTop from '../../utils/ScrollToTop';
 import { useFetch } from '../../hooks/useFetch';
+import ScrollToTop from '../../utils/ScrollToTop';
 import Loading from '../../components/Loading/Loading';
 
 const ServiceDetails = () => {

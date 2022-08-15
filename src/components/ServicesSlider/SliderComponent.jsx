@@ -11,21 +11,22 @@ import Loading from '../Loading/Loading';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SliderComponent = ({ serType }) => {
-  const { items } = useGlobalContext();
+  const { services } = useGlobalContext();
+  const [activeSer, setActiveSer] = useState([]);
 
-  const [mergedSerState, setMergedSerState] = useState([]);
   useEffect(() => {
-    const mergedSer = items.filter((service) => service.serType === serType);
-    setMergedSerState(mergedSer);
-  }, [items, serType]);
-  // console.log(mergedSerState);
+    const filteredSer = services.filter(
+      (item) => snakeCase(item.serType) === snakeCase(serType)
+    );
+    setActiveSer(filteredSer);
+  }, [services, serType]);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
 
   return (
     <>
-      {mergedSerState.length <= 0 ? (
+      {activeSer.length <= 0 ? (
         <Loading color="#ce2d4f" size={125} />
       ) : (
         <div className="slider-component">
@@ -81,7 +82,7 @@ const SliderComponent = ({ serType }) => {
               modules={[Navigation]}
               className="mySwiper"
             >
-              {mergedSerState.map((service) => {
+              {activeSer.map((service) => {
                 return (
                   <SwiperSlide key={service.id}>
                     <SingleSlide {...service} serType={serType} />

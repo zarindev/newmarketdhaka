@@ -8,13 +8,12 @@ import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import './MoreServices.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import RoundedButton from '../../components/RoundedButton/RoundedButton';
-import { useMergeKey } from '../../hooks/useMergeKey';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const MoreServices = () => {
   useDocTitle();
 
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const mergedSerType = useMergeKey(serGet);
+  const { mergedSerType } = useGlobalContext();
 
   return (
     <>

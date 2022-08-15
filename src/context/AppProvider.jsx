@@ -1,9 +1,6 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { useAllKey } from '../hooks/useAllKey';
 import { useFetch } from '../hooks/useFetch';
-import { useMergeId } from '../hooks/useMergeId';
-import { useMergeKey } from '../hooks/useMergeKey';
-import { useMergeSellerId } from '../hooks/useMergeSellerId';
+import { useMerge } from '../hooks/useMerge';
 
 const AppContext = createContext();
 
@@ -13,16 +10,14 @@ const AppProvider = ({ children }) => {
   const [componentFiles, setComponentFiles] = useState([]);
 
   const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const fetchedSer = useFetch(serGet);
-  const { items } = fetchedSer;
+  const services = useFetch(serGet)?.items;
 
   const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
   const companies = useFetch(comGet)?.items;
 
-  const mergedSerTypeAll = useAllKey(serGet);
-  const mergedSerType = useMergeKey(serGet);
-  const mergedSellerId = useMergeSellerId(serGet);
-  const mergedComId = useMergeId(comGet);
+  const mergedSerTypeAll = useMerge(serGet, 'serType')?.mergedItemsAll;
+  const mergedSerType = useMerge(serGet, 'serType')?.mergedItems;
+  const mergedComId = useMerge(comGet, 'id')?.mergedItems;
 
   return (
     <AppContext.Provider
@@ -31,11 +26,10 @@ const AppProvider = ({ children }) => {
         setIsLoading,
         showDropdown,
         setShowDropdown,
-        items,
+        services,
         companies,
-        mergedSerType,
         mergedSerTypeAll,
-        mergedSellerId,
+        mergedSerType,
         mergedComId,
         componentFiles,
         setComponentFiles,

@@ -5,10 +5,9 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const CreatedServices = () => {
-  const { items, mergedSellerId, mergedComId, isLoading, setIsLoading } =
-    useGlobalContext();
+  const { services, mergedComId, isLoading, setIsLoading } = useGlobalContext();
 
-  const [mergedSerState, setMergedSerState] = useState([]);
+  const [activeSer, setActiveSer] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
@@ -17,26 +16,28 @@ const CreatedServices = () => {
   const activeComId = mergedComId[0];
 
   useEffect(() => {
-    const mergedSer = items.filter((service) => service.companyInfoId === 11);
-    setMergedSerState(mergedSer);
-  }, [items, activeComId]);
+    const filteredSer = services.filter(
+      (service) => service.companyInfoId === activeComId
+    );
+    setActiveSer(filteredSer);
+  }, [services, activeComId]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
-    setActiveServices(mergedSerState.slice(serviceOffset, endOffset));
-    setPageCount(Math.ceil(mergedSerState.length / servicesPerPage));
-  }, [mergedSerState, serviceOffset, servicesPerPage]);
+    setActiveServices(activeSer.slice(serviceOffset, endOffset));
+    setPageCount(Math.ceil(activeSer.length / servicesPerPage));
+  }, [activeSer, serviceOffset, servicesPerPage]);
 
   useEffect(() => {
-    if (mergedSerState.length > 0) setIsLoading(false);
-  }, [mergedSerState, setIsLoading]);
+    if (activeSer.length > 0) setIsLoading(false);
+  }, [activeSer, setIsLoading]);
 
   return (
     <div className="created-ser-ctn">
       <div className="created-ser-heading">
         <p className="created-ser-title">All Services</p>
         <div className="created-ser-styled-divider"></div>
-        <p className="created-ser-amount">{mergedSerState.length} in total</p>
+        <p className="created-ser-amount">{activeSer.length} in total</p>
       </div>
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
