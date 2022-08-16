@@ -26,61 +26,65 @@ import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
 import UploadService from './pages/UploadService/UploadService';
 import SignUpTwo from './pages/SignUp/SignUpTwo';
 import SerachResult from './pages/SearchResult/SerachResult';
+import Toastify from './components/Toastify/Toastify';
 
-const App = () => {
+function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/home/:service_type" element={<SameServices />} />
-      <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
-      <Route path="/about_us" element={<AboutUs />} />
-      <Route path="/contact_us" element={<ContactUsPage />} />
-      <Route path="/sign_up/step2" element={<SignUpTwo />} />
-      <Route path="/sign_up" element={<SignUp />} />
-      <Route path="/sign_in" element={<SignIn />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/register/company/step1" element={<RegisterFormOne />} />
-      <Route path="/register/company/step2" element={<RegisterFormTwo />} />
-      <Route path="/register/company/step3" element={<RegisterFormThree />} />
-      <Route path="/register/company/step4" element={<RegisterFormFour />} />
-      <Route
-        path="/register/company/success"
-        element={<RegisterFormSucess />}
-      />
-      <Route
-        path="/register/individual/step1"
-        element={<RegisterFormOneIndie />}
-      />
-      <Route
-        path="/register/individual/step2"
-        element={<RegisterFormTwoIndie />}
-      />
-      <Route
-        path="/register/individual/step3"
-        element={<RegisterFormThreeIndie />}
-      />
-      <Route
-        path="/register/individual/step4"
-        element={<RegisterFormFourIndie />}
-      />
-      <Route
-        path="/register/individual/success"
-        element={<RegisterFormSucessIndie />}
-      />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/profile/edit_profile" element={<ProfileEdit />} />
-      <Route path="/results" element={<SerachResult />} />
-      <Route path="/all_services" element={<AllServices />} />
-      <Route path="/more_services" element={<MoreServices />} />
-      <Route path="/more_services/all_services" element={<AllServices />} />
-      <Route path="/service_dashboard" element={<ServiceDashboard />} />
-      <Route
-        path="/service_dashboard/upload_service"
-        element={<UploadService />}
-      />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <Toastify position="bottom-left" />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home/:service_type" element={<SameServices />} />
+        <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
+        <Route path="/about_us" element={<AboutUs />} />
+        <Route path="/contact_us" element={<ContactUsPage />} />
+        <Route path="/sign_up/step2" element={<SignUpTwo />} />
+        <Route path="/sign_up" element={<SignUp />} />
+        <Route path="/sign_in" element={<SignIn />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/register/company/step1" element={<RegisterFormOne />} />
+        <Route path="/register/company/step2" element={<RegisterFormTwo />} />
+        <Route path="/register/company/step3" element={<RegisterFormThree />} />
+        <Route path="/register/company/step4" element={<RegisterFormFour />} />
+        <Route
+          path="/register/company/success"
+          element={<RegisterFormSucess />}
+        />
+        <Route
+          path="/register/individual/step1"
+          element={<RegisterFormOneIndie />}
+        />
+        <Route
+          path="/register/individual/step2"
+          element={<RegisterFormTwoIndie />}
+        />
+        <Route
+          path="/register/individual/step3"
+          element={<RegisterFormThreeIndie />}
+        />
+        <Route
+          path="/register/individual/step4"
+          element={<RegisterFormFourIndie />}
+        />
+        <Route
+          path="/register/individual/success"
+          element={<RegisterFormSucessIndie />}
+        />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit_profile" element={<ProfileEdit />} />
+        <Route path="/results" element={<SerachResult />} />
+        <Route path="/all_services" element={<AllServices />} />
+        <Route path="/more_services" element={<MoreServices />} />
+        <Route path="/more_services/all_services" element={<AllServices />} />
+        <Route path="/service_dashboard" element={<ServiceDashboard />} />
+        <Route
+          path="/service_dashboard/upload_service"
+          element={<UploadService />}
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
-};
+}
 
 export default App;

@@ -43,18 +43,18 @@ const SingleSlide = ({
       </div>
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
-          <div className="slide-image-ctn">
+          <div className="slide-img-ctn">
             {data ? (
               <img
                 src={`data:image/jpeg;base64,${data}`}
                 alt={title}
-                className="slide-image"
+                className="slide-img"
               />
             ) : (
               <img
                 src={defaultImg[imageIndex]}
                 alt={title}
-                className="slide-image"
+                className="slide-img"
               />
             )}
           </div>

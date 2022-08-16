@@ -6,7 +6,6 @@ import { StateMachineProvider, createStore } from 'little-state-machine';
 import { AppProvider } from './context/AppProvider';
 import ScrollToTop from './utils/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import Toastify from './components/Toastify/Toastify';
 
 createStore({
   data: {
@@ -36,7 +35,6 @@ root.render(
         <Router>
           <ScrollToTop>
             <App />
-            <Toastify position="bottom-left" />
           </ScrollToTop>
         </Router>
       </StateMachineProvider>

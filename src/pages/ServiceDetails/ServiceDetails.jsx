@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -21,7 +20,7 @@ const ServiceDetails = () => {
   useDocTitle();
 
   const { service_type, title } = useParams();
-  const { services, companies } = useGlobalContext();
+  const { services } = useGlobalContext();
 
   const activeSer = services.find(
     (service) => snakeCase(service.title) === snakeCase(title)
@@ -41,7 +40,7 @@ const ServiceDetails = () => {
           </Link>
         </p>
         {activeSer ? (
-          <DetailsList activeSer={activeSer} currentUser={user} />
+          <DetailsList activeSer={activeSer} activeUser={user} />
         ) : (
           <Loading color="#ce2d4f" size={125} />
         )}

@@ -71,9 +71,12 @@ const SignIn = () => {
       navigate('/');
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      if (errorCode) {
+        toast.error(`Email or Password doesn't match`, {
+          progress: undefined,
+          toastId: 'singin-email-password-error',
+        });
+      }
     }
   };
 

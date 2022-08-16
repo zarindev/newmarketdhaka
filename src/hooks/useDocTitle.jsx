@@ -12,14 +12,10 @@ export const useDocTitle = (newTitle) => {
     if (activePath === '/') {
       document.title = staticTitle.replace('/', '');
     } else {
-      const formatedActiveTitle = snakeToTitle(
-        activePath.replace('/', '')
-      ).replace('/', '');
-
-      const newActiveTitle = snakeToTitle(
-        formatedActiveTitle.substring(formatedActiveTitle.indexOf('/') + 1)
+      const activePathLast = snakeToTitle(
+        activePath.replace(/^.*\/(.*)$/, '$1')
       );
-      document.title = `${newTitle || newActiveTitle} | ${staticTitle}`;
+      document.title = `${newTitle || activePathLast} | ${staticTitle}`;
     }
   }, [location, newTitle]);
 };
