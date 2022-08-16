@@ -15,10 +15,10 @@ const SliderComponent = ({ serType }) => {
   const [activeSer, setActiveSer] = useState([]);
 
   useEffect(() => {
-    const filteredSer = services.filter(
+    const specificSer = services.filter(
       (item) => snakeCase(item.serType) === snakeCase(serType)
     );
-    setActiveSer(filteredSer);
+    setActiveSer(specificSer);
   }, [services, serType]);
 
   const rightArrowRef = useRef(null);

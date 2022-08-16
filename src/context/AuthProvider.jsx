@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
+
     return () => {
       unsubscribe();
     };
@@ -50,7 +51,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ createUser, user, signin, signinGoogle, signinFb, signout }}
+      value={{
+        createUser,
+        user,
+        signin,
+        signinGoogle,
+        signinFb,
+        signout,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -11,22 +12,22 @@ import {
   snakeCase,
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFetch } from '../../hooks/useFetch';
 import ScrollToTop from '../../utils/ScrollToTop';
 import Loading from '../../components/Loading/Loading';
+import { useGlobalContext } from '../../context/AppProvider';
+import { useAuth } from '../../context/AuthProvider';
 
 const ServiceDetails = () => {
   useDocTitle();
 
   const { service_type, title } = useParams();
+  const { services, companies } = useGlobalContext();
 
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const fetchedSer = useFetch(serGet);
-  const { items } = fetchedSer;
-
-  const activeSer = items.find(
-    (service) => snakeCase(service.serType) === snakeCase(service_type)
+  const activeSer = services.find(
+    (service) => snakeCase(service.title) === snakeCase(title)
   );
+
+  const { user } = useAuth();
 
   return (
     <ScrollToTop>
@@ -40,7 +41,7 @@ const ServiceDetails = () => {
           </Link>
         </p>
         {activeSer ? (
-          <DetailsList activeSer={activeSer} />
+          <DetailsList activeSer={activeSer} currentUser={user} />
         ) : (
           <Loading color="#ce2d4f" size={125} />
         )}

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { useState, useEffect, useCallback } from 'react';
+import { toast } from 'react-toastify';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
@@ -15,17 +15,21 @@ import defaultTwo from '../../images/service-two.png';
 import defaultThree from '../../images/service-three.png';
 import defaultFour from '../../images/service-zero.png';
 
-const DetailsList = ({ activeSer }) => {
+const DetailsList = ({ activeSer, currentUser }) => {
   const {
+    companyInfo,
+    data,
     title,
     image,
-    serClose,
-    serOpen,
-    serDetails,
+    serviceOpen,
+    serviceClose,
+    serviceDetails,
     offeredServices,
     extraServices,
     whyUs,
   } = activeSer;
+
+  const { email, phoneNumber, location } = companyInfo;
 
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -42,23 +46,30 @@ const DetailsList = ({ activeSer }) => {
     }
   }, [image, imageIndex]);
 
-  /** moch data start */
-  const email = 'test@gmail.com';
-  const phoneNumber = '012345678901';
-  const location = 'testdist, testcity';
-  /** moch data end */
-
   const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
   // send email to the service creator
-  const [emailBreak, setEmailBreak] = useState('sadmann898@gmail.com');
-  const creatorEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?toMail=${emailBreak}`;
+  const userEmail = currentUser?.email;
+
+  const postEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?`;
+
+  const mailData = {
+    toMail: email,
+    mailBody: `Email sent by ${userEmail}`,
+  };
 
   const sendEmail = async () => {
     try {
-      await fetch(creatorEmail, {
-        method: 'GET',
+      const res = await fetch(postEmail, {
+        method: 'POST',
+        body: JSON.stringify(mailData),
+        headers: {
+          'Content-type': 'application/json; carset=UTF-8',
+        },
       });
+
+      const formData = await res.json();
+      console.log(formData);
       toast.success('Successfully sent', { progress: undefined });
     } catch (error) {
       console.log(error);
@@ -70,10 +81,13 @@ const DetailsList = ({ activeSer }) => {
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-image-ctn">
-          {image && (
-            <img src={image[imageIndex]} alt={title} className="slide-image" />
-          )}
-          {image || (
+          {data ? (
+            <img
+              src={`data:image/jpeg;base64,${data}`}
+              alt={title}
+              className="slide-image"
+            />
+          ) : (
             <img
               src={defaultImg[imageIndex]}
               alt={title}
@@ -111,7 +125,7 @@ const DetailsList = ({ activeSer }) => {
                     className="service-working-hours-icon"
                   />
                   <p className="service-working-hours-time">
-                    Close on {serClose}
+                    Close on {serviceOpen}
                   </p>
                 </div>
                 <div className="service-working-hours">
@@ -121,23 +135,11 @@ const DetailsList = ({ activeSer }) => {
                     className="service-working-hours-icon"
                   />
                   <p className="service-working-hours-time">
-                    Opens at {serOpen}
+                    Opens at {serviceClose}
                   </p>
                 </div>
               </div>
             </div>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
             <button className="details-button" onClick={sendEmail}>
               <img
                 src={paperPlaneIcon}
@@ -150,7 +152,7 @@ const DetailsList = ({ activeSer }) => {
           <div className="details-lists">
             <div className="details-list">
               <p className="details-list-main-title">Details</p>
-              <p className="details-list-content">{serDetails}</p>
+              <p className="details-list-content">{serviceDetails}</p>
             </div>
             {offeredServices && (
               <div className="details-list">

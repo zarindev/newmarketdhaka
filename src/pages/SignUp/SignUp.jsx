@@ -95,7 +95,6 @@ const SignUp = () => {
               })}
               className="field-style"
               placeholder="Email"
-              defaultValue={state.email}
             />
             {errors.email && (
               <p className="error-message">{errors.email?.message}</p>
@@ -114,7 +113,6 @@ const SignUp = () => {
               })}
               className="field-style"
               placeholder="Password"
-              defaultValue={state.password}
             />
             {errors.password && (
               <p className="error-message">{errors.password?.message}</p>
@@ -129,7 +127,6 @@ const SignUp = () => {
               })}
               className="field-style"
               placeholder="Confirm Password"
-              defaultValue={state.confirmPassword}
             />
             {errors.confirmPassword && (
               <p className="error-message">{errors.confirmPassword?.message}</p>

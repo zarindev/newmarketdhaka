@@ -4,8 +4,8 @@ import PaginationCom from '../../components/PaginationCom/PaginationCom';
 import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useGlobalContext } from '../../context/AppProvider';
 
-const CreatedServices = () => {
-  const { services, mergedComId, isLoading, setIsLoading } = useGlobalContext();
+const CreatedServices = ({ comInfoId }) => {
+  const { services, isLoading, setIsLoading } = useGlobalContext();
 
   const [activeSer, setActiveSer] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
@@ -13,14 +13,12 @@ const CreatedServices = () => {
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
 
-  const activeComId = mergedComId[0];
-
   useEffect(() => {
     const filteredSer = services.filter(
-      (service) => service.companyInfoId === activeComId
+      (service) => service.companyInfoId === comInfoId
     );
     setActiveSer(filteredSer);
-  }, [services, activeComId]);
+  }, [services, comInfoId]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
@@ -42,7 +40,6 @@ const CreatedServices = () => {
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
           {isLoading && <Loading color="#ce2d4f" size={125} />}
-
           {activeServices.map((service) => {
             return <SingleSlide key={service.id} {...service} />;
           })}

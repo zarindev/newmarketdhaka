@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
@@ -15,17 +15,16 @@ import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
 import UploadSelect from './UploadSelect';
 import RegisterUpload from '../Register/elements/RegisterUpload';
 import { categoryTags, closingDays, dragAndDrops } from './uploadData';
-import { useFetch } from '../../hooks/useFetch';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const UploadService = () => {
   useDocTitle();
 
-  const navigate = useNavigate();
+  const { companies } = useGlobalContext();
 
-  const { user } = useAuth();
-  const uid = user?.uid;
+  const navigate = useNavigate();
 
   const {
     register,
@@ -38,29 +37,32 @@ const UploadService = () => {
   } = useForm();
 
   // post service
+  const [activeSer, setActiveSer] = useState({});
+
+  const { user } = useAuth();
+  const uid = user?.uid;
+
+  useEffect(() => {
+    const specificSer = companies.find((company) => company.userUId === uid);
+    specificSer && setActiveSer(specificSer);
+  }, [companies, uid]);
+
+  const { id } = activeSer;
+
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
 
   const onSubmit = async (data) => {
     console.log(data);
 
-    const serImg1 = data.serImg1.buffer;
-    // const serImg1 = data.serImg1.preview;
-    const serImg2 = data.serImg2.preview;
-    const serImg3 = data.serImg3.preview;
-    const serImg4 = data.serImg4.preview;
-
-    const image = [serImg1, serImg2, serImg3, serImg4];
-    const serType = data.serType.label;
-    const serClose = data.serClose.label;
-
-    delete data.serImg1;
-    delete data.serImg2;
-    delete data.serImg3;
-    delete data.serImg4;
-
-    console.log(data.image);
-    data.serType = serType;
-    data.serClose = serClose;
+    // delete data.serImg1;
+    // delete data.serImg2;
+    // delete data.serImg3;
+    // delete data.serImg4;
+    data.CompanyInfoId = id;
+    data.Data = data.serImg.base64;
+    data.serImg = '';
+    data.serType = data.serType.label;
+    data.serviceClose = data.serviceClose.label;
 
     const res = await fetch(serPost, {
       method: 'POST',
@@ -73,7 +75,7 @@ const UploadService = () => {
     const formData = await res.json();
     console.log(formData);
 
-    // navigate('/service_dashboard');
+    navigate('/service_dashboard');
   };
 
   return (
@@ -90,26 +92,6 @@ const UploadService = () => {
         <form className="upload-ser-form-ctn" onSubmit={handleSubmit(onSubmit)}>
           <div className="upload-ser-form">
             <div className="upload-ser-left">
-              <div className="upload-ser-input-ctn upload-ser-input-ctn-hidden">
-                <label htmlFor="serOpen" className="upload-ser-label-ctn">
-                  <img
-                    src={subCategoryIcon}
-                    alt="label icon"
-                    className="upload-ser-label-icon"
-                  />
-                  <p className="upload-ser-label-title">Seller-info ID</p>
-                </label>
-                <input
-                  type="text"
-                  className="register-form-input"
-                  placeholder="Seller-info ID"
-                  defaultValue={1}
-                  readOnly
-                  {...register('sellerInfoId', {
-                    required: true,
-                  })}
-                />
-              </div>
               <div className="upload-ser-input-ctn">
                 <label htmlFor="serviceName" className="upload-ser-label-ctn">
                   <img
@@ -157,7 +139,7 @@ const UploadService = () => {
                   type="time"
                   className="register-form-input"
                   placeholder="Select opening time"
-                  {...register('serOpen', {
+                  {...register('serviceOpen', {
                     required: true,
                   })}
                 />
@@ -172,7 +154,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Select Closing Days</p>
                 </label>
                 <UploadSelect
-                  name="serClose"
+                  name="serviceClose"
                   control={control}
                   items={closingDays}
                   isMulti={false}
@@ -210,7 +192,7 @@ const UploadService = () => {
                   rows="10"
                   className="register-form-input upload-ser-textarea"
                   placeholder="Describe your service"
-                  {...register('serDetails', {
+                  {...register('serviceDetails', {
                     required: true,
                   })}
                 ></textarea>
@@ -287,7 +269,21 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Upload Service Image</p>
                 </label>
                 <div className="upload-ser-img-ctn">
-                  {dragAndDrops.map((item) => {
+                  <RegisterUpload
+                    isTypeImg={true}
+                    uploadPlaceholderImg={uploadPlaceholderUp}
+                    changePlaceholderText={true}
+                    getFiles={null}
+                    setValue={setValue}
+                    setError={setError}
+                    clearErrors={clearErrors}
+                    {...register(`serImg`, {
+                      required: true,
+                    })}
+                    ref={null}
+                  />
+
+                  {/* {dragAndDrops.map((item) => {
                     const { id } = item;
                     return (
                       <RegisterUpload
@@ -305,7 +301,7 @@ const UploadService = () => {
                         ref={null}
                       />
                     );
-                  })}
+                  })} */}
                 </div>
               </div>
             </div>

@@ -1,13 +1,28 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
 import CreatedServices from './CreatedServices';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const ServiceDashboard = () => {
   useDocTitle();
+
+  const { companies } = useGlobalContext();
+  const [activeSer, setActiveSer] = useState({});
+
+  const { user } = useAuth();
+  const uid = user?.uid;
+
+  useEffect(() => {
+    const specificSer = companies.find((company) => company.userUId === uid);
+    specificSer && setActiveSer(specificSer);
+  }, [companies, uid]);
+
+  const { id } = activeSer;
 
   return (
     <div className="service-dash-ctn">
@@ -31,7 +46,7 @@ const ServiceDashboard = () => {
             </button>
           </Link>
         </div>
-        <CreatedServices />
+        <CreatedServices comInfoId={id} />
       </div>
     </div>
   );

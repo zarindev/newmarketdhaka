@@ -45,7 +45,6 @@ const RegisterFormTwo = () => {
                 {...register('companyName', {
                   required: 'Company Name is required',
                 })}
-                defaultValue={state.companyName}
               />
               {errors.companyName && (
                 <p className="error-message">{errors.companyName?.message}</p>
@@ -63,7 +62,6 @@ const RegisterFormTwo = () => {
                 {...register('location', {
                   required: 'Company Address is required',
                 })}
-                defaultValue={state.location}
               />
               {errors.location && (
                 <p className="error-message">{errors.location?.message}</p>
@@ -81,7 +79,6 @@ const RegisterFormTwo = () => {
                 {...register('binNumber', {
                   required: 'Company BIN Number is required',
                 })}
-                defaultValue={state.binNumber}
               />
               {errors.binNumber && (
                 <p className="error-message">{errors.binNumber?.message}</p>
@@ -99,7 +96,6 @@ const RegisterFormTwo = () => {
                 {...register('licenseKey', {
                   required: 'Company License Key is required',
                 })}
-                defaultValue={state.licenseKey}
               />
               {errors.licenseKey && (
                 <p className="error-message">{errors.licenseKey?.message}</p>
@@ -117,7 +113,6 @@ const RegisterFormTwo = () => {
                 {...register('taxNumber', {
                   required: 'Company Tax Number is required',
                 })}
-                defaultValue={state.taxNumber}
               />
               {errors.taxNumber && (
                 <p className="error-message">{errors.taxNumber?.message}</p>
@@ -143,7 +138,6 @@ const RegisterFormTwo = () => {
                     message: 'Please enter a valid phone number',
                   },
                 })}
-                defaultValue={state.phoneNumber}
               />
               {errors.phoneNumber && (
                 <p className="error-message">{errors.phoneNumber?.message}</p>

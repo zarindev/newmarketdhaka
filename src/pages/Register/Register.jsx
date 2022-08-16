@@ -24,7 +24,7 @@ const Register = () => {
               <p className="register-type-text">Company</p>
             </div>
           </Link>
-          <Link to="/register/individual/step1">
+          {/* <Link to="/register/individual/step1">
             <div className="register-type">
               <img
                 src={indieIcon}
@@ -33,7 +33,7 @@ const Register = () => {
               />
               <p className="register-type-text">Individual</p>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

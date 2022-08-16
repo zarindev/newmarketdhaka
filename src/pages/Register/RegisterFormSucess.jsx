@@ -29,19 +29,15 @@ const RegisterFormSuccess = () => {
   const { actions, state } = useStateMachine({ updateAction });
   console.log(state);
 
-  const notify = () => {
-    toast.success('Redirecting to the Dashbaord in 4 seconds', {
+  useEffect(() => {
+    toast.success('Redirecting to the Dashbaord in 3 seconds', {
       progress: undefined,
       toastId: 'companySuccess',
     });
-  };
-
-  useEffect(() => {
-    notify();
 
     const navigateToDash = setTimeout(() => {
       navigate('/service_dashboard');
-    }, 4000);
+    }, 3000);
 
     return () => clearTimeout(navigateToDash);
   }, [navigate]);
