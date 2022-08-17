@@ -151,11 +151,11 @@
 }
 
 .search-btn:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .search-btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 @media screen and (max-width: 1000px) {

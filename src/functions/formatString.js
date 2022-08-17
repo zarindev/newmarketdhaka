@@ -43,6 +43,15 @@ const snakeToTitle = (str) => {
   return snakeToTitled;
 };
 
+const formatError = (str) => {
+  const noSlashHyphen = str
+    .substring(str.lastIndexOf('/') + 1)
+    .replace(/-/g, ' ');
+  const errorMessage =
+    noSlashHyphen.charAt(0).toUpperCase() + noSlashHyphen.slice(1);
+  return errorMessage;
+};
+
 export {
   titleCase,
   capitalCase,
@@ -51,4 +60,5 @@ export {
   snakeCase,
   camelCase,
   snakeToTitle,
+  formatError,
 };

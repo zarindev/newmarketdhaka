@@ -1,22 +1,3 @@
-.upload-ser-ctn {
-  position: relative;
-  height: auto;
-  min-height: 100vh;
-  padding: 64rem 0;
-  background-color: #f7f7f7;
-  display: flex;
-}
-
-.upload-ser {
-  position: absolute;
-  top: 0;
-  left: 18rem;
-  right: 0;
-  margin: 3rem auto 3rem auto;
-  width: 65vw;
-  max-width: 980px;
-}
-
 .upload-ser-heading {
   display: grid;
   gap: 0.7rem;
@@ -187,29 +168,7 @@
   transform: scale(0.95);
 }
 
-@media screen and (max-width: 1300px) {
-  .upload-ser-ctn {
-    padding: 67rem 0;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .upload-ser-ctn {
-    padding: 0;
-  }
-
-  .upload-ser {
-    position: relative;
-    left: 0;
-    width: 90vw;
-  }
-}
-
 @media screen and (max-width: 769px) {
-  .upload-ser {
-    margin: 2.3rem auto 3rem auto;
-  }
-
   .upload-ser-form-ctn {
     margin-top: 1.9rem;
   }
@@ -254,7 +213,6 @@
   }
 
   .upload-ser-btn-ctn {
-    margin-top: 1.5rem;
     justify-content: center;
   }
 }

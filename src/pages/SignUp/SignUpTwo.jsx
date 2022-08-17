@@ -10,6 +10,7 @@ import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import { useFetch } from '../../hooks/useFetch';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { formatError } from '../../functions/formatString';
 
 const SignUpTwo = () => {
   useDocTitle();
@@ -42,9 +43,15 @@ const SignUpTwo = () => {
       await createUser(state.email, state.password);
       reset();
       navigate('/');
-      toast.success(`Successfully singed up`);
+      toast.success(`Successfully signed up`);
     } catch (error) {
-      console.log(error);
+      const errorCode = error.code;
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signup-error',
+      });
+      console.log(errorCode);
     }
   };
 

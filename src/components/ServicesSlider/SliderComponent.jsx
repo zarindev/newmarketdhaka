@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -8,18 +8,12 @@ import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
 import Loading from '../Loading/Loading';
+import { useFilter } from '../../hooks/useFilter';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SliderComponent = ({ serType }) => {
-  const { services } = useGlobalContext();
-  const [activeSer, setActiveSer] = useState([]);
-
-  useEffect(() => {
-    const specificSer = services.filter(
-      (item) => snakeCase(item.serType) === snakeCase(serType)
-    );
-    setActiveSer(specificSer);
-  }, [services, serType]);
+  const { services, serGet } = useGlobalContext();
+  const activeSer = useFilter(services, 'serType', serType);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);

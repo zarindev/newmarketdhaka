@@ -11,30 +11,22 @@ import binIcon from '../../images/svg/bin-number.svg';
 import './Profile.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useAuth } from '../../context/AuthProvider';
 import { useGlobalContext } from '../../context/AppProvider';
+import { useFind } from '../../hooks/useFind';
 
 const Profile = () => {
   useDocTitle();
 
-  const { user } = useAuth();
-  const uid = user?.uid;
+  const { companies, comGet } = useGlobalContext();
 
-  const { companies } = useGlobalContext();
-  const [activeCom, setActiveCom] = useState({});
-
-  useEffect(() => {
-    const specificCom = companies.find((company) => company.userUId === uid);
-    specificCom && setActiveCom(specificCom);
-  }, [companies, uid]);
-
+  const activeCom = useFind(companies);
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
     activeCom;
 
   return (
-    <div className="profile-ctn">
+    <div className="service-dash-ctn profile-ctn">
       <SeekerSidebar />
-      <div className="profile">
+      <div className="service-dash">
         <div className="profile-image-ctn">
           <img src={profileLogo} alt="profile" className="profile-image" />
         </div>

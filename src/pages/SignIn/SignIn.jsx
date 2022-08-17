@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignIn.css';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { formatError } from '../../functions/formatString';
 
 const SignIn = () => {
   useDocTitle();
@@ -24,7 +25,6 @@ const SignIn = () => {
 
   /** signin */
   const { user, signin, signinGoogle, signinFb } = useAuth();
-  const [catchError, setCatchError] = useState('');
 
   useEffect(() => {
     if (user !== null) {
@@ -42,9 +42,12 @@ const SignIn = () => {
       await signinGoogle();
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signin-goggle-error',
+      });
+      console.log(errorCode);
     }
   };
 
@@ -54,9 +57,12 @@ const SignIn = () => {
       await signinFb();
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signin-fb-error',
+      });
+      console.log(errorCode);
     }
   };
 
@@ -71,12 +77,12 @@ const SignIn = () => {
       navigate('/');
     } catch (error) {
       const errorCode = error.code;
-      if (errorCode) {
-        toast.error(`Email or Password doesn't match`, {
-          progress: undefined,
-          toastId: 'singin-email-password-error',
-        });
-      }
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signin-email-password-error',
+      });
+      console.log(errorCode);
     }
   };
 

@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import { snakeCase } from '../functions/formatString';
 
-export const useFilter = (items, type) => {
+export const useFilter = (items, type, key) => {
   const [activeItems, setActiveItems] = useState([]);
 
   useEffect(() => {
-    // const filteredItems = items.filter(
-    //   (item) => snakeCase(item.serType) === snakeCase(type)
-    // );
-    // setActiveItems(filteredItems);
-
-    const filteredItems = items.filter((item) => item.companyInfoId === type);
-    setActiveItems(filteredItems);
-  }, [items, type]);
+    if (type === 'serType') {
+      const specificItems = items.filter(
+        (item) => snakeCase(item.serType) === snakeCase(key)
+      );
+      setActiveItems(specificItems);
+    } else if (type === 'companyInfoId') {
+      const specificItems = items.filter((item) => item.companyInfoId === key);
+      setActiveItems(specificItems);
+    }
+  }, [items, type, key]);
 
   return activeItems;
 };

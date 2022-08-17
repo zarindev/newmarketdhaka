@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useFetch } from './useFetch';
 
-export const useMerge = (url, type) => {
+export const useMerge = (items, type) => {
   const [allItems, setAllItems] = useState([]);
-  const items = useFetch(url)?.items;
 
   useEffect(() => {
     if (type === 'serType') {

@@ -15,9 +15,9 @@ const AppProvider = ({ children }) => {
   const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
   const companies = useFetch(comGet)?.items;
 
-  const mergedSerTypeAll = useMerge(serGet, 'serType')?.mergedItemsAll;
-  const mergedSerType = useMerge(serGet, 'serType')?.mergedItems;
-  const mergedComId = useMerge(comGet, 'id')?.mergedItems;
+  const mergedSerTypeAll = useMerge(services, 'serType')?.mergedItemsAll;
+  const mergedSerType = useMerge(services, 'serType')?.mergedItems;
+  const mergedComId = useMerge(companies, 'id')?.mergedItems;
 
   return (
     <AppContext.Provider
@@ -26,6 +26,8 @@ const AppProvider = ({ children }) => {
         setIsLoading,
         showDropdown,
         setShowDropdown,
+        serGet,
+        comGet,
         services,
         companies,
         mergedSerTypeAll,

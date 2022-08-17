@@ -8,14 +8,13 @@ export const useDocTitle = (newTitle) => {
 
   useEffect(() => {
     const activePath = location.pathname;
+    const activeLink = activePath.substring(activePath.lastIndexOf('/') + 1);
 
     if (activePath === '/') {
       document.title = staticTitle.replace('/', '');
     } else {
-      const activePathLast = snakeToTitle(
-        activePath.replace(/^.*\/(.*)$/, '$1')
-      );
-      document.title = `${newTitle || activePathLast} | ${staticTitle}`;
+      const activeTitle = snakeToTitle(activeLink);
+      document.title = `${newTitle || activeTitle} | ${staticTitle}`;
     }
   }, [location, newTitle]);
 };

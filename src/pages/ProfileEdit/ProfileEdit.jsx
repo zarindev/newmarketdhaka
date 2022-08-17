@@ -11,13 +11,11 @@ import binIcon from '../../images/svg/bin-number.svg';
 import './ProfileEdit.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFetch } from '../../hooks/useFetch';
 
 const ProfileEdit = () => {
   useDocTitle();
 
-  const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
-  const fetchedData = useFetch(serviceApi);
+  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
 
   const [preloadedValues, setPreloadedValues] = useState({
     companyName: '',
@@ -32,7 +30,7 @@ const ProfileEdit = () => {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
+
     reset,
   } = useForm({ mode: 'all', defaultValues: preloadedValues });
 
@@ -40,7 +38,7 @@ const ProfileEdit = () => {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const res = await fetch(serviceApi, {
+    const res = await fetch(comPost, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -58,9 +56,9 @@ const ProfileEdit = () => {
   }, [reset, preloadedValues]);
 
   return (
-    <div className="edit-ctn">
+    <div className="service-dash-ctn profile-ctn edit-ctn">
       <SeekerSidebar />
-      <div className="edit">
+      <div className="service-dash">
         <div className="profile-image-ctn">
           <img src={profileLogo} alt="profile" className="profile-image" />
         </div>
@@ -138,7 +136,7 @@ const ProfileEdit = () => {
                   required: 'Company Phone Number is required',
                   pattern: {
                     value:
-                      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+                      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im,
                     message: 'Please enter a valid phone number',
                   },
                 })}

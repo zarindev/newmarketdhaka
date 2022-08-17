@@ -21,6 +21,7 @@ const SingleSlide = ({
   const [imageIndex, setImageIndex] = useState(0);
 
   const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
+  // todo: make sperate component for dots
 
   return (
     <div className="slide-ctn">

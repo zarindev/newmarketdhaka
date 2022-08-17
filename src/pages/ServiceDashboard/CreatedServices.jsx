@@ -3,32 +3,23 @@ import Loading from '../../components/Loading/Loading';
 import PaginationCom from '../../components/PaginationCom/PaginationCom';
 import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useGlobalContext } from '../../context/AppProvider';
+import { useFilter } from '../../hooks/useFilter';
 
-const CreatedServices = ({ comInfoId }) => {
-  const { services, isLoading, setIsLoading } = useGlobalContext();
+const CreatedServices = ({ activeComId }) => {
+  const { services, comGet } = useGlobalContext();
 
-  const [activeSer, setActiveSer] = useState([]);
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
   const servicesPerPage = 9;
 
-  useEffect(() => {
-    const filteredSer = services.filter(
-      (service) => service.companyInfoId === comInfoId
-    );
-    setActiveSer(filteredSer);
-  }, [services, comInfoId]);
+  const activeSer = useFilter(services, 'companyInfoId', activeComId);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
     setActiveServices(activeSer.slice(serviceOffset, endOffset));
     setPageCount(Math.ceil(activeSer.length / servicesPerPage));
   }, [activeSer, serviceOffset, servicesPerPage]);
-
-  useEffect(() => {
-    if (activeSer.length > 0) setIsLoading(false);
-  }, [activeSer, setIsLoading]);
 
   return (
     <div className="created-ser-ctn">
@@ -39,10 +30,13 @@ const CreatedServices = ({ comInfoId }) => {
       </div>
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
-          {isLoading && <Loading color="#ce2d4f" size={125} />}
-          {activeServices.map((service) => {
-            return <SingleSlide key={service.id} {...service} />;
-          })}
+          {activeServices.length === 0 ? (
+            <Loading color="#ce2d4f" size={125} />
+          ) : (
+            activeServices.map((service) => {
+              return <SingleSlide key={service.id} {...service} />;
+            })
+          )}
         </div>
         <PaginationCom
           activeServices={activeServices}
