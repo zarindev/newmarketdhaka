@@ -12,7 +12,7 @@ import { useFilter } from '../../hooks/useFilter';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SliderComponent = ({ serType }) => {
-  const { services, serGet } = useGlobalContext();
+  const { services } = useGlobalContext();
   const activeSer = useFilter(services, 'serType', serType);
 
   const rightArrowRef = useRef(null);

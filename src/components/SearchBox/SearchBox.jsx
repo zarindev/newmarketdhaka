@@ -9,7 +9,7 @@ import SearchDropdown from './SearchDropdown';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SearchBox = () => {
-  const { services, showDropdown, setShowDropdown, mergedSerTypeAll } =
+  const { serData, showDropdown, setShowDropdown, mergedSerTypeAll } =
     useGlobalContext();
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SearchBox = () => {
     e.preventDefault();
 
     if (keywordRef.current?.value.length > 0) {
-      const keywordFilter = services.filter((service) =>
+      const keywordFilter = serData.filter((service) =>
         service.title
           .toLowerCase()
           .includes(keywordRef.current?.value.toLowerCase())
@@ -35,7 +35,7 @@ const SearchBox = () => {
     }
 
     if (locationRef.current?.value.length > 0) {
-      const locationFilter = services.filter((service) =>
+      const locationFilter = serData.filter((service) =>
         service.location
           .toLowerCase()
           .includes(locationRef.current?.value.toLowerCase())

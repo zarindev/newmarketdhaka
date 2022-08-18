@@ -27,7 +27,7 @@ const RegisterFormSuccess = () => {
     },
   });
 
-  const { companies, comGet } = useGlobalContext();
+  const { companies } = useGlobalContext();
   const activeComId = useFind(companies)?.id;
   console.log(activeComId);
 

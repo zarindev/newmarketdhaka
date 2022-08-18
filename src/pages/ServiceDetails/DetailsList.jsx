@@ -14,6 +14,7 @@ import defaultOne from '../../images/service-one.png';
 import defaultTwo from '../../images/service-two.png';
 import defaultThree from '../../images/service-three.png';
 import defaultFour from '../../images/service-zero.png';
+import Dots from '../../components/Dots/Dots';
 
 const DetailsList = ({ activeSer, activeUser }) => {
   const {
@@ -94,23 +95,12 @@ const DetailsList = ({ activeSer, activeUser }) => {
               className="details-img"
             />
           )}
-          <div className="details-dots-ctn">
-            {Array.from({ length: 4 }).map((item, index) => {
-              return (
-                <img
-                  src={ellipse}
-                  alt="ellipse icon"
-                  key={index}
-                  className={
-                    imageIndex === index
-                      ? 'details-dot details-dot-active'
-                      : 'details-dot'
-                  }
-                  onClick={() => setImageIndex(index)}
-                />
-              );
-            })}
-          </div>
+          <Dots
+            arrLength={4}
+            imageIndex={imageIndex}
+            setImageIndex={setImageIndex}
+            imageData={defaultImg}
+          />
         </div>
         <div className="details-ctn">
           <div className="details-intro">

@@ -17,7 +17,7 @@ import { useFind } from '../../hooks/useFind';
 const Profile = () => {
   useDocTitle();
 
-  const { companies, comGet } = useGlobalContext();
+  const { companies } = useGlobalContext();
 
   const activeCom = useFind(companies);
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =

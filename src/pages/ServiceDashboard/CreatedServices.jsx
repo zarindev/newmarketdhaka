@@ -6,7 +6,7 @@ import { useGlobalContext } from '../../context/AppProvider';
 import { useFilter } from '../../hooks/useFilter';
 
 const CreatedServices = ({ activeComId }) => {
-  const { services, comGet } = useGlobalContext();
+  const { services } = useGlobalContext();
 
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);

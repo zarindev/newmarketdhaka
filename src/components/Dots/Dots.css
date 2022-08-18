@@ -1,0 +1,44 @@
+/* hero */
+.dots-ctn {
+  display: flex;
+  gap: 0.7rem;
+  z-index: 14;
+}
+
+.dot {
+  background-color: hsla(0, 0%, 100%, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.dot-active {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.dot:hover {
+  background-color: hsl(0, 0%, 75%);
+}
+
+/* single slide */
+.slide-ctn .dots-ctn {
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 14;
+}
+
+/* service details */
+.details-img-ctn .dots-ctn {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}

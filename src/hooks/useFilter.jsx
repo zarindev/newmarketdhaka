@@ -9,10 +9,10 @@ export const useFilter = (items, type, key) => {
       const specificItems = items.filter(
         (item) => snakeCase(item.serType) === snakeCase(key)
       );
-      setActiveItems(specificItems);
+      setActiveItems([...specificItems]);
     } else if (type === 'companyInfoId') {
       const specificItems = items.filter((item) => item.companyInfoId === key);
-      setActiveItems(specificItems);
+      setActiveItems([...specificItems]);
     }
   }, [items, type, key]);
 

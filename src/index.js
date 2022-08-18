@@ -6,6 +6,9 @@ import { StateMachineProvider, createStore } from 'little-state-machine';
 import { AppProvider } from './context/AppProvider';
 import ScrollToTop from './utils/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 createStore({
   data: {
@@ -29,15 +32,17 @@ createStore({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <AppProvider>
-    <AuthProvider>
-      <StateMachineProvider>
-        <Router>
-          <ScrollToTop>
-            <App />
-          </ScrollToTop>
-        </Router>
-      </StateMachineProvider>
-    </AuthProvider>
-  </AppProvider>
+  <QueryClientProvider client={queryClient}>
+    <AppProvider>
+      <AuthProvider>
+        <StateMachineProvider>
+          <Router>
+            <ScrollToTop>
+              <App />
+            </ScrollToTop>
+          </Router>
+        </StateMachineProvider>
+      </AuthProvider>
+    </AppProvider>
+  </QueryClientProvider>
 );

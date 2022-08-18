@@ -94,32 +94,6 @@
   position: relative;
 }
 
-.image-dots-ctn {
-  position: absolute;
-  top: 13.5vw;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  z-index: 13;
-}
-
-.image-dot {
-  background-color: hsla(0, 0%, 100%, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s linear;
-}
-
-.image-dot:hover {
-  background-color: hsl(0, 0%, 75%);
-}
-
-.image-dot-active {
-  background-color: hsl(0, 0%, 100%);
-}
-
 .slide {
   width: 315px;
   height: auto;

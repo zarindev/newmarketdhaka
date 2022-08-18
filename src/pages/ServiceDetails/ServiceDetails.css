@@ -77,31 +77,6 @@
   border-top-right-radius: 20px;
 }
 
-.details-dots-ctn {
-  position: absolute;
-  top: 90%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.details-dot {
-  background-color: hsla(0, 0%, 100%, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s linear;
-}
-
-.details-dot:hover {
-  background-color: hsl(0, 0%, 75%);
-}
-
-.details-dot-active {
-  background-color: hsl(0, 0%, 100%);
-}
-
 .details-ctn {
   padding: 1.5rem 2rem 2rem 2rem;
   display: flex;

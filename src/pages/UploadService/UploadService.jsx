@@ -36,7 +36,7 @@ const UploadService = () => {
   const locState = useLocation()?.state;
   const localComId = locState?.comInfoId;
 
-  const { companies, comGet } = useGlobalContext();
+  const { companies } = useGlobalContext();
   const activeComId = useFind(companies)?.id;
 
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
