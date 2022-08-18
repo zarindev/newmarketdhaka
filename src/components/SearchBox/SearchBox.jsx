@@ -9,7 +9,7 @@ import SearchDropdown from './SearchDropdown';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SearchBox = () => {
-  const { serData, showDropdown, setShowDropdown, mergedSerTypeAll } =
+  const { services, showDropdown, setShowDropdown, mergedSerTypeAll } =
     useGlobalContext();
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SearchBox = () => {
     e.preventDefault();
 
     if (keywordRef.current?.value.length > 0) {
-      const keywordFilter = serData.filter((service) =>
+      const keywordFilter = services.filter((service) =>
         service.title
           .toLowerCase()
           .includes(keywordRef.current?.value.toLowerCase())
@@ -35,7 +35,7 @@ const SearchBox = () => {
     }
 
     if (locationRef.current?.value.length > 0) {
-      const locationFilter = serData.filter((service) =>
+      const locationFilter = services.filter((service) =>
         service.location
           .toLowerCase()
           .includes(locationRef.current?.value.toLowerCase())
@@ -60,8 +60,8 @@ const SearchBox = () => {
     }
 
     if (
-      (keywordRef.current?.value.length > 0 && !isSearched) ||
-      (locationRef.current?.value.length > 0 && !isSearched)
+      (keywordRef.current?.value.length > 0 && keywordSer.length === 0) ||
+      (locationRef.current?.value.length > 0 && locationSer.length === 0)
     ) {
       toast.error(`No services found`, {
         progress: undefined,
@@ -69,11 +69,10 @@ const SearchBox = () => {
       });
     }
 
-    if (keywordSer)
-      isSearched &&
-        navigate('/results', {
-          state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
-        });
+    isSearched &&
+      navigate('/results', {
+        state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
+      });
   }, [navigate, keywordSer, locationSer, isSearched]);
 
   const buttonCtnRef = useRef(null);

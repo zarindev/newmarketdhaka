@@ -4,7 +4,11 @@ export const useMerge = (items) => {
   const [allItems, setAllItems] = useState([]);
 
   useEffect(() => {
-    setAllItems(items?.map((item) => item.serType));
+    if (items === undefined) {
+      setAllItems([]);
+    } else {
+      setAllItems(items?.map((item) => item.serType));
+    }
   }, [items]);
 
   const mergedItems = [...new Set([...allItems])];

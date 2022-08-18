@@ -5,7 +5,9 @@ export const useFilter = (items, type, key) => {
   const [activeItems, setActiveItems] = useState([]);
 
   useEffect(() => {
-    if (type === 'serType') {
+    if (items === undefined) {
+      setActiveItems([]);
+    } else if (type === 'serType') {
       const specificItems = items.filter(
         (item) => snakeCase(item.serType) === snakeCase(key)
       );
