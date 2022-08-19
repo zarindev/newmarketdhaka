@@ -12,7 +12,7 @@ export const useFind = (items) => {
       setActiveItem([]);
     } else {
       const singleItem = items.find((item) => item.userUId === uid);
-      setActiveItem(singleItem);
+      setActiveItem({ ...singleItem });
     }
   }, [items, uid]);
 

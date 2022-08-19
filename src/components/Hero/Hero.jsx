@@ -31,6 +31,7 @@ const Hero = () => {
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
             imageData={heroImageData}
+            autoPlay
           />
         </div>
       </div>

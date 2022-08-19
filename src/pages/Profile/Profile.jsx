@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import profileLogo from '../../images/service-logo.png';
 import profileEditIcon from '../../images/svg/user-edit.svg';

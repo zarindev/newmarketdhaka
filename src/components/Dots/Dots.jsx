@@ -2,13 +2,21 @@ import { useEffect } from 'react';
 import ellipse from '../../images/svg/Ellipse 2.svg';
 import './Dots.css';
 
-const Dots = ({ arrLength, imageIndex, setImageIndex, imageData }) => {
+const Dots = ({
+  arrLength,
+  imageIndex,
+  setImageIndex,
+  imageData,
+  autoPlay,
+}) => {
   useEffect(() => {
-    const slider = setInterval(() => {
-      setImageIndex(imageIndex + 1);
-    }, 4000);
-    return () => clearInterval(slider);
-  }, [imageIndex, setImageIndex]);
+    if (autoPlay) {
+      const slider = setInterval(() => {
+        setImageIndex(imageIndex + 1);
+      }, 4000);
+      return () => clearInterval(slider);
+    }
+  }, [imageIndex, setImageIndex, autoPlay]);
 
   useEffect(() => {
     imageIndex > imageData.length - 1 && setImageIndex(0);

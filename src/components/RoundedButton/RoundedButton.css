@@ -2,6 +2,7 @@
   margin-inline: auto;
   margin-top: 4rem;
   display: flex;
+  align-items: center;
   gap: 0.4rem;
   padding: 10.5px 14px;
   background-color: #ce2d4f;
