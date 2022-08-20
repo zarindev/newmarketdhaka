@@ -20,9 +20,9 @@ const ServiceDetails = () => {
   useDocTitle();
 
   const { service_type, title } = useParams();
-  const { services } = useGlobalContext();
+  const { serData } = useGlobalContext();
 
-  const activeSer = services.find(
+  const activeSer = serData.find(
     (service) => snakeCase(service.title) === snakeCase(title)
   );
 

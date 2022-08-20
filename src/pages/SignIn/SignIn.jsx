@@ -31,7 +31,7 @@ const SignIn = () => {
       navigate('/');
       toast.success(`Successfully signed in`, {
         progress: undefined,
-        toastId: 'signin-success',
+        toastId: 'singninSuccess',
       });
     }
   }, [user, navigate]);
@@ -45,7 +45,7 @@ const SignIn = () => {
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signin-goggle-error',
+        toastId: 'signinGoogleError',
       });
       console.log(errorCode);
     }
@@ -60,7 +60,7 @@ const SignIn = () => {
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signin-fb-error',
+        toastId: 'signinFbError',
       });
       console.log(errorCode);
     }
@@ -72,7 +72,7 @@ const SignIn = () => {
       await signin(email, password);
       toast.success(`Successfully signed in`, {
         progress: undefined,
-        toastId: 'signin-success',
+        toastId: 'signinSuccess',
       });
       navigate('/');
     } catch (error) {
@@ -80,7 +80,7 @@ const SignIn = () => {
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signin-email-password-error',
+        toastId: 'signinEmailPasswordError',
       });
       console.log(errorCode);
     }

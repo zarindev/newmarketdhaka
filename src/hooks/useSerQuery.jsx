@@ -6,7 +6,7 @@ export const useSerQuery = (url) => {
     return res.json();
   };
 
-  const { isLoading, error, data } = useQuery('services', fetchSer);
+  const { isLoading, error, data } = useQuery(['services'], fetchSer);
 
   return { isLoading, error, data };
 };

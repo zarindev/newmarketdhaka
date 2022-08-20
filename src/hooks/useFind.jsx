@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthProvider';
+import { useComQuery } from './useComQuery';
 
-export const useFind = (items) => {
+export const useFind = (url, uid) => {
   const [activeItem, setActiveItem] = useState({});
 
-  const { user } = useAuth();
-  const uid = user?.uid;
+  const comFetched = useComQuery(url);
+  const item = comFetched?.data;
+  const itemError = comFetched?.error;
+  const itemIsLoading = comFetched?.isLoading;
 
   useEffect(() => {
-    if (items === undefined) {
+    if (item === undefined) {
       setActiveItem([]);
     } else {
-      const singleItem = items.find((item) => item.userUId === uid);
+      const singleItem = item.find((item) => item.userUId === uid);
       setActiveItem({ ...singleItem });
     }
-  }, [items, uid]);
+  }, [item, uid]);
 
-  return activeItem;
+  return { activeItem, itemError, itemIsLoading };
 };

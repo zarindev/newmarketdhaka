@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
 import { snakeCase } from '../functions/formatString';
+import { useSerQuery } from './useSerQuery';
 
-export const useFilter = (items, type, key) => {
+export const useFilter = (url, type, key) => {
   const [activeItems, setActiveItems] = useState([]);
+
+  const serFetched = useSerQuery(url);
+  const items = serFetched?.data;
+  const itemsError = serFetched?.error;
+  const itemsIsLoading = serFetched?.isLoading;
 
   useEffect(() => {
     if (items === undefined) {
@@ -18,5 +24,5 @@ export const useFilter = (items, type, key) => {
     }
   }, [items, type, key]);
 
-  return activeItems;
+  return { activeItems, itemsError, itemsIsLoading };
 };

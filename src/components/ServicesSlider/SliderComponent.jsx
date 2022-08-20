@@ -9,18 +9,19 @@ import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
 import Loading from '../Loading/Loading';
 import { useFilter } from '../../hooks/useFilter';
-import { useGlobalContext } from '../../context/AppProvider';
 
 const SliderComponent = ({ serType }) => {
-  const { services } = useGlobalContext();
-  const activeSer = useFilter(services, 'serType', serType);
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const serFiltered = useFilter(serGet, 'serType', serType);
+  const activeSer = serFiltered?.activeItems;
+  const serIsLoading = serFiltered?.itemsIsLoading;
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
 
   return (
     <>
-      {activeSer.length <= 0 ? (
+      {serIsLoading ? (
         <Loading color="#ce2d4f" size={125} />
       ) : (
         <div className="slider-component">

@@ -49,7 +49,7 @@ const SignUpTwo = () => {
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signup-error',
+        toastId: 'signupError',
       });
       console.log(errorCode);
     }

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSerQuery } from './useSerQuery';
 
-export const useMerge = (items) => {
+export const useMerge = (url) => {
   const [allItems, setAllItems] = useState([]);
+
+  const serFetched = useSerQuery(url);
+  const items = serFetched?.data;
 
   useEffect(() => {
     if (items === undefined) {

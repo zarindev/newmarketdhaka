@@ -73,6 +73,15 @@
   margin-top: 1.7rem;
 }
 
+.created-ser-null {
+  font-size: clamp(1.1875rem, 1.1375rem + 0.25vw, 1.4375rem);
+  line-height: clamp(1.875rem, 1.8125rem + 0.3125vw, 2.1875rem);
+}
+
+.created-ser-null-custom {
+  color: #ce2d4f;
+}
+
 .created-ser-heading {
   width: 100%;
   display: flex;

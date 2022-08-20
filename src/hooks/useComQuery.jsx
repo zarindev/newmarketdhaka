@@ -6,7 +6,7 @@ export const useComQuery = (url) => {
     return res.json();
   };
 
-  const { isLoading, error, data } = useQuery('companies', fetchCom);
+  const { isLoading, error, data } = useQuery(['companies'], fetchCom);
 
   return { isLoading, error, data };
 };

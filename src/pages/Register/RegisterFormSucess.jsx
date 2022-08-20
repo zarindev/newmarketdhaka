@@ -6,7 +6,7 @@ import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useAuth } from '../../context/AuthProvider';
 import { useFind } from '../../hooks/useFind';
 
 const RegisterFormSuccess = () => {
@@ -27,8 +27,12 @@ const RegisterFormSuccess = () => {
     },
   });
 
-  const { companies } = useGlobalContext();
-  const activeComId = useFind(companies)?.id;
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
+  const { user } = useAuth();
+  const uid = user?.uid;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
   console.log(activeComId);
 
   useEffect(() => {

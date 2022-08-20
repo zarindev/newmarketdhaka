@@ -4,7 +4,7 @@ import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
 import CreatedServices from './CreatedServices';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useAuth } from '../../context/AuthProvider';
 import { useFind } from '../../hooks/useFind';
 
 const ServiceDashboard = () => {
@@ -13,8 +13,12 @@ const ServiceDashboard = () => {
   const locState = useLocation()?.state;
   const locComId = locState?.comInfoId;
 
-  const { companies } = useGlobalContext();
-  const activeComId = useFind(companies)?.id;
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
+  const { user } = useAuth();
+  const uid = user?.uid;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
   console.log(locComId, activeComId);
 
   const navigate = useNavigate();

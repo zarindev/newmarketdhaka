@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
@@ -14,8 +15,8 @@ import UploadSelect from './UploadSelect';
 import RegisterUpload from '../Register/elements/RegisterUpload';
 import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useGlobalContext } from '../../context/AppProvider';
 import { useFind } from '../../hooks/useFind';
+import { useAuth } from '../../context/AuthProvider';
 
 const UploadService = () => {
   useDocTitle();
@@ -36,8 +37,12 @@ const UploadService = () => {
   const locState = useLocation()?.state;
   const localComId = locState?.comInfoId;
 
-  const { companies } = useGlobalContext();
-  const activeComId = useFind(companies)?.id;
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
+  const { user } = useAuth();
+  const uid = user?.uid;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
 
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
 
@@ -64,7 +69,10 @@ const UploadService = () => {
 
     const formData = await res.json();
     console.log(formData);
-
+    toast.success('Service created successfully', {
+      progress: undefined,
+      toastId: 'createService',
+    });
     navigate('/service_dashboard');
   };
 

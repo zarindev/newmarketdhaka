@@ -15,7 +15,7 @@ import { useGlobalContext } from '../../context/AppProvider';
 const SameServices = () => {
   useDocTitle();
 
-  const { services } = useGlobalContext();
+  const { serData } = useGlobalContext();
 
   const { service_type } = useParams();
   const [activeSer, setActiveSer] = useState([]);
@@ -26,14 +26,14 @@ const SameServices = () => {
 
   useEffect(() => {
     if (titleCase(service_type) === 'All') {
-      return setActiveSer(services); // return => for exiting out of the loop
+      return setActiveSer(serData); // return => for exiting out of the loop
     }
 
-    const mergedSer = services.filter(
+    const mergedSer = serData.filter(
       (service) => snakeCase(service.serType) === snakeCase(service_type)
     );
     setActiveSer(mergedSer);
-  }, [services, service_type]);
+  }, [serData, service_type]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
