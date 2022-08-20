@@ -14,8 +14,9 @@ import defaultOne from '../../images/service-one.png';
 import defaultTwo from '../../images/service-two.png';
 import defaultThree from '../../images/service-three.png';
 import defaultFour from '../../images/service-zero.png';
+import Dots from '../../components/Dots/Dots';
 
-const DetailsList = ({ activeSer, currentUser }) => {
+const DetailsList = ({ activeSer, activeUser }) => {
   const {
     companyInfo,
     data,
@@ -49,7 +50,7 @@ const DetailsList = ({ activeSer, currentUser }) => {
   const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
   // send email to the service creator
-  const userEmail = currentUser?.email;
+  const userEmail = activeUser?.email;
 
   const postEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?`;
 
@@ -80,37 +81,26 @@ const DetailsList = ({ activeSer, currentUser }) => {
   return (
     <div className="service-details-contents">
       <div className="service-details-content">
-        <div className="details-image-ctn">
+        <div className="details-img-ctn">
           {data ? (
             <img
               src={`data:image/jpeg;base64,${data}`}
               alt={title}
-              className="slide-image"
+              className="details-img"
             />
           ) : (
             <img
               src={defaultImg[imageIndex]}
               alt={title}
-              className="slide-image"
+              className="details-img"
             />
           )}
-          <div className="details-dots-ctn">
-            {Array.from({ length: 4 }).map((item, index) => {
-              return (
-                <img
-                  src={ellipse}
-                  alt="ellipse icon"
-                  key={index}
-                  className={
-                    imageIndex === index
-                      ? 'details-dot details-dot-active'
-                      : 'details-dot'
-                  }
-                  onClick={() => setImageIndex(index)}
-                />
-              );
-            })}
-          </div>
+          <Dots
+            arrLength={4}
+            imageIndex={imageIndex}
+            setImageIndex={setImageIndex}
+            imageData={defaultImg}
+          />
         </div>
         <div className="details-ctn">
           <div className="details-intro">
@@ -224,7 +214,7 @@ const DetailsList = ({ activeSer, currentUser }) => {
           <img
             src={serviceMap}
             alt="google map"
-            className="details-contact-image"
+            className="details-contact-img"
           />
         </div>
       </div>

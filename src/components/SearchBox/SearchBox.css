@@ -48,7 +48,6 @@
   font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
 }
 
-.category-btn:hover,
 .category-btn-active {
   outline: 0.1rem solid #ce2d4f;
 }
@@ -151,11 +150,11 @@
 }
 
 .search-btn:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .search-btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 @media screen and (max-width: 1000px) {

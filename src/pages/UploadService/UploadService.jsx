@@ -1,11 +1,10 @@
-import { useEffect, useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './UploadService.css';
 import supportIcon from '../../images/svg/customer-support.svg';
 import categoryIcon from '../../images/svg/category.svg';
-import subCategoryIcon from '../../images/svg/sub-category.svg';
 import clockIcon from '../../images/svg/clock-red.svg';
 import calendarIcon from '../../images/svg/calendar.svg';
 import locationIcon from '../../images/svg/Location-red.svg';
@@ -16,13 +15,11 @@ import UploadSelect from './UploadSelect';
 import RegisterUpload from '../Register/elements/RegisterUpload';
 import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useFind } from '../../hooks/useFind';
 import { useAuth } from '../../context/AuthProvider';
-import { useGlobalContext } from '../../context/AppProvider';
 
 const UploadService = () => {
   useDocTitle();
-
-  const { companies } = useGlobalContext();
 
   const navigate = useNavigate();
 
@@ -37,17 +34,15 @@ const UploadService = () => {
   } = useForm();
 
   // post service
-  const [activeSer, setActiveSer] = useState({});
+  const locState = useLocation()?.state;
+  const localComId = locState?.comInfoId;
 
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
   const { user } = useAuth();
   const uid = user?.uid;
-
-  useEffect(() => {
-    const specificSer = companies.find((company) => company.userUId === uid);
-    specificSer && setActiveSer(specificSer);
-  }, [companies, uid]);
-
-  const { id } = activeSer;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
 
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
 
@@ -58,7 +53,7 @@ const UploadService = () => {
     // delete data.serImg2;
     // delete data.serImg3;
     // delete data.serImg4;
-    data.CompanyInfoId = id;
+    data.CompanyInfoId = localComId || activeComId;
     data.Data = data.serImg.base64;
     data.serImg = '';
     data.serType = data.serType.label;
@@ -74,14 +69,17 @@ const UploadService = () => {
 
     const formData = await res.json();
     console.log(formData);
-
+    toast.success('Service created successfully', {
+      progress: undefined,
+      toastId: 'createService',
+    });
     navigate('/service_dashboard');
   };
 
   return (
-    <div className="upload-ser-ctn">
+    <div className="service-dash-ctn">
       <SeekerSidebar />
-      <div className="upload-ser">
+      <div className="service-dash">
         <div className="upload-ser-heading">
           <h4 className="upload-ser-title">Get Started Setting Up Services</h4>
           <p className="upload-ser-desc">
@@ -282,7 +280,6 @@ const UploadService = () => {
                     })}
                     ref={null}
                   />
-
                   {/* {dragAndDrops.map((item) => {
                     const { id } = item;
                     return (

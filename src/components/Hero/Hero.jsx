@@ -1,21 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Hero.css';
-import ellipse from '../../images/svg/Ellipse 2.svg';
 import { heroImageData } from './heroImageData';
+import Dots from '../Dots/Dots';
 
 const Hero = () => {
   const [imageIndex, setImageIndex] = useState(0);
-
-  useEffect(() => {
-    const slider = setInterval(() => {
-      setImageIndex(imageIndex + 1);
-    }, 4000);
-    return () => clearInterval(slider);
-  }, [imageIndex]);
-
-  useEffect(() => {
-    imageIndex > heroImageData.length - 1 && setImageIndex(0);
-  }, [imageIndex]);
 
   return (
     <div className="hero">
@@ -37,23 +26,13 @@ const Hero = () => {
             grocery, repair service, emergency need, <br /> medical services and
             many more.
           </p>
-          <div className="hero-dots-ctn">
-            {Array.from({ length: 5 }).map((item, index) => {
-              return (
-                <img
-                  key={index}
-                  src={ellipse}
-                  alt="ellipse"
-                  className={
-                    imageIndex === index
-                      ? 'hero-dot hero-dot-active'
-                      : 'hero-dot'
-                  }
-                  onClick={() => setImageIndex(index)}
-                />
-              );
-            })}
-          </div>
+          <Dots
+            arrLength={5}
+            imageIndex={imageIndex}
+            setImageIndex={setImageIndex}
+            imageData={heroImageData}
+            autoPlay
+          />
         </div>
       </div>
     </div>

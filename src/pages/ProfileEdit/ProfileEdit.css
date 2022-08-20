@@ -1,24 +1,3 @@
-.edit-ctn {
-  position: relative;
-  height: auto;
-  min-height: 100vh;
-  padding: 30rem 0;
-  background-color: #f7f7f7;
-  display: flex;
-}
-
-.edit {
-  position: absolute;
-  top: 0;
-  left: 18rem;
-  right: 0;
-  margin: 5rem auto 3rem auto;
-  width: 65vw;
-  max-width: 980px;
-  display: flex;
-  gap: 5rem;
-}
-
 .edit-items {
   width: 420px;
   min-width: 300px;
@@ -83,26 +62,13 @@
 }
 
 .edit-form .error-message {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #ce2d4f;
 }
 
-@media screen and (max-width: 1000px) {
-  .edit-ctn {
-    padding: 0;
-  }
-
-  .edit {
-    position: relative;
-    left: 0;
-    width: 90vw;
-  }
-}
-
 @media screen and (max-width: 769px) {
-  .edit {
-    flex-direction: column;
-    gap: 4rem;
-    margin: 4rem auto 3rem auto;
+  .edit-ctn .service-dash {
+    padding: 3rem 0 3rem 0;
   }
 
   .edit-items {

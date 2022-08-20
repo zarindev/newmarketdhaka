@@ -15,7 +15,7 @@ import { useGlobalContext } from '../../context/AppProvider';
 const SameServices = () => {
   useDocTitle();
 
-  const { services, isLoading, setIsLoading } = useGlobalContext();
+  const { serData } = useGlobalContext();
 
   const { service_type } = useParams();
   const [activeSer, setActiveSer] = useState([]);
@@ -26,24 +26,20 @@ const SameServices = () => {
 
   useEffect(() => {
     if (titleCase(service_type) === 'All') {
-      return setActiveSer(services); // return => for exiting out of the loop
+      return setActiveSer(serData); // return => for exiting out of the loop
     }
 
-    const mergedSer = services.filter(
+    const mergedSer = serData.filter(
       (service) => snakeCase(service.serType) === snakeCase(service_type)
     );
     setActiveSer(mergedSer);
-  }, [services, service_type]);
+  }, [serData, service_type]);
 
   useEffect(() => {
     const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
     setActiveServices(activeSer.slice(serviceOffset, endOffset));
     setPageCount(Math.ceil(activeSer.length / servicesPerPage));
   }, [activeSer, serviceOffset, servicesPerPage]);
-
-  useEffect(() => {
-    if (activeSer.length > 0) setIsLoading(false);
-  }, [activeSer, setIsLoading]);
 
   return (
     <ScrollToTop>
@@ -58,8 +54,9 @@ const SameServices = () => {
           <div className="same-styled-divider"></div>
         </div>
         <div className="single-slide-ctn">
-          {isLoading && <Loading color="#ce2d4f" size={125} />}
-          {activeServices &&
+          {activeSer.length <= 0 ? (
+            <Loading color="#ce2d4f" size={125} />
+          ) : (
             activeServices.map((service) => {
               return (
                 <SingleSlide
@@ -68,7 +65,8 @@ const SameServices = () => {
                   serType={service_type}
                 />
               );
-            })}
+            })
+          )}
         </div>
         <PaginationCom
           activeServices={activeServices}

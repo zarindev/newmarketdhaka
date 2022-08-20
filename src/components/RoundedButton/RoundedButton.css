@@ -2,14 +2,15 @@
   margin-inline: auto;
   margin-top: 4rem;
   display: flex;
+  align-items: center;
   gap: 0.4rem;
   padding: 10.5px 14px;
   background-color: #ce2d4f;
   border: 2px solid #ce2d4f;
   border-radius: 40px;
-  font-size: 17px;
+  font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .rounded-btn-text {
@@ -17,22 +18,14 @@
 }
 
 .rounded-btn:hover {
-  background-color: #ffffff;
+  transform: scale(1.03);
 }
 
-.rounded-btn:hover .rounded-btn-text {
-  color: #1d1d1d;
-}
-
-.rounded-btn:hover .rounded-btn-icon {
-  filter: invert(1);
+.rounded-btn:active {
+  transform: scale(0.97);
 }
 
 @media screen and (max-width: 1000px) {
-  .rounded-btn {
-    font-size: 15px;
-  }
-
   .rounded-btn-icon {
     transform: scale(0.9);
   }

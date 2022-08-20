@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
-import { useFetch } from './useFetch';
+import { useSerQuery } from './useSerQuery';
 
-export const useMerge = (url, type) => {
+export const useMerge = (url) => {
   const [allItems, setAllItems] = useState([]);
-  const items = useFetch(url)?.items;
+
+  const serFetched = useSerQuery(url);
+  const items = serFetched?.data;
 
   useEffect(() => {
-    if (type === 'serType') {
-      setAllItems(items.map((item) => item.serType));
-    } else if (type === 'id') {
-      setAllItems(items.map((item) => item.id));
+    if (items === undefined) {
+      setAllItems([]);
+    } else {
+      setAllItems(items?.map((item) => item.serType));
     }
-  }, [items, type]);
+  }, [items]);
 
   const mergedItems = [...new Set([...allItems])];
   const mergedItemsAll = ['all', ...new Set([...allItems])];

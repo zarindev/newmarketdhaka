@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import './SignIn.css';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { formatError } from '../../functions/formatString';
 
 const SignIn = () => {
   useDocTitle();
@@ -24,14 +25,13 @@ const SignIn = () => {
 
   /** signin */
   const { user, signin, signinGoogle, signinFb } = useAuth();
-  const [catchError, setCatchError] = useState('');
 
   useEffect(() => {
     if (user !== null) {
       navigate('/');
       toast.success(`Successfully signed in`, {
         progress: undefined,
-        toastId: 'signin-success',
+        toastId: 'singninSuccess',
       });
     }
   }, [user, navigate]);
@@ -42,9 +42,12 @@ const SignIn = () => {
       await signinGoogle();
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signinGoogleError',
+      });
+      console.log(errorCode);
     }
   };
 
@@ -54,9 +57,12 @@ const SignIn = () => {
       await signinFb();
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signinFbError',
+      });
+      console.log(errorCode);
     }
   };
 
@@ -66,14 +72,17 @@ const SignIn = () => {
       await signin(email, password);
       toast.success(`Successfully signed in`, {
         progress: undefined,
-        toastId: 'signin-success',
+        toastId: 'signinSuccess',
       });
       navigate('/');
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signinEmailPasswordError',
+      });
+      console.log(errorCode);
     }
   };
 

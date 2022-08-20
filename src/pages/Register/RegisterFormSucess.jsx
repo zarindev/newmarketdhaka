@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from './elements/updateAction';
 import { toast } from 'react-toastify';
 import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { useAuth } from '../../context/AuthProvider';
+import { useFind } from '../../hooks/useFind';
 
 const RegisterFormSuccess = () => {
   useDocTitle();
@@ -26,25 +26,35 @@ const RegisterFormSuccess = () => {
       phoneNumber: '',
     },
   });
-  const { actions, state } = useStateMachine({ updateAction });
-  console.log(state);
+
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
+  const { user } = useAuth();
+  const uid = user?.uid;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
+  console.log(activeComId);
 
   useEffect(() => {
-    toast.success('Redirecting to the Dashbaord in 3 seconds', {
+    toast.success('Redirecting to the Dashbaord in 4 seconds', {
       progress: undefined,
       toastId: 'companySuccess',
     });
 
     const navigateToDash = setTimeout(() => {
-      navigate('/service_dashboard');
-    }, 3000);
+      navigate('/service_dashboard', {
+        state: { id: 1, activeComId: activeComId },
+      });
+    }, 4000);
 
     return () => clearTimeout(navigateToDash);
-  }, [navigate]);
+  }, [navigate, activeComId]);
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     reset();
-    navigate('/service_dashboard');
+    navigate('/service_dashboard', {
+      state: { id: 1, activeComId: activeComId },
+    });
   };
 
   return (

@@ -1,28 +1,32 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import './ServiceDashboard.css';
 import bannerGuy from '../../images/dash-banner-guy.png';
 import CreatedServices from './CreatedServices';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useFind } from '../../hooks/useFind';
 
 const ServiceDashboard = () => {
   useDocTitle();
 
-  const { companies } = useGlobalContext();
-  const [activeSer, setActiveSer] = useState({});
+  const locState = useLocation()?.state;
+  const locComId = locState?.comInfoId;
 
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
   const { user } = useAuth();
   const uid = user?.uid;
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
+  const activeComId = activeCom?.id;
+  console.log(locComId, activeComId);
 
-  useEffect(() => {
-    const specificSer = companies.find((company) => company.userUId === uid);
-    specificSer && setActiveSer(specificSer);
-  }, [companies, uid]);
-
-  const { id } = activeSer;
+  const navigate = useNavigate();
+  const navigateToUploadSer = () => {
+    navigate('/service_dashboard/upload_service', {
+      state: { id: 1, activeComId: locComId },
+    });
+  };
 
   return (
     <div className="service-dash-ctn">
@@ -40,13 +44,14 @@ const ServiceDashboard = () => {
           <p className="service-dash-banner-desc">
             Hello this is a line of text will go here
           </p>
-          <Link to="/service_dashboard/upload_service">
-            <button className="service-dash-banner-button">
-              Create New Service
-            </button>
-          </Link>
+          <button
+            className="service-dash-banner-button"
+            onClick={navigateToUploadSer}
+          >
+            Create New Service
+          </button>
         </div>
-        <CreatedServices comInfoId={id} />
+        <CreatedServices activeComId={locComId || activeComId} />
       </div>
     </div>
   );

@@ -1,36 +1,33 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { useFetch } from '../hooks/useFetch';
+import { useComQuery } from '../hooks/useComQuery';
 import { useMerge } from '../hooks/useMerge';
+import { useSerQuery } from '../hooks/useSerQuery';
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
   const [componentFiles, setComponentFiles] = useState([]);
 
   const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const services = useFetch(serGet)?.items;
-
   const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
-  const companies = useFetch(comGet)?.items;
 
-  const mergedSerTypeAll = useMerge(serGet, 'serType')?.mergedItemsAll;
-  const mergedSerType = useMerge(serGet, 'serType')?.mergedItems;
-  const mergedComId = useMerge(comGet, 'id')?.mergedItems;
+  const serData = useSerQuery(serGet)?.data;
+  const comData = useComQuery(comGet)?.data;
+
+  const mergedBySerType = useMerge(serGet);
+  const mergedSerType = mergedBySerType?.mergedItems;
+  const mergedSerTypeAll = mergedBySerType?.mergedItemsAll;
 
   return (
     <AppContext.Provider
       value={{
-        isLoading,
-        setIsLoading,
         showDropdown,
         setShowDropdown,
-        services,
-        companies,
-        mergedSerTypeAll,
+        serData,
+        comData,
         mergedSerType,
-        mergedComId,
+        mergedSerTypeAll,
         componentFiles,
         setComponentFiles,
       }}

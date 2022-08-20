@@ -71,26 +71,6 @@
   color: #ffffff;
 }
 
-.hero-dots-ctn {
-  display: flex;
-  gap: 0.7rem;
-}
-
-.hero-dot {
-  background-color: hsla(0, 0%, 100%, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s linear;
-}
-
-.hero-dot:hover {
-  background-color: hsl(0, 0%, 75%);
-}
-
-.hero-dot-active {
-  background-color: hsl(0, 0%, 100%);
-}
-
 @media screen and (max-width: 1000px) {
   .hero {
     padding-bottom: 180px;

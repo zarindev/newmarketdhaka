@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -8,25 +8,20 @@ import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
 import SingleSlide from './SingleSlide';
 import { snakeCase } from '../../functions/formatString';
 import Loading from '../Loading/Loading';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useFilter } from '../../hooks/useFilter';
 
 const SliderComponent = ({ serType }) => {
-  const { services } = useGlobalContext();
-  const [activeSer, setActiveSer] = useState([]);
-
-  useEffect(() => {
-    const specificSer = services.filter(
-      (item) => snakeCase(item.serType) === snakeCase(serType)
-    );
-    setActiveSer(specificSer);
-  }, [services, serType]);
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const serFiltered = useFilter(serGet, 'serType', serType);
+  const activeSer = serFiltered?.activeItems;
+  const serIsLoading = serFiltered?.itemsIsLoading;
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
 
   return (
     <>
-      {activeSer.length <= 0 ? (
+      {serIsLoading ? (
         <Loading color="#ce2d4f" size={125} />
       ) : (
         <div className="slider-component">

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import profileLogo from '../../images/service-logo.png';
 import saveIcon from '../../images/svg/save.svg';
@@ -11,36 +10,30 @@ import binIcon from '../../images/svg/bin-number.svg';
 import './ProfileEdit.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFetch } from '../../hooks/useFetch';
+import { useGlobalContext } from '../../context/AppProvider';
+import { useFind } from '../../hooks/useFind';
 
 const ProfileEdit = () => {
   useDocTitle();
 
-  const serviceApi = `https://jsonplaceholder.typicode.com/todos/`;
-  const fetchedData = useFetch(serviceApi);
+  const { companies } = useGlobalContext();
 
-  const [preloadedValues, setPreloadedValues] = useState({
-    companyName: '',
-    email: '',
-    phoneNumber: '',
-    location: '',
-    licenseKey: '',
-    binNumber: '',
-  });
+  const activeCom = useFind(companies);
+  const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
+    activeCom;
+
+  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
-    reset,
-  } = useForm({ mode: 'all', defaultValues: preloadedValues });
+  } = useForm({ mode: 'all' });
 
-  const [profileData, setProfileData] = useState({});
   const onSubmit = async (data) => {
     console.log(data);
 
-    const res = await fetch(serviceApi, {
+    const res = await fetch(comPost, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -49,18 +42,13 @@ const ProfileEdit = () => {
     });
 
     const formData = await res.json();
-    setProfileData(formData);
+    console.log(formData);
   };
-  console.log(profileData);
-
-  useEffect(() => {
-    reset(preloadedValues);
-  }, [reset, preloadedValues]);
 
   return (
-    <div className="edit-ctn">
+    <div className="service-dash-ctn profile-ctn edit-ctn">
       <SeekerSidebar />
-      <div className="edit">
+      <div className="service-dash">
         <div className="profile-image-ctn">
           <img src={profileLogo} alt="profile" className="profile-image" />
         </div>
@@ -90,6 +78,7 @@ const ProfileEdit = () => {
                 {...register('companyName', {
                   required: 'Company Name is required',
                 })}
+                defaultValue={companyName}
               />
               {errors.companyName && (
                 <p className="error-message">{errors.companyName?.message}</p>
@@ -116,6 +105,7 @@ const ProfileEdit = () => {
                     message: 'Please enter a valid email',
                   },
                 })}
+                defaultValue={email}
               />
               {errors.email && (
                 <p className="error-message">{errors.email?.message}</p>
@@ -138,10 +128,11 @@ const ProfileEdit = () => {
                   required: 'Company Phone Number is required',
                   pattern: {
                     value:
-                      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+                      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im,
                     message: 'Please enter a valid phone number',
                   },
                 })}
+                defaultValue={phoneNumber}
               />
               {errors.phoneNumber && (
                 <p className="error-message">{errors.phoneNumber?.message}</p>
@@ -163,6 +154,7 @@ const ProfileEdit = () => {
                 {...register('location', {
                   required: 'Company Location Info is required',
                 })}
+                defaultValue={location}
               />
               {errors.location && (
                 <p className="error-message">{errors.location?.message}</p>
@@ -184,6 +176,7 @@ const ProfileEdit = () => {
                 {...register('licenseKey', {
                   required: 'Company License Key is required',
                 })}
+                defaultValue={licenseKey}
               />
               {errors.licenseKey && (
                 <p className="error-message">{errors.licenseKey?.message}</p>
@@ -201,6 +194,7 @@ const ProfileEdit = () => {
                 {...register('binNumber', {
                   required: 'Company BIN Number is required',
                 })}
+                defaultValue={binNumber}
               />
               {errors.binNumber && (
                 <p className="error-message">{errors.binNumber?.message}</p>

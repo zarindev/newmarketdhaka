@@ -24,7 +24,8 @@ const RegisterFormFour = () => {
   const { user } = useAuth();
   const uid = user?.uid;
 
-  const comFetch = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
+  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
+
   const onSubmit = async (data) => {
     actions.updateAction(data);
 
@@ -45,7 +46,7 @@ const RegisterFormFour = () => {
     // stateAction.document = documentBuffer;
     console.log(stateAction);
 
-    const res = await fetch(comFetch, {
+    const res = await fetch(comPost, {
       method: 'POST',
       body: JSON.stringify(stateAction),
       headers: {

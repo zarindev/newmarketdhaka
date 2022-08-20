@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import profileLogo from '../../images/service-logo.png';
 import profileEditIcon from '../../images/svg/user-edit.svg';
@@ -12,29 +11,23 @@ import './Profile.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useFind } from '../../hooks/useFind';
 
 const Profile = () => {
   useDocTitle();
 
+  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
   const { user } = useAuth();
   const uid = user?.uid;
-
-  const { companies } = useGlobalContext();
-  const [activeCom, setActiveCom] = useState({});
-
-  useEffect(() => {
-    const specificCom = companies.find((company) => company.userUId === uid);
-    specificCom && setActiveCom(specificCom);
-  }, [companies, uid]);
-
+  const comFetched = useFind(comGet, uid);
+  const activeCom = comFetched?.activeItem;
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
     activeCom;
 
   return (
-    <div className="profile-ctn">
+    <div className="service-dash-ctn profile-ctn">
       <SeekerSidebar />
-      <div className="profile">
+      <div className="service-dash">
         <div className="profile-image-ctn">
           <img src={profileLogo} alt="profile" className="profile-image" />
         </div>

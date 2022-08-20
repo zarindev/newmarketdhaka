@@ -8,6 +8,7 @@ import defaultOne from '../../images/service-one.png';
 import defaultTwo from '../../images/service-two.png';
 import defaultThree from '../../images/service-three.png';
 import defaultFour from '../../images/service-zero.png';
+import Dots from '../Dots/Dots';
 
 const SingleSlide = ({
   data,
@@ -24,37 +25,26 @@ const SingleSlide = ({
 
   return (
     <div className="slide-ctn">
-      <div className="image-dots-ctn">
-        {Array.from({ length: 4 }).map((item, index) => {
-          return (
-            <img
-              key={index}
-              src={ellipse}
-              alt="ellipse icon"
-              className={
-                imageIndex === index
-                  ? 'image-dot image-dot-active'
-                  : 'image-dot'
-              }
-              onClick={() => setImageIndex(index)}
-            />
-          );
-        })}
-      </div>
+      <Dots
+        arrLength={4}
+        imageIndex={imageIndex}
+        setImageIndex={setImageIndex}
+        imageData={defaultImg}
+      />
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
-          <div className="slide-image-ctn">
+          <div className="slide-img-ctn">
             {data ? (
               <img
                 src={`data:image/jpeg;base64,${data}`}
                 alt={title}
-                className="slide-image"
+                className="slide-img"
               />
             ) : (
               <img
                 src={defaultImg[imageIndex]}
                 alt={title}
-                className="slide-image"
+                className="slide-img"
               />
             )}
           </div>

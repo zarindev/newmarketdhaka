@@ -48,7 +48,6 @@ const RegisterFormOne = () => {
                     message: 'Please enter a valid email',
                   },
                 })}
-                defaultValue={state.email}
               />
               {errors.email && (
                 <p className="error-message">{errors.email?.message}</p>
@@ -72,7 +71,6 @@ const RegisterFormOne = () => {
                       'Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters and 1 special character',
                   },
                 })}
-                defaultValue={state.password}
               />
               {errors.password && (
                 <p className="error-message">{errors.password?.message}</p>
@@ -95,7 +93,6 @@ const RegisterFormOne = () => {
                   validate: (value) =>
                     value === watch('password') || 'Password did not match',
                 })}
-                defaultValue={state.confirmPassword}
               />
               {errors.confirmPassword && (
                 <p className="error-message">
