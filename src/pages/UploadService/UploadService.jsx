@@ -17,6 +17,7 @@ import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
 import { useAuth } from '../../context/AuthProvider';
+import { useFilter } from '../../hooks/useFilter';
 
 const UploadService = () => {
   useDocTitle();
@@ -46,6 +47,10 @@ const UploadService = () => {
 
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
 
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const serFiltered = useFilter(serGet, 'companyInfoId', activeComId);
+  const serRefetch = serFiltered?.itemsRefetch;
+
   const onSubmit = async (data) => {
     console.log(data);
 
@@ -71,8 +76,9 @@ const UploadService = () => {
     console.log(formData);
     toast.success('Service created successfully', {
       progress: undefined,
-      toastId: 'createService',
+      toastId: 'uploadService',
     });
+    formData && serRefetch();
     navigate('/service_dashboard');
   };
 

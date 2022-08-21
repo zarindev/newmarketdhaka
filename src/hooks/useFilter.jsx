@@ -9,6 +9,7 @@ export const useFilter = (url, type, key) => {
   const items = serFetched?.data;
   const itemsError = serFetched?.error;
   const itemsIsLoading = serFetched?.isLoading;
+  const itemsRefetch = serFetched?.refetch;
 
   useEffect(() => {
     if (items === undefined) {
@@ -24,5 +25,10 @@ export const useFilter = (url, type, key) => {
     }
   }, [items, type, key]);
 
-  return { activeItems, itemsError, itemsIsLoading };
+  return {
+    activeItems,
+    itemsError,
+    itemsIsLoading,
+    itemsRefetch,
+  };
 };
