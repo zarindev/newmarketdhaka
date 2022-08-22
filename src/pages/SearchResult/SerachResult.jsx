@@ -13,14 +13,16 @@ const SerachResult = () => {
   const locState = useLocation()?.state;
   const keywordResult = locState.keywordSer;
   const locationResult = locState.locationSer;
+  const keywordVal = locState.keywordVal;
+  const locationVal = locState.locationVal;
 
   return (
     <ScrollToTop>
       <TopNav />
       <CategoryNav />
       <div className="result">
-        <ResultType result={keywordResult} />
-        <ResultType result={locationResult} />
+        <ResultType result={keywordResult} searchVal={keywordVal} />
+        <ResultType result={locationResult} searchVal={locationVal} />
       </div>
       <Footer />
     </ScrollToTop>

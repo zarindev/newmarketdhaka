@@ -8,6 +8,7 @@ import burgerBtn from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { useAuth } from '../../../context/AuthProvider';
+import { formatError } from '../../../functions/formatString';
 
 const TopNav = () => {
   const navigate = useNavigate();
@@ -30,7 +31,6 @@ const TopNav = () => {
 
   // signout
   const { user, signout } = useAuth();
-  const [catchError, setCatchError] = useState('');
 
   const handleSignout = async () => {
     try {
@@ -38,9 +38,12 @@ const TopNav = () => {
       user && navigate('/');
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      setCatchError(errorMessage);
-      console.log(catchError);
+      const errorMessage = formatError(errorCode);
+      toast.error(`${errorMessage}`, {
+        progress: undefined,
+        toastId: 'signout',
+      });
+      console.log(errorCode);
     }
   };
 

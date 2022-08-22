@@ -71,7 +71,13 @@ const SearchBox = () => {
 
     isSearched &&
       navigate('/results', {
-        state: { id: 1, keywordSer: keywordSer, locationSer: locationSer },
+        state: {
+          id: 1,
+          keywordSer: keywordSer,
+          locationSer: locationSer,
+          keywordVal: keywordRef.current?.value,
+          locationVal: locationRef.current?.value,
+        },
       });
   }, [navigate, keywordSer, locationSer, isSearched]);
 

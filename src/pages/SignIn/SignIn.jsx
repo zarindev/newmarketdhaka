@@ -27,7 +27,7 @@ const SignIn = () => {
   const { user, signin, signinGoogle, signinFb } = useAuth();
 
   useEffect(() => {
-    if (user !== null) {
+    if (user !== null && Object.keys(user).length !== 0) {
       navigate('/');
       toast.success(`Successfully signed in`, {
         progress: undefined,
