@@ -34,7 +34,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    <ReactQueryDevtools initialIsOpen={false} />
     <AppProvider>
       <AuthProvider>
         <StateMachineProvider>

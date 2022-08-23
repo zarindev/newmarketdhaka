@@ -5,8 +5,7 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useFilter } from '../../hooks/useFilter';
 
 const CreatedServices = ({ activeComId }) => {
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const serFiltered = useFilter(serGet, 'companyInfoId', activeComId);
+  const serFiltered = useFilter('companyInfoId', activeComId);
   const activeSer = serFiltered?.activeItems;
   const serIsLoading = serFiltered?.itemsIsLoading;
 

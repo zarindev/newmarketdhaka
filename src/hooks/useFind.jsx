@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useGlobalContext } from '../context/AppProvider';
+import { useAuth } from '../context/AuthProvider';
 import { useComQuery } from './useComQuery';
 
-export const useFind = (url, uid) => {
+export const useFind = () => {
   const [activeItem, setActiveItem] = useState({});
+  const { comGet } = useGlobalContext();
 
-  const comFetched = useComQuery(url);
+  const comFetched = useComQuery(comGet);
   const item = comFetched?.data;
   const itemError = comFetched?.error;
   const itemIsLoading = comFetched?.isLoading;
+
+  const { user } = useAuth();
+  const uid = user?.uid;
 
   useEffect(() => {
     if (item === undefined) {

@@ -11,8 +11,7 @@ import Loading from '../Loading/Loading';
 import { useFilter } from '../../hooks/useFilter';
 
 const SliderComponent = ({ serType }) => {
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const serFiltered = useFilter(serGet, 'serType', serType);
+  const serFiltered = useFilter('serType', serType);
   const activeSer = serFiltered?.activeItems;
   const serIsLoading = serFiltered?.itemsIsLoading;
 

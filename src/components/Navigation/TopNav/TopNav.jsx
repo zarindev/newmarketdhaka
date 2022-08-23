@@ -79,7 +79,7 @@ const TopNav = () => {
           <NavLink to="/contact_us" className="nav-link">
             Contact Us
           </NavLink>
-          {user ? (
+          {user !== null && Object.keys(user).length !== 0 ? (
             <li className="nav-link" onClick={handleSignout}>
               Sign out
             </li>
@@ -92,7 +92,7 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        {user ? (
+        {user !== null && Object.keys(user).length !== 0 ? (
           <Link to="/register">
             <button className="nav-btn">Register Your Service</button>
           </Link>

@@ -24,7 +24,7 @@ const RegisterFormFour = () => {
   const { user } = useAuth();
   const uid = user?.uid;
 
-  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
+  const { comPost } = useGlobalContext();
 
   const onSubmit = async (data) => {
     actions.updateAction(data);

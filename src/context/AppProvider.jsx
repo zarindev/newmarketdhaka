@@ -11,6 +11,8 @@ const AppProvider = ({ children }) => {
 
   const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
   const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
+  const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
+  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
 
   const serData = useSerQuery(serGet)?.data;
   const comData = useComQuery(comGet)?.data;
@@ -24,6 +26,10 @@ const AppProvider = ({ children }) => {
       value={{
         showDropdown,
         setShowDropdown,
+        serGet,
+        comGet,
+        serPost,
+        comPost,
         serData,
         comData,
         mergedSerType,

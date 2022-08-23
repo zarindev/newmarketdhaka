@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useGlobalContext } from '../context/AppProvider';
 import { snakeCase } from '../functions/formatString';
 import { useSerQuery } from './useSerQuery';
 
-export const useFilter = (url, type, key) => {
+export const useFilter = (type, key) => {
   const [activeItems, setActiveItems] = useState([]);
+  const { serGet } = useGlobalContext();
 
-  const serFetched = useSerQuery(url);
+  const serFetched = useSerQuery(serGet);
   const items = serFetched?.data;
   const itemsError = serFetched?.error;
   const itemsIsLoading = serFetched?.isLoading;
