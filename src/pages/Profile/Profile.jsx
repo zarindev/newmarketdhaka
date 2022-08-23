@@ -10,17 +10,20 @@ import binIcon from '../../images/svg/bin-number.svg';
 import './Profile.css';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useAuth } from '../../context/AuthProvider';
 import { useFind } from '../../hooks/useFind';
+import Loading from '../../components/Loading/Loading';
 
 const Profile = () => {
   useDocTitle();
 
-  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
-  const { user } = useAuth();
-  const uid = user?.uid;
-  const comFetched = useFind(comGet, uid);
+  const comFetched = useFind();
   const activeCom = comFetched?.activeItem;
+  const comIsLoading = comFetched?.itemIsLoading;
+
+  if (comIsLoading) {
+    return <Loading color="#ce2d4f" size={125} />;
+  }
+
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
     activeCom;
 

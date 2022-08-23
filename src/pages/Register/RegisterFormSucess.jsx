@@ -6,8 +6,6 @@ import './Register.css';
 import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useAuth } from '../../context/AuthProvider';
-import { useFind } from '../../hooks/useFind';
 
 const RegisterFormSuccess = () => {
   useDocTitle();
@@ -27,14 +25,6 @@ const RegisterFormSuccess = () => {
     },
   });
 
-  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
-  const { user } = useAuth();
-  const uid = user?.uid;
-  const comFetched = useFind(comGet, uid);
-  const activeCom = comFetched?.activeItem;
-  const activeComId = activeCom?.id;
-  console.log(activeComId);
-
   useEffect(() => {
     toast.success('Redirecting to the Dashbaord in 4 seconds', {
       progress: undefined,
@@ -42,19 +32,15 @@ const RegisterFormSuccess = () => {
     });
 
     const navigateToDash = setTimeout(() => {
-      navigate('/service_dashboard', {
-        state: { id: 1, activeComId: activeComId },
-      });
+      navigate('/service_dashboard');
     }, 4000);
 
     return () => clearTimeout(navigateToDash);
-  }, [navigate, activeComId]);
+  }, [navigate]);
 
   const onSubmit = () => {
     reset();
-    navigate('/service_dashboard', {
-      state: { id: 1, activeComId: activeComId },
-    });
+    navigate('/service_dashboard');
   };
 
   return (

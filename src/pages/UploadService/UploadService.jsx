@@ -16,7 +16,8 @@ import RegisterUpload from '../Register/elements/RegisterUpload';
 import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
-import { useAuth } from '../../context/AuthProvider';
+import { useFilter } from '../../hooks/useFilter';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const UploadService = () => {
   useDocTitle();
@@ -34,17 +35,14 @@ const UploadService = () => {
   } = useForm();
 
   // post service
-  const locState = useLocation()?.state;
-  const localComId = locState?.comInfoId;
-
-  const comGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceCompList`;
-  const { user } = useAuth();
-  const uid = user?.uid;
-  const comFetched = useFind(comGet, uid);
+  const comFetched = useFind();
   const activeCom = comFetched?.activeItem;
-  const activeComId = activeCom?.id;
+  const activeComId = activeCom.id;
+  console.log(activeComId);
 
-  const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
+  const { serGet, serPost } = useGlobalContext();
+  const serFiltered = useFilter(serGet, 'companyInfoId', activeComId);
+  const serRefetch = serFiltered?.itemsRefetch;
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -53,7 +51,7 @@ const UploadService = () => {
     // delete data.serImg2;
     // delete data.serImg3;
     // delete data.serImg4;
-    data.CompanyInfoId = localComId || activeComId;
+    data.CompanyInfoId = activeComId;
     data.Data = data.serImg.base64;
     data.serImg = '';
     data.serType = data.serType.label;
@@ -69,10 +67,11 @@ const UploadService = () => {
 
     const formData = await res.json();
     console.log(formData);
-    toast.success('Service created successfully', {
+    toast.info('The created service will be displayed soon', {
       progress: undefined,
-      toastId: 'createService',
+      toastId: 'uploadService',
     });
+    formData && serRefetch();
     navigate('/service_dashboard');
   };
 

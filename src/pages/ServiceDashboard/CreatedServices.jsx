@@ -5,8 +5,7 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useFilter } from '../../hooks/useFilter';
 
 const CreatedServices = ({ activeComId }) => {
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
-  const serFiltered = useFilter(serGet, 'companyInfoId', activeComId);
+  const serFiltered = useFilter('companyInfoId', activeComId);
   const activeSer = serFiltered?.activeItems;
   const serIsLoading = serFiltered?.itemsIsLoading;
 
@@ -21,6 +20,10 @@ const CreatedServices = ({ activeComId }) => {
     setPageCount(Math.ceil(activeSer.length / servicesPerPage));
   }, [activeSer, serviceOffset, servicesPerPage]);
 
+  if (serIsLoading) {
+    return <Loading color="#ce2d4f" size={125} />;
+  }
+
   return (
     <div className="created-ser-ctn">
       <div className="created-ser-heading">
@@ -30,7 +33,7 @@ const CreatedServices = ({ activeComId }) => {
       </div>
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
-          {!serIsLoading && activeSer.length === 0 && (
+          {activeSer.length === 0 && (
             <h2 className="created-ser-null">
               Created services are displayed here. Click on the{' '}
               <span className="created-ser-null-custom">
@@ -39,13 +42,9 @@ const CreatedServices = ({ activeComId }) => {
               button to create a service
             </h2>
           )}
-          {serIsLoading ? (
-            <Loading color="#ce2d4f" size={125} />
-          ) : (
-            activeServices.map((service) => {
-              return <SingleSlide key={service.id} {...service} />;
-            })
-          )}
+          {activeServices.map((service) => {
+            return <SingleSlide key={service.id} {...service} />;
+          })}
         </div>
         <PaginationCom
           activeServices={activeServices}
