@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
@@ -55,6 +55,19 @@ const TopNav = () => {
     });
   };
 
+  // admin
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (
+      user !== null &&
+      Object.keys(user).length !== 0 &&
+      user.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
+    ) {
+      setIsAdmin(true);
+    }
+  }, [user]);
+
   return (
     <div className="navbar-ctn">
       <div className="navbar">
@@ -92,15 +105,20 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        {user !== null && Object.keys(user).length !== 0 ? (
+        {user !== null && Object.keys(user).length !== 0 && !isAdmin ? (
           <Link to="/register">
             <button className="nav-btn">Register Your Service</button>
+          </Link>
+        ) : isAdmin ? (
+          <Link to="/admin_panel">
+            <button className="nav-btn">Admin Pannel</button>
           </Link>
         ) : (
           <button className="nav-btn" onClick={notify}>
             Register Your Service
           </button>
         )}
+
         <motion.div
           className="mobile-btn-ctn"
           ref={mobileBtnRef}

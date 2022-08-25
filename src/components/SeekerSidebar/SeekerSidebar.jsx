@@ -1,17 +1,33 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SeekerSidebar.css';
 import brandLogo from '../../images/brand-logo.png';
 import seekerSwitchIcon from '../../images/seeker-switch.png';
-import { sidebarData } from './sidebarData';
+import { adminData, comData } from './sidebarData';
+import { useAuth } from '../../context/AuthProvider';
 
 const SeekerSidebar = () => {
+  const { user } = useAuth();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (
+      user !== null &&
+      Object.keys(user).length !== 0 &&
+      user.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
+    ) {
+      setData(adminData);
+    } else {
+      setData(comData);
+    }
+  }, [user]);
+
   return (
     <div className="seeker-sidebar">
       <Link to="/">
         <img src={brandLogo} alt="brand logo" className="nav-brand-logo" />
       </Link>
-      {sidebarData.map((item) => {
+      {data.map((item) => {
         return (
           <Link to={item.link} key={item.id}>
             <div className="seeker-item">

@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-export const useSerQuery = (url) => {
+export const useSerQuery = () => {
+  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
   const fetchSer = async () => {
-    const res = await fetch(url);
+    const res = await fetch(serGet);
     return res.json();
   };
 

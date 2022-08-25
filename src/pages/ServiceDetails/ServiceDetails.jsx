@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
@@ -13,16 +14,16 @@ import {
 import { useDocTitle } from '../../hooks/useDocTitle';
 import ScrollToTop from '../../utils/ScrollToTop';
 import Loading from '../../components/Loading/Loading';
-import { useGlobalContext } from '../../context/AppProvider';
 import { useAuth } from '../../context/AuthProvider';
+import { useSerQuery } from '../../hooks/useSerQuery';
 
 const ServiceDetails = () => {
   useDocTitle();
 
   const { service_type, title } = useParams();
-  const { serData } = useGlobalContext();
+  const { serData, serIsLoading } = useSerQuery();
 
-  const activeSer = serData.find(
+  const activeSer = serData?.find(
     (service) => snakeCase(service.title) === snakeCase(title)
   );
 
@@ -39,12 +40,12 @@ const ServiceDetails = () => {
             {capitalCase(title)}
           </Link>
         </p>
-        {activeSer ? (
-          <DetailsList activeSer={activeSer} activeUser={user} />
-        ) : (
+        {serIsLoading ? (
           <Loading color="#ce2d4f" size={125} />
+        ) : (
+          <DetailsList activeSer={activeSer} activeUser={user} />
         )}
-        {activeSer && (
+        {serIsLoading || (
           <div className="service-details-more">
             <p className="details-more-title">
               More services from the provider

@@ -10,12 +10,12 @@ import ScrollToTop from '../../utils/ScrollToTop';
 import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import Loading from '../../components/Loading/Loading';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useSerQuery } from '../../hooks/useSerQuery';
 
 const SameServices = () => {
   useDocTitle();
 
-  const { serData } = useGlobalContext();
+  const { serData, serIsLoading } = useSerQuery();
 
   const { service_type } = useParams();
   const [activeSer, setActiveSer] = useState([]);
@@ -25,14 +25,14 @@ const SameServices = () => {
   const servicesPerPage = 9;
 
   useEffect(() => {
-    if (titleCase(service_type) === 'All') {
+    if (serData && titleCase(service_type) === 'All') {
       return setActiveSer(serData); // return => for exiting out of the loop
+    } else if (serData) {
+      const mergedSer = serData?.filter(
+        (service) => snakeCase(service.serType) === snakeCase(service_type)
+      );
+      setActiveSer(mergedSer);
     }
-
-    const mergedSer = serData.filter(
-      (service) => snakeCase(service.serType) === snakeCase(service_type)
-    );
-    setActiveSer(mergedSer);
   }, [serData, service_type]);
 
   useEffect(() => {
@@ -45,37 +45,42 @@ const SameServices = () => {
     <ScrollToTop>
       <TopNav />
       <CategoryNav />
-      <div className="same-services-ctn">
-        <div className="slider-heading">
-          <h3 className="slider-title">{checkCase(service_type)}</h3>
-          <p className="same-services-avilable">
-            {`${activeSer.length} Services Avilable`}
-          </p>
-          <div className="same-styled-divider"></div>
+      {serIsLoading ? (
+        <Loading color="#ce2d4f" size={115} />
+      ) : (
+        <div className="same-services-ctn">
+          <div className="slider-heading">
+            <h3 className="slider-title">{checkCase(service_type)}</h3>
+            <p className="same-services-avilable">
+              {`${activeSer.length} Services Avilable`}
+            </p>
+            <div className="same-styled-divider"></div>
+          </div>
+          <div className="single-slide-ctn">
+            {activeSer.length <= 0 ? (
+              <Loading color="#ce2d4f" size={125} />
+            ) : (
+              activeServices.map((service) => {
+                return (
+                  <SingleSlide
+                    key={service.id}
+                    {...service}
+                    serType={service_type}
+                  />
+                );
+              })
+            )}
+          </div>
+          <PaginationCom
+            activeServices={activeServices}
+            pageCount={pageCount}
+            serviceOffset={serviceOffset}
+            setServiceOffset={setServiceOffset}
+            servicesPerPage={servicesPerPage}
+          />
         </div>
-        <div className="single-slide-ctn">
-          {activeSer.length <= 0 ? (
-            <Loading color="#ce2d4f" size={125} />
-          ) : (
-            activeServices.map((service) => {
-              return (
-                <SingleSlide
-                  key={service.id}
-                  {...service}
-                  serType={service_type}
-                />
-              );
-            })
-          )}
-        </div>
-        <PaginationCom
-          activeServices={activeServices}
-          pageCount={pageCount}
-          serviceOffset={serviceOffset}
-          setServiceOffset={setServiceOffset}
-          servicesPerPage={servicesPerPage}
-        />
-      </div>
+      )}
+
       <Footer />
     </ScrollToTop>
   );

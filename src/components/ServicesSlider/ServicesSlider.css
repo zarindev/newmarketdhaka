@@ -176,6 +176,10 @@
   transform: scale(1.4);
 }
 
+.services-slider .loading {
+  height: auto;
+}
+
 @media screen and (max-width: 1000px) {
   .services-slider {
     padding: 50px 0;

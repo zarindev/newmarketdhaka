@@ -1,0 +1,34 @@
+.modal-open-btn {
+  opacity: 0;
+}
+
+.ReactModal__Overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactModal__Content {
+  background-color: #ffffff;
+  border-radius: 1rem !important;
+}
+
+.modal {
+  margin: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 0;
+}
+
+.modal-content {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.modal .combo-btn-two {
+  background-color: #a7a7a7;
+  border: 0.5px solid #a7a7a7;
+}
+
+.modal .tabel-label,
+.modal .modal-data {
+  font-weight: 600;
+}

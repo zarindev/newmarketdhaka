@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../context/AppProvider';
 import { snakeCase } from '../functions/formatString';
 import { useSerQuery } from './useSerQuery';
 
 export const useFilter = (type, key) => {
   const [activeSer, setActiveSer] = useState([]);
 
-  const { serGet } = useGlobalContext();
-  const { serData, serError, serIsLoading, serRefetch } = useSerQuery(serGet);
+  const { serData, serError, serIsLoading, serRefetch } = useSerQuery();
 
   useEffect(() => {
     if (serData && type === 'serType') {

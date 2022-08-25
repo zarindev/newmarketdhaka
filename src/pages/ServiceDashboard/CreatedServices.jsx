@@ -19,7 +19,7 @@ const CreatedServices = ({ activeComId }) => {
   }, [activeSer, serviceOffset, servicesPerPage]);
 
   if (serIsLoading) {
-    return <Loading color="#ce2d4f" size={125} />;
+    return <Loading color="#ce2d4f" size={115} />;
   }
 
   return (

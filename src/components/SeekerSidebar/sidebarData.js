@@ -2,7 +2,7 @@ import seekerServicesIcon from '../../images/seeker-services.png';
 import seekerProfileIcon from '../../images/seeker-profile.png';
 import seekerApprovalIcon from '../../images/seeker-approval.png';
 
-export const sidebarData = [
+export const comData = [
   {
     id: 1,
     label: 'My Services',
@@ -10,5 +10,13 @@ export const sidebarData = [
     link: '/service_dashboard',
   },
   { id: 2, label: 'Profile', icon: seekerProfileIcon, link: '/profile' },
-  { id: 3, icon: seekerApprovalIcon, label: 'Approval', link: '/approval' },
+];
+
+export const adminData = [
+  {
+    id: 1,
+    label: 'Approval',
+    icon: seekerApprovalIcon,
+    link: '/approval',
+  },
 ];

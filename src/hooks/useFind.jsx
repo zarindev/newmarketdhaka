@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../context/AppProvider';
 import { useAuth } from '../context/AuthProvider';
 import { useComQuery } from './useComQuery';
 
 export const useFind = () => {
   const [activeCom, setActiveCom] = useState({});
 
-  const { comGet } = useGlobalContext();
-  const { comData, comError, comIsLoading } = useComQuery(comGet);
+  const { comData, comError, comIsLoading } = useComQuery();
 
   const { user } = useAuth();
   const uid = user?.uid;

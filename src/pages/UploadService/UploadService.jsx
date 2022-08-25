@@ -18,6 +18,7 @@ import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
 import { useFilter } from '../../hooks/useFilter';
 import { useGlobalContext } from '../../context/AppProvider';
+import ComboBtn from '../../components/ComboBtn/ComboBtn';
 
 const UploadService = () => {
   useDocTitle();
@@ -300,12 +301,7 @@ const UploadService = () => {
               </div>
             </div>
           </div>
-          <div className="upload-ser-btn-ctn">
-            <button className="upload-ser-upload-btn">Upload</button>
-            <button className="upload-ser-upload-btn upload-ser-upload-btn-draft">
-              Save as draft
-            </button>
-          </div>
+          <ComboBtn btnOneText="Upload" btnTwoText="Save as draft" />
         </form>
       </div>
     </div>

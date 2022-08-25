@@ -1,33 +1,68 @@
 .approval {
   display: grid;
-  gap: 1rem;
 }
 
-.approval-block {
-  padding: 1.5rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.block-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.block-label {
-  font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
+.approval-table {
+  font-size: clamp(0.84375rem, 0.825rem + 0.09375vw, 0.9375rem);
   font-weight: 600;
   color: #1d1d1d;
-  white-space: nowrap;
 }
 
-.block-icon {
-  max-width: 26px;
-  max-height: 26px;
+.table-head {
+  height: 4rem;
+  background-color: #ffffff;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+  border-radius: 1rem;
+}
+
+.approval-table th,
+.approval-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.tabel-label-ctn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.table-label-icon,
+.table-sort-icon {
+  min-width: 18px;
+  min-height: 18px;
+  max-width: 18px;
+  max-height: 18px;
   object-fit: cover;
+}
+
+.table-sort-icon-down {
+  transform: rotate(180deg);
+}
+
+.tabel-label {
+  font-weight: 700;
+}
+
+.approval-table .head {
+  position: relative;
+}
+
+.approval-table .head-asc {
+  border-top: 2px solid lightcoral;
+}
+
+.approval-table .head-desc {
+  border-bottom: 3px solid lightblue;
+}
+
+.table-body {
+  background-color: #ffffff;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.approval-table td {
+  cursor: pointer;
 }

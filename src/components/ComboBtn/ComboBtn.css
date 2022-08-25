@@ -1,0 +1,38 @@
+.combo-btn-ctn {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  white-space: nowrap;
+}
+
+.combo-btn {
+  padding: 0.7rem 2rem;
+  background-color: #ce2d4f;
+  border: 0.5px solid #ce2d4f;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.7875rem + 0.125vw, 0.9375rem);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.combo-btn-two {
+  background-color: #575757;
+  border: 0.5px solid #575757;
+}
+
+.combo-btn:hover {
+  transform: scale(1.05);
+}
+
+.combo-btn:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 769px) {
+  .combo-btn-ctn {
+    justify-content: center;
+  }
+}

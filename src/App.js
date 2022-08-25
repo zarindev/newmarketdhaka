@@ -4,7 +4,7 @@ import AboutUs from './pages/AboutUS/AboutUs';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
-import AllServices from './pages/AllServices/AllServices';
+import AllServices from './pages/AllServices/AdminPanel';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
@@ -28,6 +28,7 @@ import SignUpTwo from './pages/SignUp/SignUpTwo';
 import SerachResult from './pages/SearchResult/SerachResult';
 import Toastify from './components/Toastify/Toastify';
 import Approval from './pages/Approval/Approval';
+import AdminPanel from './pages/AdminPanel/AdminPanel';
 
 function App() {
   return (
@@ -78,11 +79,12 @@ function App() {
         <Route path="/more_services" element={<MoreServices />} />
         <Route path="/more_services/all_services" element={<AllServices />} />
         <Route path="/service_dashboard" element={<ServiceDashboard />} />
-        <Route path="approval" element={<Approval />} />
         <Route
           path="/service_dashboard/upload_service"
           element={<UploadService />}
         />
+        <Route path="/admin_panel" element={<AdminPanel />}></Route>
+        <Route path="/approval" element={<Approval />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
