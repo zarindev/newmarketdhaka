@@ -11,9 +11,7 @@ import Loading from '../Loading/Loading';
 import { useFilter } from '../../hooks/useFilter';
 
 const SliderComponent = ({ serType }) => {
-  const serFiltered = useFilter('serType', serType);
-  const activeSer = serFiltered?.activeItems;
-  const serIsLoading = serFiltered?.itemsIsLoading;
+  const { activeSer, serIsLoading } = useFilter('serType', serType);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);

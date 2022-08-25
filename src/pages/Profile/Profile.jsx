@@ -16,9 +16,7 @@ import Loading from '../../components/Loading/Loading';
 const Profile = () => {
   useDocTitle();
 
-  const comFetched = useFind();
-  const activeCom = comFetched?.activeItem;
-  const comIsLoading = comFetched?.itemIsLoading;
+  const { activeCom, comIsLoading } = useFind();
 
   if (comIsLoading) {
     return <Loading color="#ce2d4f" size={125} />;

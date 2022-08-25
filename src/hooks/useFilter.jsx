@@ -4,33 +4,29 @@ import { snakeCase } from '../functions/formatString';
 import { useSerQuery } from './useSerQuery';
 
 export const useFilter = (type, key) => {
-  const [activeItems, setActiveItems] = useState([]);
-  const { serGet } = useGlobalContext();
+  const [activeSer, setActiveSer] = useState([]);
 
-  const serFetched = useSerQuery(serGet);
-  const items = serFetched?.data;
-  const itemsError = serFetched?.error;
-  const itemsIsLoading = serFetched?.isLoading;
-  const itemsRefetch = serFetched?.refetch;
+  const { serGet } = useGlobalContext();
+  const { serData, serError, serIsLoading, serRefetch } = useSerQuery(serGet);
 
   useEffect(() => {
-    if (items === undefined) {
-      setActiveItems([]);
-    } else if (type === 'serType') {
-      const specificItems = items.filter(
+    if (serData && type === 'serType') {
+      const specificItems = serData.filter(
         (item) => snakeCase(item.serType) === snakeCase(key)
       );
-      setActiveItems([...specificItems]);
-    } else if (type === 'companyInfoId') {
-      const specificItems = items.filter((item) => item.companyInfoId === key);
-      setActiveItems([...specificItems]);
+      setActiveSer([...specificItems]);
+    } else if (serData && type === 'companyInfoId') {
+      const specificItems = serData.filter(
+        (item) => item.companyInfoId === key
+      );
+      setActiveSer([...specificItems]);
     }
-  }, [items, type, key]);
+  }, [serData, type, key]);
 
   return {
-    activeItems,
-    itemsError,
-    itemsIsLoading,
-    itemsRefetch,
+    activeSer,
+    serError,
+    serIsLoading,
+    serRefetch,
   };
 };

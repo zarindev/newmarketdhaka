@@ -27,6 +27,7 @@ import UploadService from './pages/UploadService/UploadService';
 import SignUpTwo from './pages/SignUp/SignUpTwo';
 import SerachResult from './pages/SearchResult/SerachResult';
 import Toastify from './components/Toastify/Toastify';
+import Approval from './pages/Approval/Approval';
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
         <Route path="/more_services" element={<MoreServices />} />
         <Route path="/more_services/all_services" element={<AllServices />} />
         <Route path="/service_dashboard" element={<ServiceDashboard />} />
+        <Route path="approval" element={<Approval />} />
         <Route
           path="/service_dashboard/upload_service"
           element={<UploadService />}
