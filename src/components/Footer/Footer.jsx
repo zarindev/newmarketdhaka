@@ -14,7 +14,7 @@ import locationIcon from '../../images/svg/Location-black.svg';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const Footer = () => {
-  const { showDropdown, setShowDropdown, mergedSerTypeAll } =
+  const { mergedSerTypeAll, showDropdown, setShowDropdown } =
     useGlobalContext();
 
   return (

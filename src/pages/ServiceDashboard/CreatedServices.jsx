@@ -5,9 +5,7 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import { useFilter } from '../../hooks/useFilter';
 
 const CreatedServices = ({ activeComId }) => {
-  const serFiltered = useFilter('companyInfoId', activeComId);
-  const activeSer = serFiltered?.activeItems;
-  const serIsLoading = serFiltered?.itemsIsLoading;
+  const { activeSer, serIsLoading } = useFilter('companyInfoId', activeComId);
 
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);

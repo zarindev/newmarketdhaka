@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
@@ -7,7 +6,6 @@ import { toast } from 'react-toastify';
 import sign from '../../images/sign.png';
 import brandLogo from '../../images/brand-logo.png';
 import brandLogoDesk from '../../images/brand-logo-transparent.png';
-import { useFetch } from '../../hooks/useFetch';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { formatError } from '../../functions/formatString';
@@ -15,8 +13,6 @@ import { formatError } from '../../functions/formatString';
 const SignUpTwo = () => {
   useDocTitle();
   const navigate = useNavigate();
-
-  const userPost = `http://mdadmin-001-site2.ftempurl.com/api/Values/GetUser?usrMail=fahad@gmail.com&usrpass=fahad`;
 
   const {
     register,

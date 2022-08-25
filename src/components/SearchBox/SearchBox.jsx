@@ -9,7 +9,7 @@ import SearchDropdown from './SearchDropdown';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const SearchBox = () => {
-  const { serData, showDropdown, setShowDropdown, mergedSerTypeAll } =
+  const { serData, mergedSerTypeAll, showDropdown, setShowDropdown } =
     useGlobalContext();
 
   const navigate = useNavigate();

@@ -9,8 +9,7 @@ import { useFind } from '../../hooks/useFind';
 const ServiceDashboard = () => {
   useDocTitle();
 
-  const comFetched = useFind();
-  const activeCom = comFetched?.activeItem;
+  const { activeCom } = useFind();
   const activeComId = activeCom.id;
   console.log(activeComId);
 

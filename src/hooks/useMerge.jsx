@@ -4,18 +4,15 @@ import { useSerQuery } from './useSerQuery';
 export const useMerge = (url) => {
   const [allItems, setAllItems] = useState([]);
 
-  const serFetched = useSerQuery(url);
-  const items = serFetched?.data;
+  const { serData } = useSerQuery(url);
 
   useEffect(() => {
-    if (items === undefined) {
-      setAllItems([]);
-    } else {
-      setAllItems(items?.map((item) => item.serType));
+    if (serData) {
+      setAllItems(serData?.map((item) => item.serType));
     }
-  }, [items]);
+  }, [serData]);
 
-  const mergedItems = [...new Set([...allItems])];
-  const mergedItemsAll = ['all', ...new Set([...allItems])];
-  return { mergedItems, mergedItemsAll };
+  const mergedSerType = [...new Set([...allItems])];
+  const mergedSerTypeAll = ['all', ...new Set([...allItems])];
+  return { mergedSerType, mergedSerTypeAll };
 };

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { useComQuery } from '../hooks/useComQuery';
 import { useMerge } from '../hooks/useMerge';
 import { useSerQuery } from '../hooks/useSerQuery';
 
@@ -14,28 +13,23 @@ const AppProvider = ({ children }) => {
   const serPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotService`;
   const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
 
-  const serData = useSerQuery(serGet)?.data;
-  const comData = useComQuery(comGet)?.data;
-
-  const mergedBySerType = useMerge(serGet);
-  const mergedSerType = mergedBySerType?.mergedItems;
-  const mergedSerTypeAll = mergedBySerType?.mergedItemsAll;
+  const { serData } = useSerQuery(serGet);
+  const { mergedSerType, mergedSerTypeAll } = useMerge(serGet);
 
   return (
     <AppContext.Provider
       value={{
         showDropdown,
         setShowDropdown,
+        componentFiles,
+        setComponentFiles,
         serGet,
         comGet,
         serPost,
         comPost,
         serData,
-        comData,
         mergedSerType,
         mergedSerTypeAll,
-        componentFiles,
-        setComponentFiles,
       }}
     >
       {children}

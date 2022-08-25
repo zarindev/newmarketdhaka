@@ -35,14 +35,12 @@ const UploadService = () => {
   } = useForm();
 
   // post service
-  const comFetched = useFind();
-  const activeCom = comFetched?.activeItem;
+  const { activeCom } = useFind();
   const activeComId = activeCom.id;
   console.log(activeComId);
 
-  const { serGet, serPost } = useGlobalContext();
-  const serFiltered = useFilter(serGet, 'companyInfoId', activeComId);
-  const serRefetch = serFiltered?.itemsRefetch;
+  const { serRefetch } = useFilter('companyInfoId', activeComId);
+  const { serPost } = useGlobalContext();
 
   const onSubmit = async (data) => {
     console.log(data);
