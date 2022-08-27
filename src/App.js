@@ -29,6 +29,8 @@ import SerachResult from './pages/SearchResult/SerachResult';
 import Toastify from './components/Toastify/Toastify';
 import Approval from './pages/Approval/Approval';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
+import AdminCategory from './pages/AdminCategory/AdminCategory';
+import AdminSettings from './pages/AdminSettings/AdminSettings';
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
         />
         <Route path="/admin_panel" element={<AdminPanel />}></Route>
         <Route path="/approval" element={<Approval />} />
+        <Route path="/category_creation" element={<AdminCategory />} />
+        <Route path="/settings" element={<AdminSettings />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

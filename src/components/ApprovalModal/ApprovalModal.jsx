@@ -6,7 +6,6 @@ import categoryIcon from '../../images/subfolder 1.png';
 import subCategoryIcon from '../../images/options 1.png';
 import licenseIcon from '../../images/key 1.png';
 import binIcon from '../../images/forgot-password 1.png';
-import timesIcon from '../../images/svg/times-round.svg';
 import ModalContent from './ModalContent';
 
 const customStyles = {
@@ -47,21 +46,16 @@ const ApprovalModal = ({
   ];
 
   return (
-    <>
-      <button className="modal-open-btn" onClick={openModal}>
-        create space between thead and tbody
-      </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        ariaHideApp={false} // find alt for this
-        appElement={document.getElementById('#root')}
-      >
-        <ModalContent approvalData={approvalData} />
-      </Modal>
-    </>
+    <Modal
+      isOpen={modalIsOpen}
+      onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      style={customStyles}
+      ariaHideApp={false} // find alt for this
+      appElement={document.getElementById('#root')}
+    >
+      <ModalContent approvalData={approvalData} closeModal={closeModal} />
+    </Modal>
   );
 };
 

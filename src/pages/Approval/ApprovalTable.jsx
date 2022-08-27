@@ -89,6 +89,7 @@ const ApprovalTable = ({ columns, data }) => {
           activeRow={activeRow}
         />
       )}
+      <tbody className="approval-table-gap"></tbody>
       <tbody {...getTableBodyProps()} className="table-body">
         {rows.map((row) => {
           prepareRow(row);

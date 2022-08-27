@@ -55,19 +55,6 @@ const TopNav = () => {
     });
   };
 
-  // admin
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    if (
-      user !== null &&
-      Object.keys(user).length !== 0 &&
-      user.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
-    ) {
-      setIsAdmin(true);
-    }
-  }, [user]);
-
   return (
     <div className="navbar-ctn">
       <div className="navbar">
@@ -105,13 +92,17 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        {user !== null && Object.keys(user).length !== 0 && !isAdmin ? (
-          <Link to="/register">
-            <button className="nav-btn">Register Your Service</button>
-          </Link>
-        ) : isAdmin ? (
+        {user !== null &&
+        Object.keys(user).length !== 0 &&
+        user.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
           <Link to="/admin_panel">
             <button className="nav-btn">Admin Pannel</button>
+          </Link>
+        ) : user !== null &&
+          Object.keys(user).length !== 0 &&
+          user.uid !== 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
+          <Link to="/register">
+            <button className="nav-btn">Register Your Service</button>
           </Link>
         ) : (
           <button className="nav-btn" onClick={notify}>

@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
@@ -18,7 +18,6 @@ import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
 import { useFilter } from '../../hooks/useFilter';
 import { useGlobalContext } from '../../context/AppProvider';
-import ComboBtn from '../../components/ComboBtn/ComboBtn';
 
 const UploadService = () => {
   useDocTitle();
@@ -301,7 +300,10 @@ const UploadService = () => {
               </div>
             </div>
           </div>
-          <ComboBtn btnOneText="Upload" btnTwoText="Save as draft" />
+          <div className="combo-btn-ctn">
+            <button className="combo-btn">Upload</button>
+            <button className="combo-btn combo-btn-two">Save as draft</button>
+          </div>
         </form>
       </div>
     </div>

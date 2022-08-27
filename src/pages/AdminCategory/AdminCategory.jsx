@@ -1,10 +1,10 @@
 import React from 'react';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import './AdminPanel.css';
+import './AdminCategory.css';
 
-const AdminPanel = () => {
-  useDocTitle('Dashboard');
+const AdminCategory = () => {
+  useDocTitle();
 
   return (
     <div className="service-dash-ctn">
@@ -14,4 +14,4 @@ const AdminPanel = () => {
   );
 };
 
-export default AdminPanel;
+export default AdminCategory;
