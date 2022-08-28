@@ -18,7 +18,7 @@ const CreatedServices = ({ activeComId }) => {
     setPageCount(Math.ceil(activeSer.length / servicesPerPage));
   }, [activeSer, serviceOffset, servicesPerPage]);
 
-  if (serIsLoading) {
+  if (activeServices.length === 0) {
     return <Loading color="#ce2d4f" size={115} />;
   }
 
@@ -31,7 +31,7 @@ const CreatedServices = ({ activeComId }) => {
       </div>
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
-          {activeSer.length === 0 && (
+          {!serIsLoading && activeServices.length === 0 ? (
             <h2 className="created-ser-null">
               Created services are displayed here. Click on the{' '}
               <span className="created-ser-null-custom">
@@ -39,10 +39,11 @@ const CreatedServices = ({ activeComId }) => {
               </span>{' '}
               button to create a service
             </h2>
+          ) : (
+            activeServices.map((service) => {
+              return <SingleSlide key={service.id} {...service} />;
+            })
           )}
-          {activeServices.map((service) => {
-            return <SingleSlide key={service.id} {...service} />;
-          })}
         </div>
         <PaginationCom
           activeServices={activeServices}
