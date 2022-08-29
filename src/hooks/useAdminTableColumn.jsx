@@ -1,21 +1,11 @@
 import { useMemo } from 'react';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import './Approval.css';
-import { useSerQuery } from '../../hooks/useSerQuery';
-import ApprovalTable from './ApprovalTable';
-import Loading from '../../components/Loading/Loading';
-import providerIcon from '../../images/technical-service 1.png';
-import serviceIcon from '../../images/customer-service 1.png';
-import companyIcon from '../../images/enterprise 1.png';
-import categoryIcon from '../../images/subfolder 1.png';
-import subCategoryIcon from '../../images/options 1.png';
+import providerIcon from '../images/technical-service 1.png';
+import serviceIcon from '../images/customer-service 1.png';
+import companyIcon from '../images/enterprise 1.png';
+import categoryIcon from '../images/subfolder 1.png';
+import subCategoryIcon from '../images/options 1.png';
 
-const Approval = () => {
-  useDocTitle();
-
-  const { serData, serIsLoading } = useSerQuery();
-
+export const useAdminTableColumn = () => {
   const columns = useMemo(
     () => [
       {
@@ -87,18 +77,5 @@ const Approval = () => {
     []
   );
 
-  return (
-    <div className="service-dash-ctn">
-      <SeekerSidebar />
-      <div className="service-dash approval">
-        {serIsLoading ? (
-          <Loading color="#ce2d4f" size={115} />
-        ) : (
-          <ApprovalTable columns={columns} data={serData} />
-        )}
-      </div>
-    </div>
-  );
+  return columns;
 };
-
-export default Approval;

@@ -1,13 +1,33 @@
 import { useState, useEffect } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import ApprovalModal from '../../components/ApprovalModal/ApprovalModal';
+import ApprovalModal from '../ApprovalModal/ApprovalModal';
+import './Table.css';
 import sortUpIcon from '../../images/sort-up 1.png';
 
-const ApprovalTable = ({ columns, data }) => {
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+const Table = ({ columns, data }) => {
+  const [hiddenColumns, setHiddenColumns] = useState([]);
 
-  let subtitle;
+  // useEffect(() => {
+  //   if (window) {
+  //     setHiddenColumns([
+  //       'companyInfo.companyName',
+  //       'serType',
+  //       'offeredServices',
+  //     ]);
+  //   } else {
+  //     setHiddenColumns([]);
+  //   }
+  // }, []);
+
+  // console.log(hiddenColumns);
+
+  const initialState = {
+    hiddenColumns: hiddenColumns,
+  };
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data, initialState }, useSortBy);
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [clickedId, setclickedId] = useState('');
@@ -23,10 +43,10 @@ const ApprovalTable = ({ columns, data }) => {
     setClickedCategory(e.currentTarget.childNodes[3].textContent);
   };
 
+  // TODO: add styles after the model is opened
   const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
     if (document.getElementById('body')) {
-      subtitle.style.color = '#f00';
+      return;
     }
   };
 
@@ -80,7 +100,6 @@ const ApprovalTable = ({ columns, data }) => {
       </thead>
       {Object.keys(activeRow).length > 0 && (
         <ApprovalModal
-          subtitle={subtitle}
           modalIsOpen={modalIsOpen}
           openModal={openModal}
           afterOpenModal={afterOpenModal}
@@ -106,4 +125,4 @@ const ApprovalTable = ({ columns, data }) => {
   );
 };
 
-export default ApprovalTable;
+export default Table;

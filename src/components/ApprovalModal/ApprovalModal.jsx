@@ -20,12 +20,10 @@ const customStyles = {
 };
 
 const ApprovalModal = ({
-  subtitle,
   modalIsOpen,
   openModal,
   afterOpenModal,
   closeModal,
-  appElement,
   activeRow,
 }) => {
   const { title, serType, offeredServices, companyInfo } = activeRow?.original;

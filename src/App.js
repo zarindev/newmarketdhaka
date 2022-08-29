@@ -27,8 +27,8 @@ import UploadService from './pages/UploadService/UploadService';
 import SignUpTwo from './pages/SignUp/SignUpTwo';
 import SerachResult from './pages/SearchResult/SerachResult';
 import Toastify from './components/Toastify/Toastify';
-import Approval from './pages/Approval/Approval';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
+import AdminApproval from './pages/AdminApproval/AdminApproval';
 import AdminCategory from './pages/AdminCategory/AdminCategory';
 import AdminSettings from './pages/AdminSettings/AdminSettings';
 
@@ -85,8 +85,8 @@ function App() {
           path="/service_dashboard/upload_service"
           element={<UploadService />}
         />
-        <Route path="/admin_panel" element={<AdminPanel />}></Route>
-        <Route path="/approval" element={<Approval />} />
+        <Route path="/admin_panel" element={<AdminPanel />} />
+        <Route path="/approval" element={<AdminApproval />} />
         <Route path="/category_creation" element={<AdminCategory />} />
         <Route path="/settings" element={<AdminSettings />} />
         <Route path="*" element={<NotFound />} />
