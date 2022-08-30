@@ -5,6 +5,7 @@ import Loading from '../Loading/Loading';
 import RoundedButton from '../RoundedButton/RoundedButton';
 import './ServicesSlider.css';
 import SliderComponent from './SliderComponent';
+import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 
 const ServicesSlider = () => {
   const { mergedSerType } = useMerge();
@@ -23,7 +24,11 @@ const ServicesSlider = () => {
       )}
       {mergedSerType.length > 0 && (
         <Link to="/more_services">
-          <RoundedButton buttonText="Explore More Services" />
+          <RoundedButton
+            text="Explore More"
+            icon={arrowCircleDown}
+            altText="arrow-circle-down"
+          />
         </Link>
       )}
     </div>

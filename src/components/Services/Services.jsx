@@ -26,9 +26,9 @@ const Services = () => {
       </div>
       <Link className="services-btn-link" to="/all_services">
         <RoundedButton
-          buttonText="See All Services"
-          buttonIcon={arrowCircleDown}
-          buttonAltText="arrow-circle-down"
+          text="See All Services"
+          icon={arrowCircleDown}
+          altText="arrow-circle-down"
         />
       </Link>
     </div>

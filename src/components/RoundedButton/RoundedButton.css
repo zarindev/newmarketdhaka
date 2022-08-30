@@ -1,8 +1,8 @@
 .rounded-btn {
-  margin-inline: auto;
-  margin-top: 4rem;
+  margin: 4rem auto 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   padding: 10.5px 14px;
   background-color: #ce2d4f;
