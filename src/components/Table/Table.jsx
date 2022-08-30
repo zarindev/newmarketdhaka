@@ -5,24 +5,11 @@ import './Table.css';
 import sortUpIcon from '../../images/sort-up 1.png';
 
 const Table = ({ columns, data }) => {
-  const [hiddenColumns, setHiddenColumns] = useState([]);
-
-  // useEffect(() => {
-  //   if (window) {
-  //     setHiddenColumns([
-  //       'companyInfo.companyName',
-  //       'serType',
-  //       'offeredServices',
-  //     ]);
-  //   } else {
-  //     setHiddenColumns([]);
-  //   }
-  // }, []);
-
-  // console.log(hiddenColumns);
+  const hiddenCols = columns.filter((column) => column.show === false);
+  const hiddenAcc = hiddenCols.map((col) => col.accessor);
 
   const initialState = {
-    hiddenColumns: hiddenColumns,
+    hiddenColumns: [],
   };
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -89,9 +76,7 @@ const Table = ({ columns, data }) => {
                       className="table-sort-icon"
                     />
                   )
-                ) : (
-                  ''
-                )}
+                ) : null}
                 {column.render('Header')}
               </th>
             ))}

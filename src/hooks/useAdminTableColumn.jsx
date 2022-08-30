@@ -1,11 +1,24 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import providerIcon from '../images/technical-service 1.png';
 import serviceIcon from '../images/customer-service 1.png';
 import companyIcon from '../images/enterprise 1.png';
 import categoryIcon from '../images/subfolder 1.png';
 import subCategoryIcon from '../images/options 1.png';
+import { useWindowSize } from './useWindowSize';
 
 export const useAdminTableColumn = () => {
+  const size = useWindowSize();
+  const { width } = size;
+  const [isShowed, setIsShowed] = useState(true);
+
+  useEffect(() => {
+    if (width < 1100) {
+      setIsShowed(false);
+    } else {
+      setIsShowed(true);
+    }
+  }, [width]);
+
   const columns = useMemo(
     () => [
       {
@@ -20,6 +33,7 @@ export const useAdminTableColumn = () => {
           </div>
         ),
         accessor: 'companyInfoId',
+        show: true,
       },
       {
         Header: () => (
@@ -33,6 +47,7 @@ export const useAdminTableColumn = () => {
           </div>
         ),
         accessor: 'title',
+        show: true,
       },
       {
         Header: () => (
@@ -46,6 +61,7 @@ export const useAdminTableColumn = () => {
           </div>
         ),
         accessor: 'companyInfo.companyName',
+        show: isShowed,
       },
       {
         Header: () => (
@@ -59,6 +75,7 @@ export const useAdminTableColumn = () => {
           </div>
         ),
         accessor: 'serType',
+        show: isShowed,
       },
       {
         Header: () => (
@@ -72,9 +89,10 @@ export const useAdminTableColumn = () => {
           </div>
         ),
         accessor: 'offeredServices',
+        show: isShowed,
       },
     ],
-    []
+    [isShowed]
   );
 
   return columns;

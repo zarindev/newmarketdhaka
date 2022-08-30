@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import './SeekerSidebar.css';
 import brandLogo from '../../images/brand-logo.png';
 import seekerSwitchIcon from '../../images/seeker-switch.png';
 import { adminData, comData } from './sidebarData';
 import { useAuth } from '../../context/AuthProvider';
+import PlaceholderLoading from '../Loading/PlaceholderLoading';
 
 const SeekerSidebar = () => {
   const { user } = useAuth();
@@ -13,7 +15,15 @@ const SeekerSidebar = () => {
       <Link to="/">
         <img src={brandLogo} alt="brand logo" className="nav-brand-logo" />
       </Link>
-      {user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
+      {Object.keys(user).length === 0
+        ? Array.from({ length: 4 }).map((item) => {
+            return (
+              <div className="seeker-item" key={uuidv4()}>
+                <PlaceholderLoading />
+              </div>
+            );
+          })
+        : user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
         ? adminData.map((item) => {
             return (
               <Link to={item.link} key={item.id}>
