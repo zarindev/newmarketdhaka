@@ -18,8 +18,8 @@ const Profile = () => {
 
   const { activeCom, comIsLoading } = useFind();
 
-  if (comIsLoading) {
-    return <Loading color="#ce2d4f" size={125} />;
+  if (comIsLoading && Object.keys(activeCom).length === 0) {
+    <Loading color="#ce2d4f" size={115} />;
   }
 
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =

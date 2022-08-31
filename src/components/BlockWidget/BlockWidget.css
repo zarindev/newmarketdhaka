@@ -1,0 +1,22 @@
+.block-widget {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  width: 200px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 1rem;
+}
+
+.widget-value {
+  font-size: clamp(1.75rem, 1.7rem + 0.25vw, 2rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.widget-type {
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 500;
+  color: #1d1d1d;
+}

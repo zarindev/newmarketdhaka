@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
@@ -92,7 +92,15 @@ const TopNav = () => {
             Register
           </NavLink>
         </ul>
-        {user !== null && Object.keys(user).length !== 0 ? (
+        {user !== null &&
+        Object.keys(user).length !== 0 &&
+        user.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
+          <Link to="/admin_panel">
+            <button className="nav-btn">Admin Pannel</button>
+          </Link>
+        ) : user !== null &&
+          Object.keys(user).length !== 0 &&
+          user.uid !== 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
           <Link to="/register">
             <button className="nav-btn">Register Your Service</button>
           </Link>
@@ -101,6 +109,7 @@ const TopNav = () => {
             Register Your Service
           </button>
         )}
+
         <motion.div
           className="mobile-btn-ctn"
           ref={mobileBtnRef}

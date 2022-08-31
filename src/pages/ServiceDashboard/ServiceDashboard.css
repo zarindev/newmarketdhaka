@@ -142,6 +142,10 @@
   color: hsl(0, 0%, 100%);
 }
 
+.service-dash .loading {
+  height: 50vh;
+}
+
 @media screen and (max-width: 1000px) {
   .service-dash {
     position: relative;

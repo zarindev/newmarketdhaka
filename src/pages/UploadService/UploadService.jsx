@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
@@ -300,11 +300,9 @@ const UploadService = () => {
               </div>
             </div>
           </div>
-          <div className="upload-ser-btn-ctn">
-            <button className="upload-ser-upload-btn">Upload</button>
-            <button className="upload-ser-upload-btn upload-ser-upload-btn-draft">
-              Save as draft
-            </button>
+          <div className="combo-btn-ctn">
+            <button className="combo-btn">Upload</button>
+            <button className="combo-btn combo-btn-two">Save as draft</button>
           </div>
         </form>
       </div>

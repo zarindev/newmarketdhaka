@@ -1,15 +1,11 @@
 import './RoundedButton.css';
 
-const RoundedButton = ({ buttonText, buttonIcon, buttonAltText }) => {
+const RoundedButton = ({ text, icon, altText }) => {
   return (
     <button className="rounded-btn">
-      <p className="rounded-btn-text">{buttonText}</p>
-      {buttonIcon && buttonAltText && (
-        <img
-          src={buttonIcon}
-          alt={buttonAltText}
-          className="rounded-btn-icon"
-        />
+      <p className="rounded-btn-text">{text}</p>
+      {icon && altText && (
+        <img src={icon} alt={altText} className="rounded-btn-icon" />
       )}
     </button>
   );

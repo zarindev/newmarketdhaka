@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSerQuery } from './useSerQuery';
 
-export const useMerge = (url) => {
+export const useMerge = () => {
   const [allItems, setAllItems] = useState([]);
 
-  const { serData } = useSerQuery(url);
+  const { serData } = useSerQuery();
 
   useEffect(() => {
     if (serData) {

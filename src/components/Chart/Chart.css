@@ -1,0 +1,14 @@
+.recharts-responsive-container {
+  font-size: clamp(0.84375rem, 0.825rem + 0.09375vw, 0.9375rem);
+  font-weight: 600;
+}
+
+.recharts-wrapper {
+  background-color: #ffffff;
+}
+
+.chart-tooltip {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}

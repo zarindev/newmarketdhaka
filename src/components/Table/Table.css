@@ -1,0 +1,74 @@
+.approval {
+  display: grid;
+}
+
+.approval-table {
+  font-size: clamp(0.84375rem, 0.825rem + 0.09375vw, 0.9375rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.table-head {
+  height: 4rem;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  white-space: nowrap;
+}
+
+.approval-table th,
+.approval-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.tabel-label-ctn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.table-label-icon,
+.table-sort-icon {
+  min-width: 18px;
+  min-height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+  object-fit: cover;
+}
+
+.table-sort-icon-down {
+  transform: rotate(180deg);
+}
+
+.tabel-label {
+  font-weight: 700;
+}
+
+.approval-table .head {
+  position: relative;
+}
+
+.approval-table .head-asc {
+  border-top: 2px solid lightcoral;
+}
+
+.approval-table .head-desc {
+  border-bottom: 3px solid lightblue;
+}
+
+.approval-table-gap {
+  width: 1rem;
+  height: 1rem;
+}
+
+.table-body {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  overflow: hidden;
+}
+
+.approval-table td {
+  cursor: pointer;
+}

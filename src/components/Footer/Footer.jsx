@@ -12,10 +12,11 @@ import emailIcon from '../../images/svg/Email-black.svg';
 import phoneIcon from '../../images/svg/Phone-black.svg';
 import locationIcon from '../../images/svg/Location-black.svg';
 import { useGlobalContext } from '../../context/AppProvider';
+import { useMerge } from '../../hooks/useMerge';
 
 const Footer = () => {
-  const { mergedSerTypeAll, showDropdown, setShowDropdown } =
-    useGlobalContext();
+  const { showDropdown, setShowDropdown } = useGlobalContext();
+  const { mergedSerTypeAll } = useMerge();
 
   return (
     <footer className="footer">
