@@ -8,6 +8,7 @@ import ScrollToTop from './utils/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import React from 'react';
 
 const queryClient = new QueryClient();
 
@@ -40,7 +41,9 @@ root.render(
         <StateMachineProvider>
           <Router>
             <ScrollToTop>
-              <App />
+              <React.StrictMode>
+                <App />
+              </React.StrictMode>
             </ScrollToTop>
           </Router>
         </StateMachineProvider>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import ApprovalModal from '../ApprovalModal/ApprovalModal';
+import GlobalModal from '../GlobalModal/GlobalModal';
 import './Table.css';
 import sortUpIcon from '../../images/sort-up 1.png';
+import { useAuth } from '../../context/AuthProvider';
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, activeComId }) => {
   const hiddenCols = columns.filter((column) => column.show === false);
   const hiddenAcc = hiddenCols.map((col) => col.accessor);
 
@@ -15,35 +16,42 @@ const Table = ({ columns, data }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data, initialState }, useSortBy);
 
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const [clickedId, setclickedId] = useState('');
+  const [clickedId, setClickedId] = useState('');
   const [clickedSer, setClickedSer] = useState('');
   const [clickedCom, setClickedCom] = useState('');
   const [clickedCategory, setClickedCategory] = useState('');
 
+  const { user } = useAuth();
+
   const openModal = (e) => {
-    setIsOpen(true);
-    setclickedId(e.currentTarget.childNodes[0].textContent);
-    setClickedSer(e.currentTarget.childNodes[1].textContent);
-    setClickedCom(e.currentTarget.childNodes[2].textContent);
-    setClickedCategory(e.currentTarget.childNodes[3].textContent);
+    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
+      setModalIsOpen(true);
+      setClickedId(e.currentTarget.childNodes[0].textContent);
+      setClickedSer(e.currentTarget.childNodes[1].textContent);
+      setClickedCom(e.currentTarget.childNodes[2].textContent);
+      setClickedCategory(e.currentTarget.childNodes[3].textContent);
+    } else {
+      setModalIsOpen(true);
+      setClickedSer(e.currentTarget.childNodes[0].textContent);
+      setClickedCategory(e.currentTarget.childNodes[1].textContent);
+    }
   };
 
-  // TODO: add styles after the model is opened
   const afterOpenModal = () => {
     if (document.getElementById('body')) {
-      return;
+      // TODO: add styles after the model is opened
     }
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setModalIsOpen(false);
   };
 
   const [activeRow, setActiveRow] = useState({});
   useEffect(() => {
-    if ((clickedId, clickedSer, clickedCom, clickedCategory)) {
+    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
       const clickedRow = rows.find(
         (row) =>
           row.original.companyInfoId === parseInt(clickedId, 10) &&
@@ -51,9 +59,40 @@ const Table = ({ columns, data }) => {
           row.original.companyInfo.companyName === clickedCom &&
           row.original.serType === clickedCategory
       );
-      setActiveRow(clickedRow);
+      setActiveRow({ ...clickedRow });
+    } else {
+      const clickedComRow = rows.find(
+        (row) =>
+          row.original.companyInfoId === activeComId &&
+          row.original.title === clickedSer &&
+          row.original.serType === clickedCategory
+      );
+      setActiveRow({ ...clickedComRow });
     }
-  }, [rows, clickedId, clickedSer, clickedCom, clickedCategory]);
+  }, [
+    rows,
+    clickedId,
+    clickedSer,
+    clickedCom,
+    clickedCategory,
+    user,
+    activeComId,
+  ]);
+
+  const [trueBtnText, setTrueBtnText] = useState('');
+  const [falseBtnText, setFalseBtnText] = useState('');
+  const [falseDelBtnText, setFalseDelBtnText] = useState('');
+
+  useEffect(() => {
+    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
+      setTrueBtnText('Accept');
+      setFalseBtnText('Reject');
+    } else {
+      setTrueBtnText('Enable');
+      setFalseBtnText('Disable');
+      setFalseDelBtnText('Delete');
+    }
+  }, [user]);
 
   return (
     <table {...getTableProps()} className="approval-table">
@@ -84,13 +123,16 @@ const Table = ({ columns, data }) => {
         ))}
       </thead>
       {Object.keys(activeRow).length > 0 && (
-        <ApprovalModal
+        <GlobalModal
           modalIsOpen={modalIsOpen}
           openModal={openModal}
           afterOpenModal={afterOpenModal}
           closeModal={closeModal}
           appElement={document.getElementById('body')}
           activeRow={activeRow}
+          trueBtnText={trueBtnText}
+          falseBtnText={falseBtnText}
+          falseDelBtnText={falseDelBtnText}
         />
       )}
       <tbody className="approval-table-gap"></tbody>

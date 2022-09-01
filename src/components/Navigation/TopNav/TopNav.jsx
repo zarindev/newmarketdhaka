@@ -101,15 +101,14 @@ const TopNav = () => {
         ) : user !== null &&
           Object.keys(user).length !== 0 &&
           user.uid !== 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
-          <Link to="/register">
-            <button className="nav-btn">Register Your Service</button>
+          <Link to="/service_dashboard">
+            <button className="nav-btn">Dashboard</button>
           </Link>
         ) : (
           <button className="nav-btn" onClick={notify}>
             Register Your Service
           </button>
         )}
-
         <motion.div
           className="mobile-btn-ctn"
           ref={mobileBtnRef}

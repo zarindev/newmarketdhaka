@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import './ApprovalModal.css';
+import './GlobalModal.css';
 import serviceIcon from '../../images/customer-service 1.png';
 import companyIcon from '../../images/enterprise 1.png';
 import categoryIcon from '../../images/subfolder 1.png';
@@ -25,6 +25,9 @@ const ApprovalModal = ({
   afterOpenModal,
   closeModal,
   activeRow,
+  trueBtnText,
+  falseBtnText,
+  falseDelBtnText,
 }) => {
   const { title, serType, offeredServices, companyInfo } = activeRow?.original;
   const { companyName, licenseKey, binNumber } = companyInfo;
@@ -52,7 +55,13 @@ const ApprovalModal = ({
       ariaHideApp={false} // find alt for this
       appElement={document.getElementById('#root')}
     >
-      <ModalContent approvalData={approvalData} closeModal={closeModal} />
+      <ModalContent
+        approvalData={approvalData}
+        closeModal={closeModal}
+        trueBtnText={trueBtnText}
+        falseBtnText={falseBtnText}
+        falseDelBtnText={falseDelBtnText}
+      />
     </Modal>
   );
 };

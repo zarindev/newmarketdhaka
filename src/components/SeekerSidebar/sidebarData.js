@@ -12,7 +12,13 @@ export const comData = [
     icon: seekerServicesIcon,
     link: '/service_dashboard',
   },
-  { id: 2, label: 'Profile', icon: seekerProfileIcon, link: '/profile' },
+  {
+    id: 2,
+    label: 'Manage',
+    icon: seekerServicesIcon,
+    link: '/manage_services',
+  },
+  { id: 3, label: 'Profile', icon: seekerProfileIcon, link: '/profile' },
 ];
 
 export const adminData = [
