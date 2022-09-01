@@ -1,6 +1,11 @@
 import timesIcon from '../../images/svg/times-round.svg';
 
-const ModalContent = ({ approvalData, closeModal }) => {
+const ModalContent = ({
+  approvalData,
+  closeModal,
+  trueBtnText,
+  falseBtnText,
+}) => {
   return (
     <div className="modal">
       {approvalData.map((item) => {
@@ -26,8 +31,10 @@ const ModalContent = ({ approvalData, closeModal }) => {
         onClick={closeModal}
       />
       <div className="combo-btn-ctn">
-        <button className="combo-btn">Accept</button>
-        <button className="combo-btn combo-btn-two">Decline</button>
+        {trueBtnText && <button className="combo-btn">{trueBtnText}</button>}
+        {falseBtnText && (
+          <button className="combo-btn combo-btn-two">{falseBtnText}</button>
+        )}
       </div>
     </div>
   );

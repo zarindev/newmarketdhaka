@@ -31,6 +31,7 @@ import AdminPanel from './pages/AdminPanel/AdminPanel';
 import AdminApproval from './pages/AdminApproval/AdminApproval';
 import AdminCategory from './pages/AdminCategory/AdminCategory';
 import AdminSettings from './pages/AdminSettings/AdminSettings';
+import ManageServices from './pages/ManageServices/ManageServices';
 
 function App() {
   return (
@@ -74,7 +75,6 @@ function App() {
           path="/register/individual/success"
           element={<RegisterFormSucessIndie />}
         />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
         <Route path="/results" element={<SerachResult />} />
         <Route path="/all_services" element={<AllServices />} />
@@ -85,6 +85,8 @@ function App() {
           path="/service_dashboard/upload_service"
           element={<UploadService />}
         />
+        <Route path="/manage_services" element={<ManageServices />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/admin_panel" element={<AdminPanel />} />
         <Route path="/approval" element={<AdminApproval />} />
         <Route path="/category_creation" element={<AdminCategory />} />
