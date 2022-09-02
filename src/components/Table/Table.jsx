@@ -5,7 +5,8 @@ import './Table.css';
 import sortUpIcon from '../../images/sort-up 1.png';
 import { useAuth } from '../../context/AuthProvider';
 
-const Table = ({ columns, data, activeComId }) => {
+const Table = ({ columns, data, activeComId, tableTitle }) => {
+  // hide columns
   const hiddenCols = columns.filter((column) => column.show === false);
   const hiddenAcc = hiddenCols.map((col) => col.accessor);
 
@@ -13,6 +14,7 @@ const Table = ({ columns, data, activeComId }) => {
     hiddenColumns: [],
   };
 
+  // main table
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data, initialState }, useSortBy);
 
@@ -25,15 +27,15 @@ const Table = ({ columns, data, activeComId }) => {
 
   const { user } = useAuth();
 
+  // modal
   const openModal = (e) => {
+    setModalIsOpen(true);
     if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
-      setModalIsOpen(true);
       setClickedId(e.currentTarget.childNodes[0].textContent);
       setClickedSer(e.currentTarget.childNodes[1].textContent);
       setClickedCom(e.currentTarget.childNodes[2].textContent);
       setClickedCategory(e.currentTarget.childNodes[3].textContent);
     } else {
-      setModalIsOpen(true);
       setClickedSer(e.currentTarget.childNodes[0].textContent);
       setClickedCategory(e.currentTarget.childNodes[1].textContent);
     }
@@ -49,6 +51,7 @@ const Table = ({ columns, data, activeComId }) => {
     setModalIsOpen(false);
   };
 
+  // clicked row
   const [activeRow, setActiveRow] = useState({});
   useEffect(() => {
     if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
@@ -79,20 +82,22 @@ const Table = ({ columns, data, activeComId }) => {
     activeComId,
   ]);
 
+  // btn text
   const [trueBtnText, setTrueBtnText] = useState('');
   const [falseBtnText, setFalseBtnText] = useState('');
-  const [falseDelBtnText, setFalseDelBtnText] = useState('');
 
   useEffect(() => {
     if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
       setTrueBtnText('Accept');
       setFalseBtnText('Reject');
-    } else {
+    } else if (tableTitle.toLowerCase().includes('active')) {
+      setTrueBtnText('Disable');
+      setFalseBtnText('Delete');
+    } else if (tableTitle.toLowerCase().includes('disabled')) {
       setTrueBtnText('Enable');
-      setFalseBtnText('Disable');
-      setFalseDelBtnText('Delete');
+      setFalseBtnText('Delete');
     }
-  }, [user]);
+  }, [user, tableTitle]);
 
   return (
     <table {...getTableProps()} className="approval-table">
@@ -130,9 +135,9 @@ const Table = ({ columns, data, activeComId }) => {
           closeModal={closeModal}
           appElement={document.getElementById('body')}
           activeRow={activeRow}
+          tableTitle={tableTitle}
           trueBtnText={trueBtnText}
           falseBtnText={falseBtnText}
-          falseDelBtnText={falseDelBtnText}
         />
       )}
       <tbody className="approval-table-gap"></tbody>

@@ -41,9 +41,7 @@ root.render(
         <StateMachineProvider>
           <Router>
             <ScrollToTop>
-              <React.StrictMode>
-                <App />
-              </React.StrictMode>
+              <App />
             </ScrollToTop>
           </Router>
         </StateMachineProvider>

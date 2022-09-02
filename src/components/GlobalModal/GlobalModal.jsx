@@ -27,7 +27,6 @@ const ApprovalModal = ({
   activeRow,
   trueBtnText,
   falseBtnText,
-  falseDelBtnText,
 }) => {
   const { title, serType, offeredServices, companyInfo } = activeRow?.original;
   const { companyName, licenseKey, binNumber } = companyInfo;
@@ -60,7 +59,6 @@ const ApprovalModal = ({
         closeModal={closeModal}
         trueBtnText={trueBtnText}
         falseBtnText={falseBtnText}
-        falseDelBtnText={falseDelBtnText}
       />
     </Modal>
   );

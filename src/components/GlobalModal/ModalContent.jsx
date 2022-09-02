@@ -6,6 +6,16 @@ const ModalContent = ({
   trueBtnText,
   falseBtnText,
 }) => {
+  const handleTrue = () => {
+    console.log('true');
+    // TODO: handle true
+  };
+
+  const handleFalse = () => {
+    console.log('false');
+    // TODO: handle false
+  };
+
   return (
     <div className="modal">
       {approvalData.map((item) => {
@@ -31,9 +41,15 @@ const ModalContent = ({
         onClick={closeModal}
       />
       <div className="combo-btn-ctn">
-        {trueBtnText && <button className="combo-btn">{trueBtnText}</button>}
+        {trueBtnText && (
+          <button className="combo-btn" onClick={handleTrue}>
+            {trueBtnText}
+          </button>
+        )}
         {falseBtnText && (
-          <button className="combo-btn combo-btn-two">{falseBtnText}</button>
+          <button className="combo-btn combo-btn-two" onClick={handleFalse}>
+            {falseBtnText}
+          </button>
         )}
       </div>
     </div>

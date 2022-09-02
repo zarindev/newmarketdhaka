@@ -1,13 +1,12 @@
 .approval {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .approval-table {
   font-size: clamp(0.84375rem, 0.825rem + 0.09375vw, 0.9375rem);
   font-weight: 600;
   color: #1d1d1d;
-  margin-bottom: 2rem;
 }
 
 .table-head {
