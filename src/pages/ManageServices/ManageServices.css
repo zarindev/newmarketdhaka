@@ -1,3 +1,7 @@
+.service-dash-mange-ctn .approval-table {
+  margin-bottom: 2rem;
+}
+
 .service-table-title {
   font-size: clamp(1.125rem, 1.0875rem + 0.1875vw, 1.3125rem);
   font-weight: 600;
