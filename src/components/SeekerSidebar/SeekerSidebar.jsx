@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './SeekerSidebar.css';
 import brandLogo from '../../images/brand-logo.png';
@@ -26,7 +26,7 @@ const SeekerSidebar = () => {
         : user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
         ? adminData.map((item) => {
             return (
-              <Link to={item.link} key={item.id}>
+              <NavLink to={item.link} key={item.id}>
                 <div className="seeker-item">
                   <img
                     src={item.icon}
@@ -35,12 +35,12 @@ const SeekerSidebar = () => {
                   />
                   <p className="seeker-item-text">{item.label}</p>
                 </div>
-              </Link>
+              </NavLink>
             );
           })
         : comData.map((item) => {
             return (
-              <Link to={item.link} key={item.id}>
+              <NavLink to={item.link} key={item.id}>
                 <div className="seeker-item">
                   <img
                     src={item.icon}
@@ -49,7 +49,7 @@ const SeekerSidebar = () => {
                   />
                   <p className="seeker-item-text">{item.label}</p>
                 </div>
-              </Link>
+              </NavLink>
             );
           })}
       <div className="seeker-item seeker-bottom-item">
