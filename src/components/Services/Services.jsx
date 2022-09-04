@@ -1,19 +1,18 @@
 import React, { useRef } from 'react';
 import './Services.css';
-import { servicesData } from './servicesData';
 import { Link } from 'react-router-dom';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import SingleService from './SingleService';
 import RoundedButton from '../RoundedButton/RoundedButton';
 
-const Services = () => {
+const Services = ({ data }) => {
   const servicesRef = useRef();
 
   return (
     <div className="services">
       <h1 className="services-title">All Services</h1>
       <div className="services-ctn" ref={servicesRef}>
-        {servicesData.map((service) => {
+        {data.map((service) => {
           return (
             <SingleService
               key={service.id}

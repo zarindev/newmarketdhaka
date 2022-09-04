@@ -7,6 +7,8 @@ import categoryIcon from '../../images/subfolder 1.png';
 import RoundedButton from '../../components/RoundedButton/RoundedButton';
 import RegisterUpload from '../Register/elements/RegisterUpload';
 import createServiceUp from '../../images/svg/upload 1.svg';
+import Services from '../../components/Services/Services';
+import { servicesData } from '../../components/Services/servicesData';
 
 const AdminCategory = () => {
   useDocTitle();
@@ -28,52 +30,58 @@ const AdminCategory = () => {
     <div className="service-dash-ctn category-dash-ctn">
       <SeekerSidebar />
       <div className="service-dash">
-        <form className="create-category" onSubmit={handleSubmit(onSubmit)}>
-          <div className="create-category-heading">
-            <img
-              src={categoryIcon}
-              alt="category"
-              className="create-category-heading-icon"
+        {servicesData.length > 0 ? (
+          <Services data={servicesData} />
+        ) : (
+          <form className="create-category" onSubmit={handleSubmit(onSubmit)}>
+            <div className="create-category-heading">
+              <img
+                src={categoryIcon}
+                alt="category"
+                className="create-category-heading-icon"
+              />
+              <p className="create-category-heading-text">Add Category</p>
+            </div>
+            <input
+              type="text"
+              className="register-form-input"
+              placeholder="Add Category"
+              {...register('adminCategory', {
+                required: 'Category is required',
+              })}
             />
-            <p className="create-category-heading-text">Add Category</p>
-          </div>
-          <input
-            type="text"
-            className="register-form-input"
-            placeholder="Add Category"
-            {...register('adminCategory', {
-              required: 'Category is required',
-            })}
-          />
-          {errors.adminCategory && (
-            <p className="error-message">{errors.adminCategory?.message}</p>
-          )}
-          <input
-            type="text"
-            className="register-form-input"
-            placeholder="Add Sub Category"
-            {...register('adminSubCategory', {
-              required: 'Sub Category is required',
-            })}
-          />
-          {errors.adminSubCategory && (
-            <p className="error-message">{errors.adminSubCategory?.message}</p>
-          )}
-          <RegisterUpload
-            isTypeImg={true}
-            uploadPlaceholderImg={createServiceUp}
-            changePlaceholderText={true}
-            getFiles={null}
-            setValue={setValue}
-            setError={setError}
-            clearErrors={clearErrors}
-            {...register(`serImg`, {
-              required: true,
-            })}
-            ref={null}
-          />
-          <RoundedButton text="Save Category" />
-        </form>
+            {errors.adminCategory && (
+              <p className="error-message">{errors.adminCategory?.message}</p>
+            )}
+            <input
+              type="text"
+              className="register-form-input"
+              placeholder="Add Sub Category"
+              {...register('adminSubCategory', {
+                required: 'Sub Category is required',
+              })}
+            />
+            {errors.adminSubCategory && (
+              <p className="error-message">
+                {errors.adminSubCategory?.message}
+              </p>
+            )}
+            <RegisterUpload
+              isTypeImg={true}
+              uploadPlaceholderImg={createServiceUp}
+              changePlaceholderText={true}
+              getFiles={null}
+              setValue={setValue}
+              setError={setError}
+              clearErrors={clearErrors}
+              {...register(`serImg`, {
+                required: true,
+              })}
+              ref={null}
+            />
+            <RoundedButton text="Save Category" />
+          </form>
+        )}
       </div>
     </div>
   );

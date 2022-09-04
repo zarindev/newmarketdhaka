@@ -17,7 +17,7 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
     } else if (serviceTop < 400) {
       submenuRef.current.style.top = `383px`;
     }
-  }, [location, submenu]);
+  }, [location, submenu, servicesTop, serviceTop]);
 
   const submenuTabs = submenu.map((item) => item.menuLabel);
   const [selectedTab, setSelectedTab] = useState(submenuTabs[0]);

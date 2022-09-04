@@ -52,6 +52,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.submenu-tab-active {
+  color: #ce2d4f;
+}
+
 .tab-underline {
   position: absolute;
   bottom: -24.7px;

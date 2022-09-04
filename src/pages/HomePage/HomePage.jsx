@@ -8,8 +8,9 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import Services from '../../components/Services/Services';
 import ServicesSlider from '../../components/ServicesSlider/ServicesSlider';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { servicesData } from '../../components/Services/servicesData';
 
-function HomePage() {
+const HomePage = () => {
   useDocTitle();
 
   useEffect(() => {
@@ -27,12 +28,12 @@ function HomePage() {
       <CategoryNav />
       <Hero />
       <SearchBox />
-      <Services />
+      <Services data={servicesData} />
       <ServicesSlider />
       <ContactUs />
       <Footer />
     </>
   );
-}
+};
 
 export default HomePage;
