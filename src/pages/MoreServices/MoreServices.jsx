@@ -7,7 +7,7 @@ import SliderComponent from '../../components/ServicesSlider/SliderComponent';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import './MoreServices.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import RoundedButton from '../../components/RoundedButton/RoundedButton';
+import RoundedBtn from '../../components/Button/RoundedBtn';
 import { useGlobalContext } from '../../context/AppProvider';
 
 const MoreServices = () => {
@@ -26,7 +26,7 @@ const MoreServices = () => {
           })}
         </div>
         <Link to="/more_services/all_services">
-          <RoundedButton
+          <RoundedBtn
             buttonText="See All Services"
             buttonIcon={arrowCircleDown}
             buttonAltText="arrow-circle-down"

@@ -3,7 +3,7 @@ import './Services.css';
 import { Link } from 'react-router-dom';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import SingleService from './SingleService';
-import RoundedButton from '../RoundedButton/RoundedButton';
+import RoundedBtn from '../Button/RoundedBtn';
 
 const Services = ({ data }) => {
   const servicesRef = useRef();
@@ -24,7 +24,7 @@ const Services = ({ data }) => {
         <div className="styled-divider"></div>
       </div>
       <Link className="services-btn-link" to="/all_services">
-        <RoundedButton
+        <RoundedBtn
           text="See All Services"
           icon={arrowCircleDown}
           altText="arrow-circle-down"

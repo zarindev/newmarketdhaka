@@ -1,5 +1,6 @@
+/* rounded btn */
 .rounded-btn {
-  margin: 4rem auto 0 auto;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,11 +29,5 @@
 @media screen and (max-width: 1000px) {
   .rounded-btn-icon {
     transform: scale(0.9);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .rounded-btn {
-    margin-top: 3rem;
   }
 }

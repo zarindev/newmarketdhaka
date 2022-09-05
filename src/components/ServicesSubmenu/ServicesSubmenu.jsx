@@ -3,12 +3,12 @@ import MenuTabs from './MenuTabs';
 import './ServicesSubmenu.css';
 import Submenu from './Submenu';
 
-const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
+const ServicesSubmenu = ({ isSubmenuOpen, location, activeSer }) => {
   const [activeSubmenu, setActiveSubmenu] = useState([]);
 
   const submenuRef = useRef();
 
-  const { submenu } = activeService;
+  const { submenu } = activeSer;
   const { servicesTop, serviceTop } = location;
 
   useEffect(() => {

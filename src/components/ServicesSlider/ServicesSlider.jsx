@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useMerge } from '../../hooks/useMerge';
 import Loading from '../Loading/Loading';
-import RoundedButton from '../RoundedButton/RoundedButton';
+import RoundedBtn from '../Button/RoundedBtn';
 import './ServicesSlider.css';
 import SliderComponent from './SliderComponent';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
@@ -24,7 +24,7 @@ const ServicesSlider = () => {
       )}
       {mergedSerType.length > 0 && (
         <Link to="/more_services">
-          <RoundedButton
+          <RoundedBtn
             text="Explore More"
             icon={arrowCircleDown}
             altText="arrow-circle-down"

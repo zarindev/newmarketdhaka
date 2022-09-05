@@ -7,7 +7,7 @@ import { servicesData } from './servicesData';
 const SingleService = ({ service, image, servicesRef }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [location, setLocation] = useState({});
-  const [activeService, setActiveService] = useState({
+  const [activeSer, setActiveSer] = useState({
     service: '',
     submenu: [],
   });
@@ -19,7 +19,7 @@ const SingleService = ({ service, image, servicesRef }) => {
     const data = servicesData.find(
       (item) => item.service === serviceRef.current.textContent
     );
-    setActiveService(data);
+    setActiveSer(data);
 
     const servicesLocation = servicesRef.current.getBoundingClientRect();
     const servicesCenter = (servicesLocation.left + servicesLocation.right) / 2;
@@ -41,7 +41,7 @@ const SingleService = ({ service, image, servicesRef }) => {
       <ServicesSubmenu
         isSubmenuOpen={isSubmenuOpen}
         location={location}
-        activeService={activeService}
+        activeSer={activeSer}
       />
       <div className="service" ref={serviceRef} onClick={handleClick}>
         <div className="service-img-ctn">
@@ -49,7 +49,13 @@ const SingleService = ({ service, image, servicesRef }) => {
         </div>
         <div className="service-title-ctn">
           <p className="service-title">{service}</p>
-          <img src={downArrow} alt="down-arrow icon" className="service-icon" />
+          {activeSer.submenu && (
+            <img
+              src={downArrow}
+              alt="down-arrow icon"
+              className="service-icon"
+            />
+          )}
         </div>
       </div>
     </div>
