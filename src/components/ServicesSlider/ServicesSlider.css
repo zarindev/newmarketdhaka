@@ -25,7 +25,8 @@
 }
 
 .slider-title {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 1.0875rem + 0.1875vw, 1.3125rem);
+  font-weight: 600;
 }
 
 .slider-btn-ctn {
@@ -187,10 +188,6 @@
 @media screen and (max-width: 1000px) {
   .services-slider {
     padding: 50px 0;
-  }
-
-  .slider-title {
-    font-size: 18px;
   }
 
   .slider-btn-ctn {

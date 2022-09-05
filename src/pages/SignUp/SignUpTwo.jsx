@@ -78,6 +78,11 @@ const SignUpTwo = () => {
               placeholder="Phone Number"
               {...register('phoneNumber', {
                 required: 'Phone Number is required',
+                pattern: {
+                  value:
+                    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                  message: 'Please enter a valid phone number',
+                },
               })}
             />
             {errors.phoneNumber && (

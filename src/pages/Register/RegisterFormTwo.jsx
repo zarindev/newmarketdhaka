@@ -134,7 +134,7 @@ const RegisterFormTwo = () => {
                   required: 'Company Phone Number is required',
                   pattern: {
                     value:
-                      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+                      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
                     message: 'Please enter a valid phone number',
                   },
                 })}

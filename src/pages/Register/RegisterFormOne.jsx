@@ -21,7 +21,7 @@ const RegisterFormOne = () => {
 
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step2');
+    navigate('/register/company/step3');
   };
 
   return (

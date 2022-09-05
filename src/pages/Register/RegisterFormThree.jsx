@@ -21,7 +21,7 @@ const RegisterFormThree = () => {
 
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step4');
+    navigate('/register/company/success');
   };
 
   const { componentFiles, setComponentFiles } = useGlobalContext();

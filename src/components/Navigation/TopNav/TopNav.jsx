@@ -9,6 +9,7 @@ import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { useAuth } from '../../../context/AuthProvider';
 import { formatError } from '../../../functions/formatString';
+import { useFind } from '../../../hooks/useFind';
 
 const TopNav = () => {
   const navigate = useNavigate();
@@ -47,6 +48,10 @@ const TopNav = () => {
     }
   };
 
+  // dynamic links for active/inactive user
+  const { activeCom } = useFind();
+  const activeComId = activeCom.id;
+
   // toast
   const notify = () => {
     toast.info(`You need to be singed in for registering services`, {
@@ -79,6 +84,11 @@ const TopNav = () => {
           <NavLink to="/contact_us" className="nav-link">
             Contact Us
           </NavLink>
+          {activeComId && (
+            <NavLink to="/service_dashboard" className="nav-link">
+              Dashboard
+            </NavLink>
+          )}
           {user !== null && Object.keys(user).length !== 0 ? (
             <li className="nav-link" onClick={handleSignout}>
               Sign out
@@ -101,12 +111,12 @@ const TopNav = () => {
         ) : user !== null &&
           Object.keys(user).length !== 0 &&
           user.uid !== 'TJyklprfkah56Y1FtrnTmXQmh8i2' ? (
-          <Link to="/service_dashboard">
-            <button className="nav-btn">Dashboard</button>
+          <Link to="/register">
+            <button className="nav-btn">Register Service</button>
           </Link>
         ) : (
           <button className="nav-btn" onClick={notify}>
-            Register Your Service
+            Register Service
           </button>
         )}
         <motion.div
