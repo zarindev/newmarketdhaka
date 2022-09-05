@@ -180,6 +180,10 @@
   height: auto;
 }
 
+.services-slider .rounded-btn {
+  margin-top: 3.5rem;
+}
+
 @media screen and (max-width: 1000px) {
   .services-slider {
     padding: 50px 0;
@@ -221,6 +225,10 @@
   .location-icon,
   .profile-icon {
     transform: scale(1.35);
+  }
+
+  .services-slider .rounded-btn {
+    margin-top: 2.5rem;
   }
 }
 

@@ -13,7 +13,11 @@ const MenuTabs = ({
         return (
           <div key={index} onClick={() => setSelectedTab(submenuTab)}>
             <button
-              className="submenu-tab"
+              className={`${
+                submenuTab === selectedTab
+                  ? 'submenu-tab submenu-tab-active'
+                  : 'submenu-tab'
+              }`}
               onClick={() => filterSubmenu(submenuTab)}
             >
               {submenuTab}

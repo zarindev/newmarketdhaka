@@ -3,12 +3,12 @@ import MenuTabs from './MenuTabs';
 import './ServicesSubmenu.css';
 import Submenu from './Submenu';
 
-const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
+const ServicesSubmenu = ({ isSubmenuOpen, location, activeSer }) => {
   const [activeSubmenu, setActiveSubmenu] = useState([]);
 
   const submenuRef = useRef();
 
-  const { submenu } = activeService;
+  const { submenu } = activeSer;
   const { servicesTop, serviceTop } = location;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeService }) => {
     } else if (serviceTop < 400) {
       submenuRef.current.style.top = `383px`;
     }
-  }, [location, submenu]);
+  }, [location, submenu, servicesTop, serviceTop]);
 
   const submenuTabs = submenu.map((item) => item.menuLabel);
   const [selectedTab, setSelectedTab] = useState(submenuTabs[0]);

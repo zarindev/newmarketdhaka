@@ -374,7 +374,7 @@ export const servicesData = [
       },
       {
         menuLabel: 'Study Abroad',
-        menuLinks: ['Big Kahuna Burger Ltd.', ,],
+        menuLinks: ['Big Kahuna Burger Ltd.'],
       },
       {
         menuLabel: 'Computer Training',
