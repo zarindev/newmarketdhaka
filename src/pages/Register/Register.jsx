@@ -17,21 +17,21 @@ const Register = () => {
           <Link to="/register/company/step1">
             <div className="register-type">
               <img
-                src={companyIcon}
-                alt="company"
-                className="register-type-icon"
-              />
-              <p className="register-type-text">Company</p>
-            </div>
-          </Link>
-          {/* <Link to="/register/individual/step1">
-            <div className="register-type">
-              <img
                 src={indieIcon}
                 alt="individual"
                 className="register-type-icon"
               />
               <p className="register-type-text">Individual</p>
+            </div>
+          </Link>
+          {/* <Link to="/register/individual/step1">
+            div className="register-type">
+              <img
+                src={companyIcon}
+                alt="company"
+                className="register-type-icon"
+              />
+              <p className="register-type-text">Company</p>
             </div>
           </Link> */}
         </div>

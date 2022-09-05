@@ -8,7 +8,6 @@ import RegisterLeft from './elements/RegisterLeft';
 import RegisterUpload from './elements/RegisterUpload';
 import { useGlobalContext } from '../../context/AppProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import { useAuth } from '../../context/AuthProvider';
 
 const RegisterFormFour = () => {
   useDocTitle();
@@ -20,43 +19,8 @@ const RegisterFormFour = () => {
   });
   const { actions, state } = useStateMachine({ updateAction });
 
-  // register company
-  const { user } = useAuth();
-  const uid = user?.uid;
-
-  const { comPost } = useGlobalContext();
-
   const onSubmit = async (data) => {
     actions.updateAction(data);
-
-    const stateAction = { ...state, actions };
-    delete stateAction.state;
-    delete stateAction.actions;
-    stateAction.id = 0;
-    delete stateAction.password;
-    delete stateAction.data;
-    stateAction.logo = '';
-    stateAction.document = '';
-    stateAction.userid = 1;
-    stateAction.userUId = uid;
-
-    // const logoBuffer = 'stateAction.logo.buffer';
-    // const documentBuffer = 'stateAction.document.buffer';
-    // stateAction.logo = logoBuffer;
-    // stateAction.document = documentBuffer;
-    console.log(stateAction);
-
-    const res = await fetch(comPost, {
-      method: 'POST',
-      body: JSON.stringify(stateAction),
-      headers: {
-        'Content-type': 'application/json; carset=UTF-8',
-      },
-    });
-
-    const formData = await res.json();
-    console.log(formData);
-
     navigate('/register/company/success');
   };
 

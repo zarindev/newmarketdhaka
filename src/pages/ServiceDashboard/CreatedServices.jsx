@@ -18,7 +18,7 @@ const CreatedServices = ({ activeComId }) => {
     setPageCount(Math.ceil(activeSer.length / servicesPerPage));
   }, [activeSer, serviceOffset, servicesPerPage]);
 
-  if (activeServices.length === 0) {
+  if (serIsLoading) {
     return <Loading color="#ce2d4f" size={115} />;
   }
 
