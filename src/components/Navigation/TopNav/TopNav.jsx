@@ -54,7 +54,7 @@ const TopNav = () => {
 
   // toast
   const notify = () => {
-    toast.info(`You need to be singed in for registering services`, {
+    toast.info(`You need to be signed in for registering services`, {
       progress: undefined,
       toastId: 'registration',
     });

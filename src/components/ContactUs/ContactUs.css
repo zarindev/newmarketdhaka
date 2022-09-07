@@ -102,7 +102,7 @@
 }
 
 .form-input {
-  height: 60px;
+  padding: 1.2rem 0;
 }
 
 .form-textarea {
@@ -119,7 +119,7 @@
 }
 
 .contact-error-message {
-  font-size: 15px;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #ffff00;
   margin-top: 0.4rem;
 }
@@ -128,7 +128,7 @@
   margin-top: 10px;
   width: 69vw;
   max-width: 850px;
-  height: 65px;
+  padding: 1rem 0;
   background-color: #1ac3da;
   border: 1px solid #1ac3da;
   border-radius: 12px;
@@ -243,12 +243,13 @@
     outline: 2.5px solid #ce2d4f;
   }
 
-  .contact-error-message {
-    font-size: 14px;
+  .form-input {
+    padding: 1rem 0;
   }
 
   .form-submit-btn {
     width: 80vw;
+    padding: 0.9rem 0;
   }
 
   .form-submit-btn:hover {
