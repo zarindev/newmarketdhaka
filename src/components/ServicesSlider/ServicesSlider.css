@@ -5,7 +5,7 @@
 }
 
 .services-slider-title {
-  font-size: 38px;
+  font-size: clamp(1.9375rem, 1.8625rem + 0.375vw, 2.3125rem);
   font-weight: 700;
   color: #1d1d1d;
   text-align: center;
@@ -195,7 +195,6 @@
   }
 
   .services-slider-title {
-    font-size: 35px;
     margin-bottom: 50px;
   }
 

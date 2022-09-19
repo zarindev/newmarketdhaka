@@ -27,6 +27,11 @@
   gap: 1rem;
 }
 
+.category-dash-ctn .services-ctn .service:hover {
+  background-color: #febfbf;
+  border-radius: 0.5rem;
+}
+
 .category-dash-ctn .services .submenu {
   width: 90%;
 }
@@ -146,5 +151,11 @@
 @media screen and (max-width: 1000px) {
   .category-dash-ctn .service-dash {
     width: 90vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .category-dash-ctn .created-ser-styled-divider {
+    display: none;
   }
 }
