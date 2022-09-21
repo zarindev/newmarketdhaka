@@ -25,6 +25,7 @@ const ContactUs = () => {
   };
 
   const onSubmit = (data) => {
+    console.log(data);
     notify();
     reset();
   };
@@ -44,7 +45,12 @@ const ContactUs = () => {
           <button className="contact-btn">Get started</button>
         </div>
         <div className="contact-image-ctn">
-          <img src={contactImage} alt="contact" className="contact-image" />
+          <img
+            src={contactImage}
+            alt="contact"
+            className="contact-image"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="contact-form-ctn">
@@ -100,7 +106,12 @@ const ContactUs = () => {
         </form>
         <div className="contact-info-ctn">
           <div className="contact-info">
-            <img src={phoneIcon} alt="phone icon" className="contact-icon" />
+            <img
+              src={phoneIcon}
+              alt="phone icon"
+              className="contact-icon"
+              loading="lazy"
+            />
             <p className="contact-address">contact@company.com</p>
           </div>
           <div className="contact-info">
@@ -108,13 +119,19 @@ const ContactUs = () => {
               src={locationIcon}
               alt="location icon"
               className="contact-icon"
+              loading="lazy"
             />
             <p className="contact-address">
               794 Mcallister St San Francisco, 94102
             </p>
           </div>
           <div className="contact-info">
-            <img src={emailIcon} alt="email icon" className="contact-icon" />
+            <img
+              src={emailIcon}
+              alt="email icon"
+              className="contact-icon"
+              loading="lazy"
+            />
             <p className="contact-address">contact@company.com</p>
           </div>
         </div>
