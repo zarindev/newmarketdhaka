@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import sign from '../../images/sign.png';
+import signImg from '../../images/sign.webp';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/brand-logo.png';
-import brandLogoDesk from '../../images/brand-logo-transparent.png';
+import brandLogo from '../../images/brand-logo.webp';
+import brandLogoDesk from '../../images/brand-logo-transparent.webp';
 import './SignIn.css';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
@@ -90,7 +90,7 @@ const SignIn = () => {
     <div className="sign-up-page">
       <div className="left-side">
         <img
-          src={sign}
+          src={signImg}
           alt="cover"
           className="
         sign-up-img"

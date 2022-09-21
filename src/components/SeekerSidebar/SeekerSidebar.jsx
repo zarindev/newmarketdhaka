@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './SeekerSidebar.css';
-import brandLogo from '../../images/brand-logo.png';
+import brandLogo from '../../images/brand-logo.webp';
 import seekerSwitchIcon from '../../images/seeker-switch.png';
 import { adminData, comData } from './sidebarData';
 import { useAuth } from '../../context/AuthProvider';

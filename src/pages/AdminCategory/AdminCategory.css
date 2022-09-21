@@ -27,17 +27,13 @@
   gap: 1rem;
 }
 
-.category-dash-ctn .services-ctn .service:hover {
-  background-color: #febfbf;
-  border-radius: 0.5rem;
+.category-dash-ctn .services-ctn .service:hover,
+.category-dash-ctn .services-ctn .activeSer {
+  background-color: hsl(0, 0%, 92%);
 }
 
 .category-dash-ctn .services .submenu {
   width: 90%;
-}
-
-.category-dash-ctn .services .submenu .tab-underline {
-  bottom: -24px;
 }
 
 .category-dash-ctn .services .rounded-btn {
@@ -140,12 +136,6 @@
 
 .category-dash-ctn .create-category .rounded-btn:active {
   transform: scale(0.99);
-}
-
-@media screen and (max-width: 1200px) {
-  .category-dash-ctn .services .submenu .tab-underline {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1000px) {

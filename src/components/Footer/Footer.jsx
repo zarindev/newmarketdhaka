@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { snakeCase, titleCase } from '../../functions/formatString';
 import './Footer.css';
-import logo from '../../images/svg/Network-Color 1.svg';
+import brandLogo from '../../images/brand-logo.webp';
 import facebookLogo from '../../images/svg/Facebook.svg';
 import twitterLogo from '../../images/svg/Twitter.svg';
 import instagramLogo from '../../images/svg/Instagram.svg';
@@ -20,9 +20,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-info">
-          <div className="footer-logo-ctn">
-            <img src={logo} alt="brand logo" className="footer-logo" />
-          </div>
+          <img src={brandLogo} alt="brand logo" className="footer-logo" />
           <p className="footer-desc">
             Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam
           </p>
