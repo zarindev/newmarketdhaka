@@ -25,13 +25,15 @@ const MoreServices = () => {
             return <SliderComponent key={uuidv4()} serType={service} />;
           })}
         </div>
-        <Link to="/more_services/all_services">
-          <RoundedBtn
-            buttonText="See All Services"
-            buttonIcon={arrowCircleDown}
-            buttonAltText="arrow-circle-down"
-          />
-        </Link>
+        {mergedSerType.length !== 0 && (
+          <Link to="/more_services/all_services">
+            <RoundedBtn
+              text="See All Services"
+              icon={arrowCircleDown}
+              altText="arrow-circle-down"
+            />
+          </Link>
+        )}
       </div>
       <Footer />
     </>
