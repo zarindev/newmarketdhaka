@@ -12,8 +12,8 @@ const SingleService = ({ service, image, servicesRef }) => {
     submenu: [],
   });
 
-  const serviceCtnRef = useRef();
-  const serviceRef = useRef();
+  const serviceCtnRef = useRef(null);
+  const serviceRef = useRef(null);
 
   const getActiveService = () => {
     const data = servicesData.find(
@@ -43,7 +43,11 @@ const SingleService = ({ service, image, servicesRef }) => {
         location={location}
         activeSer={activeSer}
       />
-      <div className="service" ref={serviceRef} onClick={handleClick}>
+      <div
+        className={isSubmenuOpen ? 'service activeSer' : 'service'}
+        ref={serviceRef}
+        onClick={handleClick}
+      >
         <div className="service-img-ctn">
           <img src={image} alt={service} className="service-img" />
         </div>

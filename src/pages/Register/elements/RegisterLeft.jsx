@@ -1,11 +1,14 @@
 import React from 'react';
-import brandLogo from '../../../images/brand-logo.png';
-import brandLogoDesk from '../../../images/brand-logo-transparent.png';
+import { Link } from 'react-router-dom';
+import brandLogo from '../../../images/brand-logo.webp';
+import brandLogoDesk from '../../../images/brand-logo-transparent.webp';
 
 const RegisterLeft = () => {
   return (
     <div className="register-left">
-      <img src={brandLogoDesk} alt="brand logo" className="register-logo" />
+      <Link to="/">
+        <img src={brandLogoDesk} alt="brand logo" className="register-logo" />
+      </Link>
       <img
         src={brandLogo}
         alt="brand logo"

@@ -72,7 +72,7 @@ const SliderComponent = ({ serType }) => {
             },
           }}
           modules={[Navigation]}
-          className="mySwiper"
+          className="carousel"
         >
           {activeSer.map((service) => {
             return (

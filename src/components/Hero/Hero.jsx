@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import './Hero.css';
 import Dots from '../Dots/Dots';
-
-import first from '../../images/hero-image.png';
-import second from '../../images/michael-Wk3P6vL9m40-unsplash.jpg';
-import third from '../../images/benjamin-huggett-Fz35xk6wE9k-unsplash.jpg';
-import fourth from '../../images/simon-gamma-CqTOTZh5vrs-unsplash.jpg';
-import fifth from '../../images/mehdi-messrro-yef79KkAguA-unsplash.jpg';
+import first from '../../images/hero-image-one.webp';
+import second from '../../images/hero-image-two.webp';
+import third from '../../images/hero-image-three.webp';
+import fourth from '../../images/hero-image-four.webp';
+import fifth from '../../images/hero-image-five.webp';
 
 const heroData = [first, second, third, fourth, fifth];
 
@@ -30,11 +29,11 @@ const Hero = () => {
             many more.
           </p>
           <Dots
-            arrLength={5}
+            arrLength={heroData.length}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
             imageData={heroData}
-            autoPlay
+            autoPlay={true}
           />
         </div>
       </div>

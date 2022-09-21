@@ -50,7 +50,7 @@ const AdminCategory = () => {
               <div className="created-ser-styled-divider"></div>
               <RoundedBtn text="Add Service" onClick={addCategory} />
             </div>
-            <Services data={servicesData} />
+            <Services serData={servicesData} />
           </div>
         ) : (
           <div className="create-category-ctn">

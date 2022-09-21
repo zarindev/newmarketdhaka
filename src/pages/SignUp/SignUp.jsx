@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
 import './SignUp.css';
-import sign from '../../images/sign.png';
+import signImg from '../../images/sign.webp';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/brand-logo.png';
-import brandLogoDesk from '../../images/brand-logo-transparent.png';
+import brandLogo from '../../images/brand-logo.webp';
+import brandLogoDesk from '../../images/brand-logo-transparent.webp';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
@@ -66,7 +66,7 @@ const SignUp = () => {
   return (
     <div className="sign-up-page">
       <div className="left-side">
-        <img src={sign} alt="cover" className="sign-up-img" />
+        <img src={signImg} alt="cover" className="sign-up-img" />
         <img
           src={brandLogoDesk}
           alt="new-market-dhaka logo"

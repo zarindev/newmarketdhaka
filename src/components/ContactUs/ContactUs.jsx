@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'; // placeholder => Get started
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/plugin.css';
 import './ContactUs.css';
-import contactImage from '../../images/Ellipse 142.png';
+import contactImage from '../../images/contact.webp';
 import phoneIcon from '../../images/svg/Phone.svg';
 import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';
@@ -15,7 +15,7 @@ const ContactUs = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ mode: 'all' });
 
   const notify = () => {
     toast.success(`Successfully submitted`, {

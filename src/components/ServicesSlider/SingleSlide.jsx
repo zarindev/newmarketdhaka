@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { snakeCase } from '../../functions/formatString';
-import ellipse from '../../images/svg/Ellipse 2.svg';
 import locationIcon from '../../images/svg/location.svg';
 import profileIcon from '../../images/svg/profile.svg';
-import defaultOne from '../../images/service-one.png';
-import defaultTwo from '../../images/service-two.png';
-import defaultThree from '../../images/service-three.png';
-import defaultFour from '../../images/service-zero.png';
+import defaultOne from '../../images/service-one.webp';
+import defaultTwo from '../../images/service-two.webp';
+import defaultThree from '../../images/service-three.webp';
+import defaultFour from '../../images/service-four.webp';
 import Dots from '../Dots/Dots';
+
+const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const SingleSlide = ({
   data,
@@ -21,15 +22,14 @@ const SingleSlide = ({
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
-  const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
-
   return (
     <div className="slide-ctn">
       <Dots
         arrLength={4}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
-        imageData={defaultImg}
+        imageData={defaultData}
+        autoPlay={false}
       />
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
@@ -42,7 +42,7 @@ const SingleSlide = ({
               />
             ) : (
               <img
-                src={defaultImg[imageIndex]}
+                src={defaultData[imageIndex]}
                 alt={title}
                 className="slide-img"
               />

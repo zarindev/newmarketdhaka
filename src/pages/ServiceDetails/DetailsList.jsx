@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
-import ellipse from '../../images/svg/Ellipse 2.svg';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
@@ -10,11 +9,13 @@ import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
 import { capitalCase } from '../../functions/formatString';
-import defaultOne from '../../images/service-one.png';
-import defaultTwo from '../../images/service-two.png';
-import defaultThree from '../../images/service-three.png';
-import defaultFour from '../../images/service-zero.png';
+import defaultOne from '../../images/service-one.webp';
+import defaultTwo from '../../images/service-two.webp';
+import defaultThree from '../../images/service-three.webp';
+import defaultFour from '../../images/service-four.webp';
 import Dots from '../../components/Dots/Dots';
+
+const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const DetailsList = ({ activeSer, activeUser }) => {
   const {
@@ -33,21 +34,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
   const { email, phoneNumber, location } = companyInfo;
 
   const [imageIndex, setImageIndex] = useState(0);
-
-  useEffect(() => {
-    const slider = setInterval(() => {
-      setImageIndex(imageIndex + 1);
-    }, 4000);
-    return () => clearInterval(slider);
-  }, [imageIndex]);
-
-  useEffect(() => {
-    if (image) {
-      imageIndex > image.length - 1 && setImageIndex(0);
-    }
-  }, [image, imageIndex]);
-
-  const defaultImg = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
   // send email to the service creator
   const userEmail = activeUser?.email;
@@ -90,7 +76,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
             />
           ) : (
             <img
-              src={defaultImg[imageIndex]}
+              src={defaultData[imageIndex]}
               alt={title}
               className="details-img"
             />
@@ -99,7 +85,8 @@ const DetailsList = ({ activeSer, activeUser }) => {
             arrLength={4}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
-            imageData={defaultImg}
+            imageData={defaultData}
+            autoPlay={true}
           />
         </div>
         <div className="details-ctn">

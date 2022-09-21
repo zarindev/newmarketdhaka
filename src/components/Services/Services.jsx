@@ -9,7 +9,7 @@ import { useGlobalContext } from '../../context/AppProvider';
 
 const Services = ({ serData }) => {
   const navigate = useNavigate();
-  const servicesRef = useRef();
+  const servicesRef = useRef(null);
   const { mergedSerType } = useGlobalContext();
 
   const handleClick = () => {

@@ -18,14 +18,9 @@
   gap: 1.5rem;
 }
 
-.footer-logo-ctn {
-  width: 200px;
-  height: 45px;
-}
-
 .footer-logo {
-  width: 100%;
-  height: 100%;
+  width: 140px;
+  height: auto;
   object-fit: cover;
 }
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
-import brandLogo from '../../../images/brand-logo.png';
+import brandLogo from '../../../images/brand-logo.webp';
 import './TopNav.css';
 import burgerBtn from '../../../images/svg/bytesize_menu.svg';
 import closeButton from '../../../images/svg/radix-icons_cross-circled.svg';
