@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 export const useSerQuery = () => {
-  const serGet = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/GetServiceList`;
+  const serGet = process.env.REACT_APP_SER_GET_API_KEY;
   const fetchSer = async () => {
     const res = await fetch(serGet);
     return res.json();

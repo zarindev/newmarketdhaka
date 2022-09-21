@@ -1,7 +1,7 @@
 .more-services-ctn {
   width: 90vw;
   max-width: 980px;
-  margin: 10.6rem auto 4.5rem auto;
+  margin: 10.6rem auto 3rem auto;
 }
 
 .more-services {
@@ -19,12 +19,20 @@
   border: 1.4px solid #e5e5e5;
 }
 
+.more-services-ctn .rounded-btn {
+  margin-top: 2.7rem;
+}
+
 @media screen and (max-width: 1000px) {
   .more-services-ctn {
-    margin: 7.5rem auto 4rem auto;
+    margin: 7.5rem auto 3.5rem auto;
   }
 
   .more-services {
     margin-top: 1.7rem;
+  }
+
+  .more-services-ctn .rounded-btn {
+    margin-top: 2.3rem;
   }
 }

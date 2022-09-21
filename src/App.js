@@ -4,7 +4,7 @@ import AboutUs from './pages/AboutUS/AboutUs';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
-import AllServices from './pages/AllServices/AdminPanel';
+import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';

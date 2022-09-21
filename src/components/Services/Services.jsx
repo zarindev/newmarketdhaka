@@ -1,18 +1,31 @@
 import React, { useRef } from 'react';
 import './Services.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import SingleService from './SingleService';
 import RoundedBtn from '../Button/RoundedBtn';
+import { useGlobalContext } from '../../context/AppProvider';
 
-const Services = ({ data }) => {
+const Services = ({ serData }) => {
+  const navigate = useNavigate();
   const servicesRef = useRef();
+  const { mergedSerType } = useGlobalContext();
+
+  const handleClick = () => {
+    mergedSerType.length === 0
+      ? toast.info('Please wait while the services are loading', {
+          progress: undefined,
+          toastId: 'serLoading',
+        })
+      : navigate('/all_services');
+  };
 
   return (
     <div className="services">
       <h1 className="services-title">All Services</h1>
       <div className="services-ctn" ref={servicesRef}>
-        {data.map((service) => {
+        {serData.map((service) => {
           return (
             <SingleService
               key={service.id}
@@ -23,13 +36,12 @@ const Services = ({ data }) => {
         })}
         <div className="styled-divider"></div>
       </div>
-      <Link className="services-btn-link" to="/all_services">
-        <RoundedBtn
-          text="See All Services"
-          icon={arrowCircleDown}
-          altText="arrow-circle-down"
-        />
-      </Link>
+      <RoundedBtn
+        text="See All Services"
+        icon={arrowCircleDown}
+        altText="arrow-circle-down"
+        onClick={handleClick}
+      />
     </div>
   );
 };

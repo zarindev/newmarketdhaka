@@ -12,11 +12,9 @@ import emailIcon from '../../images/svg/Email-black.svg';
 import phoneIcon from '../../images/svg/Phone-black.svg';
 import locationIcon from '../../images/svg/Location-black.svg';
 import { useGlobalContext } from '../../context/AppProvider';
-import { useMerge } from '../../hooks/useMerge';
 
 const Footer = () => {
-  const { showDropdown, setShowDropdown } = useGlobalContext();
-  const { mergedSerTypeAll } = useMerge();
+  const { mergedSerTypeAll } = useGlobalContext();
 
   return (
     <footer className="footer">
@@ -99,11 +97,7 @@ const Footer = () => {
           <ul className="footer-services">
             {mergedSerTypeAll.map((item) => {
               return (
-                <Link
-                  to={`/home/${snakeCase(item)}`}
-                  key={uuidv4()}
-                  onClick={() => setShowDropdown(!showDropdown)}
-                >
+                <Link to={`/home/${snakeCase(item)}`} key={uuidv4()}>
                   <li className="footer-link">{titleCase(item)}</li>
                 </Link>
               );
