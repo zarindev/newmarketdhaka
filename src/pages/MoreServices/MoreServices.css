@@ -6,13 +6,10 @@
 
 .more-services {
   margin-top: 2.5rem;
-  display: grid;
-  place-items: center;
-  gap: 4rem;
 }
 
 .more-services-ctn .slider-component {
-  margin: 0 auto;
+  margin: 35px auto 0 auto;
 }
 
 .more-services-ctn .slide {
