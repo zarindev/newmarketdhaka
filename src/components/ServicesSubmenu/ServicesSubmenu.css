@@ -39,8 +39,8 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   width: 100%;
+  font-size: clamp(0.84375rem, 0.825rem + 0.09375vw, 0.9375rem);
   font-weight: 600;
-  font-size: 17px;
   color: #000000;
   white-space: nowrap;
   cursor: pointer;
@@ -85,8 +85,8 @@
 }
 
 .submenu-link {
+  font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
   font-weight: 400;
-  font-size: 15px;
   color: #424242;
   cursor: pointer;
 }
@@ -103,14 +103,6 @@
 
   .submenu-tabs {
     gap: 1.2rem;
-  }
-
-  .submenu-tab {
-    font-size: 15px;
-  }
-
-  .submenu-link {
-    font-size: 14px;
   }
 
   .tab-underline {
