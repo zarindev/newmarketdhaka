@@ -9,7 +9,6 @@ import RegisterLeft from './elements/RegisterLeft';
 import successImage from '../../images/success.png';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useAuth } from '../../context/AuthProvider';
-import { useGlobalContext } from '../../context/AppProvider';
 
 const RegisterFormSuccess = () => {
   useDocTitle();
@@ -50,7 +49,7 @@ const RegisterFormSuccess = () => {
   const { user } = useAuth();
   const uid = user?.uid;
 
-  const { comPost } = useGlobalContext();
+  const comPost = process.env.REACT_APP_COM_POST_API_KEY;
 
   const onSubmit = async () => {
     delete state.state;

@@ -6,14 +6,13 @@ import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import SearchDropdown from './SearchDropdown';
-import { useGlobalContext } from '../../context/AppProvider';
 import { useSerQuery } from '../../hooks/useSerQuery';
-import { useMerge } from '../../hooks/useMerge';
+import { useGlobalContext } from '../../context/AppProvider';
 
 const SearchBox = () => {
-  const { showDropdown, setShowDropdown } = useGlobalContext();
+  const [showDropdown, setShowDropdown] = useState(false);
   const { serData } = useSerQuery();
-  const { mergedSerTypeAll } = useMerge();
+  const { mergedSerTypeAll } = useGlobalContext();
 
   const navigate = useNavigate();
 

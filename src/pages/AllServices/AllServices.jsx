@@ -5,6 +5,7 @@ import Services from '../../components/Services/Services';
 import AllServicesList from './AllServicesList';
 import Footer from '../../components/Footer/Footer';
 import { useDocTitle } from '../../hooks/useDocTitle';
+import { servicesData } from '../../components/Services/servicesData';
 import { allServicesData } from './allServicesData';
 
 const AllServices = () => {
@@ -17,7 +18,7 @@ const AllServices = () => {
         <div className="all-services-banner">
           <h1 className="all-services-title">All Services</h1>
         </div>
-        <Services />
+        <Services serData={servicesData} />
         <div className="all-services-contents">
           {allServicesData.map((service) => {
             return <AllServicesList key={uuidv4()} {...service} />;

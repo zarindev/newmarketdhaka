@@ -28,7 +28,7 @@ const HomePage = () => {
       <CategoryNav />
       <Hero />
       <SearchBox />
-      <Services data={servicesData} />
+      <Services serData={servicesData} />
       <ServicesSlider />
       <ContactUs />
       <Footer />

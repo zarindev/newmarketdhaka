@@ -17,7 +17,6 @@ import { categoryTags, closingDays, dragAndDrops } from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
 import { useFilter } from '../../hooks/useFilter';
-import { useGlobalContext } from '../../context/AppProvider';
 
 const UploadService = () => {
   useDocTitle();
@@ -40,7 +39,7 @@ const UploadService = () => {
   console.log(activeComId);
 
   const { serRefetch } = useFilter('companyInfoId', activeComId);
-  const { serPost } = useGlobalContext();
+  const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
     console.log(data);
