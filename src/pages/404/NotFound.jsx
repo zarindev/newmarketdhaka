@@ -13,7 +13,7 @@ const NotFound = () => {
     <>
       <TopNav />
       <div className="error">
-        <img src={error} alt="404" className="error-img" />
+        <img src={error} alt="404" className="error-img" loading="lazy" />
         <Link to="/">
           <RoundedBtn buttonText="Go Back" />
         </Link>
