@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
-import AboutUs from './pages/AboutUS/AboutUs';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
@@ -33,7 +33,7 @@ import AdminCategory from './pages/AdminCategory/AdminCategory';
 import AdminSettings from './pages/AdminSettings/AdminSettings';
 import ManageServices from './pages/ManageServices/ManageServices';
 
-function App() {
+const App = () => {
   return (
     <>
       <Toastify position="bottom-left" />
@@ -41,7 +41,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/home/:service_type" element={<SameServices />} />
         <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
-        <Route path="/about_us" element={<AboutUs />} />
+        <Route path="/about_us" element={<AboutUsPage />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up/step2" element={<SignUpTwo />} />
         <Route path="/sign_up" element={<SignUp />} />
@@ -95,6 +95,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

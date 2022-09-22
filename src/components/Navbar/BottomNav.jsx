@@ -1,13 +1,11 @@
-import { useState } from 'react';
-import './CategoryNav.css';
+import './Navbar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../../context/AuthProvider';
-import { formatError } from '../../../functions/formatString';
-import { useFind } from '../../../hooks/useFind';
+import { useAuth } from '../../context/AuthProvider';
+import { formatError } from '../../functions/formatString';
+import { useFind } from '../../hooks/useFind';
 
-const CategoryNav = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+const BottomNav = () => {
   const navigate = useNavigate();
 
   // signout
@@ -34,7 +32,7 @@ const CategoryNav = () => {
 
   return (
     <div className="category-nav-ctn">
-      <ul className={showMobileMenu ? 'navlinks navlinks-mobile' : 'navlinks'}>
+      <ul className="sublinks">
         <NavLink to="/" className="nav-link">
           Home
         </NavLink>
@@ -66,4 +64,4 @@ const CategoryNav = () => {
   );
 };
 
-export default CategoryNav;
+export default BottomNav;

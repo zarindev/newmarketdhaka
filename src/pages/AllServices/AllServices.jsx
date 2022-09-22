@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import './AllServices.css';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
+import TopNav from '../../components/Navbar/TopNav';
 import Services from '../../components/Services/Services';
 import AllServicesList from './AllServicesList';
 import Footer from '../../components/Footer/Footer';

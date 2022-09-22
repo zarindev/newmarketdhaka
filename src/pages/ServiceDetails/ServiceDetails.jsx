@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
+import TopNav from '../../components/Navbar/TopNav';
+import BottomNav from '../../components/Navbar/BottomNav';
 import Footer from '../../components/Footer/Footer';
 import SliderComponent from '../../components/ServicesSlider/SliderComponent';
 import DetailsList from './DetailsList';
@@ -32,7 +31,7 @@ const ServiceDetails = () => {
   return (
     <ScrollToTop>
       <TopNav />
-      <CategoryNav />
+      <BottomNav />
       <div className="service-details">
         <p className="details-directory">
           <Link to="/">{checkCase(service_type)}</Link>/

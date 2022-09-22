@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './SameServices.css';
 import SingleSlide from '../../components/ServicesSlider/SingleSlide';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
-import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
+import TopNav from '../../components/Navbar/TopNav';
+import BottomNav from '../../components/Navbar/BottomNav';
 import Footer from '../../components/Footer/Footer';
 import ScrollToTop from '../../utils/ScrollToTop';
 import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
@@ -32,7 +32,7 @@ const SameServices = () => {
   return (
     <ScrollToTop>
       <TopNav />
-      <CategoryNav />
+      <BottomNav />
       {serIsLoading ? (
         <Loading color="#ce2d4f" size={115} />
       ) : (

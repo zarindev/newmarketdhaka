@@ -1,7 +1,8 @@
 import React from 'react';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
+import './AboutUsPage.css';
+import TopNav from '../../components/Navbar/TopNav';
+import BottomNav from '../../components/Navbar/BottomNav';
 import Footer from '../../components/Footer/Footer';
-import './AboutUs.css';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import thirdImage from '../../images/about-content-one.webp';
 import fourthImage from '../../images/about-content-two.webp';
@@ -40,12 +41,13 @@ const aboutData = [
   },
 ];
 
-const AboutUs = () => {
+const AboutUsPage = () => {
   useDocTitle();
 
   return (
     <>
       <TopNav />
+      <BottomNav />
       <div className="about">
         <div className="about-banner">
           <h1 className="about-title">About Us</h1>
@@ -75,4 +77,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUsPage;
