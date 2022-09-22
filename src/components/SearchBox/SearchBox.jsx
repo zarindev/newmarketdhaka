@@ -70,11 +70,13 @@ const SearchBox = () => {
       <div className="serach-ctn">
         <form className="form-control" onSubmit={handleSearch}>
           <SearchDropdown
+            dropClass="dropCateogry"
             dropType="Category"
             dropData={serData}
             dropCategoryData={mergedSerTypeAll}
           />
           <SearchDropdown
+            dropClass="dropLocation"
             dropType="Location"
             dropData={serData}
             dropLocationData={locations}

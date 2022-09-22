@@ -7,6 +7,7 @@ import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import Loading from '../Loading/Loading';
 
 const SearchDropdown = ({
+  dropClass,
   dropType,
   dropData,
   dropCategoryData,
@@ -37,7 +38,7 @@ const SearchDropdown = ({
   };
 
   return (
-    <div className="search-category-ctn" ref={buttonCtnRef}>
+    <div className={`${dropClass} search-category-ctn`} ref={buttonCtnRef}>
       <div
         className={
           showDropdown ? 'category-btn category-btn-active' : 'category-btn'
