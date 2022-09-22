@@ -1,12 +1,19 @@
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
 
-const UploadSelect = ({ name, control, items, isMulti }) => {
+const UploadSelect = ({
+  name,
+  control,
+  items,
+  isMulti,
+  placeholder,
+  isRequired,
+}) => {
   return (
     <Controller
       name={name}
       control={control}
-      rules={{ required: true }}
+      rules={{ required: isRequired }}
       render={({ field }) => (
         <Select
           {...field}
@@ -14,9 +21,7 @@ const UploadSelect = ({ name, control, items, isMulti }) => {
           isClearable={true}
           isMulti={isMulti}
           options={items}
-          placeholder={
-            <p className="upload-ser-tag-placeholder">Select category</p>
-          }
+          placeholder={placeholder}
         />
       )}
     />

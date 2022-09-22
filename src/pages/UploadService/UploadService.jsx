@@ -13,7 +13,12 @@ import imageIcon from '../../images/svg/image-el.svg';
 import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
 import UploadSelect from './UploadSelect';
 import RegisterUpload from '../Register/elements/RegisterUpload';
-import { categoryTags, closingDays, dragAndDrops } from './uploadData';
+import {
+  categoryTags,
+  closingDays,
+  dragAndDrops,
+  locations,
+} from './uploadData';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import { useFind } from '../../hooks/useFind';
 import { useFilter } from '../../hooks/useFilter';
@@ -53,6 +58,7 @@ const UploadService = () => {
     data.serImg = '';
     data.serType = data.serType.label;
     data.serviceClose = data.serviceClose.label;
+    data.location = data.location.value;
 
     const res = await fetch(serPost, {
       method: 'POST',
@@ -118,6 +124,12 @@ const UploadService = () => {
                   control={control}
                   items={categoryTags}
                   isMulti={false}
+                  placeholder={
+                    <p className="upload-ser-tag-placeholder">
+                      Select category
+                    </p>
+                  }
+                  isRequired={true}
                 />
               </div>
               <div className="upload-ser-input-ctn">
@@ -152,6 +164,12 @@ const UploadService = () => {
                   control={control}
                   items={closingDays}
                   isMulti={false}
+                  placeholder={
+                    <p className="upload-ser-tag-placeholder">
+                      Select closing days
+                    </p>
+                  }
+                  isRequired={true}
                 />
               </div>
               <div className="upload-ser-input-ctn">
@@ -163,13 +181,17 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Location</p>
                 </label>
-                <input
-                  type="text"
-                  className="register-form-input"
-                  placeholder="Add Location"
-                  {...register('location', {
-                    required: true,
-                  })}
+                <UploadSelect
+                  name="location"
+                  control={control}
+                  items={locations}
+                  isMulti={false}
+                  placeholder={
+                    <p className="upload-ser-tag-placeholder">
+                      Select location
+                    </p>
+                  }
+                  isRequired={true}
                 />
               </div>
               <div className="upload-ser-input-ctn">

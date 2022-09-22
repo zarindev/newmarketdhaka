@@ -11,18 +11,16 @@ const SerachResult = () => {
   useDocTitle();
 
   const locState = useLocation()?.state;
-  const keywordResult = locState.keywordSer;
-  const locationResult = locState.locationSer;
-  const keywordVal = locState.keywordVal;
-  const locationVal = locState.locationVal;
+  const searchResult = locState.searchResult;
+  const searchText = locState.searchText;
+  console.log(locState);
 
   return (
     <ScrollToTop>
       <TopNav />
       <CategoryNav />
       <div className="result">
-        <ResultType result={keywordResult} searchVal={keywordVal} />
-        <ResultType result={locationResult} searchVal={locationVal} />
+        <ResultType searchResult={searchResult} searchText={searchText} />
       </div>
       <Footer />
     </ScrollToTop>

@@ -5,7 +5,6 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import TopNav from '../../components/Navigation/TopNav/TopNav';
 import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
 import Footer from '../../components/Footer/Footer';
-import PaginationCom from '../../components/PaginationCom/PaginationCom';
 import ScrollToTop from '../../utils/ScrollToTop';
 import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
@@ -16,13 +15,8 @@ const SameServices = () => {
   useDocTitle();
 
   const { serData, serIsLoading } = useSerQuery();
-
   const { service_type } = useParams();
   const [activeSer, setActiveSer] = useState([]);
-  const [activeServices, setActiveServices] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [serviceOffset, setServiceOffset] = useState(0); // serviceOffset => index of the first service
-  const servicesPerPage = 9;
 
   useEffect(() => {
     if (serData && titleCase(service_type) === 'All') {
@@ -34,12 +28,6 @@ const SameServices = () => {
       setActiveSer(mergedSer);
     }
   }, [serData, service_type]);
-
-  useEffect(() => {
-    const endOffset = serviceOffset + servicesPerPage; // endOffset => index of the last servcie
-    setActiveServices(activeSer.slice(serviceOffset, endOffset));
-    setPageCount(Math.ceil(activeSer.length / servicesPerPage));
-  }, [activeSer, serviceOffset, servicesPerPage]);
 
   return (
     <ScrollToTop>
@@ -60,7 +48,7 @@ const SameServices = () => {
             {activeSer.length <= 0 ? (
               <Loading color="#ce2d4f" size={125} />
             ) : (
-              activeServices.map((service) => {
+              activeSer.map((service) => {
                 return (
                   <SingleSlide
                     key={service.id}
@@ -71,13 +59,6 @@ const SameServices = () => {
               })
             )}
           </div>
-          <PaginationCom
-            activeServices={activeServices}
-            pageCount={pageCount}
-            serviceOffset={serviceOffset}
-            setServiceOffset={setServiceOffset}
-            servicesPerPage={servicesPerPage}
-          />
         </div>
       )}
 

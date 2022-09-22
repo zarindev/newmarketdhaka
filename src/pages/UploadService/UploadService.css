@@ -62,6 +62,24 @@
   width: 100%;
 }
 
+.countryWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.countryFlag {
+  width: 23px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.selectLabel {
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
 .upload-ser-left .css-1s2u09g-control,
 .upload-ser-left .css-1pahdxg-control {
   padding: 0.26rem 0.5rem;
