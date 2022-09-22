@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { snakeCase, titleCase } from '../../functions/formatString';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
+import downArrow from '../../images/svg/arrow-down.svg';
 import Loading from '../Loading/Loading';
 
 const SearchDropdown = ({
@@ -16,8 +16,8 @@ const SearchDropdown = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const buttonCtnRef = useRef(null);
-  useOnClickOutside(buttonCtnRef, () => setShowDropdown(false));
+  const btnWrapperRef = useRef(null);
+  useOnClickOutside(btnWrapperRef, () => setShowDropdown(false));
 
   const showSearchLocation = (e) => {
     setShowDropdown(!showDropdown);
@@ -38,7 +38,7 @@ const SearchDropdown = ({
   };
 
   return (
-    <div className={`${dropClass} search-category-ctn`} ref={buttonCtnRef}>
+    <div className={`${dropClass} search-category-ctn`} ref={btnWrapperRef}>
       <div
         className={
           showDropdown ? 'category-btn category-btn-active' : 'category-btn'
@@ -46,7 +46,7 @@ const SearchDropdown = ({
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <p className="category-btn-text">{dropType}</p>
-        <img src={downArrow} alt="down-arrow icon" />
+        <img src={downArrow} alt="down-arrow" />
       </div>
       <ul
         className={

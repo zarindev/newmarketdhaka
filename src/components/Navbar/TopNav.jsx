@@ -5,6 +5,8 @@ import brandLogo from '../../images/brand-logo.webp';
 import SearchBox from '../SearchBox/SearchBox';
 import PostBtn from './PostBtn';
 import MobileBtn from './MobileBtn';
+import ProfileBtn from './ProfileBtn';
+import BottomLinks from './BottomLinks';
 
 const TopNav = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,8 +21,15 @@ const TopNav = () => {
             className="nav-brand-logo"
           />
         </Link>
-        <ul className="navLinks">
+        <div className="navLinks">
           <SearchBox />
+          <ProfileBtn />
+        </div>
+        <ul
+          className={isMobile ? 'mobileLinks mobileLinksActive' : 'mobileLinks'}
+        >
+          <BottomLinks setIsMobile={setIsMobile} />
+          <PostBtn />
         </ul>
         <PostBtn />
         <MobileBtn isMobile={isMobile} setIsMobile={setIsMobile} />
