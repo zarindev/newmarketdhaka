@@ -11,7 +11,6 @@ import {
   snakeCase,
 } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import ScrollToTop from '../../utils/ScrollToTop';
 import Loading from '../../components/Loading/Loading';
 import { useAuth } from '../../context/AuthProvider';
 import { useSerQuery } from '../../hooks/useSerQuery';
@@ -29,7 +28,7 @@ const ServiceDetails = () => {
   const { user } = useAuth();
 
   return (
-    <ScrollToTop>
+    <>
       <TopNav />
       <BottomNav />
       <div className="service-details">
@@ -54,7 +53,7 @@ const ServiceDetails = () => {
         )}
       </div>
       <Footer />
-    </ScrollToTop>
+    </>
   );
 };
 

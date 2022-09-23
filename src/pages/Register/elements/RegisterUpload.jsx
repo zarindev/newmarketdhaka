@@ -10,10 +10,9 @@ const RegisterUpload = ({
   value,
   name,
   setValue,
-  setError,
-  clearErrors,
 }) => {
   const [files, setFiles] = useState([]);
+  const [photo, setPhoto] = useState({ name: '', uri: '' });
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -27,30 +26,22 @@ const RegisterUpload = ({
 
       acceptedFiles.forEach((file) => {
         const reader = new FileReader();
-        reader.onabort = () => console.log('file reading was aborted');
-        reader.onerror = () => console.log('file reading has failed');
+        reader.readAsDataURL(file);
         reader.onload = () => {
-          // Do whatever you want with the file contents
-          const binaryStr = reader.result;
-          const byteArray = new Uint8Array(binaryStr);
-          const base64 = btoa(
-            String.fromCharCode(...new Uint8Array(binaryStr))
-          );
-          file['byteArray'] = byteArray;
-          file['base64'] = base64;
+          setPhoto({ name: file.name, uri: reader.result });
+          file['photo'] = photo;
         };
         reader.onloadend = () => {
           setValue(name, file, { require: true });
         };
-        reader.readAsArrayBuffer(file);
       });
     },
-    [name, setValue]
+    [name, setValue, photo]
   );
 
   const acceptType = [
     {
-      'image/*': ['.jpeg', '.png'],
+      'image/*': ['.jpeg', '.png', '.webp'],
     },
     {
       'text/plain': ['.txt'],

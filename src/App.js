@@ -8,6 +8,7 @@ import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import UserProfile from './pages/UserProfile/UserProfile';
 import Register from './pages/Register/Register';
 import RegisterFormOne from './pages/Register/RegisterFormOne';
 import RegisterFormTwo from './pages/Register/RegisterFormTwo';
@@ -75,7 +76,9 @@ const App = () => {
           path="/register/individual/success"
           element={<RegisterFormSucessIndie />}
         />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
+        <Route path="/user_profile" element={<UserProfile />} />
         <Route path="/results" element={<SerachResult />} />
         <Route path="/all_services" element={<AllServices />} />
         <Route path="/more_services" element={<MoreServices />} />
@@ -86,7 +89,6 @@ const App = () => {
           element={<UploadService />}
         />
         <Route path="/manage_services" element={<ManageServices />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/admin_panel" element={<AdminPanel />} />
         <Route path="/approval" element={<AdminApproval />} />
         <Route path="/category_creation" element={<AdminCategory />} />

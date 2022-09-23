@@ -4,11 +4,10 @@ import './styles/index.css';
 import App from './App';
 import { StateMachineProvider, createStore } from 'little-state-machine';
 import { AppProvider } from './context/AppProvider';
-import ScrollToTop from './utils/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import React from 'react';
+import ScrollToTop from './pages/ScrollToTop';
 
 const queryClient = new QueryClient();
 

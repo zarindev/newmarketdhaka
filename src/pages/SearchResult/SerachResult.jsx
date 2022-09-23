@@ -3,7 +3,6 @@ import Footer from '../../components/Footer/Footer';
 import TopNav from '../../components/Navbar/TopNav';
 import BottomNav from '../../components/Navbar/BottomNav';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import ScrollToTop from '../../utils/ScrollToTop';
 import ResultType from './ResultType';
 import './SerachResult.css';
 
@@ -16,14 +15,14 @@ const SerachResult = () => {
   console.log(locState);
 
   return (
-    <ScrollToTop>
+    <>
       <TopNav />
       <BottomNav />
       <div className="result">
         <ResultType searchResult={searchResult} searchText={searchText} />
       </div>
       <Footer />
-    </ScrollToTop>
+    </>
   );
 };
 

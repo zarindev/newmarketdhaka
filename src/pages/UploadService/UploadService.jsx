@@ -47,18 +47,11 @@ const UploadService = () => {
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
-    console.log(data);
-
-    // delete data.serImg1;
-    // delete data.serImg2;
-    // delete data.serImg3;
-    // delete data.serImg4;
     data.CompanyInfoId = activeComId;
-    data.Data = data.serImg.base64;
-    data.serImg = '';
-    data.serType = data.serType.label;
-    data.serviceClose = data.serviceClose.label;
+    data.serType = data.serType.value;
+    data.serviceClose = data.serviceClose.value;
     data.location = data.location.value;
+    console.log(data);
 
     const res = await fetch(serPost, {
       method: 'POST',

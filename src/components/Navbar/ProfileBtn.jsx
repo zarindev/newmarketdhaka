@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuth } from '../../context/AuthProvider';
 import { formatError } from '../../functions/formatString';
@@ -48,7 +48,9 @@ const ProfileBtn = () => {
               showProfileDrop ? 'profileDrop profileDropActive' : 'profileDrop'
             }
           >
-            <li className="profileLink">Settings</li>
+            <li className="profileLink">
+              <Link to="/user_profile">Settings</Link>
+            </li>
             <li className="profileLink" onClick={handleSignout}>
               Sign out
             </li>

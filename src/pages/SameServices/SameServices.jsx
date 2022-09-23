@@ -5,7 +5,6 @@ import SingleSlide from '../../components/ServicesSlider/SingleSlide';
 import TopNav from '../../components/Navbar/TopNav';
 import BottomNav from '../../components/Navbar/BottomNav';
 import Footer from '../../components/Footer/Footer';
-import ScrollToTop from '../../utils/ScrollToTop';
 import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
 import { useDocTitle } from '../../hooks/useDocTitle';
 import Loading from '../../components/Loading/Loading';
@@ -30,7 +29,7 @@ const SameServices = () => {
   }, [serData, service_type]);
 
   return (
-    <ScrollToTop>
+    <>
       <TopNav />
       <BottomNav />
       {serIsLoading ? (
@@ -63,7 +62,7 @@ const SameServices = () => {
       )}
 
       <Footer />
-    </ScrollToTop>
+    </>
   );
 };
 
