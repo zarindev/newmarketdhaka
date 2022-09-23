@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
-import AboutUs from './pages/AboutUS/AboutUs';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
@@ -8,6 +8,7 @@ import AllServices from './pages/AllServices/AllServices';
 import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import UserProfile from './pages/UserProfile/UserProfile';
 import Register from './pages/Register/Register';
 import RegisterFormOne from './pages/Register/RegisterFormOne';
 import RegisterFormTwo from './pages/Register/RegisterFormTwo';
@@ -33,7 +34,7 @@ import AdminCategory from './pages/AdminCategory/AdminCategory';
 import AdminSettings from './pages/AdminSettings/AdminSettings';
 import ManageServices from './pages/ManageServices/ManageServices';
 
-function App() {
+const App = () => {
   return (
     <>
       <Toastify position="bottom-left" />
@@ -41,7 +42,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/home/:service_type" element={<SameServices />} />
         <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
-        <Route path="/about_us" element={<AboutUs />} />
+        <Route path="/about_us" element={<AboutUsPage />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up/step2" element={<SignUpTwo />} />
         <Route path="/sign_up" element={<SignUp />} />
@@ -75,7 +76,9 @@ function App() {
           path="/register/individual/success"
           element={<RegisterFormSucessIndie />}
         />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
+        <Route path="/user_profile" element={<UserProfile />} />
         <Route path="/results" element={<SerachResult />} />
         <Route path="/all_services" element={<AllServices />} />
         <Route path="/more_services" element={<MoreServices />} />
@@ -86,7 +89,6 @@ function App() {
           element={<UploadService />}
         />
         <Route path="/manage_services" element={<ManageServices />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/admin_panel" element={<AdminPanel />} />
         <Route path="/approval" element={<AdminApproval />} />
         <Route path="/category_creation" element={<AdminCategory />} />
@@ -95,6 +97,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

@@ -2,15 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './SearchBox.css';
-import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
 import searchIcon from '../../images/svg/search-normal.svg';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import SearchDropdown from './SearchDropdown';
 import { useSerQuery } from '../../hooks/useSerQuery';
 import { useGlobalContext } from '../../context/AppProvider';
+import { locations } from '../../pages/UploadService/uploadData';
 
 const SearchBox = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
   const { serData } = useSerQuery();
   const { mergedSerTypeAll } = useGlobalContext();
 
@@ -18,11 +16,9 @@ const SearchBox = () => {
 
   // search via string matching
   const [keywordSer, setKeywordSer] = useState([]);
-  const [locationSer, setLocationSer] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
 
   const keywordRef = useRef(null);
-  const locationRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -36,35 +32,23 @@ const SearchBox = () => {
       setKeywordSer(keywordFilter);
     }
 
-    if (locationRef.current?.value.length > 0) {
-      const locationFilter = serData.filter((service) =>
-        service.location
-          .toLowerCase()
-          .includes(locationRef.current?.value.toLowerCase())
+    if (keywordRef.current?.value.length === 0) {
+      toast.info(
+        `Pleasae select a 'Category' or 'Location' or input 'Keywords'`,
+        {
+          progress: undefined,
+          toastId: 'searchOne',
+        }
       );
-      setLocationSer(locationFilter);
-    }
-
-    if (
-      keywordRef.current?.value.length === 0 &&
-      locationRef.current?.value.length === 0
-    ) {
-      toast.info(`Pleasae input 'Keywords' or 'Location'`, {
-        progress: undefined,
-        toastId: 'searchOne',
-      });
     }
   };
 
   useEffect(() => {
-    if (keywordSer.length > 0 || locationSer.length > 0) {
+    if (keywordSer.length > 0) {
       setIsSearched(true);
     }
 
-    if (
-      (keywordRef.current?.value.length > 0 && keywordSer.length === 0) ||
-      (locationRef.current?.value.length > 0 && locationSer.length === 0)
-    ) {
+    if (keywordRef.current?.value.length > 0 && keywordSer.length === 0) {
       toast.error(`No services found`, {
         progress: undefined,
         toastId: 'searchTwo',
@@ -75,52 +59,34 @@ const SearchBox = () => {
       navigate('/results', {
         state: {
           id: 1,
-          keywordSer: keywordSer,
-          locationSer: locationSer,
-          keywordVal: keywordRef.current?.value,
-          locationVal: locationRef.current?.value,
+          searchResult: keywordSer,
+          searchText: keywordRef.current?.value,
         },
       });
-  }, [navigate, keywordSer, locationSer, isSearched]);
-
-  const buttonCtnRef = useRef(null);
-  useOnClickOutside(buttonCtnRef, () => setShowDropdown(false));
+  }, [navigate, keywordSer, isSearched]);
 
   return (
     <div className="search">
       <div className="serach-ctn">
         <form className="form-control" onSubmit={handleSearch}>
-          <div className="search-category-ctn" ref={buttonCtnRef}>
-            <div
-              className={`${
-                showDropdown
-                  ? 'category-btn category-btn-active'
-                  : 'category-btn'
-              }`}
-              onClick={() => setShowDropdown(!showDropdown)}
-            >
-              <p className="category-btn-text">ALL</p>
-              <img src={downArrow} alt="down-arrow icon" />
-            </div>
-            <SearchDropdown
-              showDropdown={showDropdown}
-              setShowDropdown={setShowDropdown}
-              mergedSerTypeAll={mergedSerTypeAll}
-            />
-          </div>
-          <input
-            type="text"
-            placeholder="Keywords"
-            className="search-keywords search-input"
-            ref={keywordRef}
-            onChange={() => keywordRef.current?.value}
+          <SearchDropdown
+            dropClass="dropCateogry"
+            dropType="Category"
+            dropData={serData}
+            dropCategoryData={mergedSerTypeAll}
+          />
+          <SearchDropdown
+            dropClass="dropLocation"
+            dropType="Location"
+            dropData={serData}
+            dropLocationData={locations}
           />
           <input
             type="text"
-            placeholder="Location"
-            className="search-location search-input"
-            ref={locationRef}
-            onChange={() => locationRef.current?.value}
+            placeholder="Keywords"
+            className="search-keyword"
+            ref={keywordRef}
+            onChange={() => keywordRef.current?.value}
           />
           <button className="search-btn">
             <img

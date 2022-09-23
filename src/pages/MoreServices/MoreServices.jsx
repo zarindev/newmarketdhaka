@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Footer from '../../components/Footer/Footer';
-import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
+import TopNav from '../../components/Navbar/TopNav';
+import BottomNav from '../../components/Navbar/BottomNav';
 import SliderComponent from '../../components/ServicesSlider/SliderComponent';
 import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
 import './MoreServices.css';
@@ -18,7 +18,7 @@ const MoreServices = () => {
   return (
     <>
       <TopNav />
-      <CategoryNav />
+      <BottomNav />
       <div className="more-services-ctn">
         <div className="more-services">
           {mergedSerType.map((service) => {

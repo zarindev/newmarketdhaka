@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import downArrow from '../../images/svg/down-arrow 1 (Traced).svg';
+import downArrow from '../../images/svg/arrow-down.svg';
 import ServicesSubmenu from '../ServicesSubmenu/ServicesSubmenu';
 import { servicesData } from './servicesData';
 
@@ -54,11 +54,7 @@ const SingleService = ({ service, image, servicesRef }) => {
         <div className="service-title-ctn">
           <p className="service-title">{service}</p>
           {activeSer.submenu && (
-            <img
-              src={downArrow}
-              alt="down-arrow icon"
-              className="service-icon"
-            />
+            <img src={downArrow} alt="down-arrow" className="service-icon" />
           )}
         </div>
       </div>

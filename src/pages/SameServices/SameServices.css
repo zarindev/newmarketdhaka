@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
   justify-items: center;
-  gap: 4rem 1rem;
+  gap: 2rem 1rem;
 }
 
 .same-services-ctn .slider-heading {
