@@ -55,7 +55,7 @@ const RegisterUpload = ({
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          file['public_id'] = data.public_id;
+          file['publicId'] = data.public_id;
         };
         reader.onloadend = () => {
           setValue(name, file, { require: true });

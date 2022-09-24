@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -31,7 +30,7 @@ const UploadService = () => {
 
   const {
     register,
-    formState: { errors },
+
     control,
     setValue,
     setError,
@@ -52,10 +51,10 @@ const UploadService = () => {
     data.serType = data.serType.value;
     data.serviceClose = data.serviceClose.value;
     data.location = data.location.value;
-    data.serImg1 = data.serImg1.public_id;
-    data.serImg2 = data.serImg2.public_id;
-    data.serImg3 = data.serImg3.public_id;
-    data.serImg4 = data.serImg4.public_id;
+    data.serImg1 = data.serImg1.publicId;
+    data.serImg2 = data.serImg2.publicId;
+    data.serImg3 = data.serImg3.publicId;
+    data.serImg4 = data.serImg4.publicId;
     console.log(data);
 
     const res = await fetch(serPost, {
@@ -73,7 +72,7 @@ const UploadService = () => {
       toastId: 'uploadService',
     });
     resData && serRefetch();
-    // navigate('/service_dashboard');
+    navigate('/service_dashboard');
   };
 
   return (
