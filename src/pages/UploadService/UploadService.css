@@ -135,11 +135,26 @@
   gap: 0.5rem;
 }
 
+.uploadDm {
+  margin-top: -0.2rem;
+  color: #ce2d4f;
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
+}
+
 .upload-ser-input-ctn-img .register-form-upload-label {
   width: 180px;
   min-width: auto;
   padding: 0.5rem 0;
   gap: 0;
+}
+
+.uploadError {
+  margin-top: 0.2rem;
+  text-align: center;
+  color: #ce2d4f;
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 500;
 }
 
 .upload-ser-input-ctn-img .register-form-upload-label-text {

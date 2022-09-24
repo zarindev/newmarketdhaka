@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import './Navbar.css';
 import BottomLinks from './BottomLinks';
 
 const BottomNav = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
   return (
-    <div className="category-nav-ctn">
+    <nav className="category-nav-ctn">
       <ul className="subLinks">
-        <BottomLinks />
+        <BottomLinks setIsMobile={setIsMobile} />
       </ul>
-    </div>
+    </nav>
   );
 };
 

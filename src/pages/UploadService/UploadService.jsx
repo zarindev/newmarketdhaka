@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -51,24 +52,28 @@ const UploadService = () => {
     data.serType = data.serType.value;
     data.serviceClose = data.serviceClose.value;
     data.location = data.location.value;
+    data.serImg1 = data.serImg1.public_id;
+    data.serImg2 = data.serImg2.public_id;
+    data.serImg3 = data.serImg3.public_id;
+    data.serImg4 = data.serImg4.public_id;
     console.log(data);
 
     const res = await fetch(serPost, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        'Content-type': 'application/json; carset=UTF-8',
+        'Content-type': 'application/json',
       },
     });
 
-    const formData = await res.json();
-    console.log(formData);
+    const resData = await res.json();
+    console.log(resData);
     toast.info('The created service will be displayed soon', {
       progress: undefined,
       toastId: 'uploadService',
     });
-    formData && serRefetch();
-    navigate('/service_dashboard');
+    resData && serRefetch();
+    // navigate('/service_dashboard');
   };
 
   return (
@@ -277,8 +282,9 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Upload Service Image</p>
                 </label>
+                <p className="uploadDm">Please upload images under 1MB</p>
                 <div className="upload-ser-img-ctn">
-                  <RegisterUpload
+                  {/* <RegisterUpload
                     isTypeImg={true}
                     uploadPlaceholderImg={uploadPlaceholderUp}
                     changePlaceholderText={true}
@@ -290,8 +296,8 @@ const UploadService = () => {
                       required: true,
                     })}
                     ref={null}
-                  />
-                  {/* {dragAndDrops.map((item) => {
+                  /> */}
+                  {dragAndDrops.map((item) => {
                     const { id } = item;
                     return (
                       <RegisterUpload
@@ -309,14 +315,14 @@ const UploadService = () => {
                         ref={null}
                       />
                     );
-                  })} */}
+                  })}
                 </div>
               </div>
             </div>
           </div>
           <div className="combo-btn-ctn">
             <button className="combo-btn">Upload</button>
-            <button className="combo-btn combo-btn-two">Save as draft</button>
+            {/* <button className="combo-btn combo-btn-two">Save as draft</button> */}
           </div>
         </form>
       </div>

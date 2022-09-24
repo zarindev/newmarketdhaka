@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Image, Transformation } from 'cloudinary-react';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
@@ -21,8 +22,11 @@ const DetailsList = ({ activeSer, activeUser }) => {
   const {
     companyInfo,
     data,
+    serImg1,
+    serImg2,
+    serImg3,
+    serImg4,
     title,
-    image,
     serviceOpen,
     serviceClose,
     serviceDetails,
@@ -30,7 +34,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
     extraServices,
     whyUs,
   } = activeSer;
-
   const { email, phoneNumber, location } = companyInfo;
 
   const [imageIndex, setImageIndex] = useState(0);
@@ -38,7 +41,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
   // send email to the service creator
   const userEmail = activeUser?.email;
 
-  const postEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?`;
+  const emailPost = process.env.REACT_APP_EMAIL_POST_API_KEY;
 
   const mailData = {
     toMail: email,
@@ -47,7 +50,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
 
   const sendEmail = async () => {
     try {
-      const res = await fetch(postEmail, {
+      const res = await fetch(emailPost, {
         method: 'POST',
         body: JSON.stringify(mailData),
         headers: {
@@ -64,11 +67,28 @@ const DetailsList = ({ activeSer, activeUser }) => {
     }
   };
 
+  const serImgData = [
+    { id: 1, publicId: serImg1 },
+    { id: 2, publicId: serImg2 },
+    { id: 3, publicId: serImg3 },
+    { id: 4, publicId: serImg4 },
+  ];
+
   return (
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-img-ctn">
-          {data ? (
+          {serImgData.map((item) => (
+            <Image
+              cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
+              publicId={item.publicId}
+              type="fetch"
+              key={item.id}
+            >
+              <Transformation crop="scale" width="200" />
+            </Image>
+          ))}
+          {/* {data ? (
             <img
               src={`data:image/jpeg;base64,${data}`}
               alt={title}
@@ -80,7 +100,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
               alt={title}
               className="details-img"
             />
-          )}
+          )} */}
           <Dots
             arrLength={4}
             imageIndex={imageIndex}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Image, Transformation } from 'cloudinary-react';
 import { snakeCase } from '../../functions/formatString';
 import locationIcon from '../../images/svg/location.svg';
 import profileIcon from '../../images/svg/profile.svg';
@@ -13,6 +14,10 @@ const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const SingleSlide = ({
   data,
+  serImg1,
+  serImg2,
+  serImg3,
+  serImg4,
   title,
   location,
   name,
@@ -21,6 +26,13 @@ const SingleSlide = ({
   serviceClose,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
+
+  const serImgData = [
+    { id: 1, publicId: serImg1 },
+    { id: 2, publicId: serImg2 },
+    { id: 3, publicId: serImg3 },
+    { id: 4, publicId: serImg4 },
+  ];
 
   return (
     <div className="slide-ctn">
@@ -34,7 +46,18 @@ const SingleSlide = ({
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
-            {data ? (
+            {serImgData.map((item) => (
+              <Image
+                cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
+                publicId={item.publicId}
+                type="fetch"
+                key={item.id}
+              >
+                <Transformation crop="scale" width="200" />
+              </Image>
+            ))}
+
+            {/* {data ? (
               <img
                 src={`data:image/jpeg;base64,${data}`}
                 alt={title}
@@ -46,7 +69,7 @@ const SingleSlide = ({
                 alt={title}
                 className="slide-img"
               />
-            )}
+            )} */}
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
