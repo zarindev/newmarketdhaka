@@ -1,16 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
 import { snakeCase } from '../../functions/formatString';
 import locationIcon from '../../images/svg/location.svg';
 import profileIcon from '../../images/svg/profile.svg';
-import defaultOne from '../../images/service-one.webp';
-import defaultTwo from '../../images/service-two.webp';
-import defaultThree from '../../images/service-three.webp';
-import defaultFour from '../../images/service-four.webp';
 import Dots from '../Dots/Dots';
-
-const defaultImgData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const SingleSlide = ({
   data,
@@ -26,25 +20,16 @@ const SingleSlide = ({
   serviceClose,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
-  const [isSerImg, setIsSerImg] = useState(false);
 
   const serImgData = useMemo(
     () => [serImg1, serImg2, serImg3, serImg4],
     [serImg1, serImg2, serImg3, serImg4]
   );
 
-  useEffect(() => {
-    if (!serImgData.includes(undefined) && serImgData.length > 0) {
-      setIsSerImg(true);
-    } else {
-      setIsSerImg(false);
-    }
-  }, [serImgData]);
-
   return (
     <div className="slide-ctn">
       <Dots
-        arrLength={4}
+        arrLength={serImgData?.length}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
         imageData={serImgData}
@@ -53,21 +38,16 @@ const SingleSlide = ({
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
-            {isSerImg ? (
+            {serImgData && (
               <Image
                 cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
                 publicId={serImgData[imageIndex]}
                 className="slide-img"
+                loading="lazy"
               >
                 <Transformation width="400" crop="scale" />
                 <Transformation fetchFormat="auto" />
               </Image>
-            ) : (
-              <img
-                src={defaultImgData[imageIndex]}
-                alt={title}
-                className="slide-img"
-              />
             )}
           </div>
           <div className="slide-content">
