@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { Image, Transformation } from 'cloudinary-react';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
@@ -16,7 +16,7 @@ import defaultThree from '../../images/service-three.webp';
 import defaultFour from '../../images/service-four.webp';
 import Dots from '../../components/Dots/Dots';
 
-const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
+const defaultImgData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const DetailsList = ({ activeSer, activeUser }) => {
   const {
@@ -34,13 +34,26 @@ const DetailsList = ({ activeSer, activeUser }) => {
     extraServices,
     whyUs,
   } = activeSer;
-  const { email, phoneNumber, location } = companyInfo;
-
   const [imageIndex, setImageIndex] = useState(0);
+  const [isSerImg, setIsSerImg] = useState(false);
+
+  const serImgData = useMemo(
+    () => [serImg1, serImg2, serImg3, serImg4],
+    [serImg1, serImg2, serImg3, serImg4]
+  );
+
+  useEffect(() => {
+    if (!serImgData.includes(undefined) && serImgData.length > 0) {
+      setIsSerImg(true);
+    } else {
+      setIsSerImg(false);
+    }
+  }, [serImgData]);
+
+  const { email, phoneNumber, location } = companyInfo;
 
   // send email to the service creator
   const userEmail = activeUser?.email;
-
   const emailPost = process.env.REACT_APP_EMAIL_POST_API_KEY;
 
   const mailData = {
@@ -67,46 +80,32 @@ const DetailsList = ({ activeSer, activeUser }) => {
     }
   };
 
-  const serImgData = [
-    { id: 1, publicId: serImg1 },
-    { id: 2, publicId: serImg2 },
-    { id: 3, publicId: serImg3 },
-    { id: 4, publicId: serImg4 },
-  ];
-
   return (
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-img-ctn">
-          {serImgData.map((item) => (
+          {isSerImg ? (
             <Image
               cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
-              publicId={item.publicId}
-              type="fetch"
-              key={item.id}
-            >
-              <Transformation crop="scale" width="200" />
-            </Image>
-          ))}
-          {/* {data ? (
-            <img
-              src={`data:image/jpeg;base64,${data}`}
-              alt={title}
+              publicId={serImgData[imageIndex]}
               className="details-img"
-            />
+            >
+              <Transformation width="400" crop="scale" />
+              <Transformation fetchFormat="auto" />
+            </Image>
           ) : (
             <img
-              src={defaultData[imageIndex]}
+              src={defaultImgData[imageIndex]}
               alt={title}
               className="details-img"
             />
-          )} */}
+          )}
           <Dots
             arrLength={4}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
-            imageData={defaultData}
-            autoPlay={true}
+            imageData={serImgData}
+            autoPlay={false}
           />
         </div>
         <div className="details-ctn">

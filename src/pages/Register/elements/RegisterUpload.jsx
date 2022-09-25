@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { toast } from 'react-toastify';
 import RegisterDropzone from './RegisterDropzone';
 
 const RegisterUpload = ({
@@ -7,12 +8,10 @@ const RegisterUpload = ({
   uploadPlaceholderImg,
   changePlaceholderText,
   getFiles,
-  value,
   name,
   setValue,
 }) => {
   const [files, setFiles] = useState([]);
-  const [error, setError] = useState('');
 
   const cldUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLD_CLOUD_NAME}/image/upload`;
 
@@ -20,13 +19,18 @@ const RegisterUpload = ({
     (acceptedFiles, fileRejections) => {
       fileRejections.forEach((file) => {
         file.errors.forEach((err) => {
+          let error = '';
           if (err.code === 'file-too-large') {
-            setError(err.message);
+            error = 'File is larger than 1MB';
+          }
+          if (err.code === 'file-invalid-type') {
+            error = 'File type must be .jpeg, .png, .webp';
           }
 
-          if (err.code === 'file-invalid-type') {
-            setError(err.message);
-          }
+          toast.error(error, {
+            progress: undefined,
+            toastId: err.code,
+          });
         });
       });
 
@@ -99,7 +103,6 @@ const RegisterUpload = ({
       files={files}
       getRootProps={getRootProps}
       getInputProps={getInputProps}
-      error={error}
       isTypeImg={isTypeImg}
       uploadPlaceholderImg={uploadPlaceholderImg}
       changePlaceholderText={changePlaceholderText}

@@ -13,8 +13,8 @@ const SearchDropdown = ({
   dropCategoryData,
   dropLocationData,
 }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const btnWrapperRef = useRef(null);
   useOnClickOutside(btnWrapperRef, () => setShowDropdown(false));

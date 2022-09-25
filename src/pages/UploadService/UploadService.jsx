@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -28,15 +29,7 @@ const UploadService = () => {
 
   const navigate = useNavigate();
 
-  const {
-    register,
-
-    control,
-    setValue,
-    setError,
-    clearErrors,
-    handleSubmit,
-  } = useForm();
+  const { register, control, setValue, handleSubmit } = useForm();
 
   // post service
   const { activeCom } = useFind();
@@ -306,8 +299,6 @@ const UploadService = () => {
                         changePlaceholderText={true}
                         getFiles={null}
                         setValue={setValue}
-                        setError={setError}
-                        clearErrors={clearErrors}
                         {...register(`serImg${id}`, {
                           required: true,
                         })}

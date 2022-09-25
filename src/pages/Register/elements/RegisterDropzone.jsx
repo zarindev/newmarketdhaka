@@ -7,7 +7,6 @@ const RegisterDropzone = ({
   files,
   getRootProps,
   getInputProps,
-  error,
   isTypeImg,
   uploadPlaceholderImg,
   changePlaceholderText,
@@ -54,7 +53,6 @@ const RegisterDropzone = ({
           defaultValue=""
         />
       </label>
-      {error && <p className="uploadError">{error}</p>}
     </div>
   );
 };

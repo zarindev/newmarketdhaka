@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Transformation } from 'cloudinary-react';
 import { snakeCase } from '../../functions/formatString';
@@ -10,7 +10,7 @@ import defaultThree from '../../images/service-three.webp';
 import defaultFour from '../../images/service-four.webp';
 import Dots from '../Dots/Dots';
 
-const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
+const defaultImgData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const SingleSlide = ({
   data,
@@ -26,13 +26,20 @@ const SingleSlide = ({
   serviceClose,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
+  const [isSerImg, setIsSerImg] = useState(false);
 
-  const serImgData = [
-    { id: 1, publicId: serImg1 },
-    { id: 2, publicId: serImg2 },
-    { id: 3, publicId: serImg3 },
-    { id: 4, publicId: serImg4 },
-  ];
+  const serImgData = useMemo(
+    () => [serImg1, serImg2, serImg3, serImg4],
+    [serImg1, serImg2, serImg3, serImg4]
+  );
+
+  useEffect(() => {
+    if (!serImgData.includes(undefined) && serImgData.length > 0) {
+      setIsSerImg(true);
+    } else {
+      setIsSerImg(false);
+    }
+  }, [serImgData]);
 
   return (
     <div className="slide-ctn">
@@ -40,36 +47,28 @@ const SingleSlide = ({
         arrLength={4}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
-        imageData={defaultData}
+        imageData={serImgData}
         autoPlay={false}
       />
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
-            {serImgData.map((item) => (
+            {isSerImg ? (
               <Image
                 cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
-                publicId={item.publicId}
-                type="fetch"
-                key={item.id}
-              >
-                <Transformation crop="scale" width="200" />
-              </Image>
-            ))}
-
-            {/* {data ? (
-              <img
-                src={`data:image/jpeg;base64,${data}`}
-                alt={title}
+                publicId={serImgData[imageIndex]}
                 className="slide-img"
-              />
+              >
+                <Transformation width="400" crop="scale" />
+                <Transformation fetchFormat="auto" />
+              </Image>
             ) : (
               <img
-                src={defaultData[imageIndex]}
+                src={defaultImgData[imageIndex]}
                 alt={title}
                 className="slide-img"
               />
-            )} */}
+            )}
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
