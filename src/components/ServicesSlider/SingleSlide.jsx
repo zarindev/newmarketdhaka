@@ -7,7 +7,6 @@ import profileIcon from '../../images/svg/profile.svg';
 import Dots from '../Dots/Dots';
 
 const SingleSlide = ({
-  data,
   serImg1,
   serImg2,
   serImg3,

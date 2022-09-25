@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import brandLogo from '../../images/brand-logo.webp';
+import brandLogo from '../../images/brand-logo.png';
 import SearchBox from '../SearchBox/SearchBox';
 import PostBtn from './PostBtn';
 import MobileBtn from './MobileBtn';

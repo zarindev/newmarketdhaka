@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import brandLogo from '../../../images/brand-logo.webp';
-import brandLogoDesk from '../../../images/brand-logo-transparent.webp';
+import brandLogo from '../../../images/brand-logo.png';
+import brandLogoDesk from '../../../images/brand-logo-transparent.png';
 
 const RegisterLeft = () => {
   return (

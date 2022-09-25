@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/plugin.css';
 import './ContactUs.css';
-import contactImage from '../../images/contact.webp';
+import contactImage from '../../images/contact.png';
 import phoneIcon from '../../images/svg/Phone.svg';
 import locationIcon from '../../images/svg/location-white.svg';
 import emailIcon from '../../images/svg/Email.svg';

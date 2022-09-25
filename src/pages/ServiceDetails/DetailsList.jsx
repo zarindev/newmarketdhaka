@@ -4,7 +4,7 @@ import { Image, Transformation } from 'cloudinary-react';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
-import serviceMap from '../../images/service-map.webp';
+import serviceMap from '../../images/service-map.png';
 import logo from '../../images/service-logo.png';
 import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';

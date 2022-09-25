@@ -44,8 +44,6 @@ const RegisterFormThree = () => {
               changePlaceholderText={false}
               getFiles={getFiles}
               setValue={setValue}
-              setError={setError}
-              clearErrors={clearErrors}
               {...register('logo', {
                 required: true,
               })}

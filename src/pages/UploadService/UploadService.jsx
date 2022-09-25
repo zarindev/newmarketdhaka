@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -60,12 +59,14 @@ const UploadService = () => {
 
     const resData = await res.json();
     console.log(resData);
-    toast.info('The created service will be displayed soon', {
-      progress: undefined,
-      toastId: 'uploadService',
-    });
+
+    resData &&
+      toast.info('Successfully uploaded', {
+        progress: undefined,
+        toastId: 'uploadService',
+      });
     resData && serRefetch();
-    navigate('/service_dashboard');
+    resData && navigate('/service_dashboard');
   };
 
   return (
@@ -92,6 +93,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Service Name</p>
                 </label>
                 <input
+                  id="title"
                   type="text"
                   className="register-form-input"
                   placeholder="Service Name"
@@ -132,6 +134,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Opening Time</p>
                 </label>
                 <input
+                  id="serviceOpen"
                   type="time"
                   className="register-form-input"
                   placeholder="Select opening time"
@@ -194,6 +197,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add Details</p>
                 </label>
                 <textarea
+                  id="serviceDetails"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -216,6 +220,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add offered services</p>
                 </label>
                 <textarea
+                  id="offeredServices"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -235,6 +240,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add extra services</p>
                 </label>
                 <textarea
+                  id="extraServices"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -254,6 +260,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Why choose us</p>
                 </label>
                 <textarea
+                  id="whyUs"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -276,19 +283,6 @@ const UploadService = () => {
                 </label>
                 <p className="uploadDm">Please upload images under 1MB</p>
                 <div className="upload-ser-img-ctn">
-                  {/* <RegisterUpload
-                    isTypeImg={true}
-                    uploadPlaceholderImg={uploadPlaceholderUp}
-                    changePlaceholderText={true}
-                    getFiles={null}
-                    setValue={setValue}
-                    setError={setError}
-                    clearErrors={clearErrors}
-                    {...register(`serImg`, {
-                      required: true,
-                    })}
-                    ref={null}
-                  /> */}
                   {dragAndDrops.map((item) => {
                     const { id } = item;
                     return (
@@ -311,7 +305,9 @@ const UploadService = () => {
             </div>
           </div>
           <div className="combo-btn-ctn">
-            <button className="combo-btn">Upload</button>
+            <button type="submit" className="combo-btn">
+              Upload
+            </button>
             {/* <button className="combo-btn combo-btn-two">Save as draft</button> */}
           </div>
         </form>

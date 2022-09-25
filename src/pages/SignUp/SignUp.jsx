@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from './elements/updateAction';
 import './SignUp.css';
-import signImg from '../../images/sign.webp';
+import signImg from '../../images/sign.png';
 import google from '../../images/google.png';
 import facebook from '../../images/facebook.png';
-import brandLogo from '../../images/brand-logo.webp';
-import brandLogoDesk from '../../images/brand-logo-transparent.webp';
+import brandLogo from '../../images/brand-logo.png';
+import brandLogoDesk from '../../images/brand-logo-transparent.png';
 import { useAuth } from '../../context/AuthProvider';
 import { useDocTitle } from '../../hooks/useDocTitle';
 
