@@ -1,28 +1,26 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
+import { Image, Transformation } from 'cloudinary-react';
 import paperPlaneIcon from '../../images/svg/paper-plane.svg';
 import clockIcon from '../../images/svg/clock.svg';
 import calendarIcon from '../../images/svg/calendar-2.svg';
-import serviceMap from '../../images/service-map.webp';
+import serviceMap from '../../images/service-map.png';
 import logo from '../../images/service-logo.png';
 import emailIcon from '../../images/svg/Email-gray.svg';
 import phoneIcon from '../../images/svg/Phone-gray.svg';
 import locationIcon from '../../images/svg/Location-gray.svg';
 import { capitalCase } from '../../functions/formatString';
-import defaultOne from '../../images/service-one.webp';
-import defaultTwo from '../../images/service-two.webp';
-import defaultThree from '../../images/service-three.webp';
-import defaultFour from '../../images/service-four.webp';
 import Dots from '../../components/Dots/Dots';
-
-const defaultData = [defaultOne, defaultTwo, defaultThree, defaultFour];
 
 const DetailsList = ({ activeSer, activeUser }) => {
   const {
     companyInfo,
     data,
+    serImg1,
+    serImg2,
+    serImg3,
+    serImg4,
     title,
-    image,
     serviceOpen,
     serviceClose,
     serviceDetails,
@@ -30,15 +28,17 @@ const DetailsList = ({ activeSer, activeUser }) => {
     extraServices,
     whyUs,
   } = activeSer;
-
+  const [imageIndex, setImageIndex] = useState(0);
   const { email, phoneNumber, location } = companyInfo;
 
-  const [imageIndex, setImageIndex] = useState(0);
+  const serImgData = useMemo(
+    () => [serImg1, serImg2, serImg3, serImg4],
+    [serImg1, serImg2, serImg3, serImg4]
+  );
 
-  // send email to the service creator
+  //? send email to the service creator
   const userEmail = activeUser?.email;
-
-  const postEmail = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/SendMail?`;
+  const emailPost = process.env.REACT_APP_EMAIL_POST_API_KEY;
 
   const mailData = {
     toMail: email,
@@ -47,11 +47,11 @@ const DetailsList = ({ activeSer, activeUser }) => {
 
   const sendEmail = async () => {
     try {
-      const res = await fetch(postEmail, {
+      const res = await fetch(emailPost, {
         method: 'POST',
         body: JSON.stringify(mailData),
         headers: {
-          'Content-type': 'application/json; carset=UTF-8',
+          'Content-type': 'application/json',
         },
       });
 
@@ -68,25 +68,23 @@ const DetailsList = ({ activeSer, activeUser }) => {
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-img-ctn">
-          {data ? (
-            <img
-              src={`data:image/jpeg;base64,${data}`}
-              alt={title}
+          {serImgData && (
+            <Image
+              cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
+              publicId={serImgData[imageIndex]}
               className="details-img"
-            />
-          ) : (
-            <img
-              src={defaultData[imageIndex]}
-              alt={title}
-              className="details-img"
-            />
+              loading="lazy"
+            >
+              <Transformation width="400" crop="scale" />
+              <Transformation fetchFormat="auto" />
+            </Image>
           )}
           <Dots
-            arrLength={4}
+            arrLength={serImgData?.length}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
-            imageData={defaultData}
-            autoPlay={true}
+            imageData={serImgData}
+            autoPlay={false}
           />
         </div>
         <div className="details-ctn">

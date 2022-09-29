@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
+import './Footer.css';
 import { v4 as uuidv4 } from 'uuid';
 import { snakeCase, titleCase } from '../../functions/formatString';
-import './Footer.css';
-import brandLogo from '../../images/brand-logo.webp';
+import brandLogo from '../../images/brand-logo.png';
 import facebookLogo from '../../images/svg/Facebook.svg';
 import twitterLogo from '../../images/svg/Twitter.svg';
 import instagramLogo from '../../images/svg/Instagram.svg';

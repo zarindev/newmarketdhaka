@@ -54,18 +54,14 @@ const RegisterFormSuccess = () => {
   const onSubmit = async () => {
     delete state.state;
     delete state.actions;
-    state.id = 0;
     delete state.password;
     delete state.data;
+    state.id = 0;
     state.logo = '';
+    state.location = '';
     state.document = '';
     state.userid = 1;
     state.userUId = uid;
-
-    // const logoBuffer = 'state.logo.buffer';
-    // const documentBuffer = 'state.document.buffer';
-    // state.logo = logoBuffer;
-    // state.document = documentBuffer;
     console.log(state);
 
     const res = await fetch(comPost, {

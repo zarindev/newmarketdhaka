@@ -47,6 +47,14 @@
   color: #1d1d1d;
 }
 
+.profileEditBtn {
+  transition: all 0.3s ease-in-out;
+}
+
+.profileEditBtn:hover {
+  opacity: 0.75;
+}
+
 .profile-edit-ctn {
   width: 50%;
   display: flex;
@@ -57,7 +65,7 @@
 .profile-edit-text {
   font-weight: 600;
   font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
-  color: #0e638b;
+  color: hsl(199, 82%, 30%);
 }
 
 .profile-info-ctn {

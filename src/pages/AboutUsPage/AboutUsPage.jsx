@@ -4,8 +4,8 @@ import TopNav from '../../components/Navbar/TopNav';
 import BottomNav from '../../components/Navbar/BottomNav';
 import Footer from '../../components/Footer/Footer';
 import { useDocTitle } from '../../hooks/useDocTitle';
-import thirdImage from '../../images/about-content-one.webp';
-import fourthImage from '../../images/about-content-two.webp';
+import thirdImage from '../../images/about-content-one.png';
+import fourthImage from '../../images/about-content-two.png';
 
 const aboutData = [
   {

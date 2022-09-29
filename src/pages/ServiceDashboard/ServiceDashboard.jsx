@@ -35,7 +35,7 @@ const ServiceDashboard = () => {
             </button>
           </Link>
         </div>
-        <CreatedServices activeComId={activeComId} />
+        {activeComId && <CreatedServices activeComId={activeComId} />}
       </div>
     </div>
   );

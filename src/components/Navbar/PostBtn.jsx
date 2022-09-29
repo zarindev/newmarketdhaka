@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../../context/AuthProvider';
 
 const notify = () => {
-  toast.info(`You need to be signed in for registering services`, {
+  toast.info(`You need to be signed in for posting services`, {
     progress: undefined,
     toastId: 'registration',
   });

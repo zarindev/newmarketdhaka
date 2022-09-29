@@ -22,7 +22,7 @@ const ProfileEdit = () => {
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
     activeCom;
 
-  const comPost = `http://mdadmin-001-site2.ftempurl.com/api/Servivce/PotCompany`;
+  const comPost = process.env.REACT_APP_COM_POST_API_KEY;
 
   const {
     register,
@@ -50,7 +50,12 @@ const ProfileEdit = () => {
       <SeekerSidebar />
       <div className="service-dash">
         <div className="profile-image-ctn">
-          <img src={profileLogo} alt="profile" className="profile-image" />
+          <img
+            src={profileLogo}
+            alt="profile"
+            className="profile-image"
+            loading="lazy"
+          />
         </div>
         <div className="edit-items">
           <form className="edit-form" onSubmit={handleSubmit(onSubmit)}>

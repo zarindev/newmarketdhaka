@@ -51,7 +51,7 @@ export const locations = [
     ),
   },
   {
-    value: 'USA',
+    value: 'United States',
     label: (
       <div className="countryWrapper">
         <img
@@ -65,7 +65,7 @@ export const locations = [
     ),
   },
   {
-    value: 'UK',
+    value: 'Great Britain',
     label: (
       <div className="countryWrapper">
         <img

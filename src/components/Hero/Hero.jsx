@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import './Hero.css';
 import Dots from '../Dots/Dots';
-import first from '../../images/hero-image-one.webp';
-import second from '../../images/hero-image-two.webp';
-import third from '../../images/hero-image-three.webp';
-import fourth from '../../images/hero-image-four.webp';
-import fifth from '../../images/hero-image-five.webp';
+import first from '../../images/hero-image-one.png';
+import second from '../../images/hero-image-two.jpg';
+import third from '../../images/hero-image-three.jpg';
+import fourth from '../../images/hero-image-four.jpg';
+import fifth from '../../images/hero-image-five.jpg';
 
-const heroData = [first, second, third, fourth, fifth];
+const heroImgData = [first, second, third, fourth, fifth];
 
 const Hero = () => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hero-image-ctn">
-        <img src={heroData[imageIndex]} alt="hero" className="hero-image" />
+        <img src={heroImgData[imageIndex]} alt="hero" className="hero-image" />
       </div>
       <div className="hero-items-ctn">
         <div className="hero-items">
@@ -29,10 +29,10 @@ const Hero = () => {
             many more.
           </p>
           <Dots
-            arrLength={heroData.length}
+            arrLength={heroImgData.length}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
-            imageData={heroData}
+            imageData={heroImgData}
             autoPlay={true}
           />
         </div>

@@ -7,8 +7,8 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import downArrow from '../../images/svg/arrow-down.svg';
 
 const ProfileBtn = () => {
-  const [showProfileDrop, setShowProfileDrop] = useState(false);
   const navigate = useNavigate();
+  const [showProfileDrop, setShowProfileDrop] = useState(false);
 
   const btnWrapperRef = useRef(null);
   useOnClickOutside(btnWrapperRef, () => setShowProfileDrop(false));

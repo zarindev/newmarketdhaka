@@ -9,6 +9,7 @@ import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
 import Profile from './pages/Profile/Profile';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import UserProfile from './pages/UserProfile/UserProfile';
+import UserProfileEdit from './pages/UserProfile/UserProfileEdit';
 import Register from './pages/Register/Register';
 import RegisterFormOne from './pages/Register/RegisterFormOne';
 import RegisterFormTwo from './pages/Register/RegisterFormTwo';
@@ -79,6 +80,10 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
         <Route path="/user_profile" element={<UserProfile />} />
+        <Route
+          path="/user_profile/edit_profile"
+          element={<UserProfileEdit />}
+        />
         <Route path="/results" element={<SerachResult />} />
         <Route path="/all_services" element={<AllServices />} />
         <Route path="/more_services" element={<MoreServices />} />

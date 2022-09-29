@@ -28,15 +28,7 @@ const UploadService = () => {
 
   const navigate = useNavigate();
 
-  const {
-    register,
-    formState: { errors },
-    control,
-    setValue,
-    setError,
-    clearErrors,
-    handleSubmit,
-  } = useForm();
+  const { register, control, setValue, handleSubmit } = useForm();
 
   // post service
   const { activeCom } = useFind();
@@ -51,24 +43,30 @@ const UploadService = () => {
     data.serType = data.serType.value;
     data.serviceClose = data.serviceClose.value;
     data.location = data.location.value;
+    data.serImg1 = data.serImg1.publicId;
+    data.serImg2 = data.serImg2.publicId;
+    data.serImg3 = data.serImg3.publicId;
+    data.serImg4 = data.serImg4.publicId;
     console.log(data);
 
     const res = await fetch(serPost, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        'Content-type': 'application/json; carset=UTF-8',
+        'Content-type': 'application/json',
       },
     });
 
-    const formData = await res.json();
-    console.log(formData);
-    toast.info('The created service will be displayed soon', {
-      progress: undefined,
-      toastId: 'uploadService',
-    });
-    formData && serRefetch();
-    navigate('/service_dashboard');
+    const resData = await res.json();
+    console.log(resData);
+
+    resData &&
+      toast.info('Successfully uploaded', {
+        progress: undefined,
+        toastId: 'uploadService',
+      });
+    resData && serRefetch();
+    resData && navigate('/service_dashboard');
   };
 
   return (
@@ -95,6 +93,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Service Name</p>
                 </label>
                 <input
+                  id="title"
                   type="text"
                   className="register-form-input"
                   placeholder="Service Name"
@@ -135,6 +134,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Opening Time</p>
                 </label>
                 <input
+                  id="serviceOpen"
                   type="time"
                   className="register-form-input"
                   placeholder="Select opening time"
@@ -197,6 +197,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add Details</p>
                 </label>
                 <textarea
+                  id="serviceDetails"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -219,6 +220,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add offered services</p>
                 </label>
                 <textarea
+                  id="offeredServices"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -238,6 +240,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add extra services</p>
                 </label>
                 <textarea
+                  id="extraServices"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -257,6 +260,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Why choose us</p>
                 </label>
                 <textarea
+                  id="whyUs"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -277,21 +281,9 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Upload Service Image</p>
                 </label>
+                <p className="uploadDm">Please upload images under 1MB</p>
                 <div className="upload-ser-img-ctn">
-                  <RegisterUpload
-                    isTypeImg={true}
-                    uploadPlaceholderImg={uploadPlaceholderUp}
-                    changePlaceholderText={true}
-                    getFiles={null}
-                    setValue={setValue}
-                    setError={setError}
-                    clearErrors={clearErrors}
-                    {...register(`serImg`, {
-                      required: true,
-                    })}
-                    ref={null}
-                  />
-                  {/* {dragAndDrops.map((item) => {
+                  {dragAndDrops.map((item) => {
                     const { id } = item;
                     return (
                       <RegisterUpload
@@ -301,22 +293,22 @@ const UploadService = () => {
                         changePlaceholderText={true}
                         getFiles={null}
                         setValue={setValue}
-                        setError={setError}
-                        clearErrors={clearErrors}
                         {...register(`serImg${id}`, {
                           required: true,
                         })}
                         ref={null}
                       />
                     );
-                  })} */}
+                  })}
                 </div>
               </div>
             </div>
           </div>
           <div className="combo-btn-ctn">
-            <button className="combo-btn">Upload</button>
-            <button className="combo-btn combo-btn-two">Save as draft</button>
+            <button type="submit" className="combo-btn">
+              Upload
+            </button>
+            {/* <button className="combo-btn combo-btn-two">Save as draft</button> */}
           </div>
         </form>
       </div>

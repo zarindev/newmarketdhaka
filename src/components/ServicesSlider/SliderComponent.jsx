@@ -74,13 +74,14 @@ const SliderComponent = ({ serType }) => {
           modules={[Navigation]}
           className="carousel"
         >
-          {activeSer.map((service) => {
-            return (
-              <SwiperSlide key={service.id}>
-                <SingleSlide {...service} serType={serType} />
-              </SwiperSlide>
-            );
-          })}
+          {activeSer &&
+            activeSer?.map((service) => {
+              return (
+                <SwiperSlide key={service.id}>
+                  <SingleSlide {...service} serType={serType} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>

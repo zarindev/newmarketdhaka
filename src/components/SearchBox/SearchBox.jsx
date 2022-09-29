@@ -9,10 +9,9 @@ import { useGlobalContext } from '../../context/AppProvider';
 import { locations } from '../../pages/UploadService/uploadData';
 
 const SearchBox = () => {
+  const navigate = useNavigate();
   const { serData } = useSerQuery();
   const { mergedSerTypeAll } = useGlobalContext();
-
-  const navigate = useNavigate();
 
   // search via string matching
   const [keywordSer, setKeywordSer] = useState([]);
