@@ -39,22 +39,40 @@ const UploadService = () => {
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
-    data.CompanyInfoId = activeComId;
-    data.serType = data.serType.value;
-    data.serviceClose = data.serviceClose.value;
-    data.location = data.location.value;
-    data.serImg1 = data.serImg1.publicId;
-    data.serImg2 = data.serImg2.publicId;
-    data.serImg3 = data.serImg3.publicId;
-    data.serImg4 = data.serImg4.publicId;
+    const formData = new FormData();
+    formData.append('id', 0);
+    formData.append('ImgFile', [
+      data.serImg1,
+      data.serImg2,
+      data.serImg3,
+      data.serImg4,
+    ]);
+    formData.append('title', data.title);
+    formData.append('time', '');
+    formData.append('location', data.location.value);
+    formData.append('serviceClose', data.serviceClose.value);
+    formData.append('serviceOpen', data.serviceOpen);
+    formData.append('CompanyInfoId', activeComId);
+    formData.append('serviceDetails', data.serviceDetails);
+    formData.append('serType', data.serType.value);
+    formData.append('offeredServices', data.offeredServices);
+    formData.append('active', false);
+    formData.append('status', false);
+    formData.append('extraServices', data.extraServices);
+    formData.append('whyUs', data.whyUs);
+    formData.append('serImg1', '');
+    formData.append('serImg2', '');
+    formData.append('serImg3', '');
+    formData.append('serImg4', '');
     console.log(data);
+
+    for (var [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
 
     const res = await fetch(serPost, {
       method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-type': 'application/json',
-      },
+      body: formData,
     });
 
     const resData = await res.json();
@@ -65,8 +83,8 @@ const UploadService = () => {
         progress: undefined,
         toastId: 'uploadService',
       });
-    resData && serRefetch();
-    resData && navigate('/service_dashboard');
+    // resData && serRefetch();
+    // resData && navigate('/service_dashboard');
   };
 
   return (
