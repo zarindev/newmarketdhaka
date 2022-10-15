@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useAuth } from '../../context/AuthProvider';
-import { formatError } from '../../functions/formatString';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import downArrow from '../../images/svg/arrow-down.svg';
+import { useState, useRef } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../../context/AuthProvider";
+import { formatError } from "../../functions/formatString";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import downArrow from "../../images/svg/arrow-down.svg";
 
 const ProfileBtn = () => {
   const navigate = useNavigate();
@@ -18,13 +18,13 @@ const ProfileBtn = () => {
   const handleSignout = async () => {
     try {
       await signout();
-      user && navigate('/');
+      user && navigate("/");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signout',
+        toastId: "signout",
       });
       console.log(errorCode);
     }
@@ -36,7 +36,7 @@ const ProfileBtn = () => {
         <div ref={btnWrapperRef}>
           <div
             className={
-              showProfileDrop ? 'profileBtn profileBtnActive' : 'profileBtn'
+              showProfileDrop ? "profileBtn profileBtnActive" : "profileBtn"
             }
             onClick={() => setShowProfileDrop(!showProfileDrop)}
           >
@@ -45,9 +45,12 @@ const ProfileBtn = () => {
           </div>
           <ul
             className={
-              showProfileDrop ? 'profileDrop profileDropActive' : 'profileDrop'
+              showProfileDrop ? "profileDrop profileDropActive" : "profileDrop"
             }
           >
+            <li className="profileLink">
+              <NavLink to="/service_dashboard">Dashboard</NavLink>
+            </li>
             <li className="profileLink">
               <Link to="/user_profile">Settings</Link>
             </li>

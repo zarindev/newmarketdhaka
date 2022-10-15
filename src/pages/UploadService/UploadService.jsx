@@ -66,7 +66,7 @@ const UploadService = () => {
     formData.append('serImg4', '');
     console.log(data);
 
-    for (var [key, value] of formData.entries()) {
+    for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
 
@@ -78,13 +78,17 @@ const UploadService = () => {
     const resData = await res.json();
     console.log(resData);
 
-    resData &&
-      toast.info('Successfully uploaded', {
-        progress: undefined,
-        toastId: 'uploadService',
-      });
-    // resData && serRefetch();
-    // resData && navigate('/service_dashboard');
+    resData === true
+      ? toast.success('Successfully uploaded', {
+          progress: undefined,
+          toastId: 'upSerSuccess',
+        })
+      : toast.error('Upload failed', {
+          progress: undefined,
+          toastId: 'upSerError',
+        });
+    resData === true && serRefetch();
+    resData === true && navigate('/service_dashboard');
   };
 
   return (
