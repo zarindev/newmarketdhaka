@@ -6,6 +6,7 @@ import Creatable from "react-select/creatable";
 const CreatableSelect = ({
   name,
   control,
+  id,
   items,
   isMulti,
   placeholder,
@@ -19,6 +20,7 @@ const CreatableSelect = ({
       render={({ field }) => (
         <Creatable
           {...field}
+          id={id}
           closeMenuOnSelect={true}
           isClearable={true}
           isMulti={isMulti}

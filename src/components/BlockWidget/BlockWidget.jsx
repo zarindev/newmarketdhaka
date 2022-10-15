@@ -1,11 +1,11 @@
-import './BlockWidget.css';
+import "./BlockWidget.css";
 
 const BlockWidget = ({ type, value }) => {
   return (
-    <div className="block-widget">
+    <section aria-label="widget" className="block-widget">
       <p className="widget-value">{value}</p>
       <p className="widget-type">{type}</p>
-    </div>
+    </section>
   );
 };
 

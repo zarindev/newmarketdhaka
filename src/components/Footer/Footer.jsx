@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom';
-import './Footer.css';
-import { v4 as uuidv4 } from 'uuid';
-import { snakeCase, titleCase } from '../../functions/formatString';
-import brandLogo from '../../images/brand-logo.png';
-import facebookLogo from '../../images/svg/Facebook.svg';
-import twitterLogo from '../../images/svg/Twitter.svg';
-import instagramLogo from '../../images/svg/Instagram.svg';
-import linkedInLogo from '../../images/svg/LinkedIn.svg';
-import youtubeLogo from '../../images/svg/YouTube.svg';
-import emailIcon from '../../images/svg/Email-black.svg';
-import phoneIcon from '../../images/svg/Phone-black.svg';
-import locationIcon from '../../images/svg/Location-black.svg';
-import { useGlobalContext } from '../../context/AppProvider';
+import { Link } from "react-router-dom";
+import "./Footer.css";
+import { v4 as uuidv4 } from "uuid";
+import { snakeCase, titleCase } from "../../functions/formatString";
+import brandLogo from "../../images/brand-logo.png";
+import facebookLogo from "../../images/svg/Facebook.svg";
+import twitterLogo from "../../images/svg/Twitter.svg";
+import instagramLogo from "../../images/svg/Instagram.svg";
+import linkedInLogo from "../../images/svg/LinkedIn.svg";
+import youtubeLogo from "../../images/svg/YouTube.svg";
+import emailIcon from "../../images/svg/Email-black.svg";
+import phoneIcon from "../../images/svg/Phone-black.svg";
+import locationIcon from "../../images/svg/Location-black.svg";
+import { useGlobalContext } from "../../context/AppProvider";
 
 const Footer = () => {
   const { mergedSerTypeAll } = useGlobalContext();
 
   return (
-    <footer className="footer">
+    <footer aria-label="footer" className="footer">
       <div className="footer-content">
         <div className="footer-info">
           <img src={brandLogo} alt="brand logo" className="footer-logo" />

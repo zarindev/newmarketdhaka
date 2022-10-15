@@ -1,11 +1,11 @@
-import ClipLoader from 'react-spinners/ClipLoader';
-import './Loading.css';
+import ClipLoader from "react-spinners/ClipLoader";
+import "./loading.css";
 
 const Loading = ({ color, size }) => {
   return (
-    <div className="loading">
+    <section aria-label="spinning loader" className="loading">
       <ClipLoader color={color} size={size} />
-    </div>
+    </section>
   );
 };
 

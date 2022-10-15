@@ -14,11 +14,11 @@ const Hero = () => {
   const [imageIndex, setImageIndex] = useState(0);
 
   return (
-    <div className="hero">
+    <section aria-label="hero section" className="hero">
       <div className="hero-image-ctn">
         <img src={heroImgData[imageIndex]} alt="hero" className="hero-image" />
       </div>
-      <div className="hero-items-ctn">
+      <div aria-label="image carousel" className="hero-items-ctn">
         <div className="hero-items">
           <h3 className="small-title">Network</h3>
           <h1 className="main-title">
@@ -41,7 +41,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

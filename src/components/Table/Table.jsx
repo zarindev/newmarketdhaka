@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useTable, useSortBy } from 'react-table';
-import GlobalModal from '../GlobalModal/GlobalModal';
-import './Table.css';
-import sortUpIcon from '../../images/sort-up 1.png';
-import { useAuth } from '../../context/AuthProvider';
+import { useState, useEffect } from "react";
+import { useTable, useSortBy } from "react-table";
+import GlobalModal from "../GlobalModal/GlobalModal";
+import "./Table.css";
+import sortUpIcon from "../../images/sort-up 1.png";
+import { useAuth } from "../../context/AuthProvider";
 
 const Table = ({ columns, data, activeComId, tableTitle }) => {
   // hide columns
@@ -20,17 +20,17 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const [clickedId, setClickedId] = useState('');
-  const [clickedSer, setClickedSer] = useState('');
-  const [clickedCom, setClickedCom] = useState('');
-  const [clickedCategory, setClickedCategory] = useState('');
+  const [clickedId, setClickedId] = useState("");
+  const [clickedSer, setClickedSer] = useState("");
+  const [clickedCom, setClickedCom] = useState("");
+  const [clickedCategory, setClickedCategory] = useState("");
 
   const { user } = useAuth();
 
   // modal
   const openModal = (e) => {
     setModalIsOpen(true);
-    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
+    if (user?.uid === "TJyklprfkah56Y1FtrnTmXQmh8i2") {
       setClickedId(e.currentTarget.childNodes[0].textContent);
       setClickedSer(e.currentTarget.childNodes[1].textContent);
       setClickedCom(e.currentTarget.childNodes[2].textContent);
@@ -42,7 +42,7 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
   };
 
   const afterOpenModal = () => {
-    if (document.getElementById('body')) {
+    if (document.getElementById("body")) {
       // TODO: add styles after the model is opened
     }
   };
@@ -54,7 +54,7 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
   // clicked row
   const [activeRow, setActiveRow] = useState({});
   useEffect(() => {
-    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
+    if (user?.uid === "TJyklprfkah56Y1FtrnTmXQmh8i2") {
       const clickedRow = rows.find(
         (row) =>
           row.original.companyInfoId === parseInt(clickedId, 10) &&
@@ -83,19 +83,19 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
   ]);
 
   // btn text
-  const [trueBtnText, setTrueBtnText] = useState('');
-  const [falseBtnText, setFalseBtnText] = useState('');
+  const [trueBtnText, setTrueBtnText] = useState("");
+  const [falseBtnText, setFalseBtnText] = useState("");
 
   useEffect(() => {
-    if (user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2') {
-      setTrueBtnText('Accept');
-      setFalseBtnText('Reject');
-    } else if (tableTitle.toLowerCase().includes('active')) {
-      setTrueBtnText('Disable');
-      setFalseBtnText('Delete');
-    } else if (tableTitle.toLowerCase().includes('disabled')) {
-      setTrueBtnText('Enable');
-      setFalseBtnText('Delete');
+    if (user?.uid === "TJyklprfkah56Y1FtrnTmXQmh8i2") {
+      setTrueBtnText("Accept");
+      setFalseBtnText("Reject");
+    } else if (tableTitle.toLowerCase().includes("active")) {
+      setTrueBtnText("Disable");
+      setFalseBtnText("Delete");
+    } else if (tableTitle.toLowerCase().includes("disabled")) {
+      setTrueBtnText("Enable");
+      setFalseBtnText("Delete");
     }
   }, [user, tableTitle]);
 
@@ -121,7 +121,7 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
                     />
                   )
                 ) : null}
-                {column.render('Header')}
+                {column.render("Header")}
               </th>
             ))}
           </tr>
@@ -133,7 +133,7 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
           openModal={openModal}
           afterOpenModal={afterOpenModal}
           closeModal={closeModal}
-          appElement={document.getElementById('body')}
+          appElement={document.getElementById("body")}
           activeRow={activeRow}
           tableTitle={tableTitle}
           trueBtnText={trueBtnText}
@@ -147,7 +147,7 @@ const Table = ({ columns, data, activeComId, tableTitle }) => {
           return (
             <tr {...row.getRowProps()} onClick={openModal}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );

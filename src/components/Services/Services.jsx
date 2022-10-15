@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
-import './Services.css';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
-import SingleService from './SingleService';
-import RoundedBtn from '../Button/RoundedBtn';
-import { useGlobalContext } from '../../context/AppProvider';
+import React, { useRef } from "react";
+import "./Services.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import arrowCircleDown from "../../images/svg/arrow-circle-down.svg";
+import SingleService from "./SingleService";
+import RoundedBtn from "../Button/RoundedBtn";
+import { useGlobalContext } from "../../context/AppProvider";
 
 const Services = ({ serData }) => {
   const navigate = useNavigate();
@@ -14,15 +14,15 @@ const Services = ({ serData }) => {
 
   const handleClick = () => {
     mergedSerType.length === 0
-      ? toast.info('Please wait while the services are loading', {
+      ? toast.info("Please wait while the services are loading", {
           progress: undefined,
-          toastId: 'serLoading',
+          toastId: "serLoading",
         })
-      : navigate('/all_services');
+      : navigate("/all_services");
   };
 
   return (
-    <div className="services">
+    <section aria-label="all-services" className="services">
       <h1 className="services-title">All Services</h1>
       <div className="services-ctn" ref={servicesRef}>
         {serData.map((service) => {
@@ -42,7 +42,7 @@ const Services = ({ serData }) => {
         altText="arrow-circle-down"
         onClick={handleClick}
       />
-    </div>
+    </section>
   );
 };
 

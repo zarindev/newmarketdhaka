@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import Loading from '../Loading/Loading';
-import RoundedBtn from '../Button/RoundedBtn';
-import './ServicesSlider.css';
-import SliderComponent from './SliderComponent';
-import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
-import { useGlobalContext } from '../../context/AppProvider';
+import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import Loading from "../Loading/Loading";
+import RoundedBtn from "../Button/RoundedBtn";
+import "./ServicesSlider.css";
+import SliderComponent from "./SliderComponent";
+import arrowCircleDown from "../../images/svg/arrow-circle-down.svg";
+import { useGlobalContext } from "../../context/AppProvider";
 
 const ServicesSlider = () => {
   const { mergedSerType } = useGlobalContext();
 
   return (
-    <div className="services-slider">
+    <section aria-label="available-services" className="services-slider">
       <h1 className="services-slider-title">
         Take a glimps of all the services
       </h1>
@@ -31,7 +31,7 @@ const ServicesSlider = () => {
           />
         </Link>
       )}
-    </div>
+    </section>
   );
 };
 

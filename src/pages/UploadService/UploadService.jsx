@@ -79,17 +79,17 @@ const UploadService = () => {
     const resData = await res.json();
     console.log(resData);
 
-    // resData === true
-    //   ? toast.success('Successfully uploaded', {
-    //       progress: undefined,
-    //       toastId: 'upSerSuccess',
-    //     })
-    //   : toast.error('Upload failed', {
-    //       progress: undefined,
-    //       toastId: 'upSerError',
-    //     });
-    // resData === true && serRefetch();
-    // resData === true && navigate('/service_dashboard');
+    resData === true
+      ? toast.success("Successfully uploaded", {
+          progress: undefined,
+          toastId: "upSerSuccess",
+        })
+      : toast.error("Upload failed", {
+          progress: undefined,
+          toastId: "upSerError",
+        });
+    resData === true && serRefetch();
+    resData === true && navigate("/service_dashboard");
   };
 
   return (
@@ -103,7 +103,11 @@ const UploadService = () => {
             aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{" "}
           </p>
         </div>
-        <form className="upload-ser-form-ctn" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          aria-label="service-upload form"
+          className="upload-ser-form-ctn"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="upload-ser-form">
             <div className="upload-ser-left">
               <div className="upload-ser-input-ctn">
@@ -116,7 +120,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Service Name</p>
                 </label>
                 <input
-                  id="title"
+                  id="upload_service_name"
                   type="text"
                   className="register-form-input"
                   placeholder="Service Name"
@@ -135,6 +139,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Category</p>
                 </label>
                 <CreatableSelect
+                  id="upload_service_category"
                   name="serType"
                   control={control}
                   items={categoryTags}
@@ -157,7 +162,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Opening Time</p>
                 </label>
                 <input
-                  id="serviceOpen"
+                  id="upload_service_opening_time"
                   type="time"
                   className="register-form-input"
                   placeholder="Select opening time"
@@ -176,6 +181,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Select Closing Days</p>
                 </label>
                 <FixedSelect
+                  id="upload_service_closing_days"
                   name="serviceClose"
                   control={control}
                   items={closingDays}
@@ -198,6 +204,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Location</p>
                 </label>
                 <FixedSelect
+                  id="upload_service_location"
                   name="location"
                   control={control}
                   items={locations}
@@ -220,7 +227,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add Details</p>
                 </label>
                 <textarea
-                  id="serviceDetails"
+                  id="upload_service_details"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -243,7 +250,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add offered services</p>
                 </label>
                 <textarea
-                  id="offeredServices"
+                  id="upload_services_offered"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -263,7 +270,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Add extra services</p>
                 </label>
                 <textarea
-                  id="extraServices"
+                  id="upload_services_extra"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -283,7 +290,7 @@ const UploadService = () => {
                   <p className="upload-ser-label-title">Why choose us</p>
                 </label>
                 <textarea
-                  id="whyUs"
+                  id="upload_service_reason"
                   cols="30"
                   rows="10"
                   className="register-form-input upload-ser-textarea"
@@ -312,6 +319,7 @@ const UploadService = () => {
                     const { id } = item;
                     return (
                       <RegisterUpload
+                        id={`upload_service_image_${id}`}
                         key={id}
                         isTypeImg={true}
                         uploadPlaceholderImg={uploadPlaceholderUp}

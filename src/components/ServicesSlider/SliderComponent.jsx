@@ -1,17 +1,17 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import 'swiper/css';
-import rightArrow from '../../images/svg/right-arrow 1 (Traced).svg';
-import rightArrowTwo from '../../images/svg/right-arrow 2 (Traced).svg';
-import SingleSlide from './SingleSlide';
-import { snakeCase } from '../../functions/formatString';
-import Loading from '../Loading/Loading';
-import { useFilter } from '../../hooks/useFilter';
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import rightArrow from "../../images/svg/right-arrow 1 (Traced).svg";
+import rightArrowTwo from "../../images/svg/right-arrow 2 (Traced).svg";
+import SingleSlide from "./SingleSlide";
+import { snakeCase } from "../../functions/formatString";
+import Loading from "../Loading/Loading";
+import { useFilter } from "../../hooks/useFilter";
 
 const SliderComponent = ({ serType }) => {
-  const { activeSer, serIsLoading } = useFilter('serType', serType);
+  const { activeSer, serIsLoading } = useFilter("serType", serType);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -21,7 +21,7 @@ const SliderComponent = ({ serType }) => {
   }
 
   return (
-    <div className="slider-component">
+    <section aria-label="carousel-wrapper" className="slider-component">
       <div className="slider-heading">
         <h3 className="slider-title">{serType}</h3>
         <Link to={`/home/${snakeCase(serType)}`}>
@@ -49,6 +49,7 @@ const SliderComponent = ({ serType }) => {
           ref={rightArrowRef}
         />
         <Swiper
+          aria-label="services-carousel"
           spaceBetween={12}
           // loop={true}
           // loopFillGroupWithBlank={true}
@@ -84,7 +85,7 @@ const SliderComponent = ({ serType }) => {
             })}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 

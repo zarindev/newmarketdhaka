@@ -6,6 +6,7 @@ import Select from "react-select";
 const FixedSelect = ({
   name,
   control,
+  id,
   items,
   isMulti,
   placeholder,
@@ -19,6 +20,7 @@ const FixedSelect = ({
       render={({ field }) => (
         <Select
           {...field}
+          id={id}
           closeMenuOnSelect={true}
           isClearable={true}
           isMulti={isMulti}
