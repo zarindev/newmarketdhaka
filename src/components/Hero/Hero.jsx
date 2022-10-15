@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import './Hero.css';
-import Dots from '../Dots/Dots';
-import first from '../../images/hero-image-one.png';
-import second from '../../images/hero-image-two.jpg';
-import third from '../../images/hero-image-three.jpg';
-import fourth from '../../images/hero-image-four.jpg';
-import fifth from '../../images/hero-image-five.jpg';
+import { useState } from "react";
+import "./Hero.css";
+import Dots from "../Dots/Dots";
+import first from "../../images/hero-image-one.png";
+import second from "../../images/hero-image-two.jpg";
+import third from "../../images/hero-image-three.jpg";
+import fourth from "../../images/hero-image-four.jpg";
+import fifth from "../../images/hero-image-five.jpg";
+import PostBtn from "../Navbar/PostBtn";
 
 const heroImgData = [first, second, third, fourth, fifth];
 
@@ -24,7 +25,7 @@ const Hero = () => {
             Finds you services <br /> near your location
           </h1>
           <p className="description">
-            <span>including</span> home service, food, restaurants, <br />{' '}
+            <span>including</span> home service, food, restaurants, <br />{" "}
             grocery, repair service, emergency need, <br /> medical services and
             many more.
           </p>
@@ -35,6 +36,9 @@ const Hero = () => {
             imageData={heroImgData}
             autoPlay={true}
           />
+          <div className="heroPostBtn">
+            <PostBtn />
+          </div>
         </div>
       </div>
     </div>

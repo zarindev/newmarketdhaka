@@ -1,7 +1,9 @@
-import { Controller } from 'react-hook-form';
-import Select from 'react-select';
+import React from "react";
+import "./select.css";
+import { Controller } from "react-hook-form";
+import Creatable from "react-select/creatable";
 
-const UploadSelect = ({
+const CreatableSelect = ({
   name,
   control,
   items,
@@ -15,7 +17,7 @@ const UploadSelect = ({
       control={control}
       rules={{ required: isRequired }}
       render={({ field }) => (
-        <Select
+        <Creatable
           {...field}
           closeMenuOnSelect={true}
           isClearable={true}
@@ -28,4 +30,4 @@ const UploadSelect = ({
   );
 };
 
-export default UploadSelect;
+export default CreatableSelect;

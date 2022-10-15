@@ -1,27 +1,28 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import './UploadService.css';
-import supportIcon from '../../images/svg/customer-support.svg';
-import categoryIcon from '../../images/svg/category.svg';
-import clockIcon from '../../images/svg/clock-red.svg';
-import calendarIcon from '../../images/svg/calendar.svg';
-import locationIcon from '../../images/svg/Location-red.svg';
-import viewDetailsIcon from '../../images/svg/view-details.svg';
-import imageIcon from '../../images/svg/image-el.svg';
-import uploadPlaceholderUp from '../../images/upload-placeholder-up.png';
-import UploadSelect from './UploadSelect';
-import RegisterUpload from '../Register/elements/RegisterUpload';
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import "./UploadService.css";
+import supportIcon from "../../images/svg/customer-support.svg";
+import categoryIcon from "../../images/svg/category.svg";
+import clockIcon from "../../images/svg/clock-red.svg";
+import calendarIcon from "../../images/svg/calendar.svg";
+import locationIcon from "../../images/svg/Location-red.svg";
+import viewDetailsIcon from "../../images/svg/view-details.svg";
+import imageIcon from "../../images/svg/image-el.svg";
+import uploadPlaceholderUp from "../../images/upload-placeholder-up.png";
+import RegisterUpload from "../Register/elements/RegisterUpload";
 import {
   categoryTags,
   closingDays,
   dragAndDrops,
   locations,
-} from './uploadData';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFind } from '../../hooks/useFind';
-import { useFilter } from '../../hooks/useFilter';
+} from "./uploadData";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFind } from "../../hooks/useFind";
+import { useFilter } from "../../hooks/useFilter";
+import FixedSelect from "../../components/Select/FixedSelect";
+import CreatableSelect from "../../components/Select/CreatableSelect";
 
 const UploadService = () => {
   useDocTitle();
@@ -35,35 +36,35 @@ const UploadService = () => {
   const activeComId = activeCom.id;
   console.log(activeComId);
 
-  const { serRefetch } = useFilter('companyInfoId', activeComId);
+  const { serRefetch } = useFilter("companyInfoId", activeComId);
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    formData.append('id', 0);
-    formData.append('ImgFile', [
+    formData.append("id", 0);
+    formData.append("ImgFile", [
       data.serImg1,
       data.serImg2,
       data.serImg3,
       data.serImg4,
     ]);
-    formData.append('title', data.title);
-    formData.append('time', '');
-    formData.append('location', data.location.value);
-    formData.append('serviceClose', data.serviceClose.value);
-    formData.append('serviceOpen', data.serviceOpen);
-    formData.append('CompanyInfoId', activeComId);
-    formData.append('serviceDetails', data.serviceDetails);
-    formData.append('serType', data.serType.value);
-    formData.append('offeredServices', data.offeredServices);
-    formData.append('active', false);
-    formData.append('status', false);
-    formData.append('extraServices', data.extraServices);
-    formData.append('whyUs', data.whyUs);
-    formData.append('serImg1', '');
-    formData.append('serImg2', '');
-    formData.append('serImg3', '');
-    formData.append('serImg4', '');
+    formData.append("title", data.title);
+    formData.append("time", "");
+    formData.append("location", data.location.value);
+    formData.append("serviceClose", data.serviceClose.value);
+    formData.append("serviceOpen", data.serviceOpen);
+    formData.append("CompanyInfoId", activeComId);
+    formData.append("serviceDetails", data.serviceDetails);
+    formData.append("serType", data.serType.value);
+    formData.append("offeredServices", data.offeredServices);
+    formData.append("active", false);
+    formData.append("status", false);
+    formData.append("extraServices", data.extraServices);
+    formData.append("whyUs", data.whyUs);
+    formData.append("serImg1", "");
+    formData.append("serImg2", "");
+    formData.append("serImg3", "");
+    formData.append("serImg4", "");
     console.log(data);
 
     for (const [key, value] of formData.entries()) {
@@ -71,24 +72,24 @@ const UploadService = () => {
     }
 
     const res = await fetch(serPost, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     });
 
     const resData = await res.json();
     console.log(resData);
 
-    resData === true
-      ? toast.success('Successfully uploaded', {
-          progress: undefined,
-          toastId: 'upSerSuccess',
-        })
-      : toast.error('Upload failed', {
-          progress: undefined,
-          toastId: 'upSerError',
-        });
-    resData === true && serRefetch();
-    resData === true && navigate('/service_dashboard');
+    // resData === true
+    //   ? toast.success('Successfully uploaded', {
+    //       progress: undefined,
+    //       toastId: 'upSerSuccess',
+    //     })
+    //   : toast.error('Upload failed', {
+    //       progress: undefined,
+    //       toastId: 'upSerError',
+    //     });
+    // resData === true && serRefetch();
+    // resData === true && navigate('/service_dashboard');
   };
 
   return (
@@ -99,7 +100,7 @@ const UploadService = () => {
           <h4 className="upload-ser-title">Get Started Setting Up Services</h4>
           <p className="upload-ser-desc">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor
-            aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{' '}
+            aliquam arcu tincidunt eros quis ut tristique iaculis consectetur.{" "}
           </p>
         </div>
         <form className="upload-ser-form-ctn" onSubmit={handleSubmit(onSubmit)}>
@@ -119,7 +120,7 @@ const UploadService = () => {
                   type="text"
                   className="register-form-input"
                   placeholder="Service Name"
-                  {...register('title', {
+                  {...register("title", {
                     required: true,
                   })}
                 />
@@ -133,7 +134,7 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Category</p>
                 </label>
-                <UploadSelect
+                <CreatableSelect
                   name="serType"
                   control={control}
                   items={categoryTags}
@@ -160,7 +161,7 @@ const UploadService = () => {
                   type="time"
                   className="register-form-input"
                   placeholder="Select opening time"
-                  {...register('serviceOpen', {
+                  {...register("serviceOpen", {
                     required: true,
                   })}
                 />
@@ -174,7 +175,7 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Select Closing Days</p>
                 </label>
-                <UploadSelect
+                <FixedSelect
                   name="serviceClose"
                   control={control}
                   items={closingDays}
@@ -196,7 +197,7 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Location</p>
                 </label>
-                <UploadSelect
+                <FixedSelect
                   name="location"
                   control={control}
                   items={locations}
@@ -224,7 +225,7 @@ const UploadService = () => {
                   rows="10"
                   className="register-form-input upload-ser-textarea"
                   placeholder="Describe your service"
-                  {...register('serviceDetails', {
+                  {...register("serviceDetails", {
                     required: true,
                   })}
                 ></textarea>
@@ -247,7 +248,7 @@ const UploadService = () => {
                   rows="10"
                   className="register-form-input upload-ser-textarea"
                   placeholder="Services offered"
-                  {...register('offeredServices', {
+                  {...register("offeredServices", {
                     required: true,
                   })}
                 ></textarea>
@@ -267,7 +268,7 @@ const UploadService = () => {
                   rows="10"
                   className="register-form-input upload-ser-textarea"
                   placeholder="Extra services"
-                  {...register('extraServices', {
+                  {...register("extraServices", {
                     required: true,
                   })}
                 ></textarea>
@@ -287,7 +288,7 @@ const UploadService = () => {
                   rows="10"
                   className="register-form-input upload-ser-textarea"
                   placeholder="Why choose us"
-                  {...register('whyUs', {
+                  {...register("whyUs", {
                     required: true,
                   })}
                 ></textarea>
@@ -303,7 +304,9 @@ const UploadService = () => {
                   />
                   <p className="upload-ser-label-title">Upload Service Image</p>
                 </label>
-                <p className="uploadDm">Please upload images under 1MB</p>
+                <p className="imageUploadInstruction">
+                  Please upload images under 1MB
+                </p>
                 <div className="upload-ser-img-ctn">
                   {dragAndDrops.map((item) => {
                     const { id } = item;
