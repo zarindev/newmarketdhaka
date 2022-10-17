@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import './Navbar.css';
-import BottomLinks from './BottomLinks';
+import { useState } from "react";
+import "./navbar.css";
+import BottomLinks from "./BottomLinks";
 
 const BottomNav = () => {
   const [isMobile, setIsMobile] = useState(false);

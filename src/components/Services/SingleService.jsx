@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import downArrow from '../../images/svg/arrow-down.svg';
-import ServicesSubmenu from '../ServicesSubmenu/ServicesSubmenu';
-import { servicesData } from './servicesData';
+import { useState, useRef } from "react";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import downArrow from "../../images/svg/arrow-down.svg";
+import ServicesSubmenu from "../ServicesSubmenu/ServicesSubmenu";
+import { servicesData } from "./servicesData";
 
 const SingleService = ({ service, image, servicesRef }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [location, setLocation] = useState({});
   const [activeSer, setActiveSer] = useState({
-    service: '',
+    service: "",
     submenu: [],
   });
 
@@ -44,7 +44,7 @@ const SingleService = ({ service, image, servicesRef }) => {
         activeSer={activeSer}
       />
       <div
-        className={isSubmenuOpen ? 'service activeSer' : 'service'}
+        className={isSubmenuOpen ? "service activeSer" : "service"}
         ref={serviceRef}
         onClick={handleClick}
       >

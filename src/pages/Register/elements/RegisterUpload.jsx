@@ -1,9 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { toast } from 'react-toastify';
-import RegisterDropzone from './RegisterDropzone';
+import { useState, useEffect, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import { toast } from "react-toastify";
+import RegisterDropzone from "./RegisterDropzone";
 
 const RegisterUpload = ({
+  id,
   isTypeImg,
   uploadPlaceholderImg,
   changePlaceholderText,
@@ -19,12 +20,12 @@ const RegisterUpload = ({
     (acceptedFiles, fileRejections) => {
       fileRejections.forEach((file) => {
         file.errors.forEach((err) => {
-          let error = '';
-          if (err.code === 'file-too-large') {
-            error = 'File is larger than 1MB';
+          let error = "";
+          if (err.code === "file-too-large") {
+            error = "File is larger than 1MB";
           }
-          if (err.code === 'file-invalid-type') {
-            error = 'File type must be .jpeg, .png, .webp';
+          if (err.code === "file-invalid-type") {
+            error = "File type must be .jpeg, .png, .webp";
           }
 
           toast.error(error, {
@@ -44,14 +45,14 @@ const RegisterUpload = ({
 
       acceptedFiles.forEach(async (file) => {
         const fileData = new FormData();
-        fileData.append('file', file);
+        fileData.append("file", file);
         fileData.append(
-          'upload_preset',
+          "upload_preset",
           process.env.REACT_APP_CLD_UPLOAD_PRESET
         );
 
         const res = await fetch(cldUrl, {
-          method: 'POST',
+          method: "POST",
           body: fileData,
         });
         const data = await res.json();
@@ -59,7 +60,7 @@ const RegisterUpload = ({
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          file['publicId'] = data.public_id;
+          file["publicId"] = data.public_id;
         };
         reader.onloadend = () => {
           setValue(name, file, { require: true });
@@ -70,18 +71,18 @@ const RegisterUpload = ({
   );
 
   const acceptImg = {
-    'image/*': ['.jpeg', '.png', '.webp'],
+    "image/*": [".jpeg", ".png", ".webp"],
   };
 
   const acceptDoc = {
-    'text/plain': ['.txt'],
-    'text/html': ['.html', '.htm'],
-    'text/csv': ['.csv'],
-    'application/msword': ['.doc'],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
-      '.docx',
+    "text/plain": [".txt"],
+    "text/html": [".html", ".htm"],
+    "text/csv": [".csv"],
+    "application/msword": [".doc"],
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [
+      ".docx",
     ],
-    'application/pdf': ['.pdf'],
+    "application/pdf": [".pdf"],
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -100,6 +101,7 @@ const RegisterUpload = ({
 
   return (
     <RegisterDropzone
+      id={id}
       files={files}
       getRootProps={getRootProps}
       getInputProps={getInputProps}

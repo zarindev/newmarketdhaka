@@ -1,9 +1,10 @@
-import React from 'react';
-import RegisterPreviewImage from './RegisterPreviewImage';
-import RegisterPreviewName from './RegisterPreviewName';
-import uploadEditIcon from '../../../images/svg/upload-edit.svg';
+import React from "react";
+import RegisterPreviewImage from "./RegisterPreviewImage";
+import RegisterPreviewName from "./RegisterPreviewName";
+import uploadEditIcon from "../../../images/svg/upload-edit.svg";
 
 const RegisterDropzone = ({
+  id,
   files,
   getRootProps,
   getInputProps,
@@ -12,7 +13,7 @@ const RegisterDropzone = ({
   changePlaceholderText,
 }) => {
   return (
-    <div>
+    <section aria-label="file drag and drop" id={id}>
       <label
         htmlFor="logo"
         className="register-form-upload-label"
@@ -53,7 +54,7 @@ const RegisterDropzone = ({
           defaultValue=""
         />
       </label>
-    </div>
+    </section>
   );
 };
 

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import MenuTabs from './MenuTabs';
-import './ServicesSubmenu.css';
-import Submenu from './Submenu';
+import React, { useState, useRef, useEffect } from "react";
+import MenuTabs from "./MenuTabs";
+import "./ServicesSubmenu.css";
+import Submenu from "./Submenu";
 
 const ServicesSubmenu = ({ isSubmenuOpen, location, activeSer }) => {
   const [activeSubmenu, setActiveSubmenu] = useState([]);
@@ -39,8 +39,9 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeSer }) => {
   };
 
   return (
-    <div
-      className={isSubmenuOpen ? 'submenu submenu-show' : 'submenu'}
+    <section
+      aria-label="service-submenu"
+      className={isSubmenuOpen ? "submenu submenu-show" : "submenu"}
       ref={submenuRef}
     >
       <MenuTabs
@@ -50,7 +51,7 @@ const ServicesSubmenu = ({ isSubmenuOpen, location, activeSer }) => {
         setSelectedTab={setSelectedTab}
       />
       <Submenu activeSubmenu={activeSubmenu} selectedTab={selectedTab} />
-    </div>
+    </section>
   );
 };
 

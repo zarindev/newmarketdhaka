@@ -1,9 +1,12 @@
-import { Controller } from 'react-hook-form';
-import Select from 'react-select';
+import React from "react";
+import "./select.css";
+import { Controller } from "react-hook-form";
+import Select from "react-select";
 
-const UploadSelect = ({
+const FixedSelect = ({
   name,
   control,
+  id,
   items,
   isMulti,
   placeholder,
@@ -17,6 +20,7 @@ const UploadSelect = ({
       render={({ field }) => (
         <Select
           {...field}
+          id={id}
           closeMenuOnSelect={true}
           isClearable={true}
           isMulti={isMulti}
@@ -28,4 +32,4 @@ const UploadSelect = ({
   );
 };
 
-export default UploadSelect;
+export default FixedSelect;
