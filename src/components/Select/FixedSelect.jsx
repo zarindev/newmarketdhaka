@@ -21,6 +21,7 @@ const FixedSelect = ({
         <Select
           {...field}
           id={id}
+          className="reactSelect"
           closeMenuOnSelect={true}
           isClearable={true}
           isMulti={isMulti}

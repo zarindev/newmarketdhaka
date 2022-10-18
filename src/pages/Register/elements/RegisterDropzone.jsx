@@ -13,7 +13,7 @@ const RegisterDropzone = ({
   changePlaceholderText,
 }) => {
   return (
-    <section aria-label="file drag and drop" id={id}>
+    <div aria-label="file drag and drop" id={id}>
       <label
         htmlFor="logo"
         className="register-form-upload-label"
@@ -54,7 +54,7 @@ const RegisterDropzone = ({
           defaultValue=""
         />
       </label>
-    </section>
+    </div>
   );
 };
 

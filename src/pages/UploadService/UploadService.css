@@ -49,6 +49,7 @@
 }
 
 .upload-ser-label-title {
+  font-size: 0.875rem;
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 600;
   color: #1d1d1d;
@@ -58,15 +59,21 @@
   transform: scale(1);
 }
 
+.uploadSerInputLabelAsterisk {
+  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 700;
+  color: #f87272;
+}
+
 .upload-ser-textarea {
   width: 100%;
 }
 
-.imageUploadInstruction {
-  margin-top: -0.2rem;
-  color: #ce2d4f;
-  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
-  font-weight: 600;
+.upload-ser-input-ctn-img .upload-ser-img-ctn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
 }
 
 .upload-ser-input-ctn-img .register-form-upload-label {
@@ -74,6 +81,13 @@
   min-width: auto;
   padding: 0.5rem 0;
   gap: 0;
+}
+
+.imageUploadInstruction {
+  margin-top: -0.2rem;
+  color: #ce2d4f;
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
 }
 
 .upload-ser-input-ctn-img .register-form-upload-label-text {

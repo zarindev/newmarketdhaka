@@ -40,8 +40,11 @@ const UploadService = () => {
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
+    console.log(data);
+
     const formData = new FormData();
     formData.append("id", 0);
+    formData.append("CompanyInfoId", activeComId);
     formData.append("ImgFile", [
       data.serImg1,
       data.serImg2,
@@ -53,7 +56,6 @@ const UploadService = () => {
     formData.append("location", data.location.value);
     formData.append("serviceClose", data.serviceClose.value);
     formData.append("serviceOpen", data.serviceOpen);
-    formData.append("CompanyInfoId", activeComId);
     formData.append("serviceDetails", data.serviceDetails);
     formData.append("serType", data.serType.value);
     formData.append("offeredServices", data.offeredServices);
@@ -117,7 +119,10 @@ const UploadService = () => {
                     alt="label icon"
                     className="upload-ser-label-icon"
                   />
-                  <p className="upload-ser-label-title">Service Name</p>
+                  <p className="upload-ser-label-title">
+                    Service Name{" "}
+                    <span className="uploadSerInputLabelAsterisk">*</span>
+                  </p>
                 </label>
                 <input
                   id="upload_service_name"
@@ -136,7 +141,10 @@ const UploadService = () => {
                     alt="label icon"
                     className="upload-ser-label-icon"
                   />
-                  <p className="upload-ser-label-title">Category</p>
+                  <p className="upload-ser-label-title">
+                    Category{" "}
+                    <span className="uploadSerInputLabelAsterisk">*</span>
+                  </p>
                 </label>
                 <CreatableSelect
                   id="upload_service_category"
@@ -167,7 +175,7 @@ const UploadService = () => {
                   className="register-form-input"
                   placeholder="Select opening time"
                   {...register("serviceOpen", {
-                    required: true,
+                    required: false,
                   })}
                 />
               </div>
@@ -191,7 +199,7 @@ const UploadService = () => {
                       Select closing days
                     </p>
                   }
-                  isRequired={true}
+                  isRequired={false}
                 />
               </div>
               <div className="upload-ser-input-ctn">
@@ -214,7 +222,7 @@ const UploadService = () => {
                       Select location
                     </p>
                   }
-                  isRequired={true}
+                  isRequired={false}
                 />
               </div>
               <div className="upload-ser-input-ctn">
@@ -233,7 +241,7 @@ const UploadService = () => {
                   className="register-form-input upload-ser-textarea"
                   placeholder="Describe your service"
                   {...register("serviceDetails", {
-                    required: true,
+                    required: false,
                   })}
                 ></textarea>
               </div>
@@ -256,7 +264,7 @@ const UploadService = () => {
                   className="register-form-input upload-ser-textarea"
                   placeholder="Services offered"
                   {...register("offeredServices", {
-                    required: true,
+                    required: false,
                   })}
                 ></textarea>
               </div>
@@ -276,7 +284,7 @@ const UploadService = () => {
                   className="register-form-input upload-ser-textarea"
                   placeholder="Extra services"
                   {...register("extraServices", {
-                    required: true,
+                    required: false,
                   })}
                 ></textarea>
               </div>
@@ -296,7 +304,7 @@ const UploadService = () => {
                   className="register-form-input upload-ser-textarea"
                   placeholder="Why choose us"
                   {...register("whyUs", {
-                    required: true,
+                    required: false,
                   })}
                 ></textarea>
               </div>
@@ -327,7 +335,7 @@ const UploadService = () => {
                         getFiles={null}
                         setValue={setValue}
                         {...register(`serImg${id}`, {
-                          required: true,
+                          required: false,
                         })}
                         ref={null}
                       />
