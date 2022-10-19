@@ -100,6 +100,12 @@
   transform: scale(0.5);
 }
 
+.upload-ser-form-ctn .error-message {
+  margin-top: -0.5rem;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #ce2d4f;
+}
+
 @media screen and (max-width: 769px) {
   .upload-ser-form-ctn {
     margin-top: 1.9rem;

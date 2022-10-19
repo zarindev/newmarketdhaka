@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./select.css";
+import { v4 as uuidv4 } from "uuid";
 import { Controller } from "react-hook-form";
 import Creatable from "react-select/creatable";
-import { v4 as uuidv4 } from "uuid";
+import { titleCase } from "../../functions/formatString";
 
 const CreatableSelect = ({
   name,
@@ -17,14 +18,19 @@ const CreatableSelect = ({
   const [options, setOptions] = useState(items);
 
   const handleInputChange = (value) => {
-    setInputValue(value);
+    const formatedValue = titleCase(value);
+    setInputValue(formatedValue);
   };
 
   const handleChange = () => {
-    const newOption = { label: inputValue, value: inputValue, id: uuidv4() };
-    inputValue.length > 0
-      ? setOptions([...options, newOption])
-      : setInputValue("");
+    const newOption = {
+      label: inputValue,
+      value: inputValue,
+      id: uuidv4(),
+    };
+
+    inputValue.length > 0 && setOptions([...options, newOption]);
+    setInputValue("");
   };
 
   return (
@@ -32,21 +38,23 @@ const CreatableSelect = ({
       name={name}
       control={control}
       rules={{ required: isRequired }}
-      render={({ field }) => (
+      render={({ field: { onChange, value, ref } }) => (
         <Creatable
-          {...field}
-          id={id}
+          inputId={id}
+          inputRef={ref}
           className="reactSelect"
           closeMenuOnSelect={true}
           isClearable={true}
           isMulti={isMulti}
           options={options}
           placeholder={placeholder}
-          onChange={handleChange}
-          onInputChange={handleInputChange}
           inputValue={inputValue}
-          value={options.value}
-          controlShouldRenderValue={true}
+          value={items.find((c) => c.value === value)}
+          onInputChange={handleInputChange}
+          onChange={(val) => {
+            onChange(val);
+            handleChange();
+          }}
         />
       )}
     />

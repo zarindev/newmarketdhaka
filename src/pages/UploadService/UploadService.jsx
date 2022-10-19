@@ -29,7 +29,13 @@ const UploadService = () => {
 
   const navigate = useNavigate();
 
-  const { register, control, setValue, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    control,
+    setValue,
+    handleSubmit,
+  } = useForm();
 
   // post service
   const { activeCom } = useFind();
@@ -67,7 +73,6 @@ const UploadService = () => {
     formData.append("serImg2", "");
     formData.append("serImg3", "");
     formData.append("serImg4", "");
-    console.log(data);
 
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
@@ -130,9 +135,12 @@ const UploadService = () => {
                   className="register-form-input"
                   placeholder="Service Name"
                   {...register("title", {
-                    required: true,
+                    required: "Service Name is required",
                   })}
                 />
+                {errors.title && (
+                  <p className="error-message">{errors.title?.message}</p>
+                )}
               </div>
               <div className="upload-ser-input-ctn">
                 <label htmlFor="serType" className="upload-ser-label-ctn">
@@ -159,6 +167,9 @@ const UploadService = () => {
                   }
                   isRequired={true}
                 />
+                {errors.serType && (
+                  <p className="error-message">Service Category is required</p>
+                )}
               </div>
               <div className="upload-ser-input-ctn">
                 <label htmlFor="serOpen" className="upload-ser-label-ctn">

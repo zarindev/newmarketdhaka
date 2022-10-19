@@ -4,11 +4,11 @@ import flagUS from "../../images/flag-us.svg";
 import flagGB from "../../images/flag-gb.svg";
 
 export const categoryTags = [
-  { value: "Cleaning", label: "Cleaning" },
-  { value: "Car Cleaning", label: "Car Cleaning" },
-  { value: "Car Repair", label: "Car Repair" },
-  { value: "Business", label: "Business" },
-  { value: "Learning", label: "Learning" },
+  { value: "Cleaning", label: "Cleaning", id: 1 },
+  { value: "Car Cleaning", label: "Car Cleaning", id: 2 },
+  { value: "Car Repair", label: "Car Repair", id: 3 },
+  { value: "Business", label: "Business", id: 4 },
+  { value: "Learning", label: "Learning", id: 5 },
 ];
 
 export const closingDays = [
