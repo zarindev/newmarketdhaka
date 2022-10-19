@@ -1,16 +1,16 @@
+import "./uploadservice.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
-import "./UploadService.css";
 import supportIcon from "../../images/svg/customer-support.svg";
 import categoryIcon from "../../images/svg/category.svg";
 import clockIcon from "../../images/svg/clock-red.svg";
+import uploadPlaceholderUp from "../../images/upload-placeholder-up.png";
 import calendarIcon from "../../images/svg/calendar.svg";
 import locationIcon from "../../images/svg/Location-red.svg";
 import viewDetailsIcon from "../../images/svg/view-details.svg";
 import imageIcon from "../../images/svg/image-el.svg";
-import uploadPlaceholderUp from "../../images/upload-placeholder-up.png";
 import RegisterUpload from "../Register/elements/RegisterUpload";
 import {
   categoryTags,

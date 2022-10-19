@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./select.css";
 import { v4 as uuidv4 } from "uuid";
 import { Controller } from "react-hook-form";
@@ -16,6 +16,11 @@ const CreatableSelect = ({
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(items);
+  const [optionId, setOptionId] = useState(uuidv4());
+
+  useEffect(() => {
+    setOptionId(uuidv4());
+  }, [options]);
 
   const handleInputChange = (value) => {
     const formatedValue = titleCase(value);
@@ -24,9 +29,9 @@ const CreatableSelect = ({
 
   const handleChange = () => {
     const newOption = {
+      id: optionId,
       label: inputValue,
       value: inputValue,
-      id: uuidv4(),
     };
 
     inputValue.length > 0 && setOptions([...options, newOption]);
@@ -55,6 +60,11 @@ const CreatableSelect = ({
             onChange(val);
             handleChange();
           }}
+          // getNewOptionData={(inputValue, optionLabel) => ({
+          //   id: optionId,
+          //   label: optionLabel,
+          //   value: inputValue,
+          // })}
         />
       )}
     />
