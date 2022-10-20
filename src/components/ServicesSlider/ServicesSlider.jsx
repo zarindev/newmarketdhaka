@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Loading from "../Loading/Loading";
@@ -10,6 +11,11 @@ import { useGlobalContext } from "../../context/AppProvider";
 const ServicesSlider = () => {
   const { mergedSerType } = useGlobalContext();
 
+  const slicedSerType = useMemo(
+    () => mergedSerType.slice(0, 3),
+    [mergedSerType]
+  );
+
   return (
     <section aria-label="available-services" className="services-slider">
       <h1 className="services-slider-title">
@@ -18,7 +24,7 @@ const ServicesSlider = () => {
       {mergedSerType.length === 0 ? (
         <Loading color="#ce2d4f" size={115} />
       ) : (
-        mergedSerType.map((service) => {
+        slicedSerType.map((service) => {
           return <SliderComponent key={uuidv4()} serType={service} />;
         })
       )}

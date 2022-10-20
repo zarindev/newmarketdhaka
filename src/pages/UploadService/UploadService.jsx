@@ -23,6 +23,7 @@ import { useFind } from "../../hooks/useFind";
 import { useFilter } from "../../hooks/useFilter";
 import FixedSelect from "../../components/Select/FixedSelect";
 import CreatableSelect from "../../components/Select/CreatableSelect";
+import { useSerTypeQuery } from "../../hooks/useSerTypeQuery";
 
 const UploadService = () => {
   useDocTitle();
@@ -36,6 +37,9 @@ const UploadService = () => {
     setValue,
     handleSubmit,
   } = useForm();
+  // ger serType
+  const { serTypeData, serTypeError, serTypeIsLoading, serTypeRefetch } =
+    useSerTypeQuery();
 
   // post service
   const { activeCom } = useFind();
@@ -51,12 +55,6 @@ const UploadService = () => {
     const formData = new FormData();
     formData.append("id", 0);
     formData.append("CompanyInfoId", activeComId);
-    formData.append("ImgFile", [
-      data.serImg1,
-      data.serImg2,
-      data.serImg3,
-      data.serImg4,
-    ]);
     formData.append("title", data.title);
     formData.append("time", "");
     formData.append("location", data.location.value);
@@ -69,10 +67,10 @@ const UploadService = () => {
     formData.append("status", false);
     formData.append("extraServices", data.extraServices);
     formData.append("whyUs", data.whyUs);
-    formData.append("serImg1", "");
-    formData.append("serImg2", "");
-    formData.append("serImg3", "");
-    formData.append("serImg4", "");
+    formData.append("ImgFile", data.serImg1);
+    formData.append("ImgFile", data.serImg2);
+    formData.append("ImgFile", data.serImg3);
+    formData.append("ImgFile", data.serImg4);
 
     for (const [key, value] of formData.entries()) {
       console.log(key, value);

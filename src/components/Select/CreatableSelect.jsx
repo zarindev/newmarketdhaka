@@ -5,6 +5,8 @@ import { Controller } from "react-hook-form";
 import Creatable from "react-select/creatable";
 import { titleCase } from "../../functions/formatString";
 
+const serTypePost = process.env.REACT_APP_SER_TYPE_POST_API_KEY;
+
 const CreatableSelect = ({
   name,
   control,
@@ -16,26 +18,33 @@ const CreatableSelect = ({
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(items);
-  const [optionId, setOptionId] = useState(uuidv4());
-
-  useEffect(() => {
-    setOptionId(uuidv4());
-  }, [options]);
 
   const handleInputChange = (value) => {
     const formatedValue = titleCase(value);
     setInputValue(formatedValue);
   };
 
-  const handleChange = () => {
+  const handleChange = async () => {
     const newOption = {
-      id: optionId,
       label: inputValue,
       value: inputValue,
     };
 
     inputValue.length > 0 && setOptions([...options, newOption]);
     setInputValue("");
+
+    if (inputValue.length > 0) {
+      const res = await fetch(serTypePost, {
+        method: "POST",
+        body: JSON.stringify(newOption),
+        headers: {
+          "Content-type": "application/json; carset=UTF-8",
+        },
+      });
+
+      const resData = await res.json();
+      console.log(resData);
+    }
   };
 
   return (
@@ -60,11 +69,6 @@ const CreatableSelect = ({
             onChange(val);
             handleChange();
           }}
-          // getNewOptionData={(inputValue, optionLabel) => ({
-          //   id: optionId,
-          //   label: optionLabel,
-          //   value: inputValue,
-          // })}
         />
       )}
     />

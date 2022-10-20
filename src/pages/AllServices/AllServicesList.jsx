@@ -1,6 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { allServicesData } from './allServicesData';
-import SingleService from './SingleService';
+import { allServicesData } from "./allServicesData";
+import SingleService from "./SingleService";
 
 const AllServicesList = ({ serType, serIcon }) => {
   const specificService = allServicesData.find(
@@ -15,9 +14,13 @@ const AllServicesList = ({ serType, serIcon }) => {
         <img src={serIcon} alt="" className="all-services-list-image" />
         <h3 className="all-services-list-title">{serType}</h3>
       </div>
-      {serAvailabe.map((item) => {
-        return <SingleService key={uuidv4()} {...item} />;
-      })}
+      {serAvailabe.map((item, i) => (
+        <SingleService
+          key={i}
+          serSubType={item.serSubType}
+          serItems={item.serItems}
+        />
+      ))}
     </div>
   );
 };
