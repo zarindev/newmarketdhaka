@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import './SearchBox.css';
-import searchIcon from '../../images/svg/search-normal.svg';
-import SearchDropdown from './SearchDropdown';
-import { useSerQuery } from '../../hooks/useSerQuery';
-import { useGlobalContext } from '../../context/AppProvider';
-import { locations } from '../../pages/UploadService/uploadData';
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "./SearchBox.css";
+import searchIcon from "../../images/svg/search-normal.svg";
+import SearchDropdown from "./SearchDropdown";
+import { useSerQuery } from "../../hooks/useSerQuery";
+import { useGlobalContext } from "../../context/AppProvider";
+import { locations } from "../../pages/UploadService/uploadData";
 
 const SearchBox = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const SearchBox = () => {
         `Pleasae select a 'Category' or 'Location' or input 'Keywords'`,
         {
           progress: undefined,
-          toastId: 'searchOne',
+          toastId: "searchOne",
         }
       );
     }
@@ -50,12 +50,12 @@ const SearchBox = () => {
     if (keywordRef.current?.value.length > 0 && keywordSer.length === 0) {
       toast.error(`No services found`, {
         progress: undefined,
-        toastId: 'searchTwo',
+        toastId: "searchTwo",
       });
     }
 
     isSearched &&
-      navigate('/results', {
+      navigate("/results", {
         state: {
           id: 1,
           searchResult: keywordSer,

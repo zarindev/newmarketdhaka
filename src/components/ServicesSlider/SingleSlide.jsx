@@ -38,15 +38,14 @@ const SingleSlide = ({
         <div className="slide">
           <div className="slide-img-ctn">
             {serImgData && (
-              <Image
-                cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
-                publicId={serImgData[imageIndex]}
+              <img
+                src={`http://mdadmin-001-site2.ftempurl.com/images/${serImgData[imageIndex]}`}
+                alt="slide-img"
                 className="slide-img"
+                width={315}
+                height={195}
                 loading="lazy"
-              >
-                <Transformation width="400" crop="scale" />
-                <Transformation fetchFormat="auto" />
-              </Image>
+              />
             )}
           </div>
           <div className="slide-content">

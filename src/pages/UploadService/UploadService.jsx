@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./uploadservice.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -12,18 +13,13 @@ import locationIcon from "../../images/svg/Location-red.svg";
 import viewDetailsIcon from "../../images/svg/view-details.svg";
 import imageIcon from "../../images/svg/image-el.svg";
 import RegisterUpload from "../Register/elements/RegisterUpload";
-import {
-  categoryTags,
-  closingDays,
-  dragAndDrops,
-  locations,
-} from "./uploadData";
+import { closingDays, dragAndDrops, locations } from "./uploadData";
 import { useDocTitle } from "../../hooks/useDocTitle";
-import { useFind } from "../../hooks/useFind";
 import { useFilter } from "../../hooks/useFilter";
 import FixedSelect from "../../components/Select/FixedSelect";
 import CreatableSelect from "../../components/Select/CreatableSelect";
 import { useSerTypeQuery } from "../../hooks/useSerTypeQuery";
+import { useAuth } from "../../context/AuthProvider";
 
 const UploadService = () => {
   useDocTitle();
@@ -38,15 +34,20 @@ const UploadService = () => {
     handleSubmit,
   } = useForm();
   // ger serType
+  const [serTypes, setSerTypes] = useState([]);
   const { serTypeData, serTypeError, serTypeIsLoading, serTypeRefetch } =
     useSerTypeQuery();
 
-  // post service
-  const { activeCom } = useFind();
-  const activeComId = activeCom.id;
-  console.log(activeComId);
+  useEffect(() => {
+    serTypeData && setSerTypes(serTypeData);
+  }, [serTypeData]);
+  console.log(serTypes);
 
-  const { serRefetch } = useFilter("companyInfoId", activeComId);
+  // post service
+  const { user } = useAuth();
+  const userUId = user?.uid;
+
+  const { serRefetch } = useFilter("userUId", userUId);
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
 
   const onSubmit = async (data) => {
@@ -54,14 +55,17 @@ const UploadService = () => {
 
     const formData = new FormData();
     formData.append("id", 0);
-    formData.append("CompanyInfoId", activeComId);
+    formData.append("CompanyInfoId", 25);
+    formData.append("userUId", userUId);
     formData.append("title", data.title);
     formData.append("time", "");
     formData.append("location", data.location.value);
     formData.append("serviceClose", data.serviceClose.value);
     formData.append("serviceOpen", data.serviceOpen);
     formData.append("serviceDetails", data.serviceDetails);
-    formData.append("serType", data.serType.value);
+    formData.append("serCategoryId", data.serType.id);
+    formData.append("serCategoryval", data.serType.value);
+    formData.append("serCategory", data.serType);
     formData.append("offeredServices", data.offeredServices);
     formData.append("active", false);
     formData.append("status", false);
@@ -75,6 +79,7 @@ const UploadService = () => {
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
+    console.log(data.serType);
 
     const res = await fetch(serPost, {
       method: "POST",
@@ -156,7 +161,7 @@ const UploadService = () => {
                   id="upload_service_category"
                   name="serType"
                   control={control}
-                  items={categoryTags}
+                  items={serTypes}
                   isMulti={false}
                   placeholder={
                     <p className="upload-ser-tag-placeholder">

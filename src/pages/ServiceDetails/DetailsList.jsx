@@ -1,16 +1,16 @@
-import { useState, useMemo } from 'react';
-import { toast } from 'react-toastify';
-import { Image, Transformation } from 'cloudinary-react';
-import paperPlaneIcon from '../../images/svg/paper-plane.svg';
-import clockIcon from '../../images/svg/clock.svg';
-import calendarIcon from '../../images/svg/calendar-2.svg';
-import serviceMap from '../../images/service-map.png';
-import logo from '../../images/service-logo.png';
-import emailIcon from '../../images/svg/Email-gray.svg';
-import phoneIcon from '../../images/svg/Phone-gray.svg';
-import locationIcon from '../../images/svg/Location-gray.svg';
-import { capitalCase } from '../../functions/formatString';
-import Dots from '../../components/Dots/Dots';
+import { useState, useMemo } from "react";
+import { toast } from "react-toastify";
+import { Image, Transformation } from "cloudinary-react";
+import paperPlaneIcon from "../../images/svg/paper-plane.svg";
+import clockIcon from "../../images/svg/clock.svg";
+import calendarIcon from "../../images/svg/calendar-2.svg";
+import serviceMap from "../../images/service-map.png";
+import logo from "../../images/service-logo.png";
+import emailIcon from "../../images/svg/Email-gray.svg";
+import phoneIcon from "../../images/svg/Phone-gray.svg";
+import locationIcon from "../../images/svg/Location-gray.svg";
+import { capitalCase } from "../../functions/formatString";
+import Dots from "../../components/Dots/Dots";
 
 const DetailsList = ({ activeSer, activeUser }) => {
   const {
@@ -48,19 +48,19 @@ const DetailsList = ({ activeSer, activeUser }) => {
   const sendEmail = async () => {
     try {
       const res = await fetch(emailPost, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(mailData),
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
       });
 
       const formData = await res.json();
       console.log(formData);
-      toast.success('Successfully sent', { progress: undefined });
+      toast.success("Successfully sent", { progress: undefined });
     } catch (error) {
       console.log(error);
-      toast.error('Failed to send email', { progress: undefined });
+      toast.error("Failed to send email", { progress: undefined });
     }
   };
 
@@ -169,30 +169,36 @@ const DetailsList = ({ activeSer, activeUser }) => {
           </div>
           <p className="details-contact-title">{capitalCase(title)}</p>
           <div className="details-contact-info-ctn">
-            <div className="details-contact-info">
-              <img
-                src={emailIcon}
-                alt="email icon"
-                className="details-contact-icon"
-              />
-              <p className="details-contact-address">{email}</p>
-            </div>
-            <div className="details-contact-info">
-              <img
-                src={phoneIcon}
-                alt="phone icon"
-                className="details-contact-icon"
-              />
-              <p className="details-contact-address">{phoneNumber}</p>
-            </div>
-            <div className="details-contact-info">
-              <img
-                src={locationIcon}
-                alt="location icon"
-                className="details-contact-icon"
-              />
-              <p className="details-contact-address">{location}</p>
-            </div>
+            {email && (
+              <div className="details-contact-info">
+                <img
+                  src={emailIcon}
+                  alt="email icon"
+                  className="details-contact-icon"
+                />
+                <p className="details-contact-address">{email}</p>
+              </div>
+            )}
+            {phoneNumber && (
+              <div className="details-contact-info">
+                <img
+                  src={phoneIcon}
+                  alt="phone icon"
+                  className="details-contact-icon"
+                />
+                <p className="details-contact-address">{phoneNumber}</p>
+              </div>
+            )}
+            {location && (
+              <div className="details-contact-info">
+                <img
+                  src={locationIcon}
+                  alt="location icon"
+                  className="details-contact-icon"
+                />
+                <p className="details-contact-address">{location}</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="details-contact-map">

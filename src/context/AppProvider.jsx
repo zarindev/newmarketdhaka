@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect, useContext } from 'react';
-import { useMerge } from '../hooks/useMerge';
+import { createContext, useState, useEffect, useContext } from "react";
+import { useMerge } from "../hooks/useMerge";
 
 const AppContext = createContext();
 

@@ -1,12 +1,12 @@
-import './AllServices.css';
-import { v4 as uuidv4 } from 'uuid';
-import TopNav from '../../components/Navbar/TopNav';
-import Services from '../../components/Services/Services';
-import AllServicesList from './AllServicesList';
-import Footer from '../../components/Footer/Footer';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { servicesData } from '../../components/Services/servicesData';
-import { allServicesData } from './allServicesData';
+import "./AllServices.css";
+import { v4 as uuidv4 } from "uuid";
+import TopNav from "../../components/Navbar/TopNav";
+import Services from "../../components/Services/Services";
+import AllServicesList from "./AllServicesList";
+import Footer from "../../components/Footer/Footer";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { servicesData } from "../../components/Services/servicesData";
+import { allServicesData } from "./allServicesData";
 
 const AllServices = () => {
   useDocTitle();

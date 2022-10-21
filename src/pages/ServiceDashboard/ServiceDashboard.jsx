@@ -1,17 +1,16 @@
-import { Link } from 'react-router-dom';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import './ServiceDashboard.css';
-import bannerGuy from '../../images/dash-banner-guy.png';
-import CreatedServices from './CreatedServices';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFind } from '../../hooks/useFind';
+import { Link } from "react-router-dom";
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import "./ServiceDashboard.css";
+import bannerGuy from "../../images/dash-banner-guy.png";
+import CreatedServices from "./CreatedServices";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFind } from "../../hooks/useFind";
 
 const ServiceDashboard = () => {
   useDocTitle();
 
-  const { activeCom } = useFind();
-  const activeComId = activeCom.id;
-  console.log(activeComId);
+  const { activeUser } = useFind();
+  const activeUserId = activeUser?.userUId;
 
   return (
     <div className="service-dash-ctn">
@@ -35,7 +34,7 @@ const ServiceDashboard = () => {
             </button>
           </Link>
         </div>
-        {activeComId && <CreatedServices activeComId={activeComId} />}
+        {activeUserId && <CreatedServices activeUserId={activeUserId} />}
       </div>
     </div>
   );

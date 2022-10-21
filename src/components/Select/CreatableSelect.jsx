@@ -5,8 +5,6 @@ import { Controller } from "react-hook-form";
 import Creatable from "react-select/creatable";
 import { titleCase } from "../../functions/formatString";
 
-const serTypePost = process.env.REACT_APP_SER_TYPE_POST_API_KEY;
-
 const CreatableSelect = ({
   name,
   control,
@@ -24,27 +22,15 @@ const CreatableSelect = ({
     setInputValue(formatedValue);
   };
 
-  const handleChange = async () => {
+  const handleChange = () => {
     const newOption = {
+      id: 0,
       label: inputValue,
       value: inputValue,
     };
 
     inputValue.length > 0 && setOptions([...options, newOption]);
     setInputValue("");
-
-    if (inputValue.length > 0) {
-      const res = await fetch(serTypePost, {
-        method: "POST",
-        body: JSON.stringify(newOption),
-        headers: {
-          "Content-type": "application/json; carset=UTF-8",
-        },
-      });
-
-      const resData = await res.json();
-      console.log(resData);
-    }
   };
 
   return (
@@ -69,6 +55,11 @@ const CreatableSelect = ({
             onChange(val);
             handleChange();
           }}
+          getNewOptionData={(inputValue, optionLabel) => ({
+            id: 0,
+            label: titleCase(optionLabel),
+            value: titleCase(inputValue),
+          })}
         />
       )}
     />

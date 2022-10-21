@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import Loading from '../../components/Loading/Loading';
-import PaginationCom from '../../components/PaginationCom/PaginationCom';
-import SingleSlide from '../../components/ServicesSlider/SingleSlide';
-import { useFilter } from '../../hooks/useFilter';
+import { useState, useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
+import PaginationCom from "../../components/PaginationCom/PaginationCom";
+import SingleSlide from "../../components/ServicesSlider/SingleSlide";
+import { useFilter } from "../../hooks/useFilter";
 
-const CreatedServices = ({ activeComId }) => {
-  const { activeSer, serIsLoading } = useFilter('companyInfoId', activeComId);
+const CreatedServices = ({ activeUserId }) => {
+  const { activeSer, serIsLoading } = useFilter("userUId", activeUserId);
 
   const [activeServices, setActiveServices] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -33,15 +33,21 @@ const CreatedServices = ({ activeComId }) => {
         <div className="single-slide-ctn">
           {!serIsLoading && activeServices.length === 0 ? (
             <h2 className="created-ser-null">
-              Created services are displayed here. Click on the{' '}
+              Created services are displayed here. Click on the{" "}
               <span className="created-ser-null-custom">
                 Create New Service
-              </span>{' '}
+              </span>{" "}
               button to create a service
             </h2>
           ) : (
             activeServices.map((service) => {
-              return <SingleSlide key={service.id} {...service} />;
+              return (
+                <SingleSlide
+                  key={service.id}
+                  serType={service.serCategory.value}
+                  {...service}
+                />
+              );
             })
           )}
         </div>

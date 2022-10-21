@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useSerQuery } from './useSerQuery';
+import { useState, useEffect } from "react";
+import { useSerQuery } from "./useSerQuery";
 
 export const useMerge = () => {
   const [allItems, setAllItems] = useState([]);
@@ -8,11 +8,11 @@ export const useMerge = () => {
 
   useEffect(() => {
     if (serData) {
-      setAllItems(serData?.map((item) => item.serType));
+      setAllItems(serData?.map((item) => item.serCategory.value));
     }
   }, [serData]);
 
   const mergedSerType = [...new Set([...allItems])];
-  const mergedSerTypeAll = ['all', ...new Set([...allItems])];
+  const mergedSerTypeAll = ["all", ...new Set([...allItems])];
   return { mergedSerType, mergedSerTypeAll };
 };

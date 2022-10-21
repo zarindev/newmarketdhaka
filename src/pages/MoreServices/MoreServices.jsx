@@ -18,8 +18,8 @@ const MoreServices = () => {
       <BottomNav />
       <div className="more-services-ctn">
         <div className="more-services">
-          {mergedSerType.map((service) => {
-            return <SliderComponent key={uuidv4()} serType={service} />;
+          {mergedSerType.map((serType) => {
+            return <SliderComponent key={uuidv4()} serType={serType} />;
           })}
         </div>
       </div>
