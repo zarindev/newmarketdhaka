@@ -97,26 +97,30 @@ const DetailsList = ({ activeSer, activeUser }) => {
             <div className="details-info">
               <h4 className="details-service-title">{title}</h4>
               <div className="service-working-hours-ctn">
-                <div className="service-working-hours">
-                  <img
-                    src={calendarIcon}
-                    alt="clock icon"
-                    className="service-working-hours-icon"
-                  />
-                  <p className="service-working-hours-time">
-                    Close on {serviceOpen}
-                  </p>
-                </div>
-                <div className="service-working-hours">
-                  <img
-                    src={clockIcon}
-                    alt="calendar icon"
-                    className="service-working-hours-icon"
-                  />
-                  <p className="service-working-hours-time">
-                    Opens at {serviceClose}
-                  </p>
-                </div>
+                {serviceOpen && (
+                  <div className="service-working-hours">
+                    <img
+                      src={clockIcon}
+                      alt="calendar icon"
+                      className="service-working-hours-icon"
+                    />
+                    <p className="service-working-hours-time">
+                      Opens at {serviceOpen}
+                    </p>
+                  </div>
+                )}
+                {serviceOpen && (
+                  <div className="service-working-hours">
+                    <img
+                      src={calendarIcon}
+                      alt="clock icon"
+                      className="service-working-hours-icon"
+                    />
+                    <p className="service-working-hours-time">
+                      Closed on {serviceClose}day
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
             <button className="details-button" onClick={sendEmail}>
@@ -128,38 +132,40 @@ const DetailsList = ({ activeSer, activeUser }) => {
               <p className="detials-button-text">Send Email</p>
             </button>
           </div>
-          <div className="details-lists">
-            <div className="details-list">
-              <p className="details-list-main-title">Details</p>
-              <p className="details-list-content">{serviceDetails}</p>
+          {(offeredServices || extraServices || whyUs) && (
+            <div className="details-lists">
+              <div className="details-list">
+                <p className="details-list-main-title">Details</p>
+                <p className="details-list-content">{serviceDetails}</p>
+              </div>
+              {offeredServices && (
+                <div className="details-list">
+                  <p className="details-list-sub-title">Services we offer:</p>
+                  <ul className="details-list-items">
+                    <li className="details-list-item">{offeredServices}</li>
+                  </ul>
+                </div>
+              )}
+              {extraServices && (
+                <div className="details-list">
+                  <p className="details-list-sub-title">
+                    Extra services we offer:
+                  </p>
+                  <ul className="details-list-items">
+                    <li className="details-list-item">{extraServices}</li>
+                  </ul>
+                </div>
+              )}
+              {whyUs && (
+                <div className="details-list">
+                  <p className="details-list-sub-title">Why choose us:</p>
+                  <ul className="details-list-items">
+                    <li className="details-list-item">{whyUs}</li>
+                  </ul>
+                </div>
+              )}
             </div>
-            {offeredServices && (
-              <div className="details-list">
-                <p className="details-list-sub-title">Services we offer:</p>
-                <ul className="details-list-items">
-                  <li className="details-list-item">{offeredServices}</li>
-                </ul>
-              </div>
-            )}
-            {extraServices && (
-              <div className="details-list">
-                <p className="details-list-sub-title">
-                  Extra services we offer:
-                </p>
-                <ul className="details-list-items">
-                  <li className="details-list-item">{offeredServices}</li>
-                </ul>
-              </div>
-            )}
-            {whyUs && (
-              <div className="details-list">
-                <p className="details-list-sub-title">Why choose us:</p>
-                <ul className="details-list-items">
-                  <li className="details-list-item">{whyUs}</li>
-                </ul>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
       <div className="service-details-contact">

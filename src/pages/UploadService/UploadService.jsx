@@ -37,8 +37,7 @@ const UploadService = () => {
 
   // ger serType
   const [serTypes, setSerTypes] = useState([]);
-  const { serTypeData, serTypeError, serTypeIsLoading, serTypeRefetch } =
-    useSerTypeQuery();
+  const { serTypeData } = useSerTypeQuery();
 
   useEffect(() => {
     serTypeData && setSerTypes(serTypeData);
