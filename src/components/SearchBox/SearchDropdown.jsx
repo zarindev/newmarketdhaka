@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import { snakeCase, titleCase } from '../../functions/formatString';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import downArrow from '../../images/svg/arrow-down.svg';
-import Loading from '../Loading/Loading';
+import { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { snakeCase, titleCase } from "../../functions/formatString";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import downArrow from "../../images/svg/arrow-down.svg";
+import Loading from "../Loading/Loading";
 
 const SearchDropdown = ({
   dropClass,
@@ -28,7 +28,7 @@ const SearchDropdown = ({
       (service) => snakeCase(service.location) === snakeCase(locationText)
     );
 
-    navigate('/results', {
+    navigate("/results", {
       state: {
         id: 1,
         searchResult: mergedSer,
@@ -41,7 +41,7 @@ const SearchDropdown = ({
     <div className={`${dropClass} search-category-ctn`} ref={btnWrapperRef}>
       <div
         className={
-          showDropdown ? 'category-btn category-btn-active' : 'category-btn'
+          showDropdown ? "category-btn category-btn-active" : "category-btn"
         }
         onClick={() => setShowDropdown(!showDropdown)}
       >
@@ -51,11 +51,16 @@ const SearchDropdown = ({
       <ul
         className={
           showDropdown
-            ? 'category-dropdown category-dropdown-show'
-            : 'category-dropdown'
+            ? `category-dropdown category-dropdown-show ${
+                dropCategoryData?.length > 6 && "category-dropdown-two-columns"
+              }  ${
+                dropCategoryData?.length > 12 &&
+                "category-dropdown-three-columns"
+              }`
+            : "category-dropdown"
         }
       >
-        {dropType === 'Category' ? (
+        {dropType === "Category" ? (
           dropCategoryData.map((item) => (
             <li
               className="dropdown-item"

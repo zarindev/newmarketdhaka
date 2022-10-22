@@ -1,6 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { toast } from "react-toastify";
-import { Image, Transformation } from "cloudinary-react";
 import paperPlaneIcon from "../../images/svg/paper-plane.svg";
 import clockIcon from "../../images/svg/clock.svg";
 import calendarIcon from "../../images/svg/calendar-2.svg";
@@ -13,9 +12,9 @@ import { capitalCase } from "../../functions/formatString";
 import Dots from "../../components/Dots/Dots";
 
 const DetailsList = ({ activeSer, activeUser }) => {
+  // fetched data
   const {
     companyInfo,
-    data,
     serImg1,
     serImg2,
     serImg3,
@@ -35,6 +34,12 @@ const DetailsList = ({ activeSer, activeUser }) => {
     () => [serImg1, serImg2, serImg3, serImg4],
     [serImg1, serImg2, serImg3, serImg4]
   );
+
+  const [serImages, setSerImages] = useState([]);
+
+  useEffect(() => {
+    setSerImages(serImgData.filter(Boolean));
+  }, [serImgData]);
 
   //? send email to the service creator
   const userEmail = activeUser?.email;
@@ -68,22 +73,21 @@ const DetailsList = ({ activeSer, activeUser }) => {
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-img-ctn">
-          {serImgData && (
-            <Image
-              cloudName={process.env.REACT_APP_CLD_CLOUD_NAME}
-              publicId={serImgData[imageIndex]}
-              className="details-img"
+          {serImages && (
+            <img
+              src={`http://mdadmin-001-site2.ftempurl.com/images/${serImages[imageIndex]}`}
+              alt="slide-img"
+              className="slide-img"
+              width={315}
+              height={195}
               loading="lazy"
-            >
-              <Transformation width="400" crop="scale" />
-              <Transformation fetchFormat="auto" />
-            </Image>
+            />
           )}
           <Dots
-            arrLength={serImgData?.length}
+            arrLength={serImages?.length}
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
-            imageData={serImgData}
+            imageData={serImages}
             autoPlay={false}
           />
         </div>

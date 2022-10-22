@@ -1,6 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Image, Transformation } from "cloudinary-react";
 import { snakeCase } from "../../functions/formatString";
 import locationIcon from "../../images/svg/location.svg";
 import profileIcon from "../../images/svg/profile.svg";
@@ -25,21 +24,27 @@ const SingleSlide = ({
     [serImg1, serImg2, serImg3, serImg4]
   );
 
+  const [serImages, setSerImages] = useState([]);
+
+  useEffect(() => {
+    setSerImages(serImgData.filter(Boolean));
+  }, [serImgData]);
+
   return (
     <div className="slide-ctn">
       <Dots
-        arrLength={serImgData?.length}
+        arrLength={serImages?.length}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
-        imageData={serImgData}
+        imageData={serImages}
         autoPlay={false}
       />
       <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
-            {serImgData && (
+            {serImages && (
               <img
-                src={`http://mdadmin-001-site2.ftempurl.com/images/${serImgData[imageIndex]}`}
+                src={`http://mdadmin-001-site2.ftempurl.com/images/${serImages[imageIndex]}`}
                 alt="slide-img"
                 className="slide-img"
                 width={315}
@@ -53,7 +58,7 @@ const SingleSlide = ({
             {serviceOpen && serviceClose && (
               <p className="slide-para">{`${serviceOpen} - ${serviceClose}`}</p>
             )}
-            {location && (
+            {location && location !== "undefined" && (
               <div className="slide-location-ctn">
                 <img
                   src={locationIcon}

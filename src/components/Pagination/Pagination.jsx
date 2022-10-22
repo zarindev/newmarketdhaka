@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
-import './PaginationCom.css';
+import { useEffect } from "react";
+import ReactPaginate from "react-paginate";
+import "./pagination.css";
 
 const PaginationCom = ({
   activeServices,

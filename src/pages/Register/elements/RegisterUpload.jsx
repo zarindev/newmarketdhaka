@@ -14,7 +14,7 @@ const RegisterUpload = ({
 }) => {
   const [files, setFiles] = useState([]);
 
-  const cldUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLD_CLOUD_NAME}/image/upload`;
+  // const cldUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLD_CLOUD_NAME}/image/upload`;
 
   const onDrop = useCallback(
     (acceptedFiles, fileRejections) => {
@@ -44,30 +44,34 @@ const RegisterUpload = ({
       );
 
       acceptedFiles.forEach(async (file) => {
-        const fileData = new FormData();
-        fileData.append("file", file);
-        fileData.append(
-          "upload_preset",
-          process.env.REACT_APP_CLD_UPLOAD_PRESET
-        );
+        // const fileData = new FormData();
+        // fileData.append("file", file);
+        // fileData.append(
+        //   "upload_preset",
+        //   process.env.REACT_APP_CLD_UPLOAD_PRESET
+        // );
 
-        const res = await fetch(cldUrl, {
-          method: "POST",
-          body: fileData,
-        });
-        const data = await res.json();
+        // const res = await fetch(cldUrl, {
+        //   method: "POST",
+        //   body: fileData,
+        // });
+        // const data = await res.json();
 
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          file["publicId"] = data.public_id;
+          // file["publicId"] = data.public_id;
         };
         reader.onloadend = () => {
           setValue(name, file, { require: true });
         };
       });
     },
-    [name, setValue, cldUrl]
+    [
+      name,
+      setValue,
+      // cldUrl
+    ]
   );
 
   const acceptImg = {

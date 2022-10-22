@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
 export const useSerQuery = () => {
   const serGet = process.env.REACT_APP_SER_GET_API_KEY;
@@ -12,7 +12,7 @@ export const useSerQuery = () => {
     error: serError,
     data: serData,
     refetch: serRefetch,
-  } = useQuery(['services'], fetchSer);
+  } = useQuery(["services"], fetchSer);
 
   return { serIsLoading, serError, serData, serRefetch };
 };

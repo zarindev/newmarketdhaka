@@ -98,6 +98,7 @@
 .slide {
   width: 315px;
   height: auto;
+  min-height: 325px;
   background-color: #ffffff;
   border: 1px solid #dfdfdf;
   border-radius: 12px;
@@ -115,7 +116,7 @@
 }
 
 .slide-img-ctn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

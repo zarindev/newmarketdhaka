@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import Loading from "../Loading/Loading";
 import RoundedBtn from "../Button/RoundedBtn";
 import "./ServicesSlider.css";
 import SliderComponent from "./SliderComponent";
@@ -15,7 +14,6 @@ const ServicesSlider = () => {
     () => mergedSerType.slice(0, 3),
     [mergedSerType]
   );
-  console.log(slicedSerType);
 
   return (
     <>

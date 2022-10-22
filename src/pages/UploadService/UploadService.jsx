@@ -22,6 +22,7 @@ import { useSerTypeQuery } from "../../hooks/useSerTypeQuery";
 import { useAuth } from "../../context/AuthProvider";
 
 const UploadService = () => {
+  // libaries functions
   useDocTitle();
 
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const UploadService = () => {
     setValue,
     handleSubmit,
   } = useForm();
+
   // ger serType
   const [serTypes, setSerTypes] = useState([]);
   const { serTypeData, serTypeError, serTypeIsLoading, serTypeRefetch } =
@@ -41,7 +43,6 @@ const UploadService = () => {
   useEffect(() => {
     serTypeData && setSerTypes(serTypeData);
   }, [serTypeData]);
-  console.log(serTypes);
 
   // post service
   const { user } = useAuth();
@@ -59,8 +60,8 @@ const UploadService = () => {
     formData.append("userUId", userUId);
     formData.append("title", data.title);
     formData.append("time", "");
-    formData.append("location", data.location.value);
-    formData.append("serviceClose", data.serviceClose.value);
+    formData.append("location", data.location?.value);
+    formData.append("serviceClose", data.serviceClose?.value);
     formData.append("serviceOpen", data.serviceOpen);
     formData.append("serviceDetails", data.serviceDetails);
     formData.append("serCategoryId", data.serType.id);
@@ -79,7 +80,6 @@ const UploadService = () => {
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
-    console.log(data.serType);
 
     const res = await fetch(serPost, {
       method: "POST",
@@ -136,7 +136,7 @@ const UploadService = () => {
                   id="upload_service_name"
                   type="text"
                   className="register-form-input"
-                  placeholder="Service Name"
+                  placeholder="Service name"
                   {...register("title", {
                     required: "Service Name is required",
                   })}
