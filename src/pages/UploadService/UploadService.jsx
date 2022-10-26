@@ -44,6 +44,7 @@ const UploadService = () => {
   // post service
   const { user } = useAuth();
   const userUId = user?.uid;
+  const userEmail = user?.email;
 
   const { serRefetch } = useFilter("userUId", userUId);
   const serPost = process.env.REACT_APP_SER_POST_API_KEY;
@@ -59,7 +60,7 @@ const UploadService = () => {
     formData.append("time", "");
     formData.append("location", data.location?.value);
     formData.append("serviceClose", "");
-    formData.append("serviceOpen", "");
+    formData.append("serviceOpen", userEmail); //? serviceOpen => creatorEmail
     formData.append("serviceDetails", data.serviceDetails);
     formData.append("serCategoryId", data.serType.id);
     formData.append("serCategoryval", data.serType.value);

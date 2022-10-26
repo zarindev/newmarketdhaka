@@ -8,14 +8,11 @@ import phoneIcon from "../../images/svg/Phone-gray.svg";
 import locationIcon from "../../images/svg/Location-gray.svg";
 import { capitalCase } from "../../functions/formatString";
 import Dots from "../../components/Dots/Dots";
-import { useAuth } from "../../context/AuthProvider";
 
 const DetailsList = ({ activeSer, activeUser }) => {
-  // user data
-  const { user } = useAuth();
-
   // fetched data
-  const { serImg1, serImg2, serImg3, serImg4, title, location } = activeSer;
+  const { serImg1, serImg2, serImg3, serImg4, title, location, serviceOpen } =
+    activeSer;
   const [imageIndex, setImageIndex] = useState(0);
 
   const serImgData = useMemo(
@@ -30,12 +27,12 @@ const DetailsList = ({ activeSer, activeUser }) => {
   }, [serImgData]);
 
   //? send email to the service creator
-  const userEmail = activeUser?.email;
+  const activeUserEmail = activeUser?.email;
   const emailPost = process.env.REACT_APP_EMAIL_POST_API_KEY;
 
   const mailData = {
-    toMail: user?.email,
-    mailBody: `Email sent by ${userEmail}`,
+    toMail: serviceOpen,
+    mailBody: `Email sent by ${activeUserEmail}`,
   };
 
   const sendEmail = async () => {
@@ -107,14 +104,14 @@ const DetailsList = ({ activeSer, activeUser }) => {
           </div>
           <p className="details-contact-title">{capitalCase(title)}</p>
           <div className="details-contact-info-ctn">
-            {user && (
+            {serviceOpen && (
               <div className="details-contact-info">
                 <img
                   src={emailIcon}
                   alt="email icon"
                   className="details-contact-icon"
                 />
-                <p className="details-contact-address">{user?.email}</p>
+                <p className="details-contact-address">{serviceOpen}</p>
               </div>
             )}
             {location && (
