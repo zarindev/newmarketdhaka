@@ -1,8 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { toast } from "react-toastify";
 import paperPlaneIcon from "../../images/svg/paper-plane.svg";
-import clockIcon from "../../images/svg/clock.svg";
-import calendarIcon from "../../images/svg/calendar-2.svg";
 import serviceMap from "../../images/service-map.png";
 import logo from "../../images/service-logo.png";
 import emailIcon from "../../images/svg/Email-gray.svg";
@@ -10,25 +8,15 @@ import phoneIcon from "../../images/svg/Phone-gray.svg";
 import locationIcon from "../../images/svg/Location-gray.svg";
 import { capitalCase } from "../../functions/formatString";
 import Dots from "../../components/Dots/Dots";
+import { useAuth } from "../../context/AuthProvider";
 
 const DetailsList = ({ activeSer, activeUser }) => {
+  // user data
+  const { user } = useAuth();
+
   // fetched data
-  const {
-    companyInfo,
-    serImg1,
-    serImg2,
-    serImg3,
-    serImg4,
-    title,
-    serviceOpen,
-    serviceClose,
-    serviceDetails,
-    offeredServices,
-    extraServices,
-    whyUs,
-  } = activeSer;
+  const { serImg1, serImg2, serImg3, serImg4, title, location } = activeSer;
   const [imageIndex, setImageIndex] = useState(0);
-  const { email, phoneNumber, location } = companyInfo;
 
   const serImgData = useMemo(
     () => [serImg1, serImg2, serImg3, serImg4],
@@ -46,7 +34,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
   const emailPost = process.env.REACT_APP_EMAIL_POST_API_KEY;
 
   const mailData = {
-    toMail: email,
+    toMail: user?.email,
     mailBody: `Email sent by ${userEmail}`,
   };
 
@@ -96,32 +84,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
             <div className="details-styled-divider"></div>
             <div className="details-info">
               <h4 className="details-service-title">{title}</h4>
-              <div className="service-working-hours-ctn">
-                {serviceOpen && (
-                  <div className="service-working-hours">
-                    <img
-                      src={clockIcon}
-                      alt="calendar icon"
-                      className="service-working-hours-icon"
-                    />
-                    <p className="service-working-hours-time">
-                      Opens at {serviceOpen}
-                    </p>
-                  </div>
-                )}
-                {serviceOpen && (
-                  <div className="service-working-hours">
-                    <img
-                      src={calendarIcon}
-                      alt="clock icon"
-                      className="service-working-hours-icon"
-                    />
-                    <p className="service-working-hours-time">
-                      Closed on {serviceClose}day
-                    </p>
-                  </div>
-                )}
-              </div>
             </div>
             <button className="details-button" onClick={sendEmail}>
               <img
@@ -132,40 +94,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
               <p className="detials-button-text">Send Email</p>
             </button>
           </div>
-          {(offeredServices || extraServices || whyUs) && (
-            <div className="details-lists">
-              <div className="details-list">
-                <p className="details-list-main-title">Details</p>
-                <p className="details-list-content">{serviceDetails}</p>
-              </div>
-              {offeredServices && (
-                <div className="details-list">
-                  <p className="details-list-sub-title">Services we offer:</p>
-                  <ul className="details-list-items">
-                    <li className="details-list-item">{offeredServices}</li>
-                  </ul>
-                </div>
-              )}
-              {extraServices && (
-                <div className="details-list">
-                  <p className="details-list-sub-title">
-                    Extra services we offer:
-                  </p>
-                  <ul className="details-list-items">
-                    <li className="details-list-item">{extraServices}</li>
-                  </ul>
-                </div>
-              )}
-              {whyUs && (
-                <div className="details-list">
-                  <p className="details-list-sub-title">Why choose us:</p>
-                  <ul className="details-list-items">
-                    <li className="details-list-item">{whyUs}</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       </div>
       <div className="service-details-contact">
@@ -179,24 +107,14 @@ const DetailsList = ({ activeSer, activeUser }) => {
           </div>
           <p className="details-contact-title">{capitalCase(title)}</p>
           <div className="details-contact-info-ctn">
-            {email && (
+            {user && (
               <div className="details-contact-info">
                 <img
                   src={emailIcon}
                   alt="email icon"
                   className="details-contact-icon"
                 />
-                <p className="details-contact-address">{email}</p>
-              </div>
-            )}
-            {phoneNumber && (
-              <div className="details-contact-info">
-                <img
-                  src={phoneIcon}
-                  alt="phone icon"
-                  className="details-contact-icon"
-                />
-                <p className="details-contact-address">{phoneNumber}</p>
+                <p className="details-contact-address">{user?.email}</p>
               </div>
             )}
             {location && (

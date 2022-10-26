@@ -25,15 +25,13 @@ const Services = ({ serData }) => {
     <section aria-label="all-services" className="services">
       <h1 className="services-title">All Services</h1>
       <div className="services-ctn" ref={servicesRef}>
-        {serData.map((service) => {
-          return (
-            <SingleService
-              key={service.id}
-              {...service}
-              servicesRef={servicesRef}
-            />
-          );
-        })}
+        {serData.map((service) => (
+          <SingleService
+            key={service.id}
+            {...service}
+            servicesRef={servicesRef}
+          />
+        ))}
         <div className="styled-divider"></div>
       </div>
       <RoundedBtn

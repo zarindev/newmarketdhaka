@@ -1,15 +1,6 @@
-import { useState, useEffect } from "react";
-import Loading from "../../components/Loading/Loading";
 import SingleSlide from "../../components/ServicesSlider/SingleSlide";
-import { useFilter } from "../../hooks/useFilter";
 
-const CreatedServices = ({ activeUserId }) => {
-  const { activeSer, serIsLoading } = useFilter("userUId", activeUserId);
-
-  if (serIsLoading) {
-    return <Loading color="#ce2d4f" size={115} />;
-  }
-
+const CreatedServices = ({ activeSer }) => {
   return (
     <div className="created-ser-ctn">
       <div className="created-ser-heading">
@@ -19,7 +10,7 @@ const CreatedServices = ({ activeUserId }) => {
       </div>
       <div className="same-services-ctn">
         <div className="single-slide-ctn">
-          {!serIsLoading && activeSer.length === 0 ? (
+          {activeSer.length === 0 ? (
             <h2 className="created-ser-null">
               Created services are displayed here. Click on the{" "}
               <span className="created-ser-null-custom">
@@ -28,15 +19,13 @@ const CreatedServices = ({ activeUserId }) => {
               button to create a service
             </h2>
           ) : (
-            activeSer.map((service) => {
-              return (
-                <SingleSlide
-                  key={service.id}
-                  serType={service.serCategory.value}
-                  {...service}
-                />
-              );
-            })
+            activeSer.map((service) => (
+              <SingleSlide
+                key={service.id}
+                serType={service.serCategory.value}
+                {...service}
+              />
+            ))
           )}
         </div>
       </div>

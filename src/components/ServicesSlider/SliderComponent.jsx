@@ -73,14 +73,11 @@ const SliderComponent = ({ serType }) => {
           modules={[Navigation]}
           className="carousel"
         >
-          {activeSer &&
-            activeSer?.map((service) => {
-              return (
-                <SwiperSlide key={service.id}>
-                  <SingleSlide serType={serType} {...service} />
-                </SwiperSlide>
-              );
-            })}
+          {activeSer?.map((service) => (
+            <SwiperSlide key={service.id}>
+              <SingleSlide serType={serType} {...service} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

@@ -20,9 +20,9 @@ const AllServices = () => {
         </div>
         <Services serData={servicesData} />
         <div className="all-services-contents">
-          {allServicesData.map((service) => {
-            return <AllServicesList key={uuidv4()} {...service} />;
-          })}
+          {allServicesData.map((service) => (
+            <AllServicesList key={uuidv4()} {...service} />
+          ))}
         </div>
       </div>
       <Footer />

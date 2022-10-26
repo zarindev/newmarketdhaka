@@ -1,16 +1,19 @@
+import "./servicedashboard.css";
 import { Link } from "react-router-dom";
 import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
-import "./ServiceDashboard.css";
 import bannerGuy from "../../images/dash-banner-guy.png";
 import CreatedServices from "./CreatedServices";
 import { useDocTitle } from "../../hooks/useDocTitle";
 import { useFind } from "../../hooks/useFind";
+import { useFilter } from "../../hooks/useFilter";
+import Loading from "../../components/Loading/Loading";
 
 const ServiceDashboard = () => {
   useDocTitle();
 
   const { activeUser } = useFind();
   const activeUserId = activeUser?.userUId;
+  const { activeSer, serIsLoading } = useFilter("userUId", activeUserId);
 
   return (
     <div className="service-dash-ctn">
@@ -34,7 +37,11 @@ const ServiceDashboard = () => {
             </button>
           </Link>
         </div>
-        {activeUserId && <CreatedServices activeUserId={activeUserId} />}
+        {serIsLoading ? (
+          <Loading color="#ce2d4f" size={115} />
+        ) : (
+          <CreatedServices activeSer={activeSer} />
+        )}
       </div>
     </div>
   );

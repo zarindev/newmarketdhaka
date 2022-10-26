@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { snakeCase } from "../../functions/formatString";
 import locationIcon from "../../images/svg/location.svg";
-import profileIcon from "../../images/svg/profile.svg";
 import Dots from "../Dots/Dots";
 
 const SingleSlide = ({
@@ -12,10 +11,7 @@ const SingleSlide = ({
   serImg4,
   title,
   location,
-  name,
   serType,
-  serviceOpen,
-  serviceClose,
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -55,9 +51,6 @@ const SingleSlide = ({
           </div>
           <div className="slide-content">
             <h4 className="slide-title">{title}</h4>
-            {serviceOpen && serviceClose && (
-              <p className="slide-para">{`${serviceOpen} - ${serviceClose}`}</p>
-            )}
             {location && location !== "undefined" && (
               <div className="slide-location-ctn">
                 <img
@@ -66,16 +59,6 @@ const SingleSlide = ({
                   className="location-icon"
                 />
                 <p className="slide-para">{location}</p>
-              </div>
-            )}
-            {name && (
-              <div className="slide-name-ctn">
-                <img
-                  src={profileIcon}
-                  alt="profile icon"
-                  className="profile-icon"
-                />
-                <p className="slide-para">{name}</p>
               </div>
             )}
           </div>

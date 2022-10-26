@@ -1,44 +1,44 @@
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
-import SignUp from './pages/SignUp/SignUp';
-import SignIn from './pages/SignIn/SignIn';
-import AllServices from './pages/AllServices/AllServices';
-import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
-import Profile from './pages/Profile/Profile';
-import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
-import UserProfile from './pages/UserProfile/UserProfile';
-import UserProfileEdit from './pages/UserProfile/UserProfileEdit';
-import Register from './pages/Register/Register';
-import RegisterFormOne from './pages/Register/RegisterFormOne';
-import RegisterFormTwo from './pages/Register/RegisterFormTwo';
-import RegisterFormThree from './pages/Register/RegisterFormThree';
-import RegisterFormFour from './pages/Register/RegisterFormFour';
-import RegisterFormSucess from './pages/Register/RegisterFormSucess';
-import RegisterFormOneIndie from './pages/Register/RegisterFormOneIndie';
-import RegisterFormTwoIndie from './pages/Register/RegisterFormTwoIndie';
-import RegisterFormThreeIndie from './pages/Register/RegisterFormThreeIndie';
-import RegisterFormFourIndie from './pages/Register/RegisterFormFourIndie';
-import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
-import MoreServices from './pages/MoreServices/MoreServices';
-import SameServices from './pages/SameServices/SameServices';
-import NotFound from './pages/404/NotFound';
-import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
-import UploadService from './pages/UploadService/UploadService';
-import SignUpTwo from './pages/SignUp/SignUpTwo';
-import SerachResult from './pages/SearchResult/SerachResult';
-import Toastify from './components/Toastify/Toastify';
-import AdminPanel from './pages/AdminPanel/AdminPanel';
-import AdminApproval from './pages/AdminApproval/AdminApproval';
-import AdminCategory from './pages/AdminCategory/AdminCategory';
-import AdminSettings from './pages/AdminSettings/AdminSettings';
-import ManageServices from './pages/ManageServices/ManageServices';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
+import SignUp from "./pages/SignUp/SignUp";
+import SignIn from "./pages/SignIn/SignIn";
+import AllServices from "./pages/AllServices/AllServices";
+import ServiceDetails from "./pages/ServiceDetails/ServiceDetails";
+import Profile from "./pages/Profile/Profile";
+import ProfileEdit from "./pages/ProfileEdit/ProfileEdit";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import UserProfileEdit from "./pages/UserProfile/UserProfileEdit";
+import Register from "./pages/Register/Register";
+import RegisterFormOne from "./pages/Register/RegisterFormOne";
+import RegisterFormTwo from "./pages/Register/RegisterFormTwo";
+import RegisterFormThree from "./pages/Register/RegisterFormThree";
+import RegisterFormFour from "./pages/Register/RegisterFormFour";
+import RegisterFormSucess from "./pages/Register/RegisterFormSucess";
+import RegisterFormOneIndie from "./pages/Register/RegisterFormOneIndie";
+import RegisterFormTwoIndie from "./pages/Register/RegisterFormTwoIndie";
+import RegisterFormThreeIndie from "./pages/Register/RegisterFormThreeIndie";
+import RegisterFormFourIndie from "./pages/Register/RegisterFormFourIndie";
+import RegisterFormSucessIndie from "./pages/Register/RegisterFormSucessIndie";
+import MoreServices from "./pages/MoreServices/MoreServices";
+import SameServices from "./pages/SameServices/SameServices";
+import NotFound from "./pages/404/NotFound";
+import ServiceDashboard from "./pages/ServiceDashboard/ServiceDashboard";
+import UploadService from "./pages/UploadService/UploadService";
+import SignUpTwo from "./pages/SignUp/SignUpTwo";
+import SerachResult from "./pages/SearchResult/SerachResult";
+import Toastify from "./components/Toastify/Toastify";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import AdminApproval from "./pages/AdminApproval/AdminApproval";
+import AdminCategory from "./pages/AdminCategory/AdminCategory";
+import AdminSettings from "./pages/AdminSettings/AdminSettings";
+import ManageServices from "./pages/ManageServices/ManageServices";
 
 const App = () => {
   return (
     <>
-      <Toastify position="bottom-left" />
+      <Toastify position="top-right" />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home/:service_type" element={<SameServices />} />

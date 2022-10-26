@@ -4,7 +4,6 @@
   height: 100vh;
   overflow: auto;
 }
-
 .service-dash {
   position: absolute;
   top: 0;
@@ -15,7 +14,6 @@
   margin: 0 auto;
   padding: 3.5rem 0 4rem 0;
 }
-
 .service-dash-banner {
   position: relative;
   width: 100%;
@@ -26,26 +24,22 @@
   flex-direction: column;
   gap: 0.2rem;
 }
-
 .service-dash-banner-guy {
   position: absolute;
   top: -2.2rem;
   right: 4rem;
   width: 225px;
 }
-
 .service-dash-banner-title {
   font-size: clamp(1.375rem, 1.325rem + 0.25vw, 1.625rem);
   font-weight: 700;
   color: #ffffff;
 }
-
 .service-dash-banner-desc {
   font-size: clamp(0.875rem, 0.8375rem + 0.1875vw, 1.0625rem);
   font-weight: 400;
   color: #ffffff;
 }
-
 .service-dash-banner-button {
   margin-top: 1rem;
   width: fit-content;
@@ -59,29 +53,23 @@
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .service-dash-banner-button:hover {
   transform: scale(1.05);
 }
-
 .service-dash-banner-button:active {
   transform: scale(0.95);
 }
 
-/* created services */
 .created-ser-ctn {
   margin-top: 1.7rem;
 }
-
 .created-ser-null {
   font-size: clamp(1.1875rem, 1.1375rem + 0.25vw, 1.4375rem);
   line-height: clamp(1.875rem, 1.8125rem + 0.3125vw, 2.1875rem);
 }
-
 .created-ser-null-custom {
   color: #ce2d4f;
 }
-
 .created-ser-heading {
   width: 100%;
   display: flex;
@@ -91,28 +79,23 @@
   color: #1d1d1d;
   white-space: nowrap;
 }
-
 .created-ser-title {
   font-size: clamp(1.375rem, 1.35rem + 0.125vw, 1.5rem);
   font-weight: 700;
 }
-
 .created-ser-amount {
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 600;
 }
-
 .created-ser-styled-divider {
   width: 786px;
   border: 0.5px solid #d9d9d9;
 }
-
 .created-ser-ctn .same-services-ctn {
   width: auto;
   max-width: auto;
   margin: auto;
 }
-
 .created-ser-ctn .pagination-text {
   padding: 0.4rem 1rem;
   background-color: hsl(0, 0%, 83%);
@@ -124,24 +107,19 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
 .created-ser-ctn .pagination-text:hover {
   background-color: hsl(0, 0%, 75%);
   color: hsl(0, 0%, 10%);
 }
-
 .created-ser-ctn .pagination-number {
   color: hsl(0, 0%, 15%);
 }
-
 .created-ser-ctn .pagination-number:hover {
   color: hsl(0, 0%, 11%);
 }
-
 .created-ser-ctn .pagination-active {
   color: hsl(0, 0%, 100%);
 }
-
 .service-dash .loading {
   height: 50vh;
 }
@@ -153,11 +131,9 @@
     width: 90vw;
     padding: 3rem 0 3rem 0;
   }
-
   .service-dash-banner-guy {
     display: none;
   }
-
   .created-ser-heading {
     gap: 1.2rem;
   }
@@ -167,7 +143,6 @@
   .created-ser-heading {
     gap: 0;
   }
-
   .created-ser-styled-divider {
     display: none;
   }

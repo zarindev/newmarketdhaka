@@ -226,24 +226,21 @@ const UploadService = () => {
                 Please upload images under 1MB
               </p>
               <div className="upload-ser-img-ctn">
-                {dragAndDrops.map((item) => {
-                  const { id } = item;
-                  return (
-                    <RegisterUpload
-                      id={`upload_service_image_${id}`}
-                      key={id}
-                      isTypeImg={true}
-                      uploadPlaceholderImg={uploadPlaceholderUp}
-                      changePlaceholderText={true}
-                      getFiles={null}
-                      setValue={setValue}
-                      {...register(`serImg${id}`, {
-                        required: false,
-                      })}
-                      ref={null}
-                    />
-                  );
-                })}
+                {dragAndDrops.map((item) => (
+                  <RegisterUpload
+                    id={`upload_service_image_${item.id}`}
+                    key={item.id}
+                    isTypeImg={true}
+                    uploadPlaceholderImg={uploadPlaceholderUp}
+                    changePlaceholderText={true}
+                    getFiles={null}
+                    setValue={setValue}
+                    {...register(`serImg${item.id}`, {
+                      required: false,
+                    })}
+                    ref={null}
+                  />
+                ))}
               </div>
             </div>
             <button type="submit" className="postSerButton">
