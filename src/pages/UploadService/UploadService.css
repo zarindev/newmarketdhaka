@@ -1,152 +1,118 @@
+.postSerWrapper {
+  max-width: 600px;
+}
 .upload-ser-heading {
   display: grid;
   gap: 0.7rem;
 }
-
 .upload-ser-title {
   font-weight: 700;
   font-size: clamp(1.4375rem, 1.4rem + 0.1875vw, 1.625rem);
   color: #1d1d1d;
 }
-
 .upload-ser-desc {
   font-weight: 400;
   font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
   line-height: 1.1875rem;
   color: #6d6d6d;
 }
-
-.upload-ser-form-ctn {
-  margin-top: 2.1rem;
-  display: block;
-}
-
 .upload-ser-form {
-  display: flex;
-  gap: 4rem;
-}
-
-.upload-ser-left {
-  width: 50%;
+  margin-top: 2rem;
   display: grid;
-  gap: 1.9rem;
+  gap: 1.7rem;
 }
-
-.upload-ser-right {
-  width: 50%;
-  max-width: 370px;
-}
-
 .upload-ser-input-ctn {
   display: grid;
   gap: 0.8em;
 }
-
 .upload-ser-label-ctn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .upload-ser-label-title {
   font-size: 0.875rem;
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 600;
   color: #1d1d1d;
 }
-
 .upload-ser-label-icon {
   transform: scale(1);
 }
-
 .uploadSerInputLabelAsterisk {
   font-size: 0.875rem;
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 700;
   color: #f87272;
 }
-
 .upload-ser-textarea {
   width: 100%;
 }
-
 .upload-ser-input-ctn-img .upload-ser-img-ctn {
+  max-width: 380px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
-
 .upload-ser-input-ctn-img .register-form-upload-label {
   width: 180px;
   min-width: auto;
-  padding: 0.5rem 0;
+  padding: 0 0 1rem 0;
   gap: 0;
 }
-
 .imageUploadInstruction {
   margin-top: -0.2rem;
   color: #ce2d4f;
   font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
   font-weight: 600;
 }
-
 .upload-ser-input-ctn-img .register-form-upload-label-text {
+  margin-top: -0.5rem;
   font-size: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
   font-weight: 600;
   color: #1d1d1d;
 }
-
 .upload-ser-input-ctn-img .register-form-upload-image {
   transform: scale(0.5);
 }
-
-.upload-ser-form-ctn .error-message {
+.upload-ser-form .error-message {
   margin-top: -0.5rem;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #ce2d4f;
 }
+.postSerButton {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  width: fit-content;
+  background-color: #ce2d4f;
+  border: 0.5px solid #ce2d4f;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.7875rem + 0.125vw, 0.9375rem);
+  color: #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 @media screen and (max-width: 769px) {
-  .upload-ser-form-ctn {
-    margin-top: 1.9rem;
-  }
-
   .upload-ser-form {
-    flex-direction: column;
-    gap: 1.5rem;
+    margin-top: 1.8rem;
   }
-
-  .upload-ser-left,
-  .upload-ser-right {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .upload-ser-left {
-    gap: 1.5rem;
-  }
-
   .upload-ser-input-ctn {
     display: grid;
     gap: 0.8em;
   }
-
   .upload-ser-label-ctn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-
-  .upload-ser-input-ctn-img .upload-ser-img-ctn {
-    gap: 0.5rem;
-  }
-
   .upload-ser-input-ctn-img .register-form-upload-label {
     width: 100%;
-    gap: 1rem;
+    min-width: 140px;
   }
-
   .upload-ser-input-ctn-img .upload-ser-img-ctn {
-    gap: 1rem;
+    gap: 0.8rem;
   }
 }
