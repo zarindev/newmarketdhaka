@@ -1,29 +1,21 @@
-import flagBD from '../../images/flag-bd.svg';
-import flagIN from '../../images/flag-in.svg';
-import flagUS from '../../images/flag-us.svg';
-import flagGB from '../../images/flag-gb.svg';
-
-export const categoryTags = [
-  { value: 'Cleaning', label: <p className="selectLabel">Cleaning</p> },
-  { value: 'Car Cleaning', label: <p className="selectLabel">Car Cleaning</p> },
-  { value: 'Car Repair', label: <p className="selectLabel">Car Repair</p> },
-  { value: 'Business', label: <p className="selectLabel">Business</p> },
-  { value: 'Learning', label: <p className="selectLabel">Learning</p> },
-];
+import flagBD from "../../images/flag-bd.svg";
+import flagIN from "../../images/flag-in.svg";
+import flagUS from "../../images/flag-us.svg";
+import flagGB from "../../images/flag-gb.svg";
 
 export const closingDays = [
-  { value: 'Sat', label: <p className="selectLabel">Sat</p> },
-  { value: 'Sun', label: <p className="selectLabel">Sat</p> },
-  { value: 'Mon', label: <p className="selectLabel">Mon</p> },
-  { value: 'Tue', label: <p className="selectLabel">Tue</p> },
-  { value: 'Wed', label: <p className="selectLabel">Wed</p> },
-  { value: 'Thu', label: <p className="selectLabel">Thu</p> },
-  { value: 'Fri', label: <p className="selectLabel">Fri</p> },
+  { value: "Sat", label: "Sat" },
+  { value: "Sun", label: "Sat" },
+  { value: "Mon", label: "Mon" },
+  { value: "Tue", label: "Tue" },
+  { value: "Wed", label: "Wed" },
+  { value: "Thu", label: "Thu" },
+  { value: "Fri", label: "Fri" },
 ];
 
 export const locations = [
   {
-    value: 'Bangladesh',
+    value: "Bangladesh",
     label: (
       <div className="countryWrapper">
         <img
@@ -32,12 +24,12 @@ export const locations = [
           className="countryFlag"
           loading="lazy"
         />
-        <p className="selectLabel">Bangladesh</p>
+        Bangladesh
       </div>
     ),
   },
   {
-    value: 'India',
+    value: "India",
     label: (
       <div className="countryWrapper">
         <img
@@ -46,12 +38,12 @@ export const locations = [
           className="countryFlag"
           loading="lazy"
         />
-        <p className="selectLabel">India</p>
+        India
       </div>
     ),
   },
   {
-    value: 'United States',
+    value: "United States",
     label: (
       <div className="countryWrapper">
         <img
@@ -60,12 +52,12 @@ export const locations = [
           className="countryFlag"
           loading="lazy"
         />
-        <p className="selectLabel">United States</p>
+        United States
       </div>
     ),
   },
   {
-    value: 'Great Britain',
+    value: "Great Britain",
     label: (
       <div className="countryWrapper">
         <img
@@ -74,7 +66,7 @@ export const locations = [
           className="countryFlag"
           loading="lazy"
         />
-        <p className="selectLabel">Great Britain</p>
+        Great Britain
       </div>
     ),
   },

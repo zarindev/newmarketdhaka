@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from './elements/updateAction';
-import './Register.css';
-import RegisterLeft from './elements/RegisterLeft';
-import { useDocTitle } from '../../hooks/useDocTitle';
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "./elements/updateAction";
+import "./Register.css";
+import RegisterLeft from "./elements/RegisterLeft";
+import { useDocTitle } from "../../hooks/useDocTitle";
 
 const RegisterFormTwo = () => {
   useDocTitle();
@@ -15,12 +15,12 @@ const RegisterFormTwo = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ mode: 'all' });
+  } = useForm({ mode: "all" });
   const { actions, state } = useStateMachine({ updateAction });
 
   const onSubmit = (data) => {
     actions.updateAction(data);
-    navigate('/register/company/step3');
+    navigate("/register/company/step3");
   };
 
   return (
@@ -42,8 +42,8 @@ const RegisterFormTwo = () => {
                 name="companyName"
                 className="register-form-input"
                 placeholder="ex: Google"
-                {...register('companyName', {
-                  required: 'Company Name is required',
+                {...register("companyName", {
+                  required: "Company Name is required",
                 })}
               />
               {errors.companyName && (
@@ -59,8 +59,8 @@ const RegisterFormTwo = () => {
                 name="address"
                 className="register-form-input"
                 placeholder="Address"
-                {...register('location', {
-                  required: 'Company Address is required',
+                {...register("location", {
+                  required: "Company Address is required",
                 })}
               />
               {errors.location && (
@@ -76,8 +76,8 @@ const RegisterFormTwo = () => {
                 name="binNumber"
                 className="register-form-input"
                 placeholder="BIN Number"
-                {...register('binNumber', {
-                  required: 'Company BIN Number is required',
+                {...register("binNumber", {
+                  required: "Company BIN Number is required",
                 })}
               />
               {errors.binNumber && (
@@ -93,8 +93,8 @@ const RegisterFormTwo = () => {
                 name="taxNumber"
                 className="register-form-input"
                 placeholder="License Key"
-                {...register('licenseKey', {
-                  required: 'Company License Key is required',
+                {...register("licenseKey", {
+                  required: "Company License Key is required",
                 })}
               />
               {errors.licenseKey && (
@@ -110,8 +110,8 @@ const RegisterFormTwo = () => {
                 name="taxNumber"
                 className="register-form-input"
                 placeholder="Tax Number"
-                {...register('taxNumber', {
-                  required: 'Company Tax Number is required',
+                {...register("taxNumber", {
+                  required: "Company Tax Number is required",
                 })}
               />
               {errors.taxNumber && (
@@ -130,12 +130,12 @@ const RegisterFormTwo = () => {
                 name="phoneNumber"
                 className="field-style"
                 placeholder="Phone Number"
-                {...register('phoneNumber', {
-                  required: 'Company Phone Number is required',
+                {...register("phoneNumber", {
+                  required: "Company Phone Number is required",
                   pattern: {
                     value:
                       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                    message: 'Please enter a valid phone number',
+                    message: "Please enter a valid phone number",
                   },
                 })}
               />

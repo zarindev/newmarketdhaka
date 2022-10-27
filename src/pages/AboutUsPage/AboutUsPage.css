@@ -1,5 +1,5 @@
 .about {
-  margin-top: 80px;
+  margin-top: 5rem;
 }
 
 .about-title {
@@ -13,7 +13,7 @@
 .about-banner {
   width: 100%;
   padding: 125px 0;
-  background: url('../../images/about-and-contact.png') no-repeat center;
+  background: url("../../images/about-and-contact.png") no-repeat center;
 }
 
 .about-content {

@@ -1,30 +1,31 @@
-import { Link } from 'react-router-dom';
-import profileLogo from '../../images/service-logo.png';
-import profileEditIcon from '../../images/svg/user-edit.svg';
-import profileIcon from '../../images/svg/Profile-red.svg';
-import emailIcon from '../../images/svg/Email-red.svg';
-import phoneIcon from '../../images/svg/Phone-red.svg';
-import locationIcon from '../../images/svg/Location-red.svg';
-import licenseIcon from '../../images/svg/license-key.svg';
-import binIcon from '../../images/svg/bin-number.svg';
-import './Profile.css';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFind } from '../../hooks/useFind';
-import Loading from '../../components/Loading/Loading';
+import { Link } from "react-router-dom";
+import profileLogo from "../../images/service-logo.png";
+import profileEditIcon from "../../images/svg/user-edit.svg";
+import profileIcon from "../../images/svg/Profile-red.svg";
+import emailIcon from "../../images/svg/Email-red.svg";
+import phoneIcon from "../../images/svg/Phone-red.svg";
+import locationIcon from "../../images/svg/Location-red.svg";
+import licenseIcon from "../../images/svg/license-key.svg";
+import binIcon from "../../images/svg/bin-number.svg";
+import "./Profile.css";
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFind } from "../../hooks/useFind";
+import Loading from "../../components/Loading/Loading";
 
 const Profile = () => {
   useDocTitle();
 
-  const { activeCom, comIsLoading } = useFind();
+  const { activeUser, serIsLoading } = useFind();
+  console.log(activeUser);
 
   const { companyName, email, phoneNumber, location, binNumber, licenseKey } =
-    activeCom;
+    activeUser.companyInfo;
 
   return (
     <div className="service-dash-ctn profile-ctn">
       <SeekerSidebar />
-      {comIsLoading && Object.keys(activeCom)?.length === 0 ? (
+      {serIsLoading && Object.keys(activeUser)?.length === 0 ? (
         <Loading color="#ce2d4f" size={115} />
       ) : (
         <div className="service-dash">

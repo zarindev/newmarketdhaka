@@ -1,19 +1,19 @@
-import Loading from '../../components/Loading/Loading';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import { useComTableColumn } from '../../hooks/useComTableColumn';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFilter } from '../../hooks/useFilter';
-import { useFind } from '../../hooks/useFind';
+import Loading from "../../components/Loading/Loading";
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import { useComTableColumn } from "../../hooks/useComTableColumn";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFilter } from "../../hooks/useFilter";
+import { useFind } from "../../hooks/useFind";
 
-import './ManageServices.css';
-import TableBlock from './TableBlock';
+import "./ManageServices.css";
+import TableBlock from "./TableBlock";
 
 const ManageServices = () => {
   useDocTitle();
 
-  const { activeCom } = useFind();
-  const activeComId = activeCom.id;
-  const { activeSer, serIsLoading } = useFilter('companyInfoId', activeComId);
+  const { activeUser } = useFind();
+  const activeComId = activeUser.userUId;
+  const { activeSer, serIsLoading } = useFilter("userUId", activeComId);
 
   const columns = useComTableColumn();
 

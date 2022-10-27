@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthProvider';
-import { useComQuery } from './useComQuery';
+import { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthProvider";
+import { useSerQuery } from "./useSerQuery";
 
 export const useFind = () => {
-  const [activeCom, setActiveCom] = useState({});
+  const [activeUser, setActiveUser] = useState({});
 
-  const { comData, comError, comIsLoading } = useComQuery();
+  const { serData, serError, serIsLoading } = useSerQuery();
 
   const { user } = useAuth();
   const uid = user?.uid;
 
   useEffect(() => {
-    if (comData) {
-      const singleItem = comData.find((item) => item.userUId === uid);
-      setActiveCom({ ...singleItem });
+    if (serData) {
+      const singleItem = serData.find((item) => item.userUId === uid);
+      setActiveUser({ ...singleItem });
     }
-  }, [comData, uid]);
+  }, [serData, uid]);
 
-  return { activeCom, comError, comIsLoading };
+  return { activeUser, serError, serIsLoading };
 };

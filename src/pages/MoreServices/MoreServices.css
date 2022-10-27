@@ -3,15 +3,15 @@
   max-width: 980px;
   margin: 10.6rem auto 3rem auto;
 }
-
 .more-services {
   margin-top: 2.5rem;
 }
-
+.more-services .loading {
+  height: 50vw;
+}
 .more-services-ctn .slide {
   border: 1.4px solid #e5e5e5;
 }
-
 .more-services-ctn .rounded-btn {
   margin-top: 2.7rem;
 }
@@ -20,11 +20,9 @@
   .more-services-ctn {
     margin: 7.5rem auto 3.5rem auto;
   }
-
   .more-services {
     margin-top: 1.7rem;
   }
-
   .more-services-ctn .rounded-btn {
     margin-top: 2.3rem;
   }

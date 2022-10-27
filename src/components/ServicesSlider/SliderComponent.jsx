@@ -51,8 +51,6 @@ const SliderComponent = ({ serType }) => {
         <Swiper
           aria-label="services-carousel"
           spaceBetween={12}
-          // loop={true}
-          // loopFillGroupWithBlank={true}
           navigation={{
             prevEl: leftArrowRef.current,
             nextEl: rightArrowRef.current,
@@ -75,14 +73,11 @@ const SliderComponent = ({ serType }) => {
           modules={[Navigation]}
           className="carousel"
         >
-          {activeSer &&
-            activeSer?.map((service) => {
-              return (
-                <SwiperSlide key={service.id}>
-                  <SingleSlide {...service} serType={serType} />
-                </SwiperSlide>
-              );
-            })}
+          {activeSer?.map((service) => (
+            <SwiperSlide key={service.id}>
+              <SingleSlide serType={serType} {...service} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

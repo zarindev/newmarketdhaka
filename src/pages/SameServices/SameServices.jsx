@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './SameServices.css';
-import SingleSlide from '../../components/ServicesSlider/SingleSlide';
-import TopNav from '../../components/Navbar/TopNav';
-import BottomNav from '../../components/Navbar/BottomNav';
-import Footer from '../../components/Footer/Footer';
-import { checkCase, snakeCase, titleCase } from '../../functions/formatString';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import Loading from '../../components/Loading/Loading';
-import { useSerQuery } from '../../hooks/useSerQuery';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "./SameServices.css";
+import SingleSlide from "../../components/ServicesSlider/SingleSlide";
+import TopNav from "../../components/Navbar/TopNav";
+import BottomNav from "../../components/Navbar/BottomNav";
+import Footer from "../../components/Footer/Footer";
+import { checkCase, snakeCase, titleCase } from "../../functions/formatString";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import Loading from "../../components/Loading/Loading";
+import { useSerQuery } from "../../hooks/useSerQuery";
 
 const SameServices = () => {
   useDocTitle();
@@ -18,11 +18,12 @@ const SameServices = () => {
   const [activeSer, setActiveSer] = useState([]);
 
   useEffect(() => {
-    if (serData && titleCase(service_type) === 'All') {
+    if (serData && titleCase(service_type) === "All") {
       return setActiveSer(serData); // return => for exiting out of the loop
     } else if (serData) {
       const mergedSer = serData?.filter(
-        (service) => snakeCase(service.serType) === snakeCase(service_type)
+        (service) =>
+          snakeCase(service.serCategory.value) === snakeCase(service_type)
       );
       setActiveSer(mergedSer);
     }
@@ -51,8 +52,8 @@ const SameServices = () => {
                 return (
                   <SingleSlide
                     key={service.id}
-                    {...service}
                     serType={service_type}
+                    {...service}
                   />
                 );
               })

@@ -3,30 +3,25 @@
   max-width: 990px;
   margin: 10.6rem auto 6rem auto;
 }
-
 .details-directory {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
   color: #000000;
 }
-
 .service-details a {
   color: #000000;
   transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
 .details-directory a:hover {
   color: #000000;
   background-color: #f0f0f0;
   padding: 0.4rem 0.5rem;
   border-radius: 1rem;
 }
-
 .details-directory a:active {
   color: hsla(347, 64%, 49%, 0.8);
 }
-
 .service-details-contents {
   margin-top: 1.5rem;
   width: 100%;
@@ -34,21 +29,18 @@
   justify-content: space-between;
   gap: 1.2rem;
 }
-
 .service-details-content {
   width: 70%;
   border: 1px solid #d8d8d8;
   border-radius: 20px;
 }
-
 .details-img-ctn {
   position: relative;
   width: 100%;
   height: 30rem;
 }
-
 .details-img-ctn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -63,7 +55,6 @@
   opacity: 1;
   z-index: 11;
 }
-
 .details-img-ctn > * {
   z-index: 12;
 }
@@ -76,14 +67,12 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-
 .details-ctn {
   padding: 1.5rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
-
 .details-intro {
   position: relative;
   display: flex;
@@ -91,48 +80,22 @@
   justify-content: space-between;
   white-space: nowrap;
 }
-
 .details-styled-divider {
   position: absolute;
   width: 100%;
   bottom: -40%;
   border: 0.5px solid #eaeaea;
 }
-
 .details-info {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-
 .details-service-title {
   font-weight: 700;
   font-size: 22px;
   color: #1d1d1d;
 }
-
-.service-working-hours-ctn {
-  display: flex;
-  gap: 1rem;
-}
-
-.service-working-hours {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.service-working-hours-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.service-working-hours-time {
-  font-weight: 400;
-  font-size: 16px;
-  color: #6c6c6c;
-}
-
 .details-button {
   padding: 0.7rem 1.1rem;
   background-color: #ce2d4f;
@@ -148,52 +111,12 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .details-button:hover {
   transform: scale(1.03);
 }
-
 .details-button:active {
   transform: scale(0.97);
 }
-
-.details-lists {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.details-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.details-list-main-title {
-  font-weight: 700;
-  font-size: 16px;
-  color: #1d1d1d;
-}
-
-.details-list-sub-title {
-  font-weight: 600;
-  font-size: 16px;
-  color: #1d1d1d;
-}
-
-.details-list-content,
-.details-list-item {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #545454;
-}
-
-.details-list-item {
-  list-style-type: disc;
-  margin-left: 2rem;
-}
-
 .service-details-contact {
   width: 30%;
   height: 100%;
@@ -204,93 +127,76 @@
   flex-direction: column;
   gap: 1rem;
 }
-
 .details-contact-intro {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
 .details-contact-logo-ctn {
   width: 100px;
   height: 100px;
 }
-
 .details-contact-logo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-
 .details-contact-title {
   font-weight: 700;
   font-size: 17px;
   color: #1d1d1d;
 }
-
 .details-contact-info-ctn {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-
 .details-contact-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .details-contact-address {
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
   color: #575757;
 }
-
 .details-contact-map {
   width: 100%;
   height: 100%;
 }
-
 .details-contact-img {
   width: 100%;
   height: 11rem;
   object-fit: cover;
   border-radius: 12px;
 }
-
 .service-details-more {
   margin-top: 4rem;
 }
-
 .details-more-title {
   font-weight: 700;
   font-size: 22px;
   color: #1d1d1d;
 }
-
 .service-details .slider-component {
   margin-top: -1rem;
 }
-
 .service-details .slider-content {
   margin-top: 2.5rem;
 }
-
 .service-details .slider-title {
   display: none;
 }
-
 .service-details-more .slider-heading {
   position: relative;
 }
-
 .service-details .slider-btn-ctn {
   position: absolute;
   right: 0;
 }
-
 .service-details .slide {
   border: 1px solid #d8d8d8;
 }
@@ -299,87 +205,58 @@
   .service-details {
     margin: 7.5rem auto 4rem auto;
   }
-
   .details-directory {
     font-size: 15px;
   }
-
   .details-img-ctn {
     height: 28rem;
   }
-
   .details-ctn {
     padding: 1rem 1.3rem;
     gap: 2rem;
   }
-
   .details-intro {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-
   .details-service-title {
     font-size: 20px;
   }
-
   .service-working-hours {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-
   .service-working-hours-icon {
     transform: scale(0.9);
   }
-
   .service-working-hours-time {
     font-size: 15px;
   }
-
   .details-button {
     font-size: 15px;
   }
-
   .details-button-icon {
     transform: scale(0.9);
   }
-
-  .details-list-main-title {
-    font-size: 14px;
-  }
-
-  .details-list-sub-title {
-    font-size: 15px;
-  }
-
-  .details-list-content,
-  .details-list-item {
-    font-size: 15px;
-  }
-
   .service-details-contact {
     gap: 1.4rem;
   }
-
   .details-contact-title {
     font-size: 16px;
   }
-
   .details-contact-icon {
     transform: scale(0.9);
   }
-
   .details-contact-address {
     font-size: 15px;
     line-height: 26px;
   }
-
   .service-details-more {
     position: relative;
     margin-top: 2.8rem;
   }
-
   .details-more-title {
     font-size: 20px;
   }
@@ -389,40 +266,32 @@
   .details-directory a:hover {
     padding: 0.3rem 0.4rem;
   }
-
   .service-details-contents {
     margin-top: 1.4rem;
     flex-direction: column;
     gap: 1.5rem;
   }
-
   .service-details-content,
   .service-details-contact {
     width: 100%;
   }
-
   .details-img-ctn {
     height: 26rem;
   }
-
   .details-styled-divider {
     display: none;
   }
-
   .service-working-hours-ctn {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
-
   .details-contact-img {
     height: 17rem;
   }
-
   .service-details .slider-btn-ctn {
     margin: 0.6rem 0 0 0;
   }
-
   .service-details .slider-component {
     margin-top: 0.1rem;
   }

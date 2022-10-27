@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from './elements/updateAction';
-import { toast } from 'react-toastify';
-import './Register.css';
-import RegisterLeft from './elements/RegisterLeft';
-import successImage from '../../images/success.png';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useAuth } from '../../context/AuthProvider';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "./elements/updateAction";
+import { toast } from "react-toastify";
+import "./Register.css";
+import RegisterLeft from "./elements/RegisterLeft";
+import successImage from "../../images/success.png";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useAuth } from "../../context/AuthProvider";
 
 const RegisterFormSuccess = () => {
   useDocTitle();
@@ -21,25 +21,25 @@ const RegisterFormSuccess = () => {
 
   const { handleSubmit, reset } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      companyName: '',
-      address: '',
-      binNumber: '',
-      taxNumber: '',
-      phoneNumber: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
+      companyName: "",
+      address: "",
+      binNumber: "",
+      taxNumber: "",
+      phoneNumber: "",
     },
   });
 
   useEffect(() => {
-    toast.success('Redirecting to the Dashbaord in 4 seconds', {
+    toast.success("Redirecting to the Dashbaord in 4 seconds", {
       progress: undefined,
-      toastId: 'companySuccess',
+      toastId: "companySuccess",
     });
 
     const navigateToDash = setTimeout(() => {
-      navigate('/service_dashboard');
+      navigate("/service_dashboard");
     }, 4000);
 
     return () => clearTimeout(navigateToDash);
@@ -57,25 +57,25 @@ const RegisterFormSuccess = () => {
     delete state.password;
     delete state.data;
     state.id = 0;
-    state.logo = '';
-    state.location = '';
-    state.document = '';
+    state.logo = "";
+    state.location = "";
+    state.document = "";
     state.userid = 1;
     state.userUId = uid;
     console.log(state);
 
     const res = await fetch(comPost, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(state),
       headers: {
-        'Content-type': 'application/json; carset=UTF-8',
+        "Content-type": "application/json; carset=UTF-8",
       },
     });
 
-    const formData = await res.json();
-    console.log(formData);
+    const resData = await res.json();
+    console.log(resData);
     reset();
-    navigate('/service_dashboard');
+    resData === true && navigate("/service_dashboard");
   };
 
   return (
