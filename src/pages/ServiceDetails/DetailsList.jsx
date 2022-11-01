@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { toast } from "react-toastify";
+
+// images import
 import paperPlaneIcon from "../../images/svg/paper-plane.svg";
 import serviceMap from "../../images/service-map.png";
 import logo from "../../images/service-logo.png";
@@ -11,8 +13,16 @@ import Dots from "../../components/Dots/Dots";
 
 const DetailsList = ({ activeSer, activeUser }) => {
   // fetched data
-  const { serImg1, serImg2, serImg3, serImg4, title, location, serviceOpen } =
-    activeSer;
+  const {
+    serImg1,
+    serImg2,
+    serImg3,
+    serImg4,
+    title,
+    location,
+    serviceOpen,
+    offeredServices,
+  } = activeSer;
   const [imageIndex, setImageIndex] = useState(0);
 
   const serImgData = useMemo(
@@ -122,6 +132,16 @@ const DetailsList = ({ activeSer, activeUser }) => {
                   className="details-contact-icon"
                 />
                 <p className="details-contact-address">{location}</p>
+              </div>
+            )}
+            {offeredServices && (
+              <div className="details-contact-info">
+                <img
+                  src={phoneIcon}
+                  alt="location icon"
+                  className="details-contact-icon"
+                />
+                <p className="details-contact-address">{offeredServices}</p>
               </div>
             )}
           </div>

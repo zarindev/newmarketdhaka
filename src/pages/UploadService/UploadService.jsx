@@ -60,12 +60,12 @@ const UploadService = () => {
     formData.append("time", "");
     formData.append("location", data.location?.value);
     formData.append("serviceClose", "");
-    formData.append("serviceOpen", userEmail); //? serviceOpen => creatorEmail
+    formData.append("serviceOpen", userEmail); //? serviceOpen -> creatorEmail
     formData.append("serviceDetails", data.serviceDetails);
     formData.append("serCategoryId", data.serType.id);
     formData.append("serCategoryval", data.serType.value);
     formData.append("serCategory", data.serType);
-    formData.append("offeredServices", "");
+    formData.append("offeredServices", data.phoneNumber); //? offeredServices -> phoneNumber
     formData.append("active", false);
     formData.append("status", false);
     formData.append("extraServices", "");
@@ -193,6 +193,33 @@ const UploadService = () => {
                 }
                 isRequired={false}
               />
+            </div>
+            <div className="upload-ser-input-ctn">
+              <label htmlFor="serviceName" className="upload-ser-label-ctn">
+                <img
+                  src={supportIcon}
+                  alt="label icon"
+                  className="upload-ser-label-icon"
+                />
+                <p className="upload-ser-label-title">Phone number</p>
+              </label>
+              <input
+                id="upload_service_phone_number"
+                type="number"
+                className="register-form-input"
+                placeholder="Phone number"
+                {...register("phoneNumber", {
+                  required: false,
+                  pattern: {
+                    value:
+                      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                    message: "Please enter a valid phone number",
+                  },
+                })}
+              />
+              {errors.phoneNumber && (
+                <p className="error-message">{errors.phoneNumber?.message}</p>
+              )}
             </div>
             <div className="upload-ser-input-ctn">
               <label htmlFor="serDetails" className="upload-ser-label-ctn">
