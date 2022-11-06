@@ -66,8 +66,8 @@ const UploadService = () => {
     formData.append("serCategoryval", data.serType.value);
     formData.append("serCategory", data.serType);
     formData.append("offeredServices", data.phoneNumber); //? offeredServices -> phoneNumber
-    formData.append("active", false);
     formData.append("status", false);
+    formData.append("active", false);
     formData.append("extraServices", "");
     formData.append("whyUs", "");
     formData.append("ImgFile", data.serImg1);
