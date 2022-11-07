@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import "./styles/global.css";
 import App from "./App";
 import { StateMachineProvider, createStore } from "little-state-machine";
