@@ -83,7 +83,7 @@
 .details-styled-divider {
   position: absolute;
   width: 100%;
-  bottom: -40%;
+  bottom: -1.4rem;
   border: 0.5px solid #eaeaea;
 }
 .details-info {
@@ -117,8 +117,34 @@
 .details-button:active {
   transform: scale(0.97);
 }
+.details-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.details-list-main-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1d1d1d;
+}
+.details-list-sub-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d1d1d;
+}
+.details-list-content,
+.details-list-item {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #545454;
+}
 .service-details-contact {
-  width: 30%;
   height: 100%;
   border: 1px solid #d8d8d8;
   border-radius: 20px;

@@ -21,6 +21,7 @@ const DetailsList = ({ activeSer, activeUser }) => {
     title,
     location,
     serviceOpen,
+    serviceDetails,
     offeredServices,
   } = activeSer;
   const [imageIndex, setImageIndex] = useState(0);
@@ -100,6 +101,14 @@ const DetailsList = ({ activeSer, activeUser }) => {
               />
               <p className="detials-button-text">Send Email</p>
             </button>
+          </div>
+          <div className="details-lists">
+            <div className="details-list">
+              <p className="details-list-main-title">Service Details</p>
+              {serviceDetails && (
+                <p className="details-list-content">{serviceDetails || "-"}</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
