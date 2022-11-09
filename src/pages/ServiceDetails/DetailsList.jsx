@@ -35,7 +35,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
   );
 
   const [serImages, setSerImages] = useState([]);
-
   useEffect(() => {
     if (!serImgData) return;
     setSerImages(serImgData.filter(Boolean));

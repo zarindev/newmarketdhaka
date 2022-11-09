@@ -36,6 +36,7 @@
 }
 .details-img-ctn {
   position: relative;
+  /* display: inline-block; */
   width: 100%;
   height: 480px;
 }
@@ -59,12 +60,20 @@
   z-index: 12;
 } */
 .details-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.details-img-ctn:hover .details-img {
+  transform: scale(1.02);
 }
 .details-ctn {
   padding: 1.5rem 2rem 2rem 2rem;
