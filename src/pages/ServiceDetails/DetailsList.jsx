@@ -4,7 +4,6 @@ import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
 // components import
-import Dots from "../../components/Dots/Dots";
 import { capitalCase } from "../../functions/formatString";
 
 // images import
@@ -14,6 +13,7 @@ import logo from "../../images/service-logo.png";
 import emailIcon from "../../images/svg/Email-gray.svg";
 import phoneIcon from "../../images/svg/Phone-gray.svg";
 import locationIcon from "../../images/svg/Location-gray.svg";
+import defaultService from "../../images/default-service.png";
 
 const DetailsList = ({ activeSer, activeUser }) => {
   // fetched data
@@ -28,7 +28,6 @@ const DetailsList = ({ activeSer, activeUser }) => {
     serviceDetails,
     offeredServices,
   } = activeSer;
-  const [imageIndex, setImageIndex] = useState(0);
 
   const serImgData = useMemo(
     () => [serImg1, serImg2, serImg3, serImg4],
@@ -74,30 +73,18 @@ const DetailsList = ({ activeSer, activeUser }) => {
     <div className="service-details-contents">
       <div className="service-details-content">
         <div className="details-img-ctn">
-          <Gallery>
-            {serImages.map((segment, index) => (
-              <Item
-                key={index}
-                original={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
-                thumbnail={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
-                width="1024"
-                height="768"
-              >
-                {({ ref, open }) => (
-                  <img
-                    src={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
-                    alt="slide-img"
-                    className="details-img"
-                    width="100%"
-                    height={480}
-                    loading="lazy"
-                    ref={ref}
-                    onClick={open}
-                  />
-                )}
-              </Item>
-            ))}
-          </Gallery>
+          {serImages ? (
+            <ServiceImages serImages={serImages} />
+          ) : (
+            <img
+              src={defaultService}
+              alt="default service"
+              className="details-img"
+              width="100%"
+              height={480}
+              loading="lazy"
+            />
+          )}
         </div>
         <div className="details-ctn">
           <div className="details-intro">
@@ -181,37 +168,31 @@ const DetailsList = ({ activeSer, activeUser }) => {
 
 export default DetailsList;
 
-const MyGallery = () => {
+const ServiceImages = ({ serImages }) => {
   return (
     <Gallery>
-      <Item
-        original="https://placekitten.com/1024/768?image=1"
-        thumbnail="https://placekitten.com/80/60?image=1"
-        width="1024"
-        height="768"
-      >
-        {({ ref, open }) => (
-          <img
-            ref={ref}
-            onClick={open}
-            src="https://placekitten.com/80/60?image=1"
-          />
-        )}
-      </Item>
-      <Item
-        original="https://placekitten.com/1024/768?image=2"
-        thumbnail="https://placekitten.com/80/60?image=2"
-        width="1024"
-        height="768"
-      >
-        {({ ref, open }) => (
-          <img
-            ref={ref}
-            onClick={open}
-            src="https://placekitten.com/80/60?image=2"
-          />
-        )}
-      </Item>
+      {serImages.map((segment, index) => (
+        <Item
+          key={index}
+          original={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
+          thumbnail={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
+          width="1024"
+          height="768"
+        >
+          {({ ref, open }) => (
+            <img
+              src={`http://mdadmin-001-site2.ftempurl.com/images/${segment}`}
+              alt="service"
+              className="details-img"
+              width="100%"
+              height={480}
+              loading="lazy"
+              ref={ref}
+              onClick={open}
+            />
+          )}
+        </Item>
+      ))}
     </Gallery>
   );
 };
