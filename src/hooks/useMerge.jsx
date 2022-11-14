@@ -7,9 +7,9 @@ export const useMerge = () => {
   const { serData } = useSerQuery();
 
   useEffect(() => {
-    if (serData) {
-      setAllItems(serData?.map((item) => item.serCategory.value));
-    }
+    if (!serData) return;
+
+    setAllItems(serData?.map((item) => item.serCategory.value));
   }, [serData]);
 
   const mergedSerType = [...new Set([...allItems])];

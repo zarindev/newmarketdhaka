@@ -3,7 +3,7 @@ import "./servicedetails.css";
 import TopNav from "../../components/Navbar/TopNav";
 import BottomNav from "../../components/Navbar/BottomNav";
 import Footer from "../../components/Footer/Footer";
-import SliderComponent from "../../components/ServicesSlider/SliderComponent";
+import SliderComponentAlt from "../../components/ServicesSlider/SliderComponentAlt";
 import DetailsList from "./DetailsList";
 import {
   capitalCase,
@@ -48,7 +48,10 @@ const ServiceDetails = () => {
             <p className="details-more-title">
               More services from the provider
             </p>
-            <SliderComponent serType={checkCase(serviceType)} />
+            <SliderComponentAlt
+              serType={checkCase(serviceType)}
+              creatorId={activeSer.userUId}
+            />
           </div>
         )}
       </div>

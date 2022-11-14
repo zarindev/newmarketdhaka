@@ -8,17 +8,18 @@ export const useFilter = (type, key) => {
   const { serData, serError, serIsLoading, serRefetch } = useSerQuery();
 
   useEffect(() => {
-    if (serData && type === "serviceType") {
+    if (!serData) return;
+    if (type === "serviceType") {
       const specificItems = serData.filter(
         (item) => snakeCase(item.serCategory.value) === snakeCase(key)
       );
       setActiveSer([...specificItems]);
-    } else if (serData && type === "companyInfoId") {
+    } else if (type === "companyInfoId") {
       const specificItems = serData.filter(
         (item) => item.companyInfoId === key
       );
       setActiveSer([...specificItems]);
-    } else if (serData && type === "userUId") {
+    } else if (type === "userUId") {
       const specificItems = serData.filter((item) => item?.userUId === key);
       setActiveSer([...specificItems]);
     }

@@ -1,4 +1,13 @@
+import "./profile.css";
 import { Link } from "react-router-dom";
+
+// components import
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFind } from "../../hooks/useFind";
+import Loading from "../../components/Loading/Loading";
+
+// images import
 import profileLogo from "../../images/service-logo.png";
 import profileEditIcon from "../../images/svg/user-edit.svg";
 import profileIcon from "../../images/svg/Profile-red.svg";
@@ -7,11 +16,6 @@ import phoneIcon from "../../images/svg/Phone-red.svg";
 import locationIcon from "../../images/svg/Location-red.svg";
 import licenseIcon from "../../images/svg/license-key.svg";
 import binIcon from "../../images/svg/bin-number.svg";
-import "./Profile.css";
-import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
-import { useDocTitle } from "../../hooks/useDocTitle";
-import { useFind } from "../../hooks/useFind";
-import Loading from "../../components/Loading/Loading";
 
 const Profile = () => {
   useDocTitle();

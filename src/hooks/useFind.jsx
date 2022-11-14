@@ -11,10 +11,10 @@ export const useFind = () => {
   const uid = user?.uid;
 
   useEffect(() => {
-    if (serData) {
-      const singleItem = serData.find((item) => item.userUId === uid);
-      setActiveUser({ ...singleItem });
-    }
+    if (!serData) return;
+
+    const singleItem = serData.find((item) => item.userUId === uid);
+    setActiveUser({ ...singleItem });
   }, [serData, uid]);
 
   return { activeUser, serError, serIsLoading };

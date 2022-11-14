@@ -22,9 +22,10 @@ const SameServices = () => {
   const [activeSer, setActiveSer] = useState([]);
 
   useEffect(() => {
-    if (serData && titleCase(serviceType) === "All") {
+    if (!serData) return;
+    if (titleCase(serviceType) === "All") {
       return setActiveSer(serData);
-    } else if (serData) {
+    } else {
       const mergedSer = serData?.filter(
         (service) =>
           snakeCase(service.serCategory.value) === snakeCase(serviceType)
