@@ -11,7 +11,7 @@ import Loading from "../Loading/Loading";
 import { useFilter } from "../../hooks/useFilter";
 
 const SliderComponent = ({ serType }) => {
-  const { activeSer, serIsLoading } = useFilter("serType", serType);
+  const { activeSer, serIsLoading } = useFilter("serviceType", serType);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -24,7 +24,7 @@ const SliderComponent = ({ serType }) => {
     <section aria-label="carousel-wrapper" className="slider-component">
       <div className="slider-heading">
         <h3 className="slider-title">{serType}</h3>
-        <Link to={`/home/${snakeCase(serType)}`}>
+        <Link to={`/services/${snakeCase(serType)}`}>
           <div className="slider-btn-ctn">
             <p className="slider-btn-text">See All</p>
             <img

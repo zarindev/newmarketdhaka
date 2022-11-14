@@ -8,7 +8,7 @@ export const useFilter = (type, key) => {
   const { serData, serError, serIsLoading, serRefetch } = useSerQuery();
 
   useEffect(() => {
-    if (serData && type === "serType") {
+    if (serData && type === "serviceType") {
       const specificItems = serData.filter(
         (item) => snakeCase(item.serCategory.value) === snakeCase(key)
       );

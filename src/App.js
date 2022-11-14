@@ -41,8 +41,11 @@ const App = () => {
       <Toastify position="top-right" />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/home/:service_type" element={<SameServices />} />
-        <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
+        <Route path="/services/:serviceType" element={<SameServices />} />
+        <Route
+          path="/services/:serviceType/:serviceTitle"
+          element={<ServiceDetails />}
+        />
         <Route path="/about_us" element={<AboutUsPage />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up/step2" element={<SignUpTwo />} />

@@ -35,7 +35,7 @@ const SingleSlide = ({
         imageData={serImages}
         autoPlay={false}
       />
-      <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
+      <Link to={`/services/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
             {serImages && (

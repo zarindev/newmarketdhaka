@@ -68,7 +68,9 @@ const SearchDropdown = ({
               onClick={() => setShowDropdown(!showDropdown)}
             >
               {dropData?.length > 0 ? (
-                <Link to={`/home/${snakeCase(item)}`}>{titleCase(item)}</Link>
+                <Link to={`/services/${snakeCase(item)}`}>
+                  {titleCase(item)}
+                </Link>
               ) : (
                 <Loading color="#ce2d4f" size={40} />
               )}

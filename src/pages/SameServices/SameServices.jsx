@@ -1,11 +1,15 @@
+import "./SameServices.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./SameServices.css";
 import SingleSlide from "../../components/ServicesSlider/SingleSlide";
 import TopNav from "../../components/Navbar/TopNav";
 import BottomNav from "../../components/Navbar/BottomNav";
 import Footer from "../../components/Footer/Footer";
-import { checkCase, snakeCase, titleCase } from "../../functions/formatString";
+import {
+  snakeCase,
+  snakeToTitle,
+  titleCase,
+} from "../../functions/formatString";
 import { useDocTitle } from "../../hooks/useDocTitle";
 import Loading from "../../components/Loading/Loading";
 import { useSerQuery } from "../../hooks/useSerQuery";
@@ -14,20 +18,20 @@ const SameServices = () => {
   useDocTitle();
 
   const { serData, serIsLoading } = useSerQuery();
-  const { service_type } = useParams();
+  const { serviceType } = useParams();
   const [activeSer, setActiveSer] = useState([]);
 
   useEffect(() => {
-    if (serData && titleCase(service_type) === "All") {
-      return setActiveSer(serData); // return => for exiting out of the loop
+    if (serData && titleCase(serviceType) === "All") {
+      return setActiveSer(serData);
     } else if (serData) {
       const mergedSer = serData?.filter(
         (service) =>
-          snakeCase(service.serCategory.value) === snakeCase(service_type)
+          snakeCase(service.serCategory.value) === snakeCase(serviceType)
       );
       setActiveSer(mergedSer);
     }
-  }, [serData, service_type]);
+  }, [serData, serviceType]);
 
   return (
     <>
@@ -38,7 +42,7 @@ const SameServices = () => {
       ) : (
         <div className="same-services-ctn">
           <div className="slider-heading">
-            <h3 className="slider-title">{checkCase(service_type)}</h3>
+            <h3 className="slider-title">{snakeToTitle(serviceType)}</h3>
             <p className="same-services-avilable">
               {`${activeSer.length} Services Avilable`}
             </p>
@@ -52,7 +56,7 @@ const SameServices = () => {
                 return (
                   <SingleSlide
                     key={service.id}
-                    serType={service_type}
+                    serType={serviceType}
                     {...service}
                   />
                 );

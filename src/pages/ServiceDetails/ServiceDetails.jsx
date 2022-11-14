@@ -18,11 +18,11 @@ import { useSerQuery } from "../../hooks/useSerQuery";
 const ServiceDetails = () => {
   useDocTitle();
 
-  const { service_type, title } = useParams();
+  const { serviceType, serviceTitle } = useParams();
   const { serData, serIsLoading } = useSerQuery();
 
   const activeSer = serData?.find(
-    (service) => snakeCase(service.title) === snakeCase(title)
+    (service) => snakeCase(service.title) === snakeCase(serviceTitle)
   );
 
   const { user } = useAuth();
@@ -33,9 +33,9 @@ const ServiceDetails = () => {
       <BottomNav />
       <div className="service-details">
         <p className="details-directory">
-          <Link to="/">{checkCase(service_type)}</Link>/
-          <Link to={`/home/${service_type}/${title}`}>
-            {capitalCase(title)}
+          <Link to="/">{checkCase(serviceType)}</Link>/
+          <Link to={`/home/${serviceType}/${serviceTitle}`}>
+            {capitalCase(serviceTitle)}
           </Link>
         </p>
         {serIsLoading ? (
@@ -48,7 +48,7 @@ const ServiceDetails = () => {
             <p className="details-more-title">
               More services from the provider
             </p>
-            <SliderComponent serType={checkCase(service_type)} />
+            <SliderComponent serType={checkCase(serviceType)} />
           </div>
         )}
       </div>
