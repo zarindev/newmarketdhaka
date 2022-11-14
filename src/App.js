@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+
+// pages import
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
@@ -28,7 +30,6 @@ import ServiceDashboard from "./pages/ServiceDashboard/ServiceDashboard";
 import UploadService from "./pages/UploadService/UploadService";
 import SignUpTwo from "./pages/SignUp/SignUpTwo";
 import SerachResult from "./pages/SearchResult/SerachResult";
-import Toastify from "./components/Toastify/Toastify";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminApproval from "./pages/AdminApproval/AdminApproval";
 import AdminCategory from "./pages/AdminCategory/AdminCategory";
@@ -38,7 +39,6 @@ import ManageServices from "./pages/ManageServices/ManageServices";
 const App = () => {
   return (
     <>
-      <Toastify position="top-right" />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services/:serviceType" element={<SameServices />} />

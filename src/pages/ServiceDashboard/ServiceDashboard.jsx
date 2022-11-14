@@ -1,12 +1,18 @@
 import "./servicedashboard.css";
 import { Link } from "react-router-dom";
+
+// components import
 import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
-import bannerGuy from "../../images/dash-banner-guy.png";
 import CreatedServices from "./CreatedServices";
+import Loading from "../../components/Loading/Loading";
+
+//  hooks import
 import { useDocTitle } from "../../hooks/useDocTitle";
 import { useFind } from "../../hooks/useFind";
 import { useFilter } from "../../hooks/useFilter";
-import Loading from "../../components/Loading/Loading";
+
+// images import
+import bannerGuy from "../../images/dash-banner-guy.png";
 
 const ServiceDashboard = () => {
   useDocTitle();

@@ -1,0 +1,105 @@
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+.modalPanel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  transition-property: all;
+  text-align: left;
+  vertical-align: middle;
+  width: 100%;
+  max-width: 20rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin: 1rem;
+  display: grid;
+  gap: 1.5rem 0;
+}
+.modalCards {
+  display: grid;
+  gap: 0.5rem;
+}
+.modalCard {
+  display: flex;
+  gap: 0.7rem;
+}
+.modalCardTitle {
+  color: #262424;
+  font-size: 0.75rem;
+  font-size: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
+  font-weight: 600;
+  color: rgb(39, 37, 37);
+}
+.modalCardDesc {
+  color: black;
+  font-size: 0.75rem;
+  font-size: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
+  font-weight: 600;
+}
+.modalCloseButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  transform: scale(0.8);
+  cursor: pointer;
+}
+.modalCloseButton:hover {
+  transform: scale(0.9);
+}
+.modalCloseButton:active {
+  transform: scale(0.7);
+}
+.modalButtons {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.modalButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 6px 12px;
+  background-color: #ce2d4f;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  font-size: 0.75rem;
+  font-size: clamp(0.75rem, 0.72rem + 0.15000000000000002vw, 0.9rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modalButton:hover {
+  transform: scale(1.02);
+}
+.modalButton:active {
+  transform: scale(0.98);
+}
+.modalPlusButton {
+  color: white;
+  border: 1px solid #ce2d4f;
+}
+.modalMinusButton {
+  color: black;
+  background-color: #e4dcdc;
+  border: 1px solid #a7a7a7;
+}
+@media screen and (max-width: 769px) {
+  .modalButtons {
+    justify-content: flex-start;
+  }
+}

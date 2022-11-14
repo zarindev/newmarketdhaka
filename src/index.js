@@ -1,13 +1,17 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
 import "./styles/global.css";
-import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
 import { StateMachineProvider, createStore } from "little-state-machine";
 import { AppProvider } from "./context/AppProvider";
 import { AuthProvider } from "./context/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+// components import
+import App from "./App";
 import ScrollToTop from "./pages/ScrollToTop";
+import Toastify from "./components/Toastify/Toastify";
 
 const queryClient = new QueryClient();
 
@@ -40,7 +44,10 @@ root.render(
         <StateMachineProvider>
           <Router>
             <ScrollToTop>
-              <App />
+              <Toastify position="top-right" />
+              <React.StrictMode>
+                <App />
+              </React.StrictMode>
             </ScrollToTop>
           </Router>
         </StateMachineProvider>

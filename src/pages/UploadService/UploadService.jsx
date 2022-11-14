@@ -4,27 +4,31 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-// components and hooks
+// components import
 import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
 import RegisterUpload from "../Register/elements/RegisterUpload";
 import FixedSelect from "../../components/Select/FixedSelect";
 import CreatableSelect from "../../components/Select/CreatableSelect";
+
+// hooks import
 import { useDocTitle } from "../../hooks/useDocTitle";
 import { useSerTypeQuery } from "../../hooks/useSerTypeQuery";
 import { useFilter } from "../../hooks/useFilter";
 import { useAuth } from "../../context/AuthProvider";
 
-// images and data
+// images import
 import supportIcon from "../../images/svg/customer-support.svg";
 import categoryIcon from "../../images/svg/category.svg";
 import uploadPlaceholderUp from "../../images/upload-placeholder-up.png";
 import locationIcon from "../../images/svg/Location-red.svg";
 import viewDetailsIcon from "../../images/svg/view-details.svg";
 import imageIcon from "../../images/svg/image-el.svg";
+
+// data import
 import { dragAndDrops, locations } from "./uploadData";
 
 const UploadService = () => {
-  // libaries functions
+  // library functions
   useDocTitle();
 
   const navigate = useNavigate();

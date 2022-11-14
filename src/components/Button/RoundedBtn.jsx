@@ -1,4 +1,4 @@
-import "./Button.css";
+import "./button.css";
 
 const RoundedBtn = ({ text, icon, altText, btnClass, onClick }) => {
   return (

@@ -1,69 +1,30 @@
-import { useState, useEffect, useMemo } from 'react';
-import providerIcon from '../images/technical-service 1.png';
-import serviceIcon from '../images/customer-service 1.png';
-import companyIcon from '../images/enterprise 1.png';
-import categoryIcon from '../images/subfolder 1.png';
-import subCategoryIcon from '../images/options 1.png';
-import { useWindowSize } from './useWindowSize';
+import { useMemo } from "react";
+
+// images import
+import serviceNameIcon from "../images/technical-service 1.png";
+import categoryIcon from "../images/subfolder 1.png";
+import phoneNumberIcon from "../images/options 1.png";
+import locationIcon from "../images/svg/Location-red.svg";
 
 export const useAdminTableColumn = () => {
-  const size = useWindowSize();
-  const { width } = size;
-  const [isShowed, setIsShowed] = useState(true);
-
-  useEffect(() => {
-    if (width < 1100) {
-      setIsShowed(false);
-    } else {
-      setIsShowed(true);
-    }
-  }, [width]);
-
   const columns = useMemo(
     () => [
       {
+        id: "serName",
         Header: () => (
           <div className="tabel-label-ctn">
             <img
-              src={providerIcon}
+              src={serviceNameIcon}
               alt="serviceProvider"
               className="table-label-icon"
             />
-            <p className="tabel-label">Provider ID</p>
+            <p className="tabel-label">Service Name</p>
           </div>
         ),
-        accessor: 'companyInfoId',
-        show: true,
+        accessor: "title",
       },
       {
-        Header: () => (
-          <div className="tabel-label-ctn">
-            <img
-              src={serviceIcon}
-              alt="serviceProvider"
-              className="table-label-icon"
-            />
-            <p className="tabel-label">Service</p>
-          </div>
-        ),
-        accessor: 'title',
-        show: true,
-      },
-      {
-        Header: () => (
-          <div className="tabel-label-ctn">
-            <img
-              src={companyIcon}
-              alt="serviceProvider"
-              className="table-label-icon"
-            />
-            <p className="tabel-label">Company</p>
-          </div>
-        ),
-        accessor: 'companyInfo.companyName',
-        show: isShowed,
-      },
-      {
+        id: "serCategory",
         Header: () => (
           <div className="tabel-label-ctn">
             <img
@@ -74,25 +35,38 @@ export const useAdminTableColumn = () => {
             <p className="tabel-label">Category</p>
           </div>
         ),
-        accessor: 'serType',
-        show: isShowed,
+        accessor: "serCategory.value",
       },
       {
+        id: "location",
         Header: () => (
           <div className="tabel-label-ctn">
             <img
-              src={subCategoryIcon}
+              src={locationIcon}
               alt="serviceProvider"
               className="table-label-icon"
             />
-            <p className="tabel-label">Sub category</p>
+            <p className="tabel-label">Location</p>
           </div>
         ),
-        accessor: 'offeredServices',
-        show: isShowed,
+        accessor: "location",
+      },
+      {
+        id: "offeredServices",
+        Header: () => (
+          <div className="tabel-label-ctn">
+            <img
+              src={phoneNumberIcon}
+              alt="serviceProvider"
+              className="table-label-icon"
+            />
+            <p className="tabel-label">Phone Number</p>
+          </div>
+        ),
+        accessor: "offeredServices",
       },
     ],
-    [isShowed]
+    []
   );
 
   return columns;
