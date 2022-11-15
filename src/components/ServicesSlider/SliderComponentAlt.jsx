@@ -1,20 +1,39 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
+
+// components import
+import SingleSlide from "./SingleSlide";
+import Loading from "../Loading/Loading";
+
+// images import
 import rightArrow from "../../images/svg/right-arrow 1 (Traced).svg";
 import rightArrowTwo from "../../images/svg/right-arrow 2 (Traced).svg";
-import SingleSlide from "./SingleSlide";
-import { snakeCase } from "../../functions/formatString";
-import Loading from "../Loading/Loading";
+
+// hooks and helper functions import
 import { useFilter } from "../../hooks/useFilter";
+import { snakeCase } from "../../functions/formatString";
 
 const SliderComponentAlt = ({ serType, creatorId }) => {
+  const navigate = useNavigate();
+
   const { activeSer, serIsLoading } = useFilter("userUId", creatorId);
 
   const rightArrowRef = useRef(null);
   const leftArrowRef = useRef(null);
+
+  const handleNavigate = () => {
+    navigate(`/services/creator-services/${creatorId}}`, {
+      state: {
+        id: 1,
+        activeSer: activeSer,
+        serIsLoading: serIsLoading,
+        serviceType: serType,
+      },
+    });
+  };
 
   if (serIsLoading) {
     return <Loading color="#ce2d4f" size={115} />;
@@ -23,17 +42,14 @@ const SliderComponentAlt = ({ serType, creatorId }) => {
   return (
     <section aria-label="carousel-wrapper" className="slider-component">
       <div className="slider-heading">
-        <h3 className="slider-title">{serType}</h3>
-        <Link to={`/services/${snakeCase(serType)}`}>
-          <div className="slider-btn-ctn">
-            <p className="slider-btn-text">See All</p>
-            <img
-              src={rightArrow}
-              alt="read-more icon"
-              className="slider-btn-icon"
-            />
-          </div>
-        </Link>
+        <div className="slider-btn-ctn" onClick={() => handleNavigate()}>
+          <p className="slider-btn-text">See All</p>
+          <img
+            src={rightArrow}
+            alt="read-more icon"
+            className="slider-btn-icon"
+          />
+        </div>
       </div>
       <div className="slider-content">
         <img

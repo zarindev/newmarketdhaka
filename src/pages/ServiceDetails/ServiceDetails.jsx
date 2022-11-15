@@ -1,19 +1,25 @@
-import { Link, useParams } from "react-router-dom";
 import "./servicedetails.css";
+import { Link, useParams } from "react-router-dom";
+
+// components import
 import TopNav from "../../components/Navbar/TopNav";
 import BottomNav from "../../components/Navbar/BottomNav";
 import Footer from "../../components/Footer/Footer";
 import SliderComponentAlt from "../../components/ServicesSlider/SliderComponentAlt";
 import DetailsList from "./DetailsList";
+import Loading from "../../components/Loading/Loading";
+
+// hooks import
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useAuth } from "../../context/AuthProvider";
+import { useSerQuery } from "../../hooks/useSerQuery";
+
+// helper functions import
 import {
   capitalCase,
   checkCase,
   snakeCase,
 } from "../../functions/formatString";
-import { useDocTitle } from "../../hooks/useDocTitle";
-import Loading from "../../components/Loading/Loading";
-import { useAuth } from "../../context/AuthProvider";
-import { useSerQuery } from "../../hooks/useSerQuery";
 
 const ServiceDetails = () => {
   useDocTitle();

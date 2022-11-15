@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
+
+// components import
+import SingleSlide from "./SingleSlide";
+import Loading from "../Loading/Loading";
+
+// images import
 import rightArrow from "../../images/svg/right-arrow 1 (Traced).svg";
 import rightArrowTwo from "../../images/svg/right-arrow 2 (Traced).svg";
-import SingleSlide from "./SingleSlide";
-import { snakeCase } from "../../functions/formatString";
-import Loading from "../Loading/Loading";
+
+// hooks and helper functions import
 import { useFilter } from "../../hooks/useFilter";
+import { snakeCase } from "../../functions/formatString";
 
 const SliderComponent = ({ serType }) => {
   const { activeSer, serIsLoading } = useFilter("serviceType", serType);

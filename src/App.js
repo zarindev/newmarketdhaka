@@ -25,6 +25,7 @@ import RegisterFormFourIndie from "./pages/Register/RegisterFormFourIndie";
 import RegisterFormSucessIndie from "./pages/Register/RegisterFormSucessIndie";
 import MoreServices from "./pages/MoreServices/MoreServices";
 import SameServices from "./pages/SameServices/SameServices";
+import CreatorServices from "./pages/CreatorServices/CreatorServices";
 import NotFound from "./pages/404/NotFound";
 import ServiceDashboard from "./pages/ServiceDashboard/ServiceDashboard";
 import UploadService from "./pages/UploadService/UploadService";
@@ -42,6 +43,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services/:serviceType" element={<SameServices />} />
+        <Route
+          path="/services/creator-services/:creatorId"
+          element={<CreatorServices />}
+        />
         <Route
           path="/services/:serviceType/:serviceTitle"
           element={<ServiceDetails />}

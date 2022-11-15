@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-// components import
+// helper functions import
 import { capitalCase } from "../../functions/formatString";
 
 // images import
