@@ -12,9 +12,8 @@ import Loading from "../Loading/Loading";
 import rightArrow from "../../images/svg/right-arrow 1 (Traced).svg";
 import rightArrowTwo from "../../images/svg/right-arrow 2 (Traced).svg";
 
-// hooks and helper functions import
+// hooks import
 import { useFilter } from "../../hooks/useFilter";
-import { snakeCase } from "../../functions/formatString";
 
 const SliderComponentAlt = ({ serType, creatorId }) => {
   const navigate = useNavigate();

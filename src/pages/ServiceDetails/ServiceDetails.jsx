@@ -1,5 +1,5 @@
 import "./servicedetails.css";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // components import
 import TopNav from "../../components/Navbar/TopNav";
@@ -15,14 +15,12 @@ import { useAuth } from "../../context/AuthProvider";
 import { useSerQuery } from "../../hooks/useSerQuery";
 
 // helper functions import
-import {
-  capitalCase,
-  checkCase,
-  snakeCase,
-} from "../../functions/formatString";
+import { checkCase, snakeCase } from "../../functions/formatString";
 
 const ServiceDetails = () => {
   useDocTitle();
+
+  const navigate = useNavigate();
 
   const { serviceType, serviceTitle } = useParams();
   const { serData, serIsLoading } = useSerQuery();
@@ -38,11 +36,8 @@ const ServiceDetails = () => {
       <TopNav />
       <BottomNav />
       <div className="service-details">
-        <p className="details-directory">
-          <Link to="/">{checkCase(serviceType)}</Link>/
-          <Link to={`/home/${serviceType}/${serviceTitle}`}>
-            {capitalCase(serviceTitle)}
-          </Link>
+        <p className="detailsBackButton" onClick={() => navigate(-1)}>
+          Go Back
         </p>
         {serIsLoading ? (
           <Loading color="#ce2d4f" size={125} />

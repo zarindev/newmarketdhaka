@@ -2,12 +2,10 @@
   display: flex;
   gap: 6rem;
 }
-
 .profile-image-ctn {
   width: 170px;
   height: 170px;
 }
-
 .profile-image {
   width: 170px;
   max-width: 100%;
@@ -15,7 +13,6 @@
   height: auto;
   border-radius: 50%;
 }
-
 .profile-title-ctn {
   position: relative;
   width: 50vw;
@@ -24,7 +21,6 @@
   display: flex;
   white-space: nowrap;
 }
-
 .profile-styled-divider {
   position: absolute;
   top: 2.5rem;
@@ -35,39 +31,32 @@
   min-width: 460px;
   border: 0.5px solid #e0e0e0;
 }
-
 .edit-items-title-ctn {
   white-space: nowrap;
 }
-
 .profile-title {
   width: 50%;
   font-weight: 700;
   font-size: clamp(1.125rem, 1.075rem + 0.25vw, 1.375rem);
   color: #1d1d1d;
 }
-
 .profileEditBtn {
   transition: all 0.3s ease-in-out;
 }
-
 .profileEditBtn:hover {
   opacity: 0.75;
 }
-
 .profile-edit-ctn {
   width: 50%;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .profile-edit-text {
   font-weight: 600;
   font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
   color: hsl(199, 82%, 30%);
 }
-
 .profile-info-ctn {
   margin: 2.7rem 0 2.2rem 0;
   width: 50vw;
@@ -75,7 +64,6 @@
   min-width: 480px;
   display: flex;
 }
-
 .profile-content-left,
 .profile-content-right {
   width: 50%;
@@ -83,31 +71,26 @@
   flex-direction: column;
   gap: 2rem;
 }
-
 .profile-content {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
-
 .profile-label {
   display: flex;
   gap: 0.5rem;
 }
-
 .profile-label-text {
   font-weight: 600;
   font-size: clamp(0.8125rem, 0.7875rem + 0.125vw, 0.9375rem);
   color: #6c6c6c;
   white-space: nowrap;
 }
-
 .profile-info {
   font-weight: 600;
   font-size: clamp(0.9375rem, 0.9125rem + 0.125vw, 1.0625rem);
   color: #1d1d1d;
 }
-
 .profile-login-btn {
   background-color: transparent;
   border: transparent;
@@ -116,47 +99,39 @@
   gap: 0.5rem;
   cursor: pointer;
 }
-
 .profile-login-image {
   max-width: 100%;
   height: auto;
 }
-
 .profile-login-text {
   font-weight: 600;
   font-size: 17px;
   color: #1d1d1d;
 }
-
 @media screen and (max-width: 769px) {
   .profile-ctn .service-dash {
     flex-direction: column;
     gap: 2rem;
     padding: 3rem 0 1rem 0;
   }
-
   .profile-image-ctn {
     margin: 0 auto;
   }
-
   .profile-image {
     width: 150px;
   }
-
   .profile-title-ctn {
     width: 100%;
     max-width: auto;
     min-width: auto;
     justify-content: space-between;
   }
-
   .profile-styled-divider {
     top: 2.3rem;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
   }
-
   .profile-info-ctn {
     margin-top: 2.2rem;
     width: 100%;
@@ -165,29 +140,23 @@
     flex-direction: column;
     gap: 1.4rem;
   }
-
   .profile-content-left,
   .profile-content-right {
     width: 100%;
     gap: 1.4rem;
   }
-
   .profile-content {
     gap: 0.65rem;
   }
-
   .profile-edit-ctn {
     gap: 0.4rem;
   }
-
   .profile-edit-icon {
     transform: scale(0.85);
   }
-
   .profile-label {
     gap: 0.4rem;
   }
-
   .profile-label-icon {
     transform: scale(0.85);
   }

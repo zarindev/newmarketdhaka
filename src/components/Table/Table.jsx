@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Table.css";
+import "./table.css";
 import { useTable, useSortBy } from "react-table";
 
 // images import
