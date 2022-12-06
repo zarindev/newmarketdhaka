@@ -2,11 +2,17 @@ import { useMemo } from "react";
 import "./servicesslider.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+
+// compoents import
 import RoundedBtn from "../Button/RoundedBtn";
 import SliderComponent from "./SliderComponent";
-import arrowCircleDown from "../../images/svg/arrow-circle-down.svg";
-import { useGlobalContext } from "../../context/AppProvider";
 import Loading from "../Loading/Loading";
+
+// contexts import
+import { useGlobalContext } from "../../context/AppProvider";
+
+// images import
+import arrowCircleDown from "../../images/svg/arrow-circle-down.svg";
 
 const ServicesSlider = () => {
   const { mergedSerType } = useGlobalContext();

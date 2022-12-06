@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+
+// pages import
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
@@ -23,12 +25,12 @@ import RegisterFormFourIndie from "./pages/Register/RegisterFormFourIndie";
 import RegisterFormSucessIndie from "./pages/Register/RegisterFormSucessIndie";
 import MoreServices from "./pages/MoreServices/MoreServices";
 import SameServices from "./pages/SameServices/SameServices";
+import CreatorServices from "./pages/CreatorServices/CreatorServices";
 import NotFound from "./pages/404/NotFound";
 import ServiceDashboard from "./pages/ServiceDashboard/ServiceDashboard";
 import UploadService from "./pages/UploadService/UploadService";
 import SignUpTwo from "./pages/SignUp/SignUpTwo";
 import SerachResult from "./pages/SearchResult/SerachResult";
-import Toastify from "./components/Toastify/Toastify";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminApproval from "./pages/AdminApproval/AdminApproval";
 import AdminCategory from "./pages/AdminCategory/AdminCategory";
@@ -38,11 +40,17 @@ import ManageServices from "./pages/ManageServices/ManageServices";
 const App = () => {
   return (
     <>
-      <Toastify position="top-right" />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/home/:service_type" element={<SameServices />} />
-        <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
+        <Route path="/services/:serviceType" element={<SameServices />} />
+        <Route
+          path="/services/creator-services/:creatorId"
+          element={<CreatorServices />}
+        />
+        <Route
+          path="/services/:serviceType/:serviceTitle"
+          element={<ServiceDetails />}
+        />
         <Route path="/about_us" element={<AboutUsPage />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up/step2" element={<SignUpTwo />} />

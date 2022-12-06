@@ -1,8 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { snakeCase } from "../../functions/formatString";
+
+// components import
 import locationIcon from "../../images/svg/location.svg";
 import Dots from "../Dots/Dots";
+
+// helper functions import
+import { snakeCase } from "../../functions/formatString";
 
 const SingleSlide = ({
   serImg1,
@@ -35,7 +39,7 @@ const SingleSlide = ({
         imageData={serImages}
         autoPlay={false}
       />
-      <Link to={`/home/${snakeCase(serType)}/${snakeCase(title)}`}>
+      <Link to={`/services/${snakeCase(serType)}/${snakeCase(title)}`}>
         <div className="slide">
           <div className="slide-img-ctn">
             {serImages && (

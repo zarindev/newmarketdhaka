@@ -6,8 +6,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [componentFiles, setComponentFiles] = useState([]);
 
-  const { mergedSerType } = useMerge();
-  const { mergedSerTypeAll } = useMerge();
+  const { mergedSerType, mergedSerTypeAll } = useMerge();
 
   return (
     <AppContext.Provider

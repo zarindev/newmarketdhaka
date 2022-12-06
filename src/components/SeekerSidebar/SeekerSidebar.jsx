@@ -1,11 +1,17 @@
-import { Link, NavLink } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import './SeekerSidebar.css';
-import brandLogo from '../../images/brand-logo.png';
-import seekerSwitchIcon from '../../images/seeker-switch.png';
-import { adminData, comData } from './sidebarData';
-import { useAuth } from '../../context/AuthProvider';
-import PlaceholderLoading from '../Loading/PlaceholderLoading';
+import "./seekersidebar.css";
+import { Link, NavLink } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+
+// components import
+import PlaceholderLoading from "../Loading/PlaceholderLoading";
+
+// images import
+import brandLogo from "../../images/brand-logo.png";
+import seekerSwitchIcon from "../../images/seeker-switch.png";
+
+// data import
+import { adminData, comData } from "./sidebarData";
+import { useAuth } from "../../context/AuthProvider";
 
 const SeekerSidebar = () => {
   const { user } = useAuth();
@@ -23,7 +29,7 @@ const SeekerSidebar = () => {
               </div>
             );
           })
-        : user?.uid === 'TJyklprfkah56Y1FtrnTmXQmh8i2'
+        : user?.uid === "TJyklprfkah56Y1FtrnTmXQmh8i2"
         ? adminData.map((item) => {
             return (
               <NavLink to={item.link} key={item.id}>
@@ -52,14 +58,6 @@ const SeekerSidebar = () => {
               </NavLink>
             );
           })}
-      <div className="seeker-item seeker-bottom-item">
-        <img
-          src={seekerSwitchIcon}
-          alt="services"
-          className="seeker-item-icon"
-        />
-        <p className="seeker-item-text">Swtich to seeker mode</p>
-      </div>
     </div>
   );
 };
