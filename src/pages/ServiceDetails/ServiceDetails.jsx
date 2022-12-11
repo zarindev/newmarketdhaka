@@ -1,44 +1,43 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import CategoryNav from '../../components/Navigation/CategoryNav/CategoryNav';
-import TopNav from '../../components/Navigation/TopNav/TopNav';
-import Footer from '../../components/Footer/Footer';
-import SliderComponent from '../../components/ServicesSlider/SliderComponent';
-import DetailsList from './DetailsList';
-import './ServiceDetails.css';
-import {
-  capitalCase,
-  checkCase,
-  snakeCase,
-} from '../../functions/formatString';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import ScrollToTop from '../../utils/ScrollToTop';
-import Loading from '../../components/Loading/Loading';
-import { useAuth } from '../../context/AuthProvider';
-import { useSerQuery } from '../../hooks/useSerQuery';
+import "./servicedetails.css";
+import { useNavigate, useParams } from "react-router-dom";
+
+// components import
+import TopNav from "../../components/Navbar/TopNav";
+import BottomNav from "../../components/Navbar/BottomNav";
+import Footer from "../../components/Footer/Footer";
+import SliderComponentAlt from "../../components/ServicesSlider/SliderComponentAlt";
+import DetailsList from "./DetailsList";
+import Loading from "../../components/Loading/Loading";
+
+// hooks import
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useAuth } from "../../context/AuthProvider";
+import { useSerQuery } from "../../hooks/useSerQuery";
+
+// helper functions import
+import { checkCase, snakeCase } from "../../functions/formatString";
 
 const ServiceDetails = () => {
   useDocTitle();
 
-  const { service_type, title } = useParams();
+  const navigate = useNavigate();
+
+  const { serviceType, serviceTitle } = useParams();
   const { serData, serIsLoading } = useSerQuery();
 
   const activeSer = serData?.find(
-    (service) => snakeCase(service.title) === snakeCase(title)
+    (service) => snakeCase(service.title) === snakeCase(serviceTitle)
   );
 
   const { user } = useAuth();
 
   return (
-    <ScrollToTop>
+    <>
       <TopNav />
-      <CategoryNav />
+      <BottomNav />
       <div className="service-details">
-        <p className="details-directory">
-          <Link to="/">{checkCase(service_type)}</Link>/
-          <Link to={`/home/${service_type}/${title}`}>
-            {capitalCase(title)}
-          </Link>
+        <p className="detailsBackButton" onClick={() => navigate(-1)}>
+          Go Back
         </p>
         {serIsLoading ? (
           <Loading color="#ce2d4f" size={125} />
@@ -50,12 +49,15 @@ const ServiceDetails = () => {
             <p className="details-more-title">
               More services from the provider
             </p>
-            <SliderComponent serType={checkCase(service_type)} />
+            <SliderComponentAlt
+              serType={checkCase(serviceType)}
+              creatorId={activeSer.userUId}
+            />
           </div>
         )}
       </div>
       <Footer />
-    </ScrollToTop>
+    </>
   );
 };
 

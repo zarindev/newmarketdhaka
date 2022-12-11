@@ -120,26 +120,26 @@
 
 .contact-error-message {
   font-size: clamp(0.8rem, 2.5vw, 1rem);
-  color: #ffff00;
+  color: hsl(70, 100%, 66%);
   margin-top: 0.4rem;
 }
 
 .form-submit-btn {
-  margin-top: 10px;
   width: 69vw;
   max-width: 850px;
   padding: 1rem 0;
-  background-color: #1ac3da;
+  background: hsl(187, 79%, 48%);
   border: 1px solid #1ac3da;
   border-radius: 12px;
   font-weight: 700;
   font-size: 18px;
   color: #ffffff;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 .form-submit-btn:hover {
-  background-color: hsla(187, 79%, 48%, 0.8);
+  background: hsl(187, 79%, 40%);
 }
 
 .contact-info-ctn {

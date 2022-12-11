@@ -1,10 +1,10 @@
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import './AdminApproval.css';
-import { useSerQuery } from '../../hooks/useSerQuery';
-import Loading from '../../components/Loading/Loading';
-import Table from '../../components/Table/Table';
-import { useAdminTableColumn } from '../../hooks/useAdminTableColumn';
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import "./AdminApproval.css";
+import { useSerQuery } from "../../hooks/useSerQuery";
+import Loading from "../../components/Loading/Loading";
+import Table from "../../components/Table/Table";
+import { useAdminTableColumn } from "../../hooks/useAdminTableColumn";
 
 const AdminApproval = () => {
   useDocTitle();

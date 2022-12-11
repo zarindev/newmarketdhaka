@@ -1,11 +1,11 @@
 .all-services {
-  margin: 5.625rem 0 5rem 0;
+  margin: 5rem 0;
 }
 
 .all-services-banner {
   width: 100%;
   padding: 125px 0;
-  background: url('../../images/all-services.webp') no-repeat center;
+  background: url("../../images/all-services.png") no-repeat center;
 }
 
 .all-services-title {

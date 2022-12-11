@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import ellipse from '../../images/svg/Ellipse 2.svg';
-import './Dots.css';
+import { useEffect } from "react";
+import ellipse from "../../images/svg/Ellipse 2.svg";
+import "./Dots.css";
 
 const Dots = ({
   arrLength,
@@ -23,14 +23,14 @@ const Dots = ({
   }, [imageIndex, setImageIndex, imageData]);
 
   return (
-    <div className="dots-ctn">
+    <div aria-label="carousel pagination" className="dots-ctn">
       {Array.from({ length: arrLength }).map((item, index) => {
         return (
           <img
             key={index}
             src={ellipse}
             alt="ellipse"
-            className={imageIndex === index ? 'dot dot-active' : 'dot'}
+            className={imageIndex === index ? "dot dot-active" : "dot"}
             onClick={() => setImageIndex(index)}
           />
         );

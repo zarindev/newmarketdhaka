@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from './elements/updateAction';
-import { toast } from 'react-toastify';
-import signImg from '../../images/sign.webp';
-import brandLogo from '../../images/brand-logo.webp';
-import brandLogoDesk from '../../images/brand-logo-transparent.webp';
-import { useAuth } from '../../context/AuthProvider';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { formatError } from '../../functions/formatString';
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "./elements/updateAction";
+import { toast } from "react-toastify";
+import signImg from "../../images/sign.png";
+import brandLogo from "../../images/brand-logo.png";
+import brandLogoDesk from "../../images/brand-logo-transparent.png";
+import { useAuth } from "../../context/AuthProvider";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { formatError } from "../../functions/formatString";
 
 const SignUpTwo = () => {
   useDocTitle();
@@ -20,12 +20,12 @@ const SignUpTwo = () => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: 'all',
+    mode: "all",
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      phoneNumber: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
+      phoneNumber: "",
     },
   });
   const { actions, state } = useStateMachine({ updateAction });
@@ -38,14 +38,14 @@ const SignUpTwo = () => {
     try {
       await createUser(state.email, state.password);
       reset();
-      navigate('/');
+      navigate("/");
       toast.success(`Successfully signed up`);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = formatError(errorCode);
       toast.error(`${errorMessage}`, {
         progress: undefined,
-        toastId: 'signupError',
+        toastId: "signupError",
       });
       console.log(errorCode);
     }
@@ -76,12 +76,12 @@ const SignUpTwo = () => {
               name="phoneNumber"
               className="field-style"
               placeholder="Phone Number"
-              {...register('phoneNumber', {
-                required: 'Phone Number is required',
+              {...register("phoneNumber", {
+                required: "Phone Number is required",
                 pattern: {
                   value:
                     /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                  message: 'Please enter a valid phone number',
+                  message: "Please enter a valid phone number",
                 },
               })}
             />

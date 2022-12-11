@@ -1,0 +1,15 @@
+.profile-ctn .userProf,
+.edit-ctn .userProfEdit {
+  position: relative;
+  left: 0;
+  padding-top: 12rem;
+  max-width: 600px;
+  height: 100vh;
+}
+
+.userEditDm {
+  margin-top: -1rem;
+  color: #ce2d4f;
+  font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  font-weight: 600;
+}

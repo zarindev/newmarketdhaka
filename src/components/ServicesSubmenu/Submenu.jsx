@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Submenu = ({ activeSubmenu, selectedTab }) => {
   return (
@@ -12,7 +12,7 @@ const Submenu = ({ activeSubmenu, selectedTab }) => {
               return (
                 <AnimatePresence exitBeforeEnter key={index}>
                   <motion.div
-                    key={selectedTab ? selectedTab.label : 'empty'}
+                    key={selectedTab ? selectedTab.label : "empty"}
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -10, opacity: 0 }}

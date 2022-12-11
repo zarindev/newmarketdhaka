@@ -7,6 +7,11 @@ import {
   signInWithPopup,
   signInWithRedirect,
   FacebookAuthProvider,
+  updateEmail,
+  reauthenticateWithCredential,
+  promptForCredentials,
+  sendEmailVerification,
+  updatePassword,
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
@@ -39,6 +44,14 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const changeEmail = (activeUser, email) => {
+    updateEmail(activeUser, email);
+  };
+
+  const changePassword = (activeUser, password) => {
+    updatePassword(activeUser, password);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -57,6 +70,8 @@ export const AuthProvider = ({ children }) => {
         signin,
         signinGoogle,
         signinFb,
+        changeEmail,
+        changePassword,
         signout,
       }}
     >

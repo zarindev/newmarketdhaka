@@ -1,0 +1,68 @@
+.upload-ser-form .countryWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.upload-ser-form .countryFlag {
+  width: 22px;
+  height: 14px;
+  object-fit: cover;
+}
+
+.upload-ser-form .css-1s2u09g-control,
+.upload-ser-form .css-1pahdxg-control {
+  padding: 0.26rem 0.5rem;
+  background-color: #fafafa;
+  border: 1px solid #cecece;
+  box-shadow: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #1d1d1d;
+  text-indent: auto;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.upload-ser-form .css-1pahdxg-control {
+  padding: 0.26rem 0.5rem;
+  background-color: #ebebeb;
+  border: 1px solid #6d6d6d;
+  box-shadow: 0 0 0 1px #6d6d6d;
+}
+
+.upload-ser-form .css-1pahdxg-control:hover {
+  border: 1px solid #6d6d6d;
+}
+
+.upload-ser-form .reactSelect,
+.upload-ser-form .reactSelect p {
+  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 0.76rem + 0.19999999999999996vw, 1rem);
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.upload-ser-form .reactSelect .upload-ser-tag-placeholder {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 600;
+  color: #6d6d6d;
+}
+
+.upload-ser-form .css-1rhbuit-multiValue {
+  background-color: #e14869;
+  border-radius: 1rem;
+}
+
+.upload-ser-form .css-1rhbuit-multiValue .css-12jo7m5 {
+  padding: 0.3rem 0 0.3rem 0.5rem;
+  color: #ffffff;
+}
+
+.upload-ser-form .css-1rhbuit-multiValue .css-xb97g8 {
+  margin-left: 0.5rem;
+  padding: 0 0.2rem 0 0;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: #ffffff;
+}

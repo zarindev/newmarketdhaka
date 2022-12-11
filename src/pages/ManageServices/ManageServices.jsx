@@ -1,19 +1,22 @@
-import Loading from '../../components/Loading/Loading';
-import SeekerSidebar from '../../components/SeekerSidebar/SeekerSidebar';
-import { useComTableColumn } from '../../hooks/useComTableColumn';
-import { useDocTitle } from '../../hooks/useDocTitle';
-import { useFilter } from '../../hooks/useFilter';
-import { useFind } from '../../hooks/useFind';
+import "./manageservices.css";
 
-import './ManageServices.css';
-import TableBlock from './TableBlock';
+// compoents import
+import Loading from "../../components/Loading/Loading";
+import SeekerSidebar from "../../components/SeekerSidebar/SeekerSidebar";
+import Table from "../../components/Table/Table";
+
+// hooks import
+import { useComTableColumn } from "../../hooks/useComTableColumn";
+import { useDocTitle } from "../../hooks/useDocTitle";
+import { useFilter } from "../../hooks/useFilter";
+import { useFind } from "../../hooks/useFind";
 
 const ManageServices = () => {
   useDocTitle();
 
-  const { activeCom } = useFind();
-  const activeComId = activeCom.id;
-  const { activeSer, serIsLoading } = useFilter('companyInfoId', activeComId);
+  const { activeUser } = useFind();
+  const activeUserId = activeUser?.userUId;
+  const { activeSer, serIsLoading } = useFilter("userUId", activeUserId);
 
   const columns = useComTableColumn();
 
@@ -24,20 +27,7 @@ const ManageServices = () => {
         {serIsLoading ? (
           <Loading color="#ce2d4f" size={115} />
         ) : (
-          <>
-            <TableBlock
-              tableTitle="Active Services"
-              activeSer={activeSer}
-              columns={columns}
-              activeComId={activeComId}
-            />
-            <TableBlock
-              tableTitle="Disabled Services"
-              activeSer={activeSer}
-              columns={columns}
-              activeComId={activeComId}
-            />
-          </>
+          <Table columns={columns} data={activeSer} />
         )}
       </div>
     </div>

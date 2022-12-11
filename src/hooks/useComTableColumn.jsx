@@ -1,38 +1,29 @@
-import { useState, useEffect, useMemo } from 'react';
-import serviceIcon from '../images/customer-service 1.png';
-import categoryIcon from '../images/subfolder 1.png';
-import { useWindowSize } from './useWindowSize';
+import { useMemo } from "react";
+
+// images import
+import serviceNameIcon from "../images/technical-service 1.png";
+import categoryIcon from "../images/subfolder 1.png";
+import phoneNumberIcon from "../images/options 1.png";
 
 export const useComTableColumn = () => {
-  const size = useWindowSize();
-  const { width } = size;
-  const [isShowed, setIsShowed] = useState(true);
-
-  useEffect(() => {
-    if (width < 1100) {
-      setIsShowed(false);
-    } else {
-      setIsShowed(true);
-    }
-  }, [width]);
-
   const columns = useMemo(
     () => [
       {
+        id: "serName",
         Header: () => (
           <div className="tabel-label-ctn">
             <img
-              src={serviceIcon}
+              src={serviceNameIcon}
               alt="serviceProvider"
               className="table-label-icon"
             />
-            <p className="tabel-label">Service</p>
+            <p className="tabel-label">Service Name</p>
           </div>
         ),
-        accessor: 'title',
-        show: true,
+        accessor: "title",
       },
       {
+        id: "serCategory",
         Header: () => (
           <div className="tabel-label-ctn">
             <img
@@ -43,11 +34,25 @@ export const useComTableColumn = () => {
             <p className="tabel-label">Category</p>
           </div>
         ),
-        accessor: 'serType',
-        show: isShowed,
+        accessor: "serCategory.value",
+      },
+      {
+        id: "status",
+        Header: () => (
+          <div className="tabel-label-ctn">
+            <img
+              src={phoneNumberIcon}
+              alt="serviceProvider"
+              className="table-label-icon"
+            />
+            <p className="tabel-label">Status</p>
+          </div>
+        ),
+        accessor: (item) =>
+          item.status.toString() === "true" ? "Active" : "Inactive",
       },
     ],
-    [isShowed]
+    []
   );
 
   return columns;

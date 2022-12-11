@@ -9,11 +9,11 @@
 .contact-page-banner {
   width: 100%;
   padding: 125px 0;
-  background: url('../../images/about-and-contact.webp') no-repeat center;
+  background: url('../../images/about-and-contact.png') no-repeat center;
 }
 
 .contact-page {
-  margin-top: 90px;
+  margin-top: 80px;
 }
 
 .contact-page .contact-intro {

@@ -1,37 +1,53 @@
-import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import Loading from '../Loading/Loading';
-import RoundedBtn from '../Button/RoundedBtn';
-import './ServicesSlider.css';
-import SliderComponent from './SliderComponent';
-import arrowCircleDown from '../../images/svg/arrow-circle-down.svg';
-import { useGlobalContext } from '../../context/AppProvider';
+import { useMemo } from "react";
+import "./servicesslider.css";
+import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+
+// compoents import
+import RoundedBtn from "../Button/RoundedBtn";
+import SliderComponent from "./SliderComponent";
+import Loading from "../Loading/Loading";
+
+// contexts import
+import { useGlobalContext } from "../../context/AppProvider";
+
+// images import
+import arrowCircleDown from "../../images/svg/arrow-circle-down.svg";
 
 const ServicesSlider = () => {
   const { mergedSerType } = useGlobalContext();
 
+  const slicedSerType = useMemo(
+    () => mergedSerType.slice(0, 3),
+    [mergedSerType]
+  );
+
   return (
-    <div className="services-slider">
-      <h1 className="services-slider-title">
-        Take a glimps of all the services
-      </h1>
-      {mergedSerType.length === 0 ? (
-        <Loading color="#ce2d4f" size={115} />
-      ) : (
-        mergedSerType.map((service) => {
-          return <SliderComponent key={uuidv4()} serType={service} />;
-        })
-      )}
+    <>
       {mergedSerType.length > 0 && (
-        <Link to="/more_services">
-          <RoundedBtn
-            text="Explore More"
-            icon={arrowCircleDown}
-            altText="arrow-circle-down"
-          />
-        </Link>
+        <section aria-label="available-services" className="services-slider">
+          <h1 className="services-slider-title">
+            Take a glimps of all the services
+          </h1>
+          {mergedSerType.length === 0 ? (
+            <Loading color="#ce2d4f" size={115} />
+          ) : (
+            <div>
+              {slicedSerType.map((serType) => (
+                <SliderComponent key={uuidv4()} serType={serType} />
+              ))}
+              <Link to="/more_services">
+                <RoundedBtn
+                  text="Explore More"
+                  icon={arrowCircleDown}
+                  altText="arrow-circle-down"
+                />
+              </Link>
+            </div>
+          )}
+        </section>
       )}
-    </div>
+    </>
   );
 };
 

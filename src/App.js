@@ -1,47 +1,57 @@
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import AboutUs from './pages/AboutUS/AboutUs';
-import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
-import SignUp from './pages/SignUp/SignUp';
-import SignIn from './pages/SignIn/SignIn';
-import AllServices from './pages/AllServices/AllServices';
-import ServiceDetails from './pages/ServiceDetails/ServiceDetails';
-import Profile from './pages/Profile/Profile';
-import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
-import Register from './pages/Register/Register';
-import RegisterFormOne from './pages/Register/RegisterFormOne';
-import RegisterFormTwo from './pages/Register/RegisterFormTwo';
-import RegisterFormThree from './pages/Register/RegisterFormThree';
-import RegisterFormFour from './pages/Register/RegisterFormFour';
-import RegisterFormSucess from './pages/Register/RegisterFormSucess';
-import RegisterFormOneIndie from './pages/Register/RegisterFormOneIndie';
-import RegisterFormTwoIndie from './pages/Register/RegisterFormTwoIndie';
-import RegisterFormThreeIndie from './pages/Register/RegisterFormThreeIndie';
-import RegisterFormFourIndie from './pages/Register/RegisterFormFourIndie';
-import RegisterFormSucessIndie from './pages/Register/RegisterFormSucessIndie';
-import MoreServices from './pages/MoreServices/MoreServices';
-import SameServices from './pages/SameServices/SameServices';
-import NotFound from './pages/404/NotFound';
-import ServiceDashboard from './pages/ServiceDashboard/ServiceDashboard';
-import UploadService from './pages/UploadService/UploadService';
-import SignUpTwo from './pages/SignUp/SignUpTwo';
-import SerachResult from './pages/SearchResult/SerachResult';
-import Toastify from './components/Toastify/Toastify';
-import AdminPanel from './pages/AdminPanel/AdminPanel';
-import AdminApproval from './pages/AdminApproval/AdminApproval';
-import AdminCategory from './pages/AdminCategory/AdminCategory';
-import AdminSettings from './pages/AdminSettings/AdminSettings';
-import ManageServices from './pages/ManageServices/ManageServices';
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+// pages import
+import HomePage from "./pages/HomePage/HomePage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
+import SignUp from "./pages/SignUp/SignUp";
+import SignIn from "./pages/SignIn/SignIn";
+import AllServices from "./pages/AllServices/AllServices";
+import ServiceDetails from "./pages/ServiceDetails/ServiceDetails";
+import Profile from "./pages/Profile/Profile";
+import ProfileEdit from "./pages/ProfileEdit/ProfileEdit";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import UserProfileEdit from "./pages/UserProfile/UserProfileEdit";
+import Register from "./pages/Register/Register";
+import RegisterFormOne from "./pages/Register/RegisterFormOne";
+import RegisterFormTwo from "./pages/Register/RegisterFormTwo";
+import RegisterFormThree from "./pages/Register/RegisterFormThree";
+import RegisterFormFour from "./pages/Register/RegisterFormFour";
+import RegisterFormSucess from "./pages/Register/RegisterFormSucess";
+import RegisterFormOneIndie from "./pages/Register/RegisterFormOneIndie";
+import RegisterFormTwoIndie from "./pages/Register/RegisterFormTwoIndie";
+import RegisterFormThreeIndie from "./pages/Register/RegisterFormThreeIndie";
+import RegisterFormFourIndie from "./pages/Register/RegisterFormFourIndie";
+import RegisterFormSucessIndie from "./pages/Register/RegisterFormSucessIndie";
+import MoreServices from "./pages/MoreServices/MoreServices";
+import SameServices from "./pages/SameServices/SameServices";
+import CreatorServices from "./pages/CreatorServices/CreatorServices";
+import NotFound from "./pages/404/NotFound";
+import ServiceDashboard from "./pages/ServiceDashboard/ServiceDashboard";
+import UploadService from "./pages/UploadService/UploadService";
+import SignUpTwo from "./pages/SignUp/SignUpTwo";
+import SerachResult from "./pages/SearchResult/SerachResult";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import AdminApproval from "./pages/AdminApproval/AdminApproval";
+import AdminCategory from "./pages/AdminCategory/AdminCategory";
+import AdminSettings from "./pages/AdminSettings/AdminSettings";
+import ManageServices from "./pages/ManageServices/ManageServices";
+
+const App = () => {
   return (
     <>
-      <Toastify position="bottom-left" />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/home/:service_type" element={<SameServices />} />
-        <Route path="/home/:service_type/:title" element={<ServiceDetails />} />
-        <Route path="/about_us" element={<AboutUs />} />
+        <Route path="/services/:serviceType" element={<SameServices />} />
+        <Route
+          path="/services/creator-services/:creatorId"
+          element={<CreatorServices />}
+        />
+        <Route
+          path="/services/:serviceType/:serviceTitle"
+          element={<ServiceDetails />}
+        />
+        <Route path="/about_us" element={<AboutUsPage />} />
         <Route path="/contact_us" element={<ContactUsPage />} />
         <Route path="/sign_up/step2" element={<SignUpTwo />} />
         <Route path="/sign_up" element={<SignUp />} />
@@ -75,7 +85,13 @@ function App() {
           path="/register/individual/success"
           element={<RegisterFormSucessIndie />}
         />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit_profile" element={<ProfileEdit />} />
+        <Route path="/user_profile" element={<UserProfile />} />
+        <Route
+          path="/user_profile/edit_profile"
+          element={<UserProfileEdit />}
+        />
         <Route path="/results" element={<SerachResult />} />
         <Route path="/all_services" element={<AllServices />} />
         <Route path="/more_services" element={<MoreServices />} />
@@ -86,7 +102,6 @@ function App() {
           element={<UploadService />}
         />
         <Route path="/manage_services" element={<ManageServices />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/admin_panel" element={<AdminPanel />} />
         <Route path="/approval" element={<AdminApproval />} />
         <Route path="/category_creation" element={<AdminCategory />} />
@@ -95,6 +110,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;
